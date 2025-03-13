@@ -1,0 +1,141 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Professional Police Academy Theme */
+@layer base {
+    body {
+        @apply antialiased;
+    }
+}
+
+@layer components {
+    .dropdown-content {
+        @apply min-w-[200px] transform-gpu transition-all duration-200 ease-out;
+        transform-origin: top right;
+    }
+
+    .mobile-menu {
+        @apply transform-gpu transition-all duration-300 ease-out;
+        transform-origin: top;
+    }
+}
+
+/* Emergency Mode Animation */
+@keyframes emergency-pulse {
+    0%, 100% {
+        opacity: 0.8;
+    }
+    50% {
+        opacity: 0.4;
+    }
+}
+
+/* Navigation Hover Effects */
+.dropdown-btn::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-0 h-0.5 bg-blue-500 transition-all duration-300;
+}
+
+.dropdown-btn:hover::after {
+    @apply w-full;
+}
+
+/* Animated Background for Dropdowns */
+.dropdown-content::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-br from-blue-900/10 to-transparent rounded-md -z-10;
+}
+
+/* Professional Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* Emergency Mode Effects */
+.emergency-active {
+    animation: emergency-pulse 0.02s infinite;
+}
+
+/* Mobile Menu Animations */
+.mobile-dropdown-btn {
+    @apply transition-colors duration-200;
+}
+
+.mobile-dropdown-btn svg {
+    @apply transition-transform duration-200;
+}
+
+.mobile-dropdown-btn.active svg {
+    @apply rotate-180;
+}
+
+/* Police Badge Glow Effect */
+.badge-glow {
+    animation: badge-pulse 2s infinite;
+}
+
+@keyframes badge-pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
+    }
+}
+
+/* Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* High Performance Animations */
+* {
+    backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Add these to your existing app.css */
+
+/* Ensure dropdowns are interactive */
+.dropdown-content {
+    display: none;
+    pointer-events: auto;
+}
+
+.group:hover .dropdown-content,
+.group:focus-within .dropdown-content {
+    display: block;
+}
+
+/* Accessibility improvements */
+.dropdown-btn:focus + .dropdown-content {
+    display: block;
+}
+
+.dropdown-content a:focus {
+    @apply bg-blue-600/20 outline-none;
+}
+
+/* Ensure mobile menu items are clickable */
+#mobile-menu {
+    @apply pointer-events-auto;
+}
+
+/* Add focus styles for better accessibility */
+a:focus, button:focus {
+    @apply outline-none ring-2 ring-blue-400 ring-offset-2 ring-offset-slate-900;
+}
+
+/* Ensure dropdown items are clickable on hover */
+.dropdown-content a {
+    @apply cursor-pointer relative z-10;
+}
