@@ -7,6 +7,8 @@
     <title>@yield('title', 'TPS Moshi')</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<script defer src="https://unpkg.com/@alpinejs/intersect@3.x.x/dist/cdn.min.js"></script>
 </head>
 <body class="bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900">
     <!-- Emergency Mode Overlay -->
@@ -200,19 +202,19 @@
             }
         });
     </script>
-  <!-- Footer Section with Tanzania Flag Animation as Border -->
+ <!-- Footer Section with Tanzania Police Colors Wave Animation -->
 <div class="wave-border w-full overflow-hidden relative h-24">
   <div class="waves-container absolute top-0 left-0 w-full">
-    <!-- Tanzania flag-inspired waves -->
+    <!-- Tanzania Police-inspired waves -->
     <svg class="waves" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none">
-      <!-- Blue triangle (top-left) -->
-      <path class="wave-path wave1" fill="#1eb53a" fill-opacity="0.9" d="M0,0L1440,0L1440,160L0,320Z"></path>
-      <!-- Yellow diagonal stripe -->
-      <path class="wave-path wave2" fill="#fcd116" fill-opacity="0.9" d="M0,0L1440,160L1440,200L0,90Z"></path>
-      <!-- Black diagonal stripe -->
-      <path class="wave-path wave3" fill="#000000" fill-opacity="0.9" d="M0,90L1440,200L1440,240L0,150Z"></path>
-      <!-- Blue triangle (bottom-right) -->
-      <path class="wave-path wave4" fill="#00a3dd" fill-opacity="0.9" d="M0,150L1440,240L1440,320L0,320Z"></path>
+      <!-- Navy blue wave -->
+      <path class="wave-path wave1" fill="#002D62" fill-opacity="0.9" d="M0,64L48,80C96,96,192,128,288,128C384,128,480,96,576,90.7C672,85,768,107,864,122.7C960,139,1056,149,1152,149.3C1248,149,1344,139,1392,133.3L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+      <!-- Gold/yellow wave -->
+      <path class="wave-path wave2" fill="#FFD700" fill-opacity="0.7" d="M0,160L48,165.3C96,171,192,181,288,176C384,171,480,149,576,149.3C672,149,768,171,864,176C960,181,1056,171,1152,165.3C1248,160,1344,160,1392,160L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+      <!-- Royal blue wave -->
+      <path class="wave-path wave3" fill="#0047AB" fill-opacity="0.8" d="M0,224L48,213.3C96,203,192,181,288,176C384,171,480,181,576,186.7C672,192,768,192,864,170.7C960,149,1056,107,1152,96C1248,85,1344,107,1392,117.3L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+      <!-- White wave -->
+      <path class="wave-path wave4" fill="#FFFFFF" fill-opacity="0.6" d="M0,256L48,261.3C96,267,192,277,288,277.3C384,277,480,267,576,245.3C672,224,768,192,864,192C960,192,1056,224,1152,240C1248,256,1344,256,1392,256L1440,256L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
     </svg>
   </div>
 </div>
@@ -552,7 +554,6 @@
 
 <style>
 /* Wave animation styles */
-/* Tanzania flag wave animation styles */
 .wave-border {
   margin-bottom: -2px; /* Ensures seamless connection with footer */
 }
@@ -564,38 +565,39 @@
 }
 
 .wave-path {
-  animation: wave-move 20s ease-in-out infinite alternate;
+  animation: wave-move 8s ease-in-out infinite alternate;
   transform-origin: center bottom;
 }
 
 .wave1 {
   animation-delay: -2s;
+  animation-duration: 12s;
 }
 
 .wave2 {
   animation-delay: -3s;
-  animation-duration: 18s;
+  animation-duration: 10s;
 }
 
 .wave3 {
   animation-delay: -4s;
-  animation-duration: 15s;
+  animation-duration: 11s;
 }
 
 .wave4 {
   animation-delay: -5s;
-  animation-duration: 20s;
+  animation-duration: 9s;
 }
 
 @keyframes wave-move {
   0% {
-    transform: translateX(-40px);
+    transform: translateX(-25px) translateY(5px);
   }
   50% {
-    transform: translateX(-20px);
+    transform: translateX(-15px) translateY(-5px);
   }
   100% {
-    transform: translateX(0px);
+    transform: translateX(0px) translateY(0px);
   }
 }
 </style>

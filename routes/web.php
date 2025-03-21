@@ -50,7 +50,11 @@ Route::get('/news/{news}', [NewsController::class, 'show'])->name('news-detail')
 });
 
 // News routes
-Route::resource('news', App\Http\Controllers\NewsController::class);
+Route::get('/news', [NewsController::class, 'index'])->name('news.index');
+// News Routes
+Route::get('/news', 'App\Http\Controllers\NewsController@index')->name('news.index');
+Route::get('/news/{slug}', 'App\Http\Controllers\NewsController@show')->name('news.show');
+Route::get('/news/category/{slug}', [NewsController::class, 'byCategory'])->name('news.category');
 
 // About Routes
 Route::prefix('about')->name('about.')->group(function () {

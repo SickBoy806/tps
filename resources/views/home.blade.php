@@ -126,8 +126,8 @@
         </div>
     </div>
 
-    <!-- News, Announcements & Events Section -->
-   <div class="py-16 bg-gray-50">
+<!-- News, Announcements & Events Section -->
+<div class="py-16 bg-gray-50">
     <div class="container mx-auto px-4">
         <div class="text-center mb-12">
             <h2 class="text-4xl font-bold text-gray-800 mb-4">News & Announcements</h2>
@@ -138,24 +138,24 @@
             tab: 'announcements',
             currentSlide: 0,
             slides: [
-{
-    image: '{{ asset("assets/images/facilities/classroom.jpg") }}',
-    title: 'TPS Graduates Excel in National Service',
-    description: 'Recent graduates from our institution have been recognized for their exceptional performance in various national service roles.',
-    link: '{{ route("news.show", ["news" => 1]) }}'
-},
-{
-    image: '{{ asset("assets/images/facilities/classroom.jpg") }}',
-    title: 'New ICT Laboratory Inaugurated',
-    description: 'Our institution has officially opened a state-of-the-art ICT laboratory to enhance digital skills training.',
-    link: '{{ route("news.show", ["news" => 2]) }}'
-},
-{
-    image: '{{ asset("assets/images/l") }}',
-    title: 'Annual Sports Competition Results',
-    description: 'Check out the results from our annual interdepartmental sports competition that concluded last week.',
-    link: '{{ route("news.show", ["news" => 3]) }}'
-}
+                {
+                    image: '/assets/images/news&events/news1.jpeg',
+                    title: 'Campus Expansion Project',
+                    description: 'Construction has begun on our new academic building, set to open next semester.',
+                    link: '/news/campus-expansion'
+                },
+                {
+                    image: '/assets/images/news&events/news2.jpeg',
+                    title: 'New ICT Laboratory Inaugurated',
+                    description: 'Our institution has officially opened a state-of-the-art ICT laboratory to enhance digital skills training.',
+                    link: '/news/ict-laboratory'
+                },
+                {
+                    image: '/assets/images/news&events/news3.jpeg',
+                    title: 'Annual Sports Competition Results',
+                    description: 'Check out the results from our annual interdepartmental sports competition that concluded last week.',
+                    link: '/news/sports-competition'
+                }
             ],
             nextSlide() {
                 this.currentSlide = (this.currentSlide + 1) % this.slides.length;
@@ -190,8 +190,43 @@
             <!-- Tab Content -->
             <div class="p-6">
                 <!-- Announcements Tab -->
-                <div x-show="tab === 'announcements'">
+                <div x-show="tab === 'announcements'" class="transition-all duration-300 ease-in-out">
                     <ul class="divide-y divide-gray-200">
+                        <!-- New Police Job Announcement with PDF -->
+                        <li class="py-4 flex items-start">
+                            <div class="flex-shrink-0 bg-red-100 text-red-800 p-3 rounded-lg">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                                </svg>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-lg font-semibold text-gray-800">Police Job Openings Announced</h4>
+                                <p class="text-gray-600">The Tanzania Police Force is now accepting applications for multiple positions. Check the instructions document for eligibility requirements and application procedures.</p>
+                                <p class="text-sm text-gray-500 mt-2">Posted on March 21, 2025</p>
+                                
+                                <!-- PDF Download Section -->
+                                <div class="mt-4 bg-gray-50 p-4 rounded-lg border border-gray-200">
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                                            </svg>
+                                            <div class="ml-3">
+                                                <p class="text-sm font-medium text-gray-900">Job Application Instructions</p>
+                                                <p class="text-xs text-gray-500">PDF • 2.4 MB</p>
+                                            </div>
+                                        </div>
+                                        <a href="/assets/documents/police-job-instructions.pdf" download class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                                            </svg>
+                                            Download PDF
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        
                         <li class="py-4 flex items-start">
                             <div class="flex-shrink-0 bg-blue-100 text-blue-800 p-3 rounded-lg">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -218,7 +253,7 @@
                         </li>
                     </ul>
                     <div class="mt-6 text-center">
-                        <a href="{{ route('news.upcoming') }}" class="inline-flex items-center group text-blue-600 font-semibold hover:text-blue-800 transition-all duration-300">
+                        <a href="/news/upcoming" class="inline-flex items-center group text-blue-600 font-semibold hover:text-blue-800 transition-all duration-300">
                             View all announcements
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
@@ -228,12 +263,18 @@
                 </div>
                 
                 <!-- News Tab with Slideshow -->
-                <div x-show="tab === 'news'" class="space-y-6">
+                <div x-show="tab === 'news'" class="transition-all duration-300 ease-in-out">
                     <!-- Slideshow component -->
                     <div class="relative w-full h-96 bg-gray-100 rounded-lg overflow-hidden">
                         <!-- Slides -->
                         <template x-for="(slide, index) in slides" :key="index">
                             <div x-show="currentSlide === index"
+                                 x-transition:enter="transition ease-out duration-300"
+                                 x-transition:enter-start="opacity-0"
+                                 x-transition:enter-end="opacity-100"
+                                 x-transition:leave="transition ease-in duration-300"
+                                 x-transition:leave-start="opacity-100"
+                                 x-transition:leave-end="opacity-0"
                                  class="absolute inset-0">
                                 <div class="w-full h-full relative">
                                     <img :src="slide.image" :alt="slide.title" class="w-full h-full object-cover">
@@ -271,26 +312,26 @@
                     </div>
                     
                     <!-- Original news items -->
-                    <div class="flex flex-col md:flex-row gap-6">
+                    <div class="flex flex-col md:flex-row gap-6 mt-6">
                         <div class="md:w-1/2 bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
-                            <img src="{{ asset('assets/images/Logos/IMG_0970-1024x683.jpg') }}" alt="News 1" class="w-full h-48 object-cover">
+                            <img src="/assets/images/Logos/IMG_0970-1024x683.jpg" alt="News 1" class="w-full h-48 object-cover">
                             <div class="p-6">
                                 <h4 class="text-xl font-semibold text-gray-800 mb-2">TPS Graduates Excel in National Service</h4>
                                 <p class="text-gray-600 mb-4">Recent graduates from our institution have been recognized for their exceptional performance in various national service roles.</p>
-                                <a href="{{ route('news.show', ['news' => 1]) }}" class="text-blue-600 hover:underline">Read more</a>
+                                <a href="/news/show/1" class="text-blue-600 hover:underline">Read more</a>
                             </div>
                         </div>
                         <div class="md:w-1/2 bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
-                            <img src="{{ asset('assets/images/Logos/JL3A9818-scaled.jpg') }}" alt="News 2" class="w-full h-48 object-cover">
+                            <img src="/assets/images/Logos/JL3A9818-scaled.jpg" alt="News 2" class="w-full h-48 object-cover">
                             <div class="p-6">
                                 <h4 class="text-xl font-semibold text-gray-800 mb-2">New ICT Laboratory Inaugurated</h4>
                                 <p class="text-gray-600 mb-4">Our institution has officially opened a state-of-the-art ICT laboratory to enhance digital skills training.</p>
-                                <a href="{{ route('news.show', ['news' => 2]) }}" class="text-blue-600 hover:underline">Read more</a>
+                                <a href="/news/show/2" class="text-blue-600 hover:underline">Read more</a>
                             </div>
                         </div>
                     </div>
-                    <div class="text-center">
-                        <a href="{{ route('news.index') }}" class="inline-flex items-center group text-blue-600 font-semibold hover:text-blue-800 transition-all duration-300">
+                    <div class="mt-6 text-center">
+                        <a href="/news" class="inline-flex items-center group text-blue-600 font-semibold hover:text-blue-800 transition-all duration-300">
                             View all news
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
@@ -299,90 +340,86 @@
                     </div>
                 </div>
                 
-              
-                
-             
-                    
-                    <!-- Events Tab -->
-                    <!-- Events Tab with Background Images -->
-<div x-show="tab === 'events'" 
-     x-transition:enter="transition ease-out duration-300"
-     x-transition:enter-start="opacity-0 transform -translate-y-4"
-     x-transition:enter-end="opacity-100 transform translate-y-0">
-    <div class="grid md:grid-cols-2 gap-6">
-        <!-- Event Card 1 -->
-        <div class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
-            <div class="relative h-56">
-                <!-- Background Image -->
-                <img src="{{ asset('assets/images/Logos/promotional-course.jpg') }}" alt="Promotional Course" class="absolute inset-0 w-full h-full object-cover">
-                <!-- Overlay -->
-                <div class="absolute inset-0 bg-gradient-to-b from-black/60 to-black/20 flex flex-col justify-center p-6">
-                    <!-- Description on top of background image -->
-                    <span lang="it">
-                        <p class="text-white mb-4 font-italic text-lg">
-                            "Congratulations to all the newly promoted Corporals and Sergeants of the Tanzania Police Force! Your dedication and hard work during your promotional courses have paid off. Wishing you continued success in your service to the nation."
-                        </p>
-                    </span>
-                </div>
-            </div>
-            <div class="p-6">
-                <div class="flex items-center mb-4">
-                    <div class="bg-blue-100 text-blue-800 text-center rounded-lg p-3 mr-4">
-                        <div class="text-2xl font-bold">07</div>
-                        <div class="text-sm">Mar</div>
+                <!-- Events Tab -->
+                <div x-show="tab === 'events'" 
+                     x-transition:enter="transition ease-out duration-300"
+                     x-transition:enter-start="opacity-0 transform -translate-y-4"
+                     x-transition:enter-end="opacity-100 transform translate-y-0"
+                     class="transition-all duration-300 ease-in-out">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <!-- Event Card 1 -->
+                        <div class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
+                            <div class="relative h-56">
+                                <!-- Background Image -->
+                                <img src="/assets/images/Logos/promotional-course.jpg" alt="Promotional Course" class="absolute inset-0 w-full h-full object-cover">
+                                <!-- Overlay -->
+                                <div class="absolute inset-0 bg-gradient-to-b from-black/60 to-black/20 flex flex-col justify-center p-6">
+                                    <!-- Description on top of background image -->
+                                    <span lang="it">
+                                        <p class="text-white mb-4 font-italic text-lg">
+                                            "Congratulations to all the newly promoted Corporals and Sergeants of the Tanzania Police Force! Your dedication and hard work during your promotional courses have paid off. Wishing you continued success in your service to the nation."
+                                        </p>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <div class="flex items-center mb-4">
+                                    <div class="bg-blue-100 text-blue-800 text-center rounded-lg p-3 mr-4">
+                                        <div class="text-2xl font-bold">07</div>
+                                        <div class="text-sm">Mar</div>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-xl font-semibold text-gray-800">Promotional Course Passingout</h4>
+                                        <p class="text-gray-500">9:00 AM - 4:00 PM, Kilele Pori</p>
+                                    </div>
+                                </div>
+                                <a href="/events-detail/1" class="text-blue-600 hover:underline">Event details</a>
+                            </div>
+                        </div>
+                        
+                        <!-- Event Card 2 -->
+                        <div class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
+                            <div class="relative h-56">
+                                <!-- Background Image -->
+                                <img src="/assets/images/Logos/womens-day.jpg" alt="Women's Day" class="absolute inset-0 w-full h-full object-cover">
+                                <!-- Overlay -->
+                                <div class="absolute inset-0 bg-gradient-to-b from-black/60 to-black/20 flex flex-col justify-center p-6">
+                                    <!-- Description on top of background image -->
+                                    <span lang="it">
+                                        <p class="text-white mb-4 font-italic text-lg">
+                                            "On this International Women's Day, we celebrate the incredible strength, resilience, and achievements of women everywhere. May we continue to champion equality, empower each other, and build a future where every woman's voice is heard and valued. Here's to the women who inspire us daily!"
+                                        </p>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <div class="flex items-center mb-4">
+                                    <div class="bg-green-100 text-green-800 text-center rounded-lg p-3 mr-4">
+                                        <div class="text-2xl font-bold">09</div>
+                                        <div class="text-sm">Mar</div>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-xl font-semibold text-gray-800">Womens Day</h4>
+                                        <p class="text-gray-500">1:00 PM - 5:00 PM, Arusha</p>
+                                    </div>
+                                </div>
+                                <a href="/events-detail/2" class="text-blue-600 hover:underline">Event details</a>
+                            </div>
+                        </div>
                     </div>
-                    <div>
-                        <h4 class="text-xl font-semibold text-gray-800">Promotional Course Passingout</h4>
-                        <p class="text-gray-500">9:00 AM - 4:00 PM, Kilele Pori</p>
+                    <div class="mt-6 text-center">
+                        <a href="/news/upcoming" class="inline-flex items-center group text-blue-600 font-semibold hover:text-blue-800 transition-all duration-300">
+                            View all events
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                            </svg>
+                        </a>
                     </div>
                 </div>
-                <a href="{{ route('events-detail', 1) }}" class="text-blue-600 hover:underline">Event details</a>
-            </div>
-        </div>
-        
-        <!-- Event Card 2 -->
-        <div class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
-            <div class="relative h-56">
-                <!-- Background Image -->
-                <img src="{{ asset('assets/images/Logos/womens-day.jpg') }}" alt="Women's Day" class="absolute inset-0 w-full h-full object-cover">
-                <!-- Overlay -->
-                <div class="absolute inset-0 bg-gradient-to-b from-black/60 to-black/20 flex flex-col justify-center p-6">
-                    <!-- Description on top of background image -->
-                    <span lang="it">
-                        <p class="text-white mb-4 font-italic text-lg">
-                            "On this International Women's Day, we celebrate the incredible strength, resilience, and achievements of women everywhere. May we continue to champion equality, empower each other, and build a future where every woman's voice is heard and valued. Here's to the women who inspire us daily!"
-                        </p>
-                    </span>
-                </div>
-            </div>
-            <div class="p-6">
-                <div class="flex items-center mb-4">
-                    <div class="bg-green-100 text-green-800 text-center rounded-lg p-3 mr-4">
-                        <div class="text-2xl font-bold">09</div>
-                        <div class="text-sm">Mar</div>
-                    </div>
-                    <div>
-                        <h4 class="text-xl font-semibold text-gray-800">Womens Day</h4>
-                        <p class="text-gray-500">1:00 PM - 5:00 PM, Arusha</p>
-                    </div>
-                </div>
-                <a href="{{ route('events-detail', 2) }}" class="text-blue-600 hover:underline">Event details</a>
-            </div>
-        </div>
-    </div>
-    <div class="mt-6 text-center">
-        <a href="{{ route('news.upcoming') }}" class="inline-flex items-center group text-blue-600 font-semibold hover:text-blue-800 transition-all duration-300">
-            View all events
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-            </svg>
-        </a>
-    </div>
-</div>                </div>
             </div>
         </div>
     </div>
-
+</div>
 
 
 <html lang="en">
@@ -573,6 +610,7 @@
     .right-column::-webkit-scrollbar-thumb:hover {
         background: #9ca3af;
     }
+    [x-cloak] { display: none !important; }
 </style>
 
 <div x-data="{ 
@@ -676,56 +714,79 @@
     </div>
 
     <!-- Academic Courses -->
-    <div class="course-card bg-white rounded-2xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-300"
-        x-data="{ isHovered: false, currentSlide: 0, slides: [
-                    '{{ asset(" assets/images/Logos/DJI_0466-1066x546.jpg")
-        }}', '{{ asset("assets/images/academic-slide2.jpg") }}' , '{{ asset("assets/images/academic-slide3.jpg") }}'
-        , '{{ asset("assets/images/academic-slide4.jpg") }}' ] }" @mouseenter="isHovered = true; startSlideshow()"
-        @mouseleave="isHovered = false; stopSlideshow()" x-init="slideInterval = null;
-                        startSlideshow = function() {
-                            if (slideInterval === null) {
-                                slideInterval = setInterval(() => {
-                                    currentSlide = (currentSlide + 1) % slides.length;
-                                }, 3000);
-                            }
-                        };
-                        stopSlideshow = function() {
-                            clearInterval(slideInterval);
-                            slideInterval = null;
-                        }">
-        <div class="relative h-64 overflow-hidden">
-            <template x-for="(slide, index) in slides" :key="index">
-                <img :src="slide" alt="Academic Courses"
-                    class="course-image absolute w-full h-full object-cover transition-transform duration-300"
-                    :class="{ 'scale-110': isHovered, 'opacity-100': currentSlide === index, 'opacity-0': currentSlide !== index }"
-                    style="transition: opacity 0.5s ease-in-out">
-            </template>
-            <div
-                class="absolute inset-0 bg-green-900 bg-opacity-40 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
-                <span class="text-white text-xl font-bold">Academic Excellence</span>
+<div class="course-card bg-white rounded-2xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-300"
+    x-data="{ 
+        isHovered: false, 
+        currentSlide: 0, 
+        slideInterval: null,
+        slides: [
+            '{{ asset('assets/images/motions/P360.mp4') }}',
+            '{{ asset('assets/images/motions/P1.mp4') }}',
+            '{{ asset('assets/images/motions/videoblocks.mp4') }}',
+            '{{ asset('assets/images/motions/videoblocks-flying-through-futuristic-technological.mp4') }}'
+        ]
+    }" 
+    @mouseenter="isHovered = true"
+    @mouseleave="isHovered = false"
+    x-init="
+        function startSlideshow() {
+            if (slideInterval === null) {
+                slideInterval = setInterval(() => {
+                    currentSlide = (currentSlide + 1) % slides.length;
+                }, 5000);
+            }
+        }
+        
+        function stopSlideshow() {
+            if (slideInterval !== null) {
+                clearInterval(slideInterval);
+                slideInterval = null;
+            }
+        }
+        
+        // Start slideshow immediately on page load
+        startSlideshow();
+        
+        // Clean up on element removal
+        $cleanup = () => stopSlideshow();
+    ">
+    <div class="relative h-64 overflow-hidden">
+        <template x-for="(slide, index) in slides" :key="index">
+            <div class="absolute inset-0 transition-opacity duration-500"
+                :class="{ 'opacity-100': currentSlide === index, 'opacity-0': currentSlide !== index }">
+                <video class="w-full h-full object-cover" autoplay loop muted playsinline
+                    :class="{ 'scale-110': isHovered }"
+                    style="transition: transform 0.3s ease-in-out">
+                    <source :src="slide" type="video/mp4">
+                    Your browser does not support video playback.
+                </video>
             </div>
-            <!-- Slideshow Controls -->
-            <div class="absolute bottom-2 left-0 right-0 flex justify-center gap-2">
-                <template x-for="(slide, index) in slides" :key="index">
-                    <button @click.stop="currentSlide = index"
-                        class="w-2 h-2 rounded-full transition-colors duration-300"
-                        :class="currentSlide === index ? 'bg-white' : 'bg-white bg-opacity-50'"></button>
-                </template>
-            </div>
+        </template>
+        <div
+            class="absolute inset-0 bg-green-900 bg-opacity-40 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
+            <span class="text-white text-xl font-bold">Academic Excellence</span>
         </div>
-        <div class="p-6">
-            <h3 class="text-2xl font-semibold text-green-800 mb-4">Academic Courses</h3>
-            <p class="text-gray-600 mb-4">
-                Advanced educational programs offering undergraduate degrees and specialized certifications in
-                criminology, forensic science, and law enforcement management.
-            </p>
-            <button @click="activeModal = 'academic'"
-                class="w-full bg-green-500 text-white py-3 rounded-lg hover:bg-green-600 transition duration-300 transform hover:scale-105">
-                Explore Programs
-            </button>
+        <!-- Slideshow Controls -->
+        <div class="absolute bottom-2 left-0 right-0 flex justify-center gap-2">
+            <template x-for="(slide, index) in slides" :key="index">
+                <button @click.stop="currentSlide = index"
+                    class="w-2 h-2 rounded-full transition-colors duration-300"
+                    :class="currentSlide === index ? 'bg-white' : 'bg-white bg-opacity-50'"></button>
+            </template>
         </div>
     </div>
-
+    <div class="p-6">
+        <h3 class="text-2xl font-semibold text-green-800 mb-4">Academic Courses</h3>
+        <p class="text-gray-600 mb-4">
+            Advanced educational programs offering undergraduate degrees and specialized certifications in
+            criminology, forensic science, and law enforcement management.
+        </p>
+        <button @click="activeModal = 'academic'"
+            class="w-full bg-green-500 text-white py-3 rounded-lg hover:bg-green-600 transition duration-300 transform hover:scale-105">
+            Explore Programs
+        </button>
+    </div>
+</div>
     <!-- Promotional Courses -->
     <div class="course-card bg-white rounded-2xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-300"
         x-data="{ isHovered: false, currentSlide: 0, slides: [
