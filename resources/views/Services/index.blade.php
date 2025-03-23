@@ -184,21 +184,21 @@
             </div>
         </div>
         
-        <!-- Poetry Service Card -->
+        <!-- poultry Service Card -->
         <div class="service-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
             <div class="relative overflow-hidden">
-                <img src="{{ asset('images/poetry.jpg') }}" 
+                <img src="{{ asset('images/poultry.jpg') }}" 
                      class="h-56 w-full object-cover transition-transform duration-700 group-hover:scale-110" 
-                     alt="Poetry Service" 
-                     onerror="this.src='https://source.unsplash.com/random/500x300/?poetry'">
+                     alt="poultry Service" 
+                     onerror="this.src='https://source.unsplash.com/random/500x300/?poultry'">
                 <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-70 transition-opacity duration-300"></div>
                 <div class="absolute top-3 left-3">
                     <span class="inline-block bg-purple-600 text-white text-xs px-3 py-1 rounded-full font-semibold shadow-lg">Creative Arts</span>
                 </div>
             </div>
             <div class="p-6">
-                <h3 class="text-2xl font-bold mb-3 group-hover:text-purple-600 transition-colors duration-300">Poetry Service</h3>
-                <p class="text-gray-600 mb-5">Creative writing and poetry workshops. Express yourself through the power of words.</p>
+                <h3 class="text-2xl font-bold mb-3 group-hover:text-purple-600 transition-colors duration-300">poultry Service</h3>
+                <p class="text-gray-600 mb-5">Creative writing and poultry workshops. Express yourself through the power of words.</p>
                 
                 <!-- Service Details - Interactive Expandable Section -->
                 <div class="service-details overflow-hidden transition-all duration-500 max-h-0 group-hover:max-h-40 opacity-0 group-hover:opacity-100">
@@ -227,7 +227,7 @@
                 </div>
                 
                 <div class="flex justify-between items-center mt-4">
-                    <a href="{{ route('services.poetry') }}" class="inline-flex items-center text-purple-600 font-medium hover:text-purple-800 transition-colors group">
+                    <a href="{{ route('services.poultry') }}" class="inline-flex items-center text-purple-600 font-medium hover:text-purple-800 transition-colors group">
                         Learn More
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1 transform transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />

@@ -10,7 +10,7 @@ class TrainingController extends Controller
 {
     public function index()
     {
-        return view('training');
+        return view('facilities.training');
     }
 
     public function getTrainings()

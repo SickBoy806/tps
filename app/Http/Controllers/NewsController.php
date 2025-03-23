@@ -43,5 +43,18 @@ class NewsController extends Controller
     $categories = Category::all(); // Add this line to get all categories
     return view('news.latest', compact('news', 'categories'));
 }
+public function upcoming()
+{
+    {
+    
+{
+    // Fetch upcoming events (modify the query as needed)
+    $events = News::where('date', '>=', now())->orderBy('date', 'asc')->paginate(10);
+    $categories = Category::all(); // Fetch categories if needed
+
+    return view('news.upcoming', compact('events', 'categories'));
+}
+    }
+}
 }
 

@@ -4,6 +4,93 @@
 
 @section('content')
 <header class="header">
+<style>
+  .header {
+    background: #1e3a8a;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-size: 24px;
+  }
+
+  .sports-nav {
+    background: #0f172a;
+    padding: 10px;
+  }
+
+  .nav-list {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    list-style: none;
+  }
+
+  .nav-item {
+    cursor: pointer;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 5px;
+    background: #2563eb;
+    transition: 0.3s;
+  }
+
+  .nav-item:hover {
+    background: #1d4ed8;
+  }
+
+  .main-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+  }
+
+  .sport-card {
+    background: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: 0.3s;
+    opacity: 0;
+  }
+
+  .sport-card:hover {
+    transform: scale(1.05);
+  }
+
+  .card-image {
+    width: 100%;
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .card-content {
+    padding: 20px;
+  }
+
+  .card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #1e3a8a;
+  }
+
+  .card-text {
+    color: #475569;
+  }
+
+  .read-more {
+    display: inline-block;
+    margin-top: 10px;
+    color: #2563eb;
+    text-decoration: none;
+  }
+
+  .read-more:hover {
+    text-decoration: underline;
+  }
+</style>
+
   <p>Your Source for College Sports Excellence</p>
 </header>
 

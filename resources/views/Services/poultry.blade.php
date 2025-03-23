@@ -1,14 +1,12 @@
 @extends('layouts.app')
-
-@section('title', 'Driving')
+@section('title', 'Services')
 @section('content')
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tanzania Police School - Pottery Services</title>
+  <title>Tanzania Police School - Poultry Services</title>
   <style>
     :root {
       --police-blue: #003580;
@@ -38,7 +36,7 @@
       padding: 2rem;
       font-size: 2.5rem;
       position: relative;
-       margin-top: 60px;
+      margin-top: 60px;
     }
 
     .subtitle {
@@ -289,7 +287,7 @@
       color: #777;
     }
 
-    .pottery-animation {
+    .poultry-animation {
       width: 100px;
       height: 100px;
       background-color: var(--police-gold);
@@ -322,64 +320,64 @@
 <body>
   <!-- Main Title -->
   <div class="main-title">
-    Tanzania Police School Pottery Services
-    <div class="subtitle">Crafting Excellence, Building Community</div>
-    <div class="pottery-animation" style="top: 20px; right: 100px;"></div>
-    <div class="pottery-animation" style="bottom: 20px; left: 150px;"></div>
+    Tanzania Police School Poultry Services
+    <div class="subtitle">Quality Poultry Production & Training</div>
+    <div class="poultry-animation" style="top: 20px; right: 100px;"></div>
+    <div class="poultry-animation" style="bottom: 20px; left: 150px;"></div>
   </div>
 
   <!-- Hero Section -->
   <section class="hero">
     <div class="hero-content">
-      <h1>Discover the Art of Pottery</h1>
-      <p>Tanzania Police School proudly presents our exceptional pottery services, combining traditional craftsmanship with modern techniques. Experience the transformative power of clay in the hands of our skilled artisans.</p>
+      <h1>Excellence in Poultry Farming</h1>
+      <p>Tanzania Police School proudly presents our exceptional poultry services, combining traditional knowledge with modern farming techniques. Experience sustainable poultry production that supports our community and enhances officer training.</p>
       <button class="btn" onclick="scrollToSection('services')">Explore Our Services</button>
     </div>
   </section>
 
   <!-- Services Section -->
   <section class="services" id="services">
-    <h2 class="section-title">Our Pottery Services</h2>
-    <p>We offer a range of pottery services to meet your needs, from educational programs to custom ceramic creations.</p>
+    <h2 class="section-title">Our Poultry Services</h2>
+    <p>We offer a range of poultry services to meet your needs, from educational programs to quality egg and meat production.</p>
     
     <div class="service-cards">
-      <div class="service-card" onclick="showModal('workshop')">
+      <div class="service-card" onclick="showModal('training')">
         <div class="service-img">
-          <img src="/api/placeholder/300/200" alt="Pottery Workshops">
+          <img src="/api/placeholder/300/200" alt="Poultry Training">
         </div>
         <div class="service-info">
-          <h3>Pottery Workshops</h3>
-          <p>Learn the art of pottery from our skilled instructors in a collaborative environment.</p>
+          <h3>Poultry Training</h3>
+          <p>Learn modern poultry farming techniques from our experienced instructors in a hands-on environment.</p>
         </div>
       </div>
       
-      <div class="service-card" onclick="showModal('custom')">
+      <div class="service-card" onclick="showModal('eggs')">
         <div class="service-img">
-          <img src="/api/placeholder/300/200" alt="Custom Pottery">
+          <img src="/api/placeholder/300/200" alt="Egg Production">
         </div>
         <div class="service-info">
-          <h3>Custom Pottery</h3>
-          <p>Commission unique pottery pieces tailored to your specific requirements and preferences.</p>
+          <h3>Egg Production</h3>
+          <p>Premium quality eggs from our layers, available for purchase by individuals and businesses.</p>
         </div>
       </div>
       
-      <div class="service-card" onclick="showModal('educational')">
+      <div class="service-card" onclick="showModal('broilers')">
         <div class="service-img">
-          <img src="/api/placeholder/300/200" alt="Educational Programs">
+          <img src="/api/placeholder/300/200" alt="Broiler Production">
         </div>
         <div class="service-info">
-          <h3>Educational Programs</h3>
-          <p>Comprehensive pottery education programs for schools, organizations, and community groups.</p>
+          <h3>Broiler Production</h3>
+          <p>Healthy, well-raised broiler chickens for quality meat production and consumption.</p>
         </div>
       </div>
       
-      <div class="service-card" onclick="showModal('restoration')">
+      <div class="service-card" onclick="showModal('consultation')">
         <div class="service-img">
-          <img src="/api/placeholder/300/200" alt="Pottery Restoration">
+          <img src="/api/placeholder/300/200" alt="Poultry Consultation">
         </div>
         <div class="service-info">
-          <h3>Pottery Restoration</h3>
-          <p>Expert restoration services for damaged pottery and ceramic artifacts.</p>
+          <h3>Poultry Consultation</h3>
+          <p>Expert advice and guidance for starting or improving your own poultry farming venture.</p>
         </div>
       </div>
     </div>
@@ -388,54 +386,54 @@
   <!-- Gallery Section -->
   <section class="gallery" id="gallery">
     <h2 class="section-title">Our Gallery</h2>
-    <p>Explore our collection of handcrafted pottery and ceramic artworks created at the Tanzania Police School.</p>
+    <p>Explore images of our poultry farm, facilities, and products at the Tanzania Police School.</p>
     
     <div class="gallery-container">
       <div class="gallery-item">
-        <img src="/api/placeholder/300/300" alt="Traditional Pottery">
+        <img src="/api/placeholder/300/300" alt="Layer Chickens">
         <div class="gallery-caption">
-          <h3>Traditional Tanzania Pottery</h3>
-          <p>Handcrafted using ancient techniques</p>
+          <h3>Layer Farm</h3>
+          <p>Our modern layer housing facilities</p>
         </div>
       </div>
       
       <div class="gallery-item">
-        <img src="/api/placeholder/300/300" alt="Modern Ceramics">
+        <img src="/api/placeholder/300/300" alt="Broiler Chickens">
         <div class="gallery-caption">
-          <h3>Modern Ceramic Designs</h3>
-          <p>Contemporary approaches to pottery</p>
+          <h3>Broiler Production</h3>
+          <p>Healthy broilers raised in clean conditions</p>
         </div>
       </div>
       
       <div class="gallery-item">
-        <img src="/api/placeholder/300/300" alt="Decorative Pieces">
+        <img src="/api/placeholder/300/300" alt="Egg Collection">
         <div class="gallery-caption">
-          <h3>Decorative Pieces</h3>
-          <p>Functional art for your home</p>
+          <h3>Egg Collection</h3>
+          <p>Daily egg collection and sorting</p>
         </div>
       </div>
       
       <div class="gallery-item">
-        <img src="/api/placeholder/300/300" alt="Student Work">
+        <img src="/api/placeholder/300/300" alt="Training Session">
         <div class="gallery-caption">
-          <h3>Student Creations</h3>
-          <p>Work from our talented students</p>
+          <h3>Training Sessions</h3>
+          <p>Practical training for officers and community members</p>
         </div>
       </div>
       
       <div class="gallery-item">
-        <img src="/api/placeholder/300/300" alt="Cultural Artifacts">
+        <img src="/api/placeholder/300/300" alt="Feed Production">
         <div class="gallery-caption">
-          <h3>Cultural Artifacts</h3>
-          <p>Preserving Tanzania's rich heritage</p>
+          <h3>Feed Production</h3>
+          <p>On-site production of balanced poultry feed</p>
         </div>
       </div>
       
       <div class="gallery-item">
-        <img src="/api/placeholder/300/300" alt="Ceremonial Pottery">
+        <img src="/api/placeholder/300/300" alt="Poultry Health">
         <div class="gallery-caption">
-          <h3>Ceremonial Pottery</h3>
-          <p>Special pieces for important occasions</p>
+          <h3>Poultry Health</h3>
+          <p>Regular health checks and vaccinations</p>
         </div>
       </div>
     </div>
@@ -444,7 +442,7 @@
   <!-- Contact Section -->
   <section class="contact" id="contact">
     <h2 class="section-title">Contact Us</h2>
-    <p>Interested in our pottery services? Get in touch with us to learn more or schedule a visit.</p>
+    <p>Interested in our poultry services? Get in touch with us to learn more or schedule a visit.</p>
     
     <div class="contact-form">
       <div class="form-group">
@@ -461,16 +459,16 @@
         <label for="service">Service of Interest</label>
         <select id="service">
           <option value="">Select a service</option>
-          <option value="workshops">Pottery Workshops</option>
-          <option value="custom">Custom Pottery</option>
-          <option value="educational">Educational Programs</option>
-          <option value="restoration">Pottery Restoration</option>
+          <option value="training">Poultry Training</option>
+          <option value="eggs">Egg Purchase</option>
+          <option value="broilers">Broiler Purchase</option>
+          <option value="consultation">Poultry Consultation</option>
         </select>
       </div>
       
       <div class="form-group">
         <label for="message">Your Message</label>
-        <textarea id="message" placeholder="Tell us about your interest in our pottery services"></textarea>
+        <textarea id="message" placeholder="Tell us about your interest in our poultry services"></textarea>
       </div>
       
       <button type="submit" class="btn" onclick="submitForm()">Send Message</button>
@@ -478,93 +476,101 @@
   </section>
 
   <!-- Modals -->
-  <div class="modal" id="workshop-modal">
+  <div class="modal" id="training-modal">
     <div class="modal-content">
-      <button class="close-modal" onclick="closeModal('workshop')">×</button>
-      <h2>Pottery Workshops</h2>
-      <img src="/api/placeholder/600/300" alt="Pottery Workshop" style="width: 100%; margin: 1rem 0;">
-      <p>Our pottery workshops provide hands-on experience in various pottery techniques. Led by experienced instructors from the Tanzania Police School, these workshops cater to all skill levels from beginners to advanced practitioners.</p>
-      <h3>Workshop Features:</h3>
+      <button class="close-modal" onclick="closeModal('training')">×</button>
+      <h2>Poultry Training Programs</h2>
+      <img src="/api/placeholder/600/300" alt="Poultry Training" style="width: 100%; margin: 1rem 0;">
+      <p>Our poultry training programs provide hands-on experience in various aspects of poultry farming. Led by experienced instructors from the Tanzania Police School, these workshops cater to all skill levels from beginners to advanced practitioners.</p>
+      <h3>Training Features:</h3>
       <ul style="margin-left: 2rem; margin-bottom: 1rem;">
         <li>Small group sizes for personalized attention</li>
-        <li>All materials and tools provided</li>
-        <li>Techniques including hand-building, wheel throwing, and glazing</li>
-        <li>Take home your finished creations</li>
+        <li>Practical hands-on experience with live birds</li>
+        <li>Techniques for layer management, broiler production, and disease control</li>
+        <li>Feed formulation and nutrition management</li>
         <li>Certificate of completion</li>
       </ul>
       <h3>Schedule:</h3>
-      <p>Workshops are held weekly on Tuesdays and Thursdays from 2 PM to 5 PM, and on Saturdays from 10 AM to 4 PM.</p>
+      <p>Training programs are held weekly on Tuesdays and Thursdays from 2 PM to 5 PM, and on Saturdays from 10 AM to 4 PM.</p>
       <h3>Pricing:</h3>
       <p>Single session: 30,000 TZS<br>
       5-session package: 125,000 TZS<br>
       10-session package: 220,000 TZS</p>
-      <button class="btn" onclick="closeModal('workshop'); scrollToSection('contact')">Book a Workshop</button>
+      <button class="btn" onclick="closeModal('training'); scrollToSection('contact')">Book a Training Session</button>
     </div>
   </div>
 
-  <div class="modal" id="custom-modal">
+  <div class="modal" id="eggs-modal">
     <div class="modal-content">
-      <button class="close-modal" onclick="closeModal('custom')">×</button>
-      <h2>Custom Pottery Services</h2>
-      <img src="/api/placeholder/600/300" alt="Custom Pottery" style="width: 100%; margin: 1rem 0;">
-      <p>Our custom pottery service allows you to commission unique ceramic pieces tailored to your specifications. Whether you need ceremonial pieces, corporate gifts, or unique home décor, our skilled artisans can bring your vision to life.</p>
-      <h3>Custom Services Include:</h3>
+      <button class="close-modal" onclick="closeModal('eggs')">×</button>
+      <h2>Egg Production</h2>
+      <img src="/api/placeholder/600/300" alt="Egg Production" style="width: 100%; margin: 1rem 0;">
+      <p>Our layer farm produces high-quality eggs daily from well-managed, properly fed chickens. We maintain strict hygiene standards and implement regular health checks to ensure our eggs are of the highest quality.</p>
+      <h3>Egg Products:</h3>
       <ul style="margin-left: 2rem; margin-bottom: 1rem;">
-        <li>Initial consultation to discuss your requirements</li>
-        <li>Design proposals with sketches</li>
-        <li>Sample pieces when required</li>
-        <li>Production of your approved design</li>
-        <li>Delivery services available</li>
+        <li>Fresh table eggs (available in trays of 30)</li>
+        <li>Graded eggs (small, medium, large, extra-large)</li>
+        <li>Special orders for events and businesses</li>
+        <li>Weekly subscription service available</li>
+        <li>Delivery services for bulk orders</li>
+      </ul>
+      <h3>Purchasing Information:</h3>
+      <p>Eggs can be purchased directly from our farm shop or ordered for delivery (minimum order quantity applies).</p>
+      <h3>Pricing:</h3>
+      <p>Single tray (30 eggs): 12,000 TZS<br>
+      5 trays: 55,000 TZS<br>
+      10 trays: 100,000 TZS<br>
+      (Special rates available for regular customers and bulk purchases)</p>
+      <button class="btn" onclick="closeModal('eggs'); scrollToSection('contact')">Order Eggs</button>
+    </div>
+  </div>
+
+  <div class="modal" id="broilers-modal">
+    <div class="modal-content">
+      <button class="close-modal" onclick="closeModal('broilers')">×</button>
+      <h2>Broiler Production</h2>
+      <img src="/api/placeholder/600/300" alt="Broiler Production" style="width: 100%; margin: 1rem 0;">
+      <p>We raise broiler chickens in a clean, well-managed environment with proper nutrition and health care. Our broilers are free from harmful antibiotics and chemicals, ensuring you get healthy, quality meat.</p>
+      <h3>Broiler Products:</h3>
+      <ul style="margin-left: 2rem; margin-bottom: 1rem;">
+        <li>Live broilers (1.5-2.5 kg)</li>
+        <li>Dressed broilers (fresh or frozen)</li>
+        <li>Special cuts available on request</li>
+        <li>Bulk orders for events and businesses</li>
+        <li>Regular supply contracts available</li>
+      </ul>
+      <h3>Ordering Information:</h3>
+      <p>Orders should be placed at least 3 days in advance for live birds and 1 day for dressed birds. Delivery available for orders of 10 birds or more within the local area.</p>
+      <h3>Pricing:</h3>
+      <p>Live broiler: 10,000-15,000 TZS (depending on weight)<br>
+      Dressed broiler: Additional 2,000 TZS per bird<br>
+      (Special rates available for bulk orders)</p>
+      <button class="btn" onclick="closeModal('broilers'); scrollToSection('contact')">Order Broilers</button>
+    </div>
+  </div>
+
+  <div class="modal" id="consultation-modal">
+    <div class="modal-content">
+      <button class="close-modal" onclick="closeModal('consultation')">×</button>
+      <h2>Poultry Consultation Services</h2>
+      <img src="/api/placeholder/600/300" alt="Poultry Consultation" style="width: 100%; margin: 1rem 0;">
+      <p>Our experienced poultry experts provide consultation services to help you establish or improve your poultry farming venture. We offer practical advice based on years of experience in the Tanzanian poultry sector.</p>
+      <h3>Consultation Services:</h3>
+      <ul style="margin-left: 2rem; margin-bottom: 1rem;">
+        <li>Initial farm assessment and feasibility studies</li>
+        <li>Housing design and construction guidance</li>
+        <li>Flock management and production planning</li>
+        <li>Disease prevention and control strategies</li>
+        <li>Marketing and business development advice</li>
       </ul>
       <h3>Process:</h3>
-      <p>The custom pottery process typically takes 4-6 weeks from initial consultation to delivery, depending on complexity and quantity.</p>
+      <p>Consultation begins with an initial meeting to discuss your goals, followed by site visits and detailed recommendations. We can provide ongoing support throughout your poultry farming journey.</p>
       <h3>Pricing:</h3>
-      <p>Pricing varies based on design complexity, size, and quantity. Please contact us for a personalized quote.</p>
-      <button class="btn" onclick="closeModal('custom'); scrollToSection('contact')">Request Custom Pottery</button>
-    </div>
-  </div>
-
-  <div class="modal" id="educational-modal">
-    <div class="modal-content">
-      <button class="close-modal" onclick="closeModal('educational')">×</button>
-      <h2>Educational Programs</h2>
-      <img src="/api/placeholder/600/300" alt="Educational Programs" style="width: 100%; margin: 1rem 0;">
-      <p>The Tanzania Police School offers comprehensive pottery educational programs designed for schools, community organizations, and youth groups. Our programs blend practical skills with cultural and historical context.</p>
-      <h3>Program Options:</h3>
-      <ul style="margin-left: 2rem; margin-bottom: 1rem;">
-        <li>School field trips (half-day or full-day)</li>
-        <li>Multi-week curriculum programs</li>
-        <li>Teacher training workshops</li>
-        <li>Community outreach programs</li>
-        <li>Cultural heritage pottery programs</li>
-      </ul>
-      <h3>Benefits:</h3>
-      <p>Our educational programs enhance fine motor skills, creativity, cultural awareness, and provide therapeutic benefits. All programs can be customized to meet specific educational objectives.</p>
-      <h3>Pricing:</h3>
-      <p>Educational program pricing is based on group size, duration, and materials. Special rates are available for public schools and community organizations.</p>
-      <button class="btn" onclick="closeModal('educational'); scrollToSection('contact')">Inquire About Programs</button>
-    </div>
-  </div>
-
-  <div class="modal" id="restoration-modal">
-    <div class="modal-content">
-      <button class="close-modal" onclick="closeModal('restoration')">×</button>
-      <h2>Pottery Restoration Services</h2>
-      <img src="/api/placeholder/600/300" alt="Pottery Restoration" style="width: 100%; margin: 1rem 0;">
-      <p>Our skilled restoration specialists can repair and restore damaged pottery and ceramic artifacts. Whether it's a family heirloom, an archaeological piece, or a broken favorite, we can help preserve these valuable items.</p>
-      <h3>Restoration Services:</h3>
-      <ul style="margin-left: 2rem; margin-bottom: 1rem;">
-        <li>Assessment and documentation of damage</li>
-        <li>Cleaning and stabilization</li>
-        <li>Reconstruction of missing pieces</li>
-        <li>Color matching and surface restoration</li>
-        <li>Conservation and preservation advice</li>
-      </ul>
-      <h3>Process:</h3>
-      <p>Restoration begins with an initial assessment to determine the scope of work required. Timelines vary based on the complexity of the restoration needed.</p>
-      <h3>Pricing:</h3>
-      <p>Restoration services are quoted on a case-by-case basis after assessment. Please contact us to arrange an evaluation of your pottery item.</p>
-      <button class="btn" onclick="closeModal('restoration'); scrollToSection('contact')">Request Restoration</button>
+      <p>Initial consultation: 50,000 TZS<br>
+      Site visit and assessment: 100,000 TZS<br>
+      Comprehensive business plan: 250,000 TZS<br>
+      Monthly support package: 150,000 TZS</p>
+      <button class="btn" onclick="closeModal('consultation'); scrollToSection('contact')">Request Consultation</button>
     </div>
   </div>
 
@@ -597,7 +603,7 @@
       const message = document.getElementById('message').value;
       
       if (name && email && service && message) {
-        alert('Thank you for your message! The Tanzania Police School Pottery Services team will contact you shortly.');
+        alert('Thank you for your message! The Tanzania Police School Poultry Services team will contact you shortly.');
         // Reset form
         document.getElementById('name').value = '';
         document.getElementById('email').value = '';
@@ -615,7 +621,7 @@
       
       for (let i = 0; i < 5; i++) {
         const element = document.createElement('div');
-        element.classList.add('pottery-animation');
+        element.classList.add('poultry-animation');
         element.style.left = Math.random() * 80 + 10 + '%';
         element.style.top = Math.random() * 80 + 10 + '%';
         element.style.width = Math.random() * 40 + 30 + 'px';
@@ -629,7 +635,7 @@
       
       for (let i = 0; i < 3; i++) {
         const element = document.createElement('div');
-        element.classList.add('pottery-animation');
+        element.classList.add('poultry-animation');
         element.style.left = Math.random() * 80 + 10 + '%';
         element.style.top = Math.random() * 30 + 'px';
         element.style.width = Math.random() * 30 + 20 + 'px';
@@ -649,5 +655,4 @@
   </script>
 </body>
 </html>
-
 @endsection

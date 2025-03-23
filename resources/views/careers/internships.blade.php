@@ -69,66 +69,71 @@
     class="grid sm:grid-cols-2 md:grid-cols-3 gap-6"
     x-animate
 >
-    @forelse($internships as $internship)
-    <div 
-        x-show="activeCategory === '{{ $internship['category'] }}' || activeCategory === null"
-        x-transition:enter="transition ease-out duration-300"
-        x-transition:enter-start="opacity-0 scale-90"
-        x-transition:enter-end="opacity-100 scale-100"
-        x-transition:leave="transition ease-in duration-200"
-        x-transition:leave-start="opacity-100 scale-100"
-        x-transition:leave-end="opacity-0 scale-90"
-        class="
-            bg-white rounded-2xl shadow-lg overflow-hidden
-            transform transition-all duration-300 hover:scale-105
-            hover:shadow-2xl border-b-4 border-blue-500
-        "
-    >
-        <div class="p-6">
-            <div class="flex items-center mb-4">
-                <div class="w-12 h-12 bg-blue-100 rounded-full mr-4 flex items-center justify-center">
-                    <i class="fas fa-{{ 
-                        $internship['department'] === 'Research & Development' ? 'microscope' :
-                        ($internship['department'] === 'Marketing' ? 'laptop-code' :
-                        ($internship['department'] === 'Technology' ? 'code' : 'briefcase'))
-                    }} text-blue-600 text-xl"></i>
+    @if(isset($internships) && is_array($internships) && count($internships) > 0)
+        @foreach($internships as $internship)
+        <div 
+            x-show="activeCategory === '{{ $internship['category'] }}' || activeCategory === null"
+            x-transition:enter="transition ease-out duration-300"
+            x-transition:enter-start="opacity-0 scale-90"
+            x-transition:enter-end="opacity-100 scale-100"
+            x-transition:leave="transition ease-in duration-200"
+            x-transition:leave-start="opacity-100 scale-100"
+            x-transition:leave-end="opacity-0 scale-90"
+            class="
+                bg-white rounded-2xl shadow-lg overflow-hidden
+                transform transition-all duration-300 hover:scale-105
+                hover:shadow-2xl border-b-4 border-blue-500
+            "
+        >
+            <div class="p-6">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 bg-blue-100 rounded-full mr-4 flex items-center justify-center">
+                        <i class="fas fa-{{ 
+                            $internship['department'] === 'Research & Development' ? 'microscope' :
+                            ($internship['department'] === 'Marketing' ? 'laptop-code' :
+                            ($internship['department'] === 'Technology' ? 'code' : 'briefcase'))
+                        }} text-blue-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800">
+                        {{ $internship['title'] }}
+                    </h3>
                 </div>
-                <h3 class="text-xl font-semibold text-gray-800">
-                    {{ $internship['title'] }}
-                </h3>
+                <p class="text-gray-600 mb-4 line-clamp-3">
+                    {{ $internship['description'] }}
+                </p>
+                <div class="flex justify-between text-sm text-gray-500 mb-4">
+                    <span class="flex items-center">
+                        <i class="fas fa-clock mr-2"></i>
+                        {{ $internship['duration'] }}
+                    </span>
+                    <span class="flex items-center">
+                        <i class="fas fa-building mr-2"></i>
+                        {{ $internship['department'] }}
+                    </span>
+                </div>
+                <a 
+                    href="{{ route('internships.apply', ['id' => $internship['id']]) }}" 
+                    class="
+                        block text-center 
+                        bg-blue-500 text-white 
+                        py-2 rounded-lg 
+                        hover:bg-blue-600 
+                        transition-colors
+                        group
+                    "
+                >
+                    Apply Now
+                    <i class="fas fa-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
+                </a>
             </div>
-            <p class="text-gray-600 mb-4 line-clamp-3">
-                {{ $internship['description'] }}
-            </p>
-            <div class="flex justify-between text-sm text-gray-500 mb-4">
-                <span class="flex items-center">
-                    <i class="fas fa-clock mr-2"></i>
-                    {{ $internship['duration'] }}
-                </span>
-                <span class="flex items-center">
-                    <i class="fas fa-building mr-2"></i>
-                    {{ $internship['department'] }}
-                </span>
-            </div>
-            <a 
-                href="{{ route('internships.apply', ['id' => $internship['id']]) }}" 
-                class="
-                    block text-center 
-                    bg-blue-500 text-white 
-                    py-2 rounded-lg 
-                    hover:bg-blue-600 
-                    transition-colors
-                    group
-                "
-            >
-                Apply Now
-                <i class="fas fa-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
-            </a>
         </div>
-    </div>
-@empty
-    <p>No internships available</p>
-@endforelse
+        @endforeach
+    @else
+        <div class="col-span-full text-center py-12">
+            <p class="text-gray-600">No internship opportunities available at this time.</p>
+        </div>
+    @endif
+</div>
         {{-- No Results State --}}
         <div 
             x-show="isNoResultsState"

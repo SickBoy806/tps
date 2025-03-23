@@ -37,7 +37,8 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::get('/detail/{id}', [YourController::class, 'detail'])->name('detail');
     Route::get('/events/{event}', [EventController::class, 'show'])->name('events-detail');
     Route::resource('events', EventController::class);
-    
+    Route::get('/upcoming-events', [App\Http\Controllers\EventController::class, 'upcomingEvents'])->name('events.upcoming');
+    Route::get('/news/upcoming', [EventController::class, 'upcoming'])->name('news.events.upcoming');
 
 // Resource route for all news operations
 Route::resource('news', NewsController::class);
@@ -170,9 +171,22 @@ Route::get('/services', 'App\Http\Controllers\ServiceController@index')->name('s
 // Individual service pages
 Route::get('/services/driving-school', 'App\Http\Controllers\ServiceController@drivingSchool')->name('services.driving');
 Route::get('/services/health-center', 'App\Http\Controllers\ServiceController@healthCenter')->name('services.health');
-Route::get('/services/poetry', 'App\Http\Controllers\ServiceController@poetry')->name('services.poetry');
+Route::get('/services/poultry', 'App\Http\Controllers\ServiceController@poultry')->name('services.poultry');
 Route::get('/services/dogs-horses', 'App\Http\Controllers\ServiceController@dogsHorses')->name('services.animals');
 Route::get('/services/catering', 'App\Http\Controllers\ServiceController@catering')->name('services.catering');
+
+//events
+Route::get('/events/upcoming', [EventController::class, 'upcoming'])->name('news.events.upcoming');
+Route::get('/events/{event}', [EventController::class, 'show'])->name('events.show');
+Route::post('/events/{event}/register', [EventController::class, 'register'])->name('events.register');
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+    
+    // Add this route for your registrations
+    Route::get('event-registrations', [YourController::class, 'index'])
+        ->name('voyager.event-registrations.index');
+});
 
 //Archivements
 Route::get('/about/achievements', function () {

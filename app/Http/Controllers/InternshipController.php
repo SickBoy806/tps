@@ -19,7 +19,8 @@ class InternshipController extends Controller
         // Add logging to help diagnose any issues
         Log::info('Internships loaded', ['count' => count($internships)]);
         
-        return view('careers.internships', compact('internships'));
+        // Explicitly pass internships to the view
+        return view('careers.internships', ['internships' => $internships]);
     }
 
     public function apply(string $id)
@@ -110,7 +111,8 @@ class InternshipController extends Controller
         }
     }
 
-    private function getInternships(): array
+    // Changed from private to public to ensure accessibility
+    public function getInternships(): array
     {
         return [
             [

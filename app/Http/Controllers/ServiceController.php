@@ -24,7 +24,7 @@ public function healthCenter()
 
 public function poetry()
 {
-    return view('services.poetry');
+    return view('services.poultry');
 }
 
 public function dogsHorses()
