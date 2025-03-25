@@ -7,27 +7,22 @@ use App\Http\Controllers\EventController;
 use TCG\Voyager\Facades\Voyager;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SportsController;
-use App\Http\Controllers\TrainingController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\InternshipController;
 use App\Http\Controllers\LeaderController;
 use App\Http\Controllers\TPFRecruitmentController;
+use App\Http\Controllers\NewsAnnouncementEventController;
+use App\Http\Controllers\UndergraduateProgramsController;
+use App\Http\Controllers\GraduateAdmissionsController;
+use App\Http\Controllers\UndergraduateAdmissionsController;
+use App\Http\Controllers\TrainingProgramController;
 
 // Home Route
 Route::get('/', function () {
     return view('home');
 })->name('home');
 Route::get('/', [HomeController::class, 'index'])->name('home');
-
-
-// Admissions Routes
-    Route::prefix('admissions')->name('admissions.')->group(function () {
-    Route::get('/undergraduate', [YourController::class, 'undergraduate'])->name('undergraduate');
-    Route::get('/graduate', [YourController::class, 'graduate'])->name('graduate');
-    Route::get('/apply', [YourController::class, 'apply']);
-// other routes as needed
-});
 
 // News Routes
     Route::prefix('news')->name('news.')->group(function () {
@@ -71,11 +66,8 @@ Route::prefix('about')->name('about.')->group(function () {
     Route::get('/sports', [YourController::class, 'sports'])->name('sports');
     Route::get('/sports', [SportsController::class, 'index'])->name('sports');
     Route::get('/training', [YourController::class, 'training'])->name('training');
-    Route::get('/training', [TrainingController::class, 'index'])->name('training');
-    Route::get('/api/trainings', [TrainingController::class, 'getTrainings']);
+    Route::get('/training-programs', [TrainingProgramController::class, 'index'])->name('training-programs');
     Route::get('/library', [YourController::class, 'library'])->name('library');
-    Route::get('/Academicblock', [YourController::class, 'Academicblock'])->name('Academicblock');
-    Route::get('/campusmap', [YourController::class, 'campusmap'])->name('campusmap');
 });
 
 
@@ -192,3 +184,33 @@ Route::group(['prefix' => 'admin'], function () {
 Route::get('/about/achievements', function () {
     return view('about.achievements');
 })->name('about.achievements');
+
+//front summ
+// Return items where type = 'announcement'
+Route::get('/api/voyager/announcements', [NewsController::class, 'getAnnouncements']);
+
+// Return items where type = 'news'
+Route::get('/api/voyager/news', [NewsController::class, 'getNews']);
+
+// Return items where type = 'event'
+Route::get('/api/voyager/events', [NewsController::class, 'getEvents']);
+
+//undergrads
+Route::get('/', function () {
+    return view('welcome');
+});
+
+// Undergraduate Routes
+Route::get('/undergraduate', [UndergraduateProgramsController::class, 'index'])->name('undergraduate');
+Route::post('/undergraduate/apply', [UndergraduateProgramsController::class, 'submitApplication'])->name('undergraduate.apply');
+Route::get('/admissions/undergraduate', [UndergraduateAdmissionsController::class, 'index'])->name('admissions.undergraduate');
+Route::get('/admissions/undergraduate', [UndergraduateAdmissionsController::class, 'index'])->name('admissions.undergraduate');
+
+
+// Graduate Routes
+Route::get('/graduate', [GraduateAdmissionsController::class, 'index'])->name('graduate');
+Route::post('/graduate/apply', [GraduateAdmissionsController::class, 'submitApplication'])->name('graduate.apply');
+Route::get('/admissions/graduate', [GraduateAdmissionsController::class, 'index'])->name('graduate.admissions');
+Route::get('/admissions/graduate', [GraduateAdmissionsController::class, 'index'])->name('admissions.graduate');
+
+Route::get('/', [HomeController::class, 'index'])->name('home');
