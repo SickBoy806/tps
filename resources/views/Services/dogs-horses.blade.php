@@ -29,12 +29,11 @@
         }
     .secondary-navbar {
     background-color: #003366;
-    padding: 10px 0; 
-    position: sticky;
     top: 50px; /* Adjust this value based on your main navbar height */
     z-index: 80; /* Slightly lower than main navbar z-index */
     box-shadow: 0 2px 10px rgba(0,0,0,0.2);
     transition: all 0.3s ease;
+    padding-top: 40px; 
 }
         .secondary-navbar.scrolled {
             padding: 5px 0;

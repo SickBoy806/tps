@@ -205,7 +205,7 @@
             
             const formData = new FormData(this);
             
-            fetch('{{ route('graduate.apply') }}', {
+            fetch('{{ route('admissions.graduate-apply') }}', {
                 method: 'POST',
                 body: formData,
                 headers: {

@@ -19,3 +19,9 @@ mix.options({ processCssUrls: false }).sass('resources/assets/sass/app.scss', 'p
 .copy('node_modules/tinymce/models/dom', 'publishable/assets/js/models/dom')
 .copy('node_modules/tinymce/icons/default', 'publishable/assets/js/icons/default')
 .copy('node_modules/ace-builds/src-noconflict', 'publishable/assets/js/ace/libs');
+
+const mix = require('laravel-mix');
+
+mix.js('resources/js/app.js', 'public/js')
+   .css('resources/css/app.css', 'public/css')
+   .version();

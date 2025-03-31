@@ -187,7 +187,7 @@
         <!-- poultry Service Card -->
         <div class="service-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
             <div class="relative overflow-hidden">
-                <img src="{{ asset('images/poultry.jpg') }}" 
+                <img src="{{ asset('assets/images/Logos/JL3A9894-2048x1365.jpg') }}" 
                      class="h-56 w-full object-cover transition-transform duration-700 group-hover:scale-110" 
                      alt="poultry Service" 
                      onerror="this.src='https://source.unsplash.com/random/500x300/?poultry'">

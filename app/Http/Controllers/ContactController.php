@@ -49,4 +49,12 @@ class ContactController extends Controller
                         ->withInput();
         }
     }
+
+    // In App\Http\Controllers\ContactController.php
+
+public function index()
+{
+    // Your code here
+    return view('contactUs.contactus');
+}
 }

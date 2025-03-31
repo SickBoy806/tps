@@ -15,19 +15,46 @@
     </div>
 
     {{-- Event Filters --}}
-    @if($categories->count() > 0)
+    @if(is_object($categories) && method_exists($categories, 'count') ? $categories->count() > 0 : !empty($categories))
     <div class="flex justify-center mb-10">
-    <div class="bg-white shadow-md rounded-full p-2 flex space-x-2">
-        <a href="{{ route('news.events.upcoming') }}" class="px-6 py-2 rounded-full {{ !isset($category) || $category == null ? 'bg-blue-50 text-blue-600' : 'text-gray-700 hover:bg-blue-50 hover:text-blue-600' }} transition-all">
-            All Events
-        </a>
-        @foreach($categories as $cat)
-        <a href="{{ route('news.events.upcoming', ['category' => $cat]) }}" class="px-6 py-2 rounded-full {{ isset($category) && $category == $cat ? 'bg-blue-50 text-blue-600' : 'text-gray-700 hover:bg-blue-50 hover:text-blue-600' }} transition-all">
-            {{ $cat }}
-        </a>
-        @endforeach
+        <div class="bg-white shadow-md rounded-full p-2 flex space-x-2">
+            <a href="{{ route('news.upcoming') }}" class="px-6 py-2 rounded-full {{ !isset($category) || $category == null ? 'bg-blue-50 text-blue-600' : 'text-gray-700 hover:bg-blue-50 hover:text-blue-600' }} transition-all">
+                All Events
+            </a>
+            @foreach($categories as $cat)
+                @php
+                    // Parse JSON if the category is a JSON string
+                    if (is_string($cat) && (substr($cat, 0, 1) == '{' || substr($cat, 0, 1) == '[')) {
+                        $catObj = json_decode($cat);
+                        if (json_last_error() == JSON_ERROR_NONE) {
+                            $catName = $catObj->name ?? null;
+                            $catSlug = $catObj->slug ?? null;
+                        } else {
+                            $catName = $cat;
+                            $catSlug = $cat;
+                        }
+                    } 
+                    // Handle if it's already an object
+                    elseif (is_object($cat)) {
+                        $catName = $cat->name ?? null;
+                        $catSlug = $cat->slug ?? null;
+                    } 
+                    // Default case
+                    else {
+                        $catName = $cat;
+                        $catSlug = $cat;
+                    }
+                @endphp
+                
+                @if($catName && $catSlug)
+                <a href="{{ route('news.upcoming', ['category' => $catSlug]) }}" 
+                   class="px-6 py-2 rounded-full {{ isset($category) && ($category == $catSlug || $category == $catName) ? 'bg-blue-50 text-blue-600' : 'text-gray-700 hover:bg-blue-50 hover:text-blue-600' }} transition-all">
+                    {{ $catName }}
+                </a>
+                @endif
+            @endforeach
+        </div>
     </div>
-</div>
     @endif
 
     {{-- Events List --}}

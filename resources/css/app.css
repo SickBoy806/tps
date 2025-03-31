@@ -1,6 +1,8 @@
+@import 'timeline.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 
 /* Professional Police Academy Theme */
 @layer base {

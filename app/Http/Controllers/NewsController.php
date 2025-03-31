@@ -37,24 +37,24 @@ class NewsController extends Controller
         
         return view('news.latest', compact('news', 'categories', 'category'));
     }
-    public function latest()
-{
-    $news = News::latest()->paginate(10);
-    $categories = Category::all(); // Add this line to get all categories
-    return view('news.latest', compact('news', 'categories'));
-}
-public function upcoming()
-{
-    {
-    
-{
-    // Fetch upcoming events (modify the query as needed)
-    $events = News::where('date', '>=', now())->orderBy('date', 'asc')->paginate(10);
-    $categories = Category::all(); // Fetch categories if needed
 
-    return view('news.upcoming', compact('events', 'categories'));
-}
+    public function latest()
+    {
+        $news = News::latest()->paginate(10);
+        $categories = Category::all(); // Add this line to get all categories
+        return view('news.latest', compact('news', 'categories'));
+    }
+
+    public function upcoming()
+    {
+        // Fix: Replace 'date' with the correct column name in your database
+        // Assuming you have a 'published_at' column instead of 'date'
+        $events = News::where('published_at', '>=', now())
+                      ->orderBy('published_at', 'asc')
+                      ->paginate(10);
+        
+        $categories = Category::all(); // Fetch categories if needed
+
+        return view('news.upcoming', compact('events', 'categories'));
     }
 }
-}
-

@@ -26,7 +26,7 @@ class EventController extends Controller
             ->whereNotNull('category')
             ->pluck('category');
         
-        return view('news.events.upcoming', compact('events', 'categories', 'category'));
+            return view('news.upcoming', compact('events', 'categories', 'category'));
     }
     
     public function show($id)

@@ -22,7 +22,7 @@ public function healthCenter()
     return view('services.health-center');
 }
 
-public function poetry()
+public function poultry()
 {
     return view('services.poultry');
 }

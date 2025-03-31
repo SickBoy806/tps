@@ -233,106 +233,106 @@
     </section>
 
     <script>
-        // Course data and creation function remain the same as in the previous version
-        const courseData = {
-            proficiency: [
-                {
-                    title: 'Advanced Tactical Operations',
-                    description: 'Specialized training in high-risk scenario management and advanced tactical response.',
-                    duration: '6 Weeks',
-                    level: 'Advanced',
-                    image: '/api/placeholder/400/250'
-                },
-                {
-                    title: 'Forensic Investigation Mastery',
-                    description: 'Comprehensive forensic techniques and crime scene analysis.',
-                    duration: '8 Weeks',
-                    level: 'Specialized',
-                    image: '/api/placeholder/400/250'
-                }
-            ],
-            promotion: [
-                {
-                    title: 'Leadership and Management',
-                    description: 'Strategic leadership skills for law enforcement supervisors and managers.',
-                    duration: '12 Weeks',
-                    level: 'Executive',
-                    image: '/api/placeholder/400/250'
-                },
-                {
-                    title: 'Strategic Command Course',
-                    description: 'Advanced leadership and decision-making for senior officers.',
-                    duration: '10 Weeks',
-                    level: 'Senior',
-                    image: '/api/placeholder/400/250'
-                }
-            ],
-            recruit: [
-                {
-                    title: 'Basic Law Enforcement Academy',
-                    description: 'Comprehensive foundational training for new law enforcement recruits.',
-                    duration: '16 Weeks',
-                    level: 'Entry',
-                    image: '/api/placeholder/400/250'
-                },
-                {
-                    title: 'Physical and Tactical Fundamentals',
-                    description: 'Physical fitness, self-defense, and basic tactical skills.',
-                    duration: '8 Weeks',
-                    level: 'Foundation',
-                    image: '/api/placeholder/400/250'
-                }
-            ],
-            peacekeeping: [
-                {
-                    title: 'UN Peacekeeping Mission Readiness',
-                    description: 'Comprehensive preparation for international peacekeeping missions.',
-                    duration: '10 Weeks',
-                    level: 'International',
-                    image: '/api/placeholder/400/250'
-                },
-                {
-                    title: 'Cross-Cultural Conflict Resolution',
-                    description: 'Advanced communication and mediation skills for international missions.',
-                    duration: '6 Weeks',
-                    level: 'Specialized',
-                    image: '/api/placeholder/400/250'
-                }
-            ]
-        };
-
-        function createCourseCards(courses, gridId) {
-            const grid = document.getElementById(gridId);
-            
-            courses.forEach(course => {
-                const card = document.createElement('div');
-                card.className = 'training-card';
-                
-                card.innerHTML = `
-                    <div class="media-container">
-                        <img src="${course.image}" alt="${course.title}" class="media-placeholder">
-                    </div>
-                    <div class="course-details">
-                        <h3 class="course-title">${course.title}</h3>
-                        <p class="course-description">${course.description}</p>
-                    </div>
-                    <div class="course-meta">
-                        <span class="course-duration">Duration: ${course.duration}</span>
-                        <span class="course-level">Level: ${course.level}</span>
-                    </div>
-                `;
-                
-                grid.appendChild(card);
-            });
+       // Course data and creation function
+const courseData = {
+    proficiency: [
+        {
+            title: 'Advanced Tactical Operations',
+            description: 'Specialized training in high-risk scenario management and advanced tactical response.',
+            duration: '6 Weeks',
+            level: 'Advanced',
+            image: '/api/placeholder/400/250'
+        },
+        {
+            title: 'Forensic Investigation Mastery',
+            description: 'Comprehensive forensic techniques and crime scene analysis.',
+            duration: '8 Weeks',
+            level: 'Specialized',
+            image: '/api/placeholder/400/250'
         }
+    ],
+    promotion: [
+        {
+            title: 'Leadership and Management',
+            description: 'Strategic leadership skills for law enforcement supervisors and managers.',
+            duration: '12 Weeks',
+            level: 'Executive',
+            image: '/api/placeholder/400/250'
+        },
+        {
+            title: 'Strategic Command Course',
+            description: 'Advanced leadership and decision-making for senior officers.',
+            duration: '10 Weeks',
+            level: 'Senior',
+            image: '/api/placeholder/400/250'
+        }
+    ],
+    recruit: [
+        {
+            title: 'Basic Law Enforcement Academy',
+            description: 'Comprehensive foundational training for new law enforcement recruits.',
+            duration: '16 Weeks',
+            level: 'Entry',
+            image: '/api/placeholder/400/250'
+        },
+        {
+            title: 'Physical and Tactical Fundamentals',
+            description: 'Physical fitness, self-defense, and basic tactical skills.',
+            duration: '8 Weeks',
+            level: 'Foundation',
+            image: '/api/placeholder/400/250'
+        }
+    ],
+    peacekeeping: [
+        {
+            title: 'UN Peacekeeping Mission Readiness',
+            description: 'Comprehensive preparation for international peacekeeping missions.',
+            duration: '10 Weeks',
+            level: 'International',
+            image: '/api/placeholder/400/250'
+        },
+        {
+            title: 'Cross-Cultural Conflict Resolution',
+            description: 'Advanced communication and mediation skills for international missions.',
+            duration: '6 Weeks',
+            level: 'Specialized',
+            image: '/api/placeholder/400/250'
+        }
+    ]
+};
 
-        // Populate course grids
-        document.addEventListener('DOMContentLoaded', () => {
-            createCourseCards(courseData.proficiency, 'proficiencyGrid');
-            createCourseCards(courseData.promotion, 'promotionGrid');
-            createCourseCards(courseData.recruit, 'recruitGrid');
-            createCourseCards(courseData.peacekeeping, 'peacekeepingGrid');
-        });
+function createCourseCards(courses, gridId) {
+    const grid = document.getElementById(gridId);
+    
+    courses.forEach(course => {
+        const card = document.createElement('div');
+        card.className = 'training-card';
+        
+        card.innerHTML = `
+            <div class="media-container">
+                <img src="${course.image}" alt="${course.title}" class="media-placeholder">
+            </div>
+            <div class="course-details">
+                <h3 class="course-title">${course.title}</h3>
+                <p class="course-description">${course.description}</p>
+            </div>
+            <div class="course-meta">
+                <span class="course-duration">Duration: ${course.duration}</span>
+                <span class="course-level">Level: ${course.level}</span>
+            </div>
+        `;
+        
+        grid.appendChild(card);
+    });
+}
+
+// Populate course grids
+document.addEventListener('DOMContentLoaded', () => {
+    createCourseCards(courseData.proficiency, 'proficiencyGrid');
+    createCourseCards(courseData.promotion, 'promotionGrid');
+    createCourseCards(courseData.recruit, 'recruitGrid');
+    createCourseCards(courseData.peacekeeping, 'peacekeepingGrid');
+});
     </script>
 </body>
 </html>

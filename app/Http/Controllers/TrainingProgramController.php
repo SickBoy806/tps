@@ -17,7 +17,7 @@ class TrainingProgramController extends Controller
             'peacekeeping' => $this->getCoursesByCategory('peacekeeping-courses')
         ];
 
-        return view('training-programs', [
+        return view('facilities.training', [
             'courseData' => $courseData
         ]);
     }

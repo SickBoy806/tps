@@ -101,7 +101,7 @@
                     </div>
                 @endif
 
-              <form action="{{ route('ContactUs.contact.submit') }}" method="POST" class="space-y-6">
+              <form action="{{ route('contact.submit') }}" method="POST" class="space-y-6">
                     @csrf
                     <div>
                         <label for="name" class="block text-sm font-medium text-gray-700">Name</label>

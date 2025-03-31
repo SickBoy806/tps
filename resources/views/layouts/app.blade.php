@@ -263,7 +263,7 @@
                 </div>
 
                 <!-- Contact Us Link -->
-                <a href="{{ route('ContactUs.Contactus') }}" class="text-white hover:text-blue-400 transition-colors duration-200">
+                <a href="{{ route('contact.index') }}" class="text-white hover:text-blue-400 transition-colors duration-200">
                     Contact Us
                 </a>
 

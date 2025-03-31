@@ -683,10 +683,10 @@
     <!-- Basic Recruit Courses -->
     <div class="course-card bg-white rounded-2xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-300"
         x-data="{ isHovered: false, currentSlide: 0, slides: [
+                    '{{ asset('assets/images/Logos/KURUT.png') }}',
+                    '{{ asset('assets/images/Logos/KURUTA2.jpeg') }}',
                     '{{ asset('assets/images/Logos/hd-2048x1366-1.jpg') }}',
-                    '{{ asset('assets/images/recruit-slide2.jpg') }}',
-                    '{{ asset('assets/images/recruit-slide3.jpg') }}',
-                    '{{ asset('assets/images/recruit-slide4.jpg') }}'
+                    '{{ asset('assets/images/Logos/IMG-20240207-WA0065-768x512.jpg') }}'
                  ] }" @mouseenter="isHovered = true; startSlideshow()" @mouseleave="isHovered = false; stopSlideshow()"
         x-init="slideInterval = null;
                         startSlideshow = function() {
@@ -808,56 +808,65 @@
     </div>
 </div>
     <!-- Promotional Courses -->
-    <div class="course-card bg-white rounded-2xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-300"
-        x-data="{ isHovered: false, currentSlide: 0, slides: [
-                    '{{ asset(" assets/images/Logos/IMG-20240918-WA0042-1024x680.jpg")
-        }}', '{{ asset("assets/images/promotional-slide2.jpg") }}'
-        , '{{ asset("assets/images/promotional-slide3.jpg") }}' , '{{ asset("assets/images/promotional-slide4.jpg") }}'
-        ] }" @mouseenter="isHovered = true; startSlideshow()" @mouseleave="isHovered = false; stopSlideshow()" x-init="slideInterval = null;
-                        startSlideshow = function() {
-                            if (slideInterval === null) {
-                                slideInterval = setInterval(() => {
-                                    currentSlide = (currentSlide + 1) % slides.length;
-                                }, 3000);
-                            }
-                        };
-                        stopSlideshow = function() {
-                            clearInterval(slideInterval);
-                            slideInterval = null;
-                        }">
-        <div class="relative h-64 overflow-hidden">
-            <template x-for="(slide, index) in slides" :key="index">
-                <img :src="slide" alt="Promotional Courses"
-                    class="course-image absolute w-full h-full object-cover transition-transform duration-300"
-                    :class="{ 'scale-110': isHovered, 'opacity-100': currentSlide === index, 'opacity-0': currentSlide !== index }"
-                    style="transition: opacity 0.5s ease-in-out">
-            </template>
-            <div
-                class="absolute inset-0 bg-purple-900 bg-opacity-40 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
-                <span class="text-white text-xl font-bold">Career Advancement</span>
-            </div>
-            <!-- Slideshow Controls -->
-            <div class="absolute bottom-2 left-0 right-0 flex justify-center gap-2">
-                <template x-for="(slide, index) in slides" :key="index">
-                    <button @click.stop="currentSlide = index"
-                        class="w-2 h-2 rounded-full transition-colors duration-300"
-                        :class="currentSlide === index ? 'bg-white' : 'bg-white bg-opacity-50'"></button>
-                </template>
-            </div>
+<div class="course-card bg-white rounded-2xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-300"
+    x-data="{ 
+        isHovered: false, 
+        currentSlide: 0, 
+        slideInterval: null,
+        slides: [
+            '{{ asset('assets/images/Logos/NEW-9482-scaled.jpg') }}',
+            '{{ asset('assets/images/Logos/IMG-20240628-WA0124-1536x1024.jpg') }}',
+            '{{ asset('assets/images/Logos/JL3A0421-scaled.jpg') }}',
+            '{{ asset('assets/images/Logos/Snapinsta.app_464550583_567745649165392_6800108106112023936_n_1080-1024x576.jpg') }}'
+        ]
+    }" 
+    @mouseenter="isHovered = true" 
+    @mouseleave="isHovered = false"
+    x-init="
+        startSlideshow = function() {
+            slideInterval = setInterval(() => {
+                currentSlide = (currentSlide + 1) % slides.length;
+            }, 3000);
+        };
+        stopSlideshow = function() {
+            if (slideInterval) {
+                clearInterval(slideInterval);
+                slideInterval = null;
+            }
+        };
+        startSlideshow(); // Start the slideshow immediately
+    ">
+    <div class="relative h-64 overflow-hidden">
+        <template x-for="(slide, index) in slides" :key="index">
+            <img :src="slide" alt="Promotional Courses"
+                class="course-image absolute w-full h-full object-cover transition-transform duration-300"
+                :class="{ 'scale-110': isHovered, 'opacity-100': currentSlide === index, 'opacity-0': currentSlide !== index }"
+                style="transition: opacity 0.5s ease-in-out">
+        </template>
+        <div class="absolute inset-0 bg-purple-900 bg-opacity-40 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
+            <span class="text-white text-xl font-bold">Career Advancement</span>
         </div>
-        <div class="p-6">
-            <h3 class="text-2xl font-semibold text-purple-800 mb-4">Promotional Courses</h3>
-            <p class="text-gray-600 mb-4">
-                Specialized leadership and skill enhancement training designed to prepare officers for higher ranks and
-                strategic roles to play within the Tanzania Police Service.
-            </p>
-            <button @click="activeModal = 'promotion'"
-                class="w-full bg-purple-500 text-white py-3 rounded-lg hover:bg-purple-600 transition duration-300 transform hover:scale-105">
-                View Details
-            </button>
+        <!-- Slideshow Controls -->
+        <div class="absolute bottom-2 left-0 right-0 flex justify-center gap-2">
+            <template x-for="(slide, index) in slides" :key="index">
+                <button @click.stop="currentSlide = index"
+                    class="w-2 h-2 rounded-full transition-colors duration-300"
+                    :class="currentSlide === index ? 'bg-white' : 'bg-white bg-opacity-50'"></button>
+            </template>
         </div>
     </div>
-
+    <div class="p-6">
+        <h3 class="text-2xl font-semibold text-purple-800 mb-4">Promotional Courses</h3>
+        <p class="text-gray-600 mb-4">
+            Specialized leadership and skill enhancement training designed to prepare officers for higher ranks and
+            strategic roles to play within the Tanzania Police Service.
+        </p>
+        <button @click="activeModal = 'promotion'"
+            class="w-full bg-purple-500 text-white py-3 rounded-lg hover:bg-purple-600 transition duration-300 transform hover:scale-105">
+            View Details
+        </button>
+    </div>
+</div>
     <!-- Proficiency Courses -->
     <div class="course-card bg-white rounded-2xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-300"
         x-data="{ isHovered: false, currentSlide: 0, slides: [
@@ -1080,7 +1089,7 @@
         activeSlide: 0,
         slides: [
             {
-                image: '{{ asset('assets/images/facilities/sports.jpg') }}',
+                image: '{{ asset('assets/images/Logos/JL3A0557.jpg') }}',
                 title: 'Best Police Training Academy 2024',
                 description: 'Awarded for excellence in police training methodologies and exceptional graduation rates. Our academy was recognized nationally for implementing innovative training techniques that have resulted in officers who excel in their field assignments.',
                 year: '2024',
@@ -1101,7 +1110,7 @@
                 milestone: 'International Recognition'
             },
             {
-                image: '{{ asset('assets/images/Logos/suzy.jpg') }}',
+                image: '{{ asset('assets/images/Logos/news2.jpeg') }}',
                 title: 'Academic Partnership Excellence',
                 description: 'Established valuable academic partnerships with leading universities, providing advanced educational pathways for our graduates. These collaborations have created opportunities for continuing education and specialized certifications.',
                 year: '2021',

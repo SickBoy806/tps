@@ -41,5 +41,17 @@ class HomeController extends Controller
     }
 
     //our services 
+    public function mission()
+{
+    return view('about.mission'); // Adjust the view name as needed
+}
+
+// In App\Http\Controllers\HomeController.php
+
+public function library()
+{
+    // Your code here
+    return view('facilities.library');
+}
     
 }

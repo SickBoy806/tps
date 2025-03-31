@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Sports')
+@section('title', '')
 
 @section('content')
 <!DOCTYPE html>
@@ -47,6 +47,7 @@
         .header-content {
             position: relative;
             z-index: 2;
+            padding-top: 40px; 
         }
         
         .header-bg {
