@@ -22,16 +22,23 @@ use TCG\Voyager\Facades\Voyager;
 // Home Route
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
+
 // News Routes
 Route::prefix('news')->name('news.')->group(function () {
+    // Main index route
     Route::get('/', [NewsController::class, 'index'])->name('index');
+    
+    // Content type routes
     Route::get('/latest', [NewsController::class, 'latest'])->name('latest');
     Route::get('/upcoming', [NewsController::class, 'upcoming'])->name('upcoming');
     Route::get('/announcements', [NewsController::class, 'announcements'])->name('announcements');
+    
+    // Category route
     Route::get('/category/{slug}', [NewsController::class, 'byCategory'])->name('category');
-    Route::get('/{slug}', [NewsController::class, 'show'])->name('show');
+    
+    // Show single news article - this should be last to avoid conflicts
+    Route::get('/{id}', [NewsController::class, 'show'])->name('show');
 });
-
 // Event Routes
 Route::prefix('events')->name('events.')->group(function () {
     Route::get('/', [EventController::class, 'index'])->name('index');
@@ -182,6 +189,5 @@ Route::post('/newsletter/subscribe', [NewsletterController::class, 'subscribe'])
 // Admin Routes
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
-    Route::get('event-registrations', [EventController::class, 'eventRegistrations'])
-        ->name('voyager.event-registrations.index');
+    Route::get('/events/{id}/registrations', [EventController::class, 'eventRegistrations']);
 });

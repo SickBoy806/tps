@@ -55,4 +55,13 @@ class EventController extends Controller
     
     return redirect()->back()->with('success', 'You have successfully registered for this event!');
 }
+
+public function eventRegistrations($id)
+{
+    $event = Event::findOrFail($id);
+    $registrations = $event->registrations;
+    
+    return view('news.events.registrations', compact('event', 'registrations'));
+}
+
 }

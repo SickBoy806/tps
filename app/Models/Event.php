@@ -25,9 +25,10 @@ class Event extends Model
         ];
     }
 
-    public function registrations()
+   // In your Event.php model
+public function registrations()
 {
-    return $this->hasMany(EventRegistration::class);
+    return $this->hasMany(Registration::class);
 }
 
 }

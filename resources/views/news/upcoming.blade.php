@@ -10,7 +10,7 @@
             <span class="text-orange-500">Upcoming</span> <span class="text-blue-600">Events</span>
         </h1>
         <p class="text-xl text-gray-600 max-w-2xl mx-auto">
-            Explore exciting opportunities for learning, networking, and innovation.
+            Explore exciting opportunities from Tanzania Police innovation.
         </p>
     </div>
 
