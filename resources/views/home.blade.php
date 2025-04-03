@@ -102,7 +102,7 @@
                      x-class:="isVisible ? 'translate-x-0 opacity-100' : '-translate-x-12 opacity-0'"
                      x-transition:enter="transition ease-out duration-1000 delay-300">
                     <div class="relative overflow-hidden rounded-lg shadow-xl group">
-                        <img src="{{ asset('assets/images/Logos/WhatsApp-Image-2024-01-01-at-2.40.13-AM-1536x1025.jpeg') }}" alt="TPS School Commandant" class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105">
+                        <img src="{{ asset('assets/images/people/mungi.png') }}" alt="TPS School Commandant" class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105">
                         <div class="absolute inset-0 bg-gradient-to-t from-blue-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                     </div>
                 </div>
@@ -726,10 +726,10 @@
                 Comprehensive entry-level training program designed to transform motivated individuals into professional
                 police officers through rigorous physical and mental preparation.
             </p>
-            <button @click="activeModal = 'recruit'"
-                class="w-full bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-600 transition duration-300 transform hover:scale-105">
-                Learn More
-            </button>
+           <button @click="activeModal = 'recruit'; window.location.href='{{ route('careers.benefits') }}'"
+        class="w-full bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-600 transition duration-300 transform hover:scale-105">
+        Learn More
+           </button>
         </div>
     </div>
 
@@ -801,11 +801,11 @@
             Advanced educational programs offering undergraduate degrees and specialized certifications in
             criminology, forensic science, and law enforcement management.
         </p>
-        <button @click="activeModal = 'academic'"
-            class="w-full bg-green-500 text-white py-3 rounded-lg hover:bg-green-600 transition duration-300 transform hover:scale-105">
-            Explore Programs
-        </button>
-    </div>
+            <button @click="activeModal = 'academic'; window.location.href='{{ route('admissions.programes') }}'"
+             class="w-full bg-green-500 text-white py-3 rounded-lg hover:bg-green-600 transition duration-300 transform hover:scale-105">
+             Explore Programs
+            </button>
+       </div>
 </div>
     <!-- Promotional Courses -->
 <div class="course-card bg-white rounded-2xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-300"
@@ -1010,7 +1010,7 @@
                     <h3 class="text-xl font-semibold text-center mb-3 text-gray-800">Health Center</h3>
                     <p class="text-gray-600 text-center">Comprehensive healthcare services for students and staff with qualified medical professionals.</p>
                     <div class="mt-4 text-center">
-                        <a href="{{ route('services.index', 'health') }}" class="text-blue-600 hover:text-blue-800 font-medium">Learn more</a>
+                        <a href="{{ route('services.health') }}" class="text-blue-600 hover:text-blue-800 font-medium">Learn more</a>
                     </div>
                 </div>
                 
@@ -1029,7 +1029,7 @@
                     <h3 class="text-xl font-semibold text-center mb-3 text-gray-800">Driving School</h3>
                     <p class="text-gray-600 text-center">Professional driving lessons with certified instructors using modern vehicles.</p>
                     <div class="mt-4 text-center">
-                        <a href="{{ route('services.index', 'driving') }}" class="text-blue-600 hover:text-blue-800 font-medium">Learn more</a>
+                        <a href="{{ route('services.driving') }}" class="text-blue-600 hover:text-blue-800 font-medium">Learn more</a>
                     </div>
                 </div>
                 
@@ -1047,7 +1047,7 @@
                     <h3 class="text-xl font-semibold text-center mb-3 text-gray-800">Poultry Farm</h3>
                     <p class="text-gray-600 text-center">Modern poultry farming facility offering practical training in sustainable animal husbandry.</p>
                     <div class="mt-4 text-center">
-                        <a href="{{ route('services.index', 'poultry') }}" class="text-blue-600 hover:text-blue-800 font-medium">Learn more</a>
+                        <a href="{{ route('services.poultry') }}" class="text-blue-600 hover:text-blue-800 font-medium">Learn more</a>
                     </div>
                 </div>
                 
@@ -1065,7 +1065,7 @@
                     <h3 class="text-xl font-semibold text-center mb-3 text-gray-800">Catering Services</h3>
                     <p class="text-gray-600 text-center">Professional catering services for events with culinary training opportunities for students.</p>
                     <div class="mt-4 text-center">
-                        <a href="{{ route('services.index', 'catering') }}" class="text-blue-600 hover:text-blue-800 font-medium">Learn more</a>
+                        <a href="{{ route('services.catering') }}" class="text-blue-600 hover:text-blue-800 font-medium">Learn more</a>
                     </div>
                 </div>
             </div>
@@ -1267,7 +1267,7 @@
                  x-transition:leave-end="opacity-0 scale-90">
 
                 
-    <!-- Recruit Course Modal -->
+    <!-- Recruit Course Modal --> 
     <div x-show="activeModal === 'recruit'">
         <h2 class="text-3xl font-bold text-blue-800 mb-6">Basic Recruit Courses</h2>
         <p class="text-gray-700 mb-4">

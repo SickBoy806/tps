@@ -168,6 +168,11 @@ Route::prefix('admissions')->name('admissions.')->group(function () {
 Route::get('/admissions/graduate/apply', [GraduateAdmissionsController::class, 'graduateApply'])
     ->name('admissions.graduate-apply');
 
+// In routes/web.php
+Route::get('/programes', [HomeController::class, 'programes'])->name('programes.index');
+Route::get('/admissions/programes', [HomeController::class, 'programes'])
+     ->name('admissions.programes');
+
 // Timeline Routes
 Route::prefix('timeline')->name('timeline.')->group(function () {
     Route::get('/', [TimelineController::class, 'index'])->name('index');

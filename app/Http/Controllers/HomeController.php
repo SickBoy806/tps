@@ -53,5 +53,12 @@ public function library()
     // Your code here
     return view('facilities.library');
 }
-    
+
+public function programes()
+    {
+        // You could load course data from a database here
+        // and pass it to the view
+        return view('admissions.programes');
+    }
+
 }

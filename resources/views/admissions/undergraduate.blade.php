@@ -1,14 +1,14 @@
 @extends('layouts.app')
 
-@section('title', 'Undergraduate Programs')
+@section('title', 'Undergraduate Programes')
 @section('content')
 
 <div class="relative bg-cover bg-center" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('{{ asset('images/undergraduate-hero.jpg') }}');">
     <div class="container mx-auto px-6 py-20">
         <div class="max-w-4xl">
             <h1 class="text-white text-4xl md:text-5xl font-bold mb-4">Preparing Undergraduates for Success</h1>
-            <p class="text-white text-xl mb-8">Discover comprehensive programs designed to nurture academic excellence and foster career readiness.</p>
-            <a href="#programs" class="inline-block bg-blue-900 hover:bg-blue-800 text-white font-semibold px-6 py-3 rounded-lg mr-4 transition duration-300">Explore Programs</a>
+            <p class="text-white text-xl mb-8">Discover comprehensive programes designed to nurture academic excellence and foster career readiness.</p>
+            <a href="{{ route('admissions.programes') }}" class="inline-block bg-blue-900 hover:bg-blue-800 text-white font-semibold px-6 py-3 rounded-lg mr-4 transition duration-300">Explore Programes</a>
             <a href="/apply" class="inline-block bg-transparent hover:bg-white/10 text-white border border-white font-semibold px-6 py-3 rounded-lg transition duration-300">Apply Now</a>
         </div>
     </div>
@@ -17,10 +17,10 @@
 <div class="container mx-auto px-6 py-16">
     <div class="text-center max-w-3xl mx-auto mb-16">
         <h2 class="text-3xl md:text-4xl font-bold mb-6">Your Undergraduate Journey Starts Here</h2>
-        <p class="text-xl text-gray-100">Our undergraduate programs combine academic rigor with hands-on learning experiences, preparing you for success in your chosen field.</p>
+        <p class="text-xl text-gray-100">Our undergraduate programes combine academic rigor with hands-on learning experiences, preparing you for success in your chosen field.</p>
     </div>
     
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="programs">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="programes">
         <div class="bg-gradient-to-br from-blue-900 to-blue-800 rounded-xl shadow-xl overflow-hidden">
             <div class="p-8 text-center">
                 <i class="fas fa-graduation-cap text-5xl text-white mb-6"></i>
@@ -28,7 +28,7 @@
                 <p class="text-white">Engage with expert faculty in state-of-the-art facilities. Our curriculum emphasizes critical thinking and problem-solving skills essential for today's workforce.</p>
             </div>
             <div class="bg-white p-4 text-center">
-                <a href="/programs" class="inline-block text-blue-900 hover:text-blue-800 border border-blue-900 hover:border-blue-800 font-semibold px-4 py-2 rounded-lg transition duration-300">Academic Programs</a>
+                <a href="{{ route('admissions.programes') }}" class="inline-block text-blue-900 hover:text-blue-800 border border-blue-900 hover:border-blue-800 font-semibold px-4 py-2 rounded-lg transition duration-300">Academic Programes</a>
             </div>
         </div>
         
@@ -60,7 +60,7 @@
     <div class="container mx-auto px-6">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-                <h2 class="text-3xl font-bold text-white mb-6">Why Choose Our Undergraduate Programs?</h2>
+                <h2 class="text-3xl font-bold text-white mb-6">Why Choose Our Undergraduate Programes?</h2>
                 <ul class="space-y-4">
                     <li class="flex items-start">
                         <i class="fas fa-check-circle text-yellow-500 mt-1 mr-3"></i>
@@ -94,7 +94,7 @@
 
 <div class="container mx-auto px-6 py-5">
     <div class="text-center mb-16">
-        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Featured Programs</h2>
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Featured Programes</h2>
         <p class="text-xl text-gray-300">Explore our diverse undergraduate offerings</p>
     </div>
     
@@ -106,7 +106,7 @@
             <div class="p-6">
                 <h4 class="text-xl font-bold text-white mb-3">Bachelor of Science in Security and Strategic Studies</h4>
                 <p class="text-gray-300 mb-4">The Bachelor of science in security and strategic studies programme is developed to provide in depth and unique insights into the changing nature and fundamental challenges of contemporary security issues from a distinctly strategic perspective. Students will be taught by prominent specialists in the field of strategic and security issues, in both theory and practice</p>
-                <a href="/programs/science" class="inline-block text-yellow-400 hover:text-yellow-300 border border-yellow-400 hover:border-yellow-300 text-sm font-semibold px-4 py-2 rounded-lg transition duration-300">View Programs</a>
+                <a href="{{ route('admissions.programes') }}" class="inline-block text-yellow-400 hover:text-yellow-300 border border-yellow-400 hover:border-yellow-300 text-sm font-semibold px-4 py-2 rounded-lg transition duration-300">View Programes</a>
             </div>
         </div>
 
@@ -118,7 +118,7 @@
         <h4 class="text-xl font-bold text-white mb-3">Bachelor of Science in Cyber Security</h4>
         <p class="text-gray-300 mb-4">Cyber security degree combines three sought after streams of computing: networking, cyber security & digital forensics. It gives you a thorough understanding of socio-technical systems & skills to prevent or respond to cyber security incidents.
         And develops your ability to critically analyse & apply digital solutions to security examination and digital forensic investigations.</p>
-        <a href="/programs/science" class="inline-block text-yellow-400 hover:text-yellow-300 border border-yellow-400 hover:border-yellow-300 text-sm font-semibold px-4 py-2 rounded-lg transition duration-300">View Programs</a>
+        <a href="{{ route('admissions.programes') }}" class="inline-block text-yellow-400 hover:text-yellow-300 border border-yellow-400 hover:border-yellow-300 text-sm font-semibold px-4 py-2 rounded-lg transition duration-300">View Programes</a>
     </div>
 </div>
         
@@ -131,12 +131,12 @@
                 <p class="text-gray-300 mb-4">With the ongoing rapid changes in science and technology, the transformation in accounting practices is inevitable. The development in Information Technology has brought big changes in the way traditional accounting has been practiced.
 
 IT networks and laptop structures have shortened the time required to perform accountant’s functions. This evolving change in technology has highly affected the functions of accountants. </p>
-                <a href="/programs/humanities" class="inline-block text-yellow-400 hover:text-yellow-300 border border-yellow-400 hover:border-yellow-300 text-sm font-semibold px-4 py-2 rounded-lg transition duration-300">View Programs</a>
+                <a href="{{ route('admissions.programes') }}" class="inline-block text-yellow-400 hover:text-yellow-300 border border-yellow-400 hover:border-yellow-300 text-sm font-semibold px-4 py-2 rounded-lg transition duration-300">View Programes</a>
             </div>
         </div>
 
     <div class="text-center mt-12">
-        <a href="/programs" class="inline-block bg-blue-900 hover:bg-blue-800 text-white font-semibold px-6 py-3 rounded-lg transition duration-300">See All Programs</a>
+        <a href="{{ route('admissions.programes') }}" class="inline-block bg-blue-900 hover:bg-blue-800 text-white font-semibold px-6 py-3 rounded-lg transition duration-300">See All Programes</a>
     </div>
 </div>
 
