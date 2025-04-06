@@ -8,7 +8,7 @@ export default defineConfig({
         port: 5173, // Default Vite port
         strictPort: true,
         hmr: {
-            host: '192.168.137.55', // Your local IP address
+            host: 'http://127.0.0.1:8000/', // Your local IP address
             protocol: 'ws', // WebSocket for HMR
         }
     },

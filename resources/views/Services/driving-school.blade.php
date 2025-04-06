@@ -483,6 +483,82 @@
             background-color: var(--secondary);
             transform: translateY(-3px);
         }
+        
+        /* New Slideshow Styles */
+        .slideshow-container {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .slideshow-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .slideshow-slide.active {
+            opacity: 1;
+        }
+        
+        .slideshow-nav {
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            z-index: 10;
+        }
+        
+        .slideshow-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .slideshow-dot.active {
+            background-color: white;
+            transform: scale(1.2);
+        }
+        
+        .slideshow-prev, .slideshow-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            cursor: pointer;
+            z-index: 10;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .slideshow-prev {
+            left: 10px;
+        }
+        
+        .slideshow-next {
+            right: 10px;
+        }
     </style>
 </head>
 <body>
@@ -498,11 +574,11 @@
         </div>
     </div>
 
-    <section id="home" class="hero">
-        <h1>Professional Driving Course</h1>
-        <p>Master the art of safe and responsible driving with Tanzania's most trusted driving school</p>
-        <a href="#courses" class="cta-btn">Explore Our Courses</a>
-    </section>
+    <section id="home" class="hero" style="background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('{{ asset('images/hero-background.jpg') }}') center/cover no-repeat;">
+    <h1>Professional Driving Course</h1>
+    <p>Master the art of safe and responsible driving with Tanzania's most trusted driving school</p>
+    <a href="#courses" class="cta-btn">Explore Our Courses</a>
+</section>
 
     <section id="about" class="section">
         <div class="container">
@@ -536,48 +612,91 @@
         <div class="container">
             <h2 class="section-title">Our Driving Courses</h2>
             <div class="course-grid">
-                <div class="course-item">
-                    <div class="course-img" style="background-image: url('/api/placeholder/400/200')"></div>
-                    <div class="course-content">
-                        <h3 class="course-title">Basic Traffic Rules & Signs</h3>
-                        <p class="course-description">Master the essential traffic rules and learn to interpret all road signs for safe navigation.</p>
-                        <ul>
-                            <li>Understanding road signs and markings</li>
-                            <li>Right of way rules</li>
-                            <li>Traffic signals and their meanings</li>
-                            <li>Pedestrian and crosswalk regulations</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="course-item">
-                    <div class="course-img" style="background-image: url('/api/placeholder/400/200')"></div>
-                    <div class="course-content">
-                        <h3 class="course-title">Maneuvering & Vehicle Control</h3>
-                        <p class="course-description">Learn precise control techniques for various driving scenarios and challenging conditions.</p>
-                        <ul>
-                            <li>Parking techniques (parallel, reverse, etc.)</li>
-                            <li>Lane changing and overtaking</li>
-                            <li>Navigating roundabouts and intersections</li>
-                            <li>Reversing and three-point turns</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="course-item">
-                    <div class="course-img" style="background-image: url('/api/placeholder/400/200')"></div>
-                    <div class="course-content">
-                        <h3 class="course-title">Defensive Driving</h3>
-                        <p class="course-description">Develop advanced skills to anticipate hazards and prevent accidents in challenging situations.</p>
-                        <ul>
-                            <li>Hazard perception and risk assessment</li>
-                            <li>Emergency braking and evasive maneuvers</li>
-                            <li>Night driving and adverse weather conditions</li>
-                            <li>Managing road rage and aggressive drivers</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            
-            <div style="margin-top: 3rem;">
+                <!-- Basic Traffic Rules & Signs Course with Slideshow -->
+<div class="course-item">
+    <div class="slideshow-container" id="basic-traffic-slideshow">
+        <!-- 15 slides for Basic Traffic Rules & Signs -->
+        <div class="slideshow-slide active" style="background-image: url('{{ asset('assets/images/partners/Bank of Tanzania (BOT) Logo PNG Vector (AI) Free Download.jpg') }}')"></div>
+        <div class="slideshow-slide" style="background-image: url('{{ asset('assets/images/Logos/forensics2.jpg') }}')"></div>
+        <div class="slideshow-slide" style="background-image: url('{{ asset('assets/images/partners/Tanzania Railways Corporation Logo PNG Vector (AI) Free Download.jpg') }}')"></div>
+        <div class="slideshow-slide" style="background-image: url('{{ asset('assets/images/partners/exim.png') }}')"></div>
+        <div class="slideshow-slide" style="background-image: url('{{ asset('assets/images/partners/nmb.jpg') }}')"></div>
+        <div class="slideshow-slide" style="background-image: url('{{ asset('assets/images/partners/latra.jpg') }}')"></div>
+        <div class="slideshow-slide" style="background-image: url('{{ asset('images/traffic/sign7.jpg') }}')"></div>
+        <div class="slideshow-slide" style="background-image: url('{{ asset('images/traffic/sign8.jpg') }}')"></div>
+        <div class="slideshow-slide" style="background-image: url('{{ asset('images/traffic/sign9.jpg') }}')"></div>
+        <div class="slideshow-slide" style="background-image: url('{{ asset('images/traffic/sign10.jpg') }}')"></div>
+        <div class="slideshow-slide" style="background-image: url('{{ asset('images/traffic/sign11.jpg') }}')"></div>
+        <div class="slideshow-slide" style="background-image: url('{{ asset('images/traffic/sign12.jpg') }}')"></div>
+        <div class="slideshow-slide" style="background-image: url('{{ asset('images/traffic/sign13.jpg') }}')"></div>
+        <div class="slideshow-slide" style="background-image: url('{{ asset('images/traffic/sign14.jpg') }}')"></div>
+        <div class="slideshow-slide" style="background-image: url('{{ asset('images/traffic/sign15.jpg') }}')"></div>
+        <button class="slideshow-prev" onclick="moveSlide('basic-traffic-slideshow', -1)">❮</button>
+        <button class="slideshow-next" onclick="moveSlide('basic-traffic-slideshow', 1)">❯</button>
+    </div>
+    <div class="course-content">
+        <h3 class="course-title">Basic Traffic Rules & Signs</h3>
+        <p class="course-description">Master the essential traffic rules and learn to interpret all road signs for safe navigation.</p>
+        <ul>
+            <li>Understanding road signs and markings</li>
+            <li>Right of way rules</li>
+            <li>Traffic signals and their meanings</li>
+            <li>Pedestrian and crosswalk regulations</li>
+        </ul>
+    </div>
+</div>
+                
+                <!-- Maneuvering & Vehicle Control Course with Slideshow -->
+<div class="course-item">
+    <div class="slideshow-container" id="maneuvering-slideshow">
+        <!-- 5 slides for Maneuvering & Vehicle Control -->
+        <div class="slideshow-slide active" style="background-image: url('{{ asset('images/maneuvering/slide1.jpg') }}')"></div>
+        <div class="slideshow-slide" style="background-image: url('{{ asset('images/maneuvering/slide2.jpg') }}')"></div>
+        <div class="slideshow-slide" style="background-image: url('{{ asset('images/maneuvering/slide3.jpg') }}')"></div>
+        <div class="slideshow-slide" style="background-image: url('{{ asset('images/maneuvering/slide4.jpg') }}')"></div>
+        <div class="slideshow-slide" style="background-image: url('{{ asset('images/maneuvering/slide5.jpg') }}')"></div>
+        <button class="slideshow-prev" onclick="moveSlide('maneuvering-slideshow', -1)">❮</button>
+        <button class="slideshow-next" onclick="moveSlide('maneuvering-slideshow', 1)">❯</button>
+    </div>
+    <div class="course-content">
+        <h3 class="course-title">Maneuvering & Vehicle Control</h3>
+        <p class="course-description">Learn precise control techniques for various driving scenarios and challenging conditions.</p>
+        <ul>
+            <li>Parking techniques (parallel, reverse, etc.)</li>
+            <li>Lane changing and overtaking</li>
+            <li>Navigating roundabouts and intersections</li>
+            <li>Reversing and three-point turns</li>
+        </ul>
+    </div>
+</div>
+                
+                <!-- Defensive Driving Course with Slideshow -->
+<div class="course-item">
+    <div class="slideshow-container" id="defensive-slideshow">
+        <!-- 5 slides for Defensive Driving -->
+        <div class="slideshow-slide active" style="background-image: url('{{ asset('assets/images/Logos/conf.jpg') }}')"></div>
+        <div class="slideshow-slide" style="background-image: url('{{ asset('assets/images/Logos/IMG_0970-1024x683.jpg') }}')"></div>
+        <div class="slideshow-slide" style="background-image: url('{{ asset('assets/images/partners/exim.png') }}')"></div>
+        <div class="slideshow-slide" style="background-image: url('{{ asset('images/defensive/slide4.jpg') }}')"></div>
+        <div class="slideshow-slide" style="background-image: url('{{ asset('images/defensive/slide5.jpg') }}')"></div>
+        <button class="slideshow-prev" onclick="moveSlide('defensive-slideshow', -1)">❮</button>
+        <button class="slideshow-next" onclick="moveSlide('defensive-slideshow', 1)">❯</button>
+    </div>
+    <div class="course-content">
+        <h3 class="course-title">Defensive Driving</h3>
+        <p class="course-description">Develop advanced skills to anticipate hazards and prevent accidents in challenging situations.</p>
+        <ul>
+            <li>Hazard perception and risk assessment</li>
+            <li>Emergency braking and evasive maneuvers</li>
+            <li>Night driving and adverse weather conditions</li>
+            <li>Managing road rage and aggressive drivers</li>
+        </ul>
+      </div>
+     </div>
+        </div>
+    </section>
+
+                 <div style="margin-top: 3rem;">
                 <h3 style="text-align: center; margin-bottom: 2rem;">Course Details</h3>
                 <div class="course-item" style="max-width: 800px; margin: 0 auto;">
                     <div class="course-content">
@@ -594,20 +713,18 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
 
     <section id="gallery" class="section">
         <div class="container">
             <h2 class="section-title">Training Highlights</h2>
             <div class="gallery">
-                <div class="gallery-item" style="background-image: url('/api/placeholder/400/400')"></div>
-                <div class="gallery-item" style="background-image: url('/api/placeholder/400/400')"></div>
-                <div class="gallery-item" style="background-image: url('/api/placeholder/400/400')"></div>
-                <div class="gallery-item" style="background-image: url('/api/placeholder/400/400')"></div>
-                <div class="gallery-item" style="background-image: url('/api/placeholder/400/400')"></div>
-                <div class="gallery-item" style="background-image: url('/api/placeholder/400/400')"></div>
-            </div>
+    <div class="gallery-item" style="background-image: url('{{ asset('images/gallery/image1.jpg') }}')"></div>
+    <div class="gallery-item" style="background-image: url('{{ asset('images/gallery/image2.jpg') }}')"></div>
+    <div class="gallery-item" style="background-image: url('{{ asset('images/gallery/image3.jpg') }}')"></div>
+    <div class="gallery-item" style="background-image: url('{{ asset('images/gallery/image4.jpg') }}')"></div>
+    <div class="gallery-item" style="background-image: url('{{ asset('images/gallery/image5.jpg') }}')"></div>
+    <div class="gallery-item" style="background-image: url('{{ asset('images/gallery/image6.jpg') }}')"></div>
+</div>
         </div>
     </section>
 
@@ -702,6 +819,41 @@
     <a href="#" class="back-to-top">↑</a>
 
     <script>
+
+    // Slideshow functionality
+function moveSlide(slideshowId, direction) {
+    const slides = document.querySelectorAll(`#${slideshowId} .slideshow-slide`);
+    let activeIndex = 0;
+    
+    // Find the current active slide
+    slides.forEach((slide, index) => {
+        if (slide.classList.contains('active')) {
+            activeIndex = index;
+            slide.classList.remove('active');
+        }
+    });
+    
+    // Calculate the next slide index
+    const totalSlides = slides.length;
+    let nextIndex = (activeIndex + direction) % totalSlides;
+    
+    // If going backward from first slide, go to last slide
+    if (nextIndex < 0) {
+        nextIndex = totalSlides - 1;
+    }
+    
+    // Activate the next slide
+    slides[nextIndex].classList.add('active');
+}
+
+// Auto rotate course slideshows
+const slideshowIds = ['basic-traffic-slideshow', 'maneuvering-slideshow', 'defensive-slideshow'];
+
+slideshowIds.forEach(id => {
+    setInterval(() => {
+        moveSlide(id, 1); // Move forward by one slide
+    }, 4000); // Change slide every 4 seconds
+});
         // Intersection Observer for animations
         const animateElements = (entries, observer) => {
             entries.forEach(entry => {

@@ -18,6 +18,7 @@ use App\Http\Controllers\GraduateAdmissionsController;
 use App\Http\Controllers\UndergraduateAdmissionsController;
 use App\Http\Controllers\TrainingProgramController;
 use TCG\Voyager\Facades\Voyager;
+use App\Http\Controllers\ProficiencyCoursesController;
 
 // Home Route
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -172,6 +173,9 @@ Route::get('/admissions/graduate/apply', [GraduateAdmissionsController::class, '
 Route::get('/programes', [HomeController::class, 'programes'])->name('programes.index');
 Route::get('/admissions/programes', [HomeController::class, 'programes'])
      ->name('admissions.programes');
+
+     Route::get('/proficiency-courses', [App\Http\Controllers\ProficiencyCoursesController::class, 'index'])
+     ->name('admissions.proficiency-courses');     
 
 // Timeline Routes
 Route::prefix('timeline')->name('timeline.')->group(function () {
