@@ -616,21 +616,14 @@
 <div class="course-item">
     <div class="slideshow-container" id="basic-traffic-slideshow">
         <!-- 15 slides for Basic Traffic Rules & Signs -->
-        <div class="slideshow-slide active" style="background-image: url('{{ asset('assets/images/partners/Bank of Tanzania (BOT) Logo PNG Vector (AI) Free Download.jpg') }}')"></div>
-        <div class="slideshow-slide" style="background-image: url('{{ asset('assets/images/Logos/forensics2.jpg') }}')"></div>
-        <div class="slideshow-slide" style="background-image: url('{{ asset('assets/images/partners/Tanzania Railways Corporation Logo PNG Vector (AI) Free Download.jpg') }}')"></div>
-        <div class="slideshow-slide" style="background-image: url('{{ asset('assets/images/partners/exim.png') }}')"></div>
-        <div class="slideshow-slide" style="background-image: url('{{ asset('assets/images/partners/nmb.jpg') }}')"></div>
-        <div class="slideshow-slide" style="background-image: url('{{ asset('assets/images/partners/latra.jpg') }}')"></div>
-        <div class="slideshow-slide" style="background-image: url('{{ asset('images/traffic/sign7.jpg') }}')"></div>
-        <div class="slideshow-slide" style="background-image: url('{{ asset('images/traffic/sign8.jpg') }}')"></div>
-        <div class="slideshow-slide" style="background-image: url('{{ asset('images/traffic/sign9.jpg') }}')"></div>
-        <div class="slideshow-slide" style="background-image: url('{{ asset('images/traffic/sign10.jpg') }}')"></div>
-        <div class="slideshow-slide" style="background-image: url('{{ asset('images/traffic/sign11.jpg') }}')"></div>
-        <div class="slideshow-slide" style="background-image: url('{{ asset('images/traffic/sign12.jpg') }}')"></div>
-        <div class="slideshow-slide" style="background-image: url('{{ asset('images/traffic/sign13.jpg') }}')"></div>
-        <div class="slideshow-slide" style="background-image: url('{{ asset('images/traffic/sign14.jpg') }}')"></div>
-        <div class="slideshow-slide" style="background-image: url('{{ asset('images/traffic/sign15.jpg') }}')"></div>
+        <div class="slideshow-slide active" style="background-image: url('{{ asset('assets/images/driving/traff/Traffic Symbol Signs And Road Safety Signs _ Engineering Discoveries.jpeg') }}')"></div>
+        <div class="slideshow-slide" style="background-image: url('{{ asset('assets/images/driving/traff/download (5).jpeg') }}')"></div>
+        <div class="slideshow-slide" style="background-image: url('{{ asset('assets/images/driving/traff/Isharat Seir (إشارات السير)_ #isharat #traffic #signs in #arabic.jpeg') }}')"></div>
+        <div class="slideshow-slide" style="background-image: url('{{ asset('assets/images/driving/traff/download (6).jpeg') }}')"></div>
+        <div class="slideshow-slide" style="background-image: url('{{ asset('assets/images/driving/traff/download (7).jpeg') }}')"></div>
+        <div class="slideshow-slide" style="background-image: url('{{ asset('assets/images/driving/traff/Segnali stradali_ spiegazione dei cartelli segnaletici con relative immagini [foto gallery] - Normative - Automoto_it.jpeg') }}')"></div>
+        
+
         <button class="slideshow-prev" onclick="moveSlide('basic-traffic-slideshow', -1)">❮</button>
         <button class="slideshow-next" onclick="moveSlide('basic-traffic-slideshow', 1)">❯</button>
     </div>
@@ -650,11 +643,11 @@
 <div class="course-item">
     <div class="slideshow-container" id="maneuvering-slideshow">
         <!-- 5 slides for Maneuvering & Vehicle Control -->
-        <div class="slideshow-slide active" style="background-image: url('{{ asset('images/maneuvering/slide1.jpg') }}')"></div>
-        <div class="slideshow-slide" style="background-image: url('{{ asset('images/maneuvering/slide2.jpg') }}')"></div>
-        <div class="slideshow-slide" style="background-image: url('{{ asset('images/maneuvering/slide3.jpg') }}')"></div>
-        <div class="slideshow-slide" style="background-image: url('{{ asset('images/maneuvering/slide4.jpg') }}')"></div>
-        <div class="slideshow-slide" style="background-image: url('{{ asset('images/maneuvering/slide5.jpg') }}')"></div>
+        <div class="slideshow-slide active" style="background-image: url('{{ asset('assets/images/driving/Easy Forward Bay Parking (Step-By-Step) - Driving Tips.jpeg') }}')"></div>
+        <div class="slideshow-slide" style="background-image: url('{{ asset('assets/images/driving/manover1.jpeg') }}')"></div>
+        <div class="slideshow-slide" style="background-image: url('{{ asset('assets/images/driving/How to do 3-point turns.jpeg') }}')"></div>
+        <div class="slideshow-slide" style="background-image: url('{{ asset('assets/images/driving/HOW TO CHANGE LANES SAFELY WHILE DRIVING (Basic skill to pass the Road Test).jpeg') }}')"></div>
+        <div class="slideshow-slide" style="background-image: url('{{ asset('assets/images/driving/How to Reverse Park _ Reverse Parking_ Parking tips #Reverseparking #parking.jpeg') }}')"></div>
         <button class="slideshow-prev" onclick="moveSlide('maneuvering-slideshow', -1)">❮</button>
         <button class="slideshow-next" onclick="moveSlide('maneuvering-slideshow', 1)">❯</button>
     </div>
@@ -674,11 +667,11 @@
 <div class="course-item">
     <div class="slideshow-container" id="defensive-slideshow">
         <!-- 5 slides for Defensive Driving -->
-        <div class="slideshow-slide active" style="background-image: url('{{ asset('assets/images/Logos/conf.jpg') }}')"></div>
-        <div class="slideshow-slide" style="background-image: url('{{ asset('assets/images/Logos/IMG_0970-1024x683.jpg') }}')"></div>
-        <div class="slideshow-slide" style="background-image: url('{{ asset('assets/images/partners/exim.png') }}')"></div>
-        <div class="slideshow-slide" style="background-image: url('{{ asset('images/defensive/slide4.jpg') }}')"></div>
-        <div class="slideshow-slide" style="background-image: url('{{ asset('images/defensive/slide5.jpg') }}')"></div>
+        <div class="slideshow-slide active" style="background-image: url('{{ asset('assets/images/driving/download (4).jpeg') }}')"></div>
+        <div class="slideshow-slide" style="background-image: url('{{ asset('assets/images/driving/Driving safety tips.jpeg') }}')"></div>
+        <div class="slideshow-slide" style="background-image: url('{{ asset('assets/images/driving/MAD On New Zealand.jpeg') }}')"></div>
+        <div class="slideshow-slide" style="background-image: url('{{ asset('assets/images/driving/Tips to Defensive Driving.jpeg') }}')"></div>
+        <div class="slideshow-slide" style="background-image: url('{{ asset('assets/images/driving/Globe Toyota - Here are the tips to drive in Fog! #fog #winters _ Facebook.jpeg') }}')"></div>
         <button class="slideshow-prev" onclick="moveSlide('defensive-slideshow', -1)">❮</button>
         <button class="slideshow-next" onclick="moveSlide('defensive-slideshow', 1)">❯</button>
     </div>

@@ -1170,10 +1170,10 @@
             Specialized leadership and skill enhancement training designed to prepare officers for higher ranks and
             strategic roles to play within the Tanzania Police Service.
         </p>
-        <button @click="activeModal = 'promotion'"
-            class="w-full bg-purple-500 text-white py-3 rounded-lg hover:bg-purple-600 transition duration-300 transform hover:scale-105">
-            View Details
-        </button>
+       <button @click="window.location.href='{{ route('police.promotional-courses') }}'"
+    class="w-full bg-purple-500 text-white py-3 rounded-lg hover:bg-purple-600 transition duration-300 transform hover:scale-105">
+    View Details
+</button>
     </div>
 </div>
     <!-- Proficiency Courses -->
@@ -1347,7 +1347,7 @@
                 <p class="text-gray-600 text-center">Professional driving lessons with certified instructors using modern vehicles.</p>
                 <div class="mt-4 text-center">
                     <a href="{{ route('services.driving') }}" 
-                       class="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all duration-300">
+                       class="inline-flex items-center px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-all duration-300">
                         Learn more
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
@@ -1592,8 +1592,8 @@
         <span x-show="animals[currentIcon] === 'farm'">Integrated farm management education covering business planning, operations and sustainable practices.</span>
     </p>
     <div class="mt-4 text-center">
-        <a href="{{ route('services.poultry') }}" class="text-yellow-600 hover:text-yellow-800 font-medium">Learn more</a>
-    </div>
+    <a href="{{ route('services.poultry') }}" class="inline-block px-6 py-2.5 bg-yellow-800 text-white font-medium rounded-lg hover:bg-yellow-700 transition-colors duration-300 shadow-md">Learn more</a>
+</div>
 </div>
             
         <!-- Catering Section with Cycling Icons -->
@@ -1721,8 +1721,8 @@
     </h3>
     <p class="text-gray-600 text-center">Professional event planning services with customized solutions for your special occasions.</p>
     <div class="mt-4 text-center">
-        <a href="{{ route('services.catering') }}" class="text-blue-600 hover:text-blue-800 font-medium">Learn more</a>
-    </div>
+    <a href="{{ route('services.catering') }}" class="inline-block px-6 py-2.5 bg-green-600 text-white font-medium rounded-lg hover:bg-green-700 transition-colors duration-300 shadow-md">Learn more</a>
+</div>
 </div>
             
             <!-- Health Center -->
@@ -1781,9 +1781,9 @@
                 </div>
                 <h3 class="text-xl font-semibold text-center mb-3 text-gray-800">Health Center</h3>
                 <p class="text-gray-600 text-center">Professional healthcare services providing medical support with qualified practitioners for students and staff.</p>
-                <div class="mt-4 text-center">
-                    <a href="{{ route('services.health') }}" class="text-blue-600 hover:text-blue-800 font-medium">Learn more</a>
-                </div>
+<div class="mt-4 text-center">
+    <a href="{{ route('services.health') }}" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors duration-300 shadow-md">Learn more</a>
+</div>
             </div>
         </div>
         

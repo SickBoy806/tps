@@ -19,6 +19,8 @@ use App\Http\Controllers\UndergraduateAdmissionsController;
 use App\Http\Controllers\TrainingProgramController;
 use TCG\Voyager\Facades\Voyager;
 use App\Http\Controllers\ProficiencyCoursesController;
+use App\Http\Controllers\PromotionalCoursesController;
+
 
 // Home Route
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -183,6 +185,10 @@ Route::prefix('timeline')->name('timeline.')->group(function () {
     Route::get('/event/{year}', [TimelineController::class, 'showEvent'])->name('event');
     Route::get('/api/data', [TimelineController::class, 'getTimelineData'])->name('data');
 });
+
+// Promotional Courses routes
+Route::get('/promotional-courses', [PromotionalCoursesController::class, 'index'])->name('police.promotional-courses');
+Route::get('/promotional-courses/download-application', [PromotionalCoursesController::class, 'downloadApplication'])->name('police.download-application');
 
 // API Routes
 Route::prefix('api')->name('api.')->group(function () {
