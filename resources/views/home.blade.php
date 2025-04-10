@@ -2602,21 +2602,21 @@ window.addEventListener('unload', () => {
         isMobile: window.innerWidth < 768,
         slides: [
             {
-                image: '{{ asset('assets/images/Logos/JL3A0557.jpg') }}',
+                image: '{{ asset('assets/images/newsmain/uwanaja.PNG') }}',
                 title: 'Best Police Training Academy 2024',
                 description: 'Awarded for excellence in police training methodologies and exceptional graduation rates. Our academy was recognized nationally for implementing innovative training techniques that have resulted in officers who excel in their field assignments.',
                 year: '2024',
                 milestone: 'National Recognition'
             },
             {
-                image: '{{ asset('assets/images/Logos/sports.jpg') }}',
+                image: '{{ asset('assets/images/newsmain/forensics.jpg') }}',
                 title: 'Community Service Excellence Award',
                 description: 'Recognized for our outstanding community outreach programs and positive impact on surrounding communities. Our cadets and staff have contributed over 5,000 volunteer hours in the past year, focusing on youth mentorship and community safety initiatives.',
                 year: '2023',
                 milestone: 'Community Impact'
             },
             {
-                image: '{{ asset('assets/images/Logos/hd-2048x1366-1.jpg') }}',
+                image: '{{ asset('assets/images/newsmain/mwiru.jpeg') }}',
                 title: 'Advanced Forensic Training Certification',                 
                 description: 'Received international certification for our advanced forensic training program. Our students now benefit from hands-on experience with cutting-edge forensic technology and techniques that meet global standards of excellence.',
                 year: '2022',
