@@ -7,8 +7,8 @@
     <!-- Hero Section with Parallax Effect -->
     <section class="benefits-hero relative h-96 flex items-center justify-center overflow-hidden">
         <div class="absolute inset-0 z-0">
-            <img src="{{ asset('assets/images/Logos/tanzania-police-seeklogo.png') }}" alt="Tanzania Police Force" class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-blue-900/70"></div>
+            <img src="{{ asset('assets/images/news&events/bg.png') }}" alt="Tanzania Police Force" class="w-full h-full object-cover">
+            <div class="absolute inset-0 "></div>
         </div>
         <div class="container mx-auto px-4 z-10 text-center">
             <h1 class="text-5xl font-bold text-white mb-4 animate-fadeIn">Career Benefits</h1>
@@ -26,7 +26,7 @@
                     <p class="text-lg">Our officers enjoy competitive compensation, comprehensive healthcare, education benefits, and a strong sense of community that lasts throughout their careers and beyond.</p>
                 </div>
                 <div class="md:w-2/5 rounded-lg shadow-xl overflow-hidden benefits-image opacity-0 transition-all duration-700 delay-300" id="image-animation">
-                    <img src="{{ asset('assets/images/Logos/kk.jpeg') }}" alt="Tanzania Police Team" class="w-full h-auto">
+                    <img src="{{ asset('assets/images/news&events/promo1.JPG') }}" alt="Tanzania Police Team" class="w-full h-auto">
                 </div>
             </div>
         </div>

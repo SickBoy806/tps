@@ -15,13 +15,14 @@ $backgroundUrl = asset('images/leadership/' . $backgroundImage);
 @section('title', 'Leadership')
 @section('content')
 
-<div class="min-h-screen bg-cover bg-center relative" style="background-image: url('{{ $backgroundUrl }}')">
+<!-- We'll only add padding-top on mobile, not on desktop -->
+<div class="min-h-screen bg-cover bg-center relative mobile-padding-fix" style="background-image: url('{{ $backgroundUrl }}')">
     <!-- Overlay for better text readability -->
     <div class="absolute inset-0 bg-blue-900 bg-opacity-50"></div>
 
     <div class="relative z-10">
         <div class="bg-white bg-opacity-90 shadow">
-            <div class="max-w-7xl mx-auto py-4 px-4 flex justify-between items-center">
+            <div class="max-w-7xl mx-auto py-4 px-4 flex justify-between items-center mobile-header">
                 <h1 class="text-3xl font-bold text-blue-800 animate-fade-in">
                     Tanzania Police School Moshi Leadership
                 </h1>
@@ -31,9 +32,10 @@ $backgroundUrl = asset('images/leadership/' . $backgroundImage);
                     <button 
                         @mouseenter="open = true" 
                         @mouseleave="open = false"
+                        @click="open = !open" <!-- Added click for mobile -->
                         class="bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-blue-700 transition-colors"
                     >
-                        Leadership Insights
+                    
                     </button>
                     
                     <div 
@@ -65,8 +67,8 @@ $backgroundUrl = asset('images/leadership/' . $backgroundImage);
             <div class="space-y-24">
                 @foreach($posts as $index => $post)
                 <div class="opacity-0 animate-slide-up {{ $index > 0 ? 'delay-' . ($index * 200) : '' }}">
-                    <div class="relative flex items-center">
-                        <div class="w-[500px] h-[500px] bg-gray-200 rounded-2xl overflow-hidden shadow-2xl group">
+                    <div class="relative flex items-center profile-container">
+                        <div class="w-[500px] h-[500px] bg-gray-200 rounded-2xl overflow-hidden shadow-2xl group profile-image">
                             @if(isset($post->image))
                                 <img 
                                     src="{{ $post->image }}" 
@@ -82,13 +84,36 @@ $backgroundUrl = asset('images/leadership/' . $backgroundImage);
                             </div>
                         </div>
 
-                        <div class="group relative -top-1/2 -translate-y-1/2 ml-4">
+                        <div class="group relative -top-1/2 -translate-y-1/2 ml-4 position-container">
                             <div class="bg-gradient-to-r from-blue-600 to-transparent text-white px-6 py-3 rounded-lg font-bold text-xl whitespace-nowrap hover:from-blue-700 transition-colors duration-300 cursor-pointer pb-2 border-b-2 border-blue-600">
                                 {{ $post->position }}
                             </div>
                             
-                            <!-- Expanded Profile Card -->
-                            <div class="absolute left-full top-1/2 -translate-y-1/2 ml-4 w-[450px] bg-white rounded-2xl shadow-2xl p-6 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none z-50">
+                            <!-- Mobile-only full profile view -->
+                            <div class="mobile-full-profile">
+                                <h3 class="text-xl font-bold text-gray-800">{{ $post->name }}</h3>
+                                <p class="text-blue-600 font-semibold">{{ $post->position }}</p>
+                                <p class="mt-2 text-gray-700">{{ $post->description }}</p>
+                                
+                                <!-- Mobile Quick Stats -->
+                                <div class="grid grid-cols-3 gap-2 text-center bg-blue-50 rounded-lg p-3 mt-3">
+                                    <div>
+                                        <div class="text-blue-600 font-bold">15+</div>
+                                        <div class="text-xs text-gray-600">Yrs Exp</div>
+                                    </div>
+                                    <div>
+                                        <div class="text-green-600 font-bold">{{ rand(10, 20) }}</div>
+                                        <div class="text-xs text-gray-600">Projects</div>
+                                    </div>
+                                    <div>
+                                        <div class="text-purple-600 font-bold">{{ rand(3, 7) }}</div>
+                                        <div class="text-xs text-gray-600">Awards</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Desktop Expanded Profile Card -->
+                            <div class="absolute left-full top-1/2 -translate-y-1/2 ml-4 w-[450px] bg-white rounded-2xl shadow-2xl p-6 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none z-50 desktop-profile">
                                 <div class="flex items-center mb-4">
                                     <div class="w-20 h-20 rounded-full overflow-hidden mr-4">
                                         <img 
@@ -132,6 +157,7 @@ $backgroundUrl = asset('images/leadership/' . $backgroundImage);
 
 @push('head')
 <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 @endpush
 
 <style>
@@ -155,6 +181,82 @@ $backgroundUrl = asset('images/leadership/' . $backgroundImage);
         to {
             opacity: 1;
             transform: translateY(0);
+        }
+    }
+    
+    /* Base styles - Hide mobile-only elements by default */
+    .mobile-full-profile {
+        display: none;
+    }
+    
+    /* Mobile-only styles - Only apply these on smaller screens */
+    @media (max-width: 768px) {
+        /* Header spacing fix for mobile */
+        .mobile-padding-fix {
+            padding-top: 60px; /* Adjust to match your navbar height */
+        }
+        
+        /* Mobile header adjustments */
+        .mobile-header {
+            flex-direction: column;
+            text-align: center;
+        }
+        
+        .mobile-header h1 {
+            margin-bottom: 12px;
+            font-size: 1.5rem;
+        }
+        
+        /* Profile container adjustments */
+        .profile-container {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        
+        /* Image sizing for mobile */
+        .profile-image {
+            width: 100% !important;
+            height: 300px !important;
+        }
+        
+        /* Position container adjustments */
+        .position-container {
+            position: static !important;
+            transform: none !important;
+            margin-left: 0 !important;
+            margin-top: 1rem !important;
+            width: 100%;
+        }
+        
+        /* Hide desktop hover card on mobile */
+        .desktop-profile {
+            display: none !important;
+        }
+        
+        /* Show mobile profile on mobile */
+        .mobile-full-profile {
+            display: block;
+            margin-top: 1rem;
+            padding: 1rem;
+            background-color: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        
+        /* Ensure content doesn't overflow on mobile */
+        img {
+            max-width: 100%;
+        }
+        
+        /* Fix hover states on mobile which don't work */
+        .group:hover .opacity-0 {
+            opacity: 0 !important;
+        }
+        
+        /* Fix horizontal overflow issues */
+        body, html {
+            overflow-x: hidden;
+            width: 100%;
         }
     }
 </style>

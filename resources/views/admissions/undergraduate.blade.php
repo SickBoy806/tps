@@ -27,9 +27,10 @@
                 <h3 class="text-2xl font-bold text-white mb-4">Learn</h3>
                 <p class="text-white">Engage with expert faculty in state-of-the-art facilities. Our curriculum emphasizes critical thinking and problem-solving skills essential for today's workforce.</p>
             </div>
-            <div class="bg-white p-4 text-center">
-                <a href="{{ route('admissions.programes') }}" class="inline-block text-blue-900 hover:text-blue-800 border border-blue-900 hover:border-blue-800 font-semibold px-4 py-2 rounded-lg transition duration-300">Academic Programes</a>
-            </div>
+           <!-- Properly centered "See All Programes" link -->
+<div class="flex justify-center w-full mt-12">
+    <a href="{{ route('admissions.programes') }}" class="inline-block bg-blue-900 hover:bg-blue-800 text-white font-semibold px-6 py-3 rounded-lg transition duration-300">See All Programes</a>
+</div>
         </div>
         
         <div class="bg-gradient-to-br from-yellow-600 to-yellow-500 rounded-xl shadow-xl overflow-hidden">
@@ -181,6 +182,7 @@ IT networks and laptop structures have shortened the time required to perform ac
             <p class="text-gray-300">"The supportive community and hands-on learning experiences have prepared me for my career in ways I never expected. The faculty truly care about your success and go above and beyond to help."</p>
         </div>
     </div>
+</div>
 </div>
 
 @endsection

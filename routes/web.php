@@ -20,6 +20,7 @@ use App\Http\Controllers\TrainingProgramController;
 use TCG\Voyager\Facades\Voyager;
 use App\Http\Controllers\ProficiencyCoursesController;
 use App\Http\Controllers\PromotionalCoursesController;
+use App\Http\Controllers\SlidesController;
 
 
 // Home Route
@@ -33,7 +34,9 @@ Route::prefix('news')->name('news.')->group(function () {
     
     // Content type routes
     Route::get('/latest', [NewsController::class, 'latest'])->name('latest');
-    Route::get('/upcoming', [NewsController::class, 'upcoming'])->name('upcoming');
+    
+    Route::get('/upcoming', [EventController::class, 'upcoming'])->name('upcoming');
+
     Route::get('/announcements', [NewsController::class, 'announcements'])->name('announcements');
     
     // Category route
@@ -196,6 +199,7 @@ Route::prefix('api')->name('api.')->group(function () {
     Route::get('/voyager/news', [NewsController::class, 'getNews'])->name('news');
     Route::get('/voyager/events', [NewsController::class, 'getEvents'])->name('events');
     Route::get('/content/{slug}', [TimelineController::class, 'getContent'])->name('content');
+    Route::get('/voyager/slides', [SlidesController::class, 'getSlides'])->name('slides');
 });
 
 // Newsletter subscription route

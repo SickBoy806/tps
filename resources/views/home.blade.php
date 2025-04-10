@@ -3,266 +3,864 @@
 @section('title', 'Home')
 
 @section('content')
-<div class="bg-black">
-    <!-- Consistent Voyager-Inspired Premium Slider -->
-    <div x-data="{ 
-            currentSlide: 0,
-            slides: {{ Js::from($slides) }},
-            autoplayInterval: null,
-            transitionTypes: [ 'bottom-up',  'drop-down'],
-            currentTransition: 'left-right',
-            isTransitioning: false,
-            startAutoplay() {
-                this.autoplayInterval = setInterval(() => {
-                    this.changeSlide((this.currentSlide + 1) % this.slides.length);
-                }, 5000);
-            },
-            changeSlide(newIndex) {
-                if (this.isTransitioning) return;
-                this.isTransitioning = true;
-                
-                // Randomly select a transition type
-                const randomIndex = Math.floor(Math.random() * this.transitionTypes.length);
-                this.currentTransition = this.transitionTypes[randomIndex];
-                
-                setTimeout(() => {
-                    this.currentSlide = newIndex;
-                    setTimeout(() => {
-                        this.isTransitioning = false;
-                    }, 1200); // Match this to your transition duration
-                }, 50);
-            }
-        }" 
-        x-init="startAutoplay()"
-        class="relative h-screen overflow-hidden">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tanzania Police Force Carousel</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
         
-        <!-- Load all images upfront to ensure they're available -->
-        <div class="hidden">
-            <template x-for="slide in slides">
-                <img :src="slide.image" class="hidden" />
-            </template>
-        </div>
-
-        <!-- Main Full-Screen Image Slides -->
-        <template x-for="(slide, index) in slides" :key="index">
-            <div 
-                x-show="currentSlide === index"
-                x-cloak
-                class="absolute inset-0 z-10"
-                :class="{
-                    'transition-all duration-1200 ease-out': true,
-                    'drop-down-effect': currentTransition === 'drop-down' && currentSlide === index
-                }"
-                x-transition:enter="transition transform duration-1200 ease-out"
-                :x-transition:enter-start="
-                    currentTransition === 'left-right' ? 'opacity-0 translate-x-full' :
-                    currentTransition === 'right-left' ? 'opacity-0 -translate-x-full' :
-                    currentTransition === 'bottom-up' ? 'opacity-0 translate-y-full' :
-                    currentTransition === 'top-down' ? 'opacity-0 -translate-y-full' :
-                    currentTransition === 'zoom-in' ? 'opacity-0 scale-150' :
-                    currentTransition === 'zoom-out' ? 'opacity-0 scale-50' :
-                    currentTransition === 'drop-down' ? 'opacity-0 -translate-y-full' :
-                    'opacity-0'
-                "
-                x-transition:enter-end="opacity-100 translate-x-0 translate-y-0 scale-100"
-                x-transition:leave="transition transform duration-800 ease-in-out"
-                x-transition:leave-start="opacity-100 translate-x-0 translate-y-0 scale-100"
-                :x-transition:leave-end="
-                    currentTransition === 'left-right' ? 'opacity-0 -translate-x-full' :
-                    currentTransition === 'right-left' ? 'opacity-0 translate-x-full' :
-                    currentTransition === 'bottom-up' ? 'opacity-0 -translate-y-full' :
-                    currentTransition === 'top-down' ? 'opacity-0 translate-y-full' :
-                    currentTransition === 'zoom-in' ? 'opacity-0 scale-50' :
-                    currentTransition === 'zoom-out' ? 'opacity-0 scale-150' :
-                    currentTransition === 'drop-down' ? 'opacity-0 translate-y-full' :
-                    'opacity-0'
-                ">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        /* Carousel container styling */
+        .carousel-container {
+            margin: 0;
+            background-color: #000;
+            color: #eee;
+            font-family: 'Poppins', sans-serif;
+            font-size: 12px;
+            overflow-x: hidden;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .carousel-container a {
+            text-decoration: none;
+            color: #eee;
+        }
+        
+        /* carousel */
+        .carousel {
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        /* Slide Items */
+        .carousel .list .item {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s ease;
+        }
+        
+        .carousel .list .item.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .carousel .list .item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+        }
+        
+        /* Image fallback */
+        .carousel .list .item .image-fallback {
+            width: 100%;
+            height: 100%;
+            background-color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            color: #999;
+        }
+        
+        .carousel .list .item .content {
+            position: absolute;
+            top: 20%;
+            width: 100%;
+            max-width: 80%;
+            left: 50%;
+            transform: translateX(-50%);
+            padding-right: 30%;
+            box-sizing: border-box;
+            color: #fff;
+            text-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+            z-index: 2;
+        }
+        
+        .carousel .list .item .author {
+            font-weight: bold;
+            letter-spacing: 10px;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+        
+        .carousel .list .item .title,
+        .carousel .list .item .topic {
+            font-size: 5em;
+            font-weight: bold;
+            line-height: 1.3em;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+        
+        .carousel .list .item .topic {
+            color: #f1683a;
+        }
+        
+        .carousel .list .item .des {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+            margin: 25px 0;
+        }
+        
+        .carousel .list .item .buttons {
+            display: grid;
+            grid-template-columns: repeat(2, 130px);
+            grid-template-rows: 40px;
+            gap: 5px;
+            margin-top: 20px;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+        
+        .carousel .list .item .buttons button {
+            border: none;
+            background-color: #eee;
+            letter-spacing: 3px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .carousel .list .item .buttons button:hover {
+            background-color: #f1683a;
+            color: #fff;
+        }
+        
+        .carousel .list .item .buttons button:nth-child(2) {
+            background-color: transparent;
+            border: 1px solid #fff;
+            color: #eee;
+        }
+        
+        .carousel .list .item .buttons button:nth-child(2):hover {
+            background-color: #fff;
+            color: #000;
+        }
+        
+        /* Show content animations for active slide */
+        .carousel .list .item.active .author,
+        .carousel .list .item.active .title,
+        .carousel .list .item.active .topic,
+        .carousel .list .item.active .des,
+        .carousel .list .item.active .buttons {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .carousel .list .item.active .author {
+            transition-delay: 0.3s;
+        }
+        
+        .carousel .list .item.active .title {
+            transition-delay: 0.6s;
+        }
+        
+        .carousel .list .item.active .topic {
+            transition-delay: 0.9s;
+        }
+        
+        .carousel .list .item.active .des {
+            transition-delay: 1.2s;
+        }
+        
+        .carousel .list .item.active .buttons {
+            transition-delay: 1.5s;
+        }
+        
+        /* Right-aligned thumbnails */
+        .thumbnail {
+           position: absolute;
+           bottom: 50px;
+           right: 120px;
+           width: max-content;
+           z-index: 100;
+           display: flex;
+           gap: 20px;
+           transform: none;
+        }
+        
+        .thumbnail .item {
+           width: 150px;
+           height: 220px;
+           flex-shrink: 0;
+           position: relative;
+           border-radius: 20px;
+           overflow: hidden;
+           cursor: pointer;
+           transition: all 0.3s ease;
+           border: 2px solid transparent;
+        }
+        
+        .thumbnail .item:hover {
+            transform: scale(1.05);
+        }
+        
+        .thumbnail .item.active {
+            border: 2px solid #fff;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+        }
+        
+        .thumbnail .item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+        
+        .thumbnail .item .content {
+            color: #fff;
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            right: 10px;
+        }
+        
+        .thumbnail .item .content .title {
+            font-weight: 500;
+            font-size: 10px;
+            text-shadow: 0 3px 5px rgba(0, 0, 0, 0.7);
+        }
+        
+        .thumbnail .item .content .description {
+            font-weight: 300;
+            font-size: 8px;
+            opacity: 0.8;
+        }
+        
+        /* Navigation arrows */
+        .arrows {
+            position: absolute;
+            bottom: 50px;
+            right: 50px;
+            z-index: 100;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        
+        .arrows button {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(238, 238, 238, 0.3);
+            border: none;
+            color: #fff;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(5px);
+        }
+        
+        .arrows button:hover {
+            background-color: #fff;
+            color: #000;
+            transform: scale(1.1);
+        }
+        
+        /* Progress indicator */
+        .carousel .time {
+            position: absolute;
+            z-index: 1000;
+            width: 0%;
+            height: 3px;
+            background-color: #f1683a;
+            left: 0;
+            top: 0;
+        }
+        
+        /* Zoom effect for active slide */
+        @keyframes subtleZoom {
+            0% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(1.05);
+            }
+        }
+        
+        .animate-subtle-zoom {
+            animation: subtleZoom 10s ease infinite alternate;
+        }
+        
+        /* Responsive design improvements */
+        @media screen and (max-width: 1200px) {
+            .carousel .list .item .content {
+                padding-right: 20%;
+            }
+            
+            .carousel .list .item .title,
+            .carousel .list .item .topic {
+                font-size: 4em;
+            }
+        }
+        
+        @media screen and (max-width: 992px) {
+            .thumbnail {
+                right: 50px;
+                gap: 15px;
+            }
+            
+            .thumbnail .item {
+                width: 130px;
+                height: 190px;
+            }
+        }
+        
+        @media screen and (max-width: 768px) {
+            .carousel-container {
+                margin-top: 7vw;
+                font-size: 10px;
+            }
                 
-                <!-- Full-size Image with Zoom Effect -->
-                <div class="absolute inset-0 overflow-hidden bg-black">
-                    <img :src="slide.image" :alt="slide.title" 
-                         class="absolute inset-0 w-full h-full object-cover object-center"
-                         :class="{ 'animate-subtle-zoom': currentSlide === index }">
+            .carousel {
+                height: 40vh;
+            }
+            
+            .carousel .list .item .content {
+                margin-top: 7vw;
+                padding-right: 5%;
+                top: 15%;
+                max-width: 90%;
+            }
+
+            .carousel .list .item img {
+                margin-top: 7vw;
+                object-fit: cover;
+                height: 100%;
+                width: 100%;
+                display: block;
+            }
+            
+            .carousel .list .item .title,
+            .carousel .list .item .topic {
+                font-size: 3em;
+            }
+            
+            .thumbnail {
+                right: 20px;
+                bottom: 50px;
+                gap: 10px;
+                flex-wrap: wrap;
+                justify-content: flex-end;
+                max-width: 80%;
+            }
+            
+            .thumbnail .item {
+                width: 100px;
+                height: 150px;
+                margin-bottom: 5px;
+            }
+            
+            .arrows {
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+        
+        @media screen and (max-width: 576px) {
+            .carousel .list .item .content {
+                padding-right: 0;
+                top: 10%;
+                max-width: 95%;
+            }
+            
+            .carousel .list .item .title,
+            .carousel .list .item .topic {
+                font-size: 2em;
+            }
+            
+            .carousel .list .item .author {
+                letter-spacing: 5px;
+                font-size: 10px;
+            }
+            
+            .carousel .list .item .des {
+                font-size: 12px;
+            }
+            
+            .thumbnail {
+                bottom: 70px;
+                right: 10px;
+                gap: 5px;
+                flex-wrap: wrap;
+                max-width: 90%;
+            }
+            
+            .thumbnail .item {
+                width: 70px;
+                height: 100px;
+            }
+            
+            .thumbnail .item .content .title {
+                font-size: 8px;
+            }
+            
+            .thumbnail .item .content .description {
+                font-size: 6px;
+            }
+            
+            .arrows {
+                bottom: 20px;
+                right: 10px;
+            }
+            
+            .arrows button {
+                width: 30px;
+                height: 30px;
+            }
+            
+            .carousel .list .item .buttons {
+                grid-template-columns: repeat(2, 90px);
+                grid-template-rows: 30px;
+                font-size: 10px;
+            }
+        }
+        
+        /* Extra small devices */
+        @media screen and (max-width: 375px) {
+            .carousel .list .item .title,
+            .carousel .list .item .topic {
+                font-size: 1.5em;
+            }
+            
+            .thumbnail {
+                bottom: 60px;
+                max-width: 95%;
+            }
+            
+            .thumbnail .item {
+                width: 60px;
+                height: 90px;
+            }
+        }
+        
+        /* Accessibility styles */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+        
+        /* Focus indicators for keyboard navigation */
+        .thumbnail .item:focus,
+        .arrows button:focus {
+            outline: 3px solid #f1683a;
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body>
+    <div class="carousel-container">
+        <div class="carousel" aria-roledescription="carousel" aria-label="Tanzania Police Force Officials">
+            <!-- List of Slides - Static Version -->
+            <div class="list">
+                <!-- Slide 1 -->
+                <div class="item active" aria-roledescription="slide" aria-label="Slide 1 of 4">
+                    <img src="assets/images/people/igpco.jpg" alt="INSPECTOR GENERAL OF POLICE" class="animate-subtle-zoom" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="image-fallback" style="display:none;">INSPECTOR GENERAL OF POLICE</div>
+                    <div class="content">
+                        <div class="author">POLICE FORCE</div>
+                        <div class="title">INSPECTOR GENERAL OF POLICE</div>
+                        <div class="topic">TANZANIA</div>
+                        <div class="des">Head of Tanzania Police Force</div>
+                        <div class="buttons">
+                        </div>
+                    </div>
                 </div>
                 
-                <!-- Left Side Content Panel -->
-                <div class="absolute inset-0 z-10 flex items-center">
-                    <div class="container mx-auto px-6 md:px-12">
-                        <div class="max-w-xl pl-0 md:pl-12"
-                             x-show="currentSlide === index"
-                             x-transition:enter="transition transform duration-1000 delay-500 ease-out"
-                             x-transition:enter-start="opacity-0 translate-y-12"
-                             x-transition:enter-end="opacity-100 translate-y-0">
-                            <!-- Small label above title -->
-                            <div class="text-white text-sm tracking-widest uppercase mb-2 ml-1"></div>
-                            
-                            <!-- Large Title - using slide title -->
-                            <h1 x-text="slide.title"
-                                class="text-white text-6xl md:text-7xl font-bold mb-4 
-                                      tracking-tight leading-none"></h1>
-                            
-                            <!-- Subtitle in accent color -->
-                            <div x-text="slide.subtitle ? slide.subtitle.split(' ')[0] : ''"
-                                 class="text-orange-500 text-5xl font-bold mb-6"></div>
-                            
-                            <!-- Description Text -->
-                            <p x-text="slide.subtitle"
-                               class="text-white/80 text-xs leading-relaxed max-w-md mb-8"></p>
+                <!-- Slide 2 -->
+                <div class="item" aria-roledescription="slide" aria-label="Slide 2 of 4">
+                    <img src="assets/images/people/news2.jpeg" alt="COMMANDANT" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="image-fallback" style="display:none;">COMMANDANT</div>
+                    <div class="content">
+                        <div class="author">POLICE & IAA ASSOCIATION</div>
+                        <div class="title">ACADEMIC INTERGRATION</div>
+                        <div class="topic">TPS</div>
+                        <div class="des">Higher Studies TPS</div>
+                        <div class="buttons">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Slide 3 -->
+                <div class="item" aria-roledescription="slide" aria-label="Slide 3 of 4">
+                    <img src="assets/images/people/samia.jpeg" alt="PRESIDENT" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="image-fallback" style="display:none;">PRESIDENT OF TANZANIA</div>
+                    <div class="content">
+                        <div class="author">GOVERNMENT</div>
+                        <div class="title">PRESIDENT</div>
+                        <div class="topic">TANZANIA</div>
+                        <div class="des">The President of Tanzania</div>
+                        <div class="buttons">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Slide 4 -->
+                <div class="item" aria-roledescription="slide" aria-label="Slide 4 of 4">
+                    <img src="assets/images/people/maafande.jpeg" alt="OFFICERS" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="image-fallback" style="display:none;">POLICE OFFICERS</div>
+                    <div class="content">
+                        <div class="author">TRAINING</div>
+                        <div class="title">OFFICERS</div>
+                        <div class="topic">POLICE FORCE</div>
+                        <div class="des">Police Officers in Training</div>
+                        <div class="buttons">
                         </div>
                     </div>
                 </div>
             </div>
-        </template>
-
-        <!-- Bottom Navigation with Rounded Thumbnails -->
-        <div class="absolute bottom-12 left-0 right-0 z-30">
-            <div class="container mx-auto px-6 md:px-12">
-                <div class="flex items-center gap-4">
-                    <!-- Navigation Arrows -->
-                    <button @click="changeSlide((currentSlide - 1 + slides.length) % slides.length); clearInterval(autoplayInterval); startAutoplay();"
-                            class="bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center w-10 h-10
-                                  backdrop-blur-sm transition-all duration-300 hover:scale-110">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-                        </svg>
-                    </button>
-                    
-                    <button @click="changeSlide((currentSlide + 1) % slides.length); clearInterval(autoplayInterval); startAutoplay();"
-                            class="bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center w-10 h-10
-                                  backdrop-blur-sm transition-all duration-300 hover:scale-110">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                        </svg>
-                    </button>
-                    
-                    <!-- Spacer -->
-                    <div class="flex-grow"></div>
-                    
-                    <!-- Rounded Thumbnails - Fix for scrollbar issue -->
-                    <div class="flex items-center gap-4 overflow-x-auto pb-2 no-scrollbar">
-                        <template x-for="(slide, index) in slides" :key="'thumb-' + index">
-                            <button @click="changeSlide(index); clearInterval(autoplayInterval); startAutoplay();" 
-                                :class="{ 
-                                    'ring-2 ring-white ring-offset-2 ring-offset-black scale-105': currentSlide === index,
-                                    'opacity-70': currentSlide !== index
-                                }"
-                                class="rounded-2xl overflow-hidden transition-all duration-300 focus:outline-none
-                                      shadow-md hover:shadow-lg hover:scale-105 relative flex-shrink-0">
-                                <!-- Thumbnail image -->
-                                <div class="w-36 h-28 relative">
-                                    <img :src="slide.image" :alt="slide.title" class="w-full h-full object-cover">
-                                    
-                                    <!-- Dark overlay for text -->
-                                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
-                                    
-                                    <!-- Thumbnail caption -->
-                                    <div class="absolute bottom-0 left-0 right-0 p-3 text-left">
-                                        <div class="text-white text-xs font-medium"></div>
-                                        <div class="text-gray-300 text-xs"></div>
-                                    </div>
-                                </div>
-                            </button>
-                        </template>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Auto-progress indicator -->
-        <div class="absolute bottom-0 left-0 right-0 h-1 bg-gray-800">
-            <div 
-                x-ref="progressBar"
-                x-effect="
-                    $refs.progressBar.style.width = '0%';
-                    $refs.progressBar.style.transition = 'none';
-                    setTimeout(() => {
-                        $refs.progressBar.style.width = '100%';
-                        $refs.progressBar.style.transition = 'width 6s linear';
-                    }, 50);
-                "
-                class="h-full bg-orange-500"
-            ></div>
-        </div>
-    </div>
-</div>
-
-<style>
-/* Add subtle zoom animation for active slide */
-@keyframes subtleZoom {
-    0% { transform: scale(1); }
-    100% { transform: scale(1.05); }
-}
-
-.animate-subtle-zoom {
-    animation: subtleZoom 10s ease infinite alternate;
-}
-
-/* Hide scrollbar while maintaining functionality */
-.no-scrollbar {
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
-}
-
-.no-scrollbar::-webkit-scrollbar {
-    display: none;  /* Chrome, Safari and Opera */
-}
-
-/* Hide elements during initial load until Alpine is ready */
-[x-cloak] {
-    display: none !important;
-}
-
-/* Add bouncy drop effect animation for drop-down transition */
-@keyframes bounceDown {
-    0% { transform: translateY(-100%); opacity: 0; }
-    60% { transform: translateY(10%); opacity: 1; }
-    80% { transform: translateY(-5%); }
-    100% { transform: translateY(0); }
-}
-
-.drop-down-effect {
-    animation: bounceDown 1.2s ease-out forwards;
-}
-</style>
-
-    <!-- Message from Commandant Section -->
-    <div class="py-16 bg-gradient-to-b from-blue-50 to-white">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-12">
-                <h2 class="text-4xl font-bold text-gray-800 mb-4">Message from the Commandant</h2>
-                <div class="w-24 h-1 bg-blue-600 mx-auto rounded-full"></div>
-            </div>
             
-            <div class="flex flex-col md:flex-row items-center gap-8" 
-                 x-data="{ isVisible: false }" 
-                 x-intersect="isVisible = true">
-                <div class="md:w-1/3 transform" 
-                     x-class:="isVisible ? 'translate-x-0 opacity-100' : '-translate-x-12 opacity-0'"
-                     x-transition:enter="transition ease-out duration-1000 delay-300">
-                    <div class="relative overflow-hidden rounded-lg shadow-xl group">
-                        <img src="{{ asset('assets/images/people/mungi.png') }}" alt="TPS School Commandant" class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105">
-                        <div class="absolute inset-0 bg-gradient-to-t from-blue-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <!-- Thumbnail Navigation - Static Version -->
+            <div class="thumbnail" role="tablist" aria-label="Slide selection">
+                <!-- Thumbnail 1 -->
+                <div class="item active" onclick="goToSlide(0)" role="tab" tabindex="0" aria-selected="true" aria-controls="slide-0" id="thumb-0" onkeydown="handleKeyDown(event, 0)">
+                    <img src="assets/images/people/igpco.jpg" alt="INSPECTOR GENERAL OF POLICE" onerror="this.style.display='none'; this.parentNode.style.backgroundColor='#333';">
+                    <div class="content">
+                        <div class="title">INSPECTOR GENERAL OF POLICE</div>
+                        <div class="description">TANZANIA</div>
                     </div>
                 </div>
                 
-                <div class="md:w-2/3" 
-                     x-class:="isVisible ? 'translate-x-0 opacity-100' : 'translate-x-12 opacity-0'"
-                     x-transition:enter="transition ease-out duration-1000 delay-600">
-                    <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-100">
-                        <h3 class="text-2xl font-semibold mb-4 text-gray-800">Welcome to TPS</h3>
-                        <p class="text-gray-600 mb-6 leading-relaxed">
-                            It is my honor to welcome you to our esteemed institution. At TPS, we are committed to excellence in training and developing the next generation of professionals. Our dedicated faculty and state-of-the-art facilities create an environment where students can thrive academically and personally.
-                       <a href="{{ route('about.leadership')}}" class="inline-flex items-center group text-blue-600 font-semibold hover:text-blue-800 transition-all duration-300">
-                    Meet our leadership team
-                   <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                   </svg>
-                    </a>
+                <!-- Thumbnail 2 -->
+                <div class="item" onclick="goToSlide(1)" role="tab" tabindex="0" aria-selected="false" aria-controls="slide-1" id="thumb-1" onkeydown="handleKeyDown(event, 1)">
+                    <img src="assets/images/people/news2.jpeg" alt="ACADEMIC INTERGRATION" onerror="this.style.display='none'; this.parentNode.style.backgroundColor='#333';">
+                    <div class="content">
+                        <div class="title">POLICE & IAA ASSOCIATION</div>
+                        <div class="description">Higher Studies TPS</div>
                     </div>
+                </div>
+                
+                <!-- Thumbnail 3 -->
+                <div class="item" onclick="goToSlide(2)" role="tab" tabindex="0" aria-selected="false" aria-controls="slide-2" id="thumb-2" onkeydown="handleKeyDown(event, 2)">
+                    <img src="assets/images/people/samia.jpeg" alt="PRESIDENT" onerror="this.style.display='none'; this.parentNode.style.backgroundColor='#333';">
+                    <div class="content">
+                        <div class="title">PRESIDENT</div>
+                        <div class="description">TANZANIA</div>
+                    </div>
+                </div>
+                
+                <!-- Thumbnail 4 -->
+                <div class="item" onclick="goToSlide(3)" role="tab" tabindex="0" aria-selected="false" aria-controls="slide-3" id="thumb-3" onkeydown="handleKeyDown(event, 3)">
+                    <img src="assets/images/people/maafande.jpeg" alt="OFFICERS" onerror="this.style.display='none'; this.parentNode.style.backgroundColor='#333';">
+                    <div class="content">
+                        <div class="title">OFFICERS</div>
+                        <div class="description">POLICE FORCE</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Navigation Arrows -->
+            <div class="arrows">
+                <button id="prev" onclick="prevSlide()" aria-label="Previous slide" tabindex="0">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+                    </svg>
+                </button>
+                <button id="next" onclick="nextSlide()" aria-label="Next slide" tabindex="0">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- Progress Indicator -->
+            <div class="time" id="progressBar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+        </div>
+    </div>
+
+    <script>
+// Variables
+let currentSlide = 0;
+const slides = document.querySelectorAll('.carousel .list .item');
+const thumbnails = document.querySelectorAll('.thumbnail .item');
+const totalSlides = slides.length;
+let autoplayInterval;
+const timeAutoNext = 7000;
+const transitionDelay = 100; // Increased from 50ms for better reliability
+let isTransitioning = false;
+
+// Initialize
+function init() {
+    // Set initial states
+    updateSlideAttributes();
+    
+    // Start progress bar and autoplay
+    resetTimeProgress();
+    startAutoplay();
+    
+    // Add event listeners
+    window.addEventListener('resize', handleResize);
+    document.addEventListener('keydown', handleGlobalKeyDown);
+    
+    // Add pause/resume on focus/blur
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+}
+
+// Update ARIA attributes for accessibility
+function updateSlideAttributes() {
+    slides.forEach((slide, index) => {
+        slide.setAttribute('id', `slide-${index}`);
+        slide.setAttribute('aria-hidden', index === currentSlide ? 'false' : 'true');
+    });
+    
+    thumbnails.forEach((thumb, index) => {
+        thumb.setAttribute('aria-selected', index === currentSlide ? 'true' : 'false');
+    });
+}
+
+// Handle visibility change (pause autoplay when tab not visible)
+function handleVisibilityChange() {
+    if (document.hidden) {
+        clearInterval(autoplayInterval);
+    } else {
+        startAutoplay();
+    }
+}
+
+// Handle keyboard navigation for thumbnails
+function handleKeyDown(event, index) {
+    if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        goToSlide(index);
+    }
+}
+
+// Handle global keyboard navigation
+function handleGlobalKeyDown(event) {
+    switch (event.key) {
+        case 'ArrowLeft':
+            event.preventDefault();
+            prevSlide();
+            break;
+        case 'ArrowRight':
+            event.preventDefault();
+            nextSlide();
+            break;
+    }
+}
+
+// Handle window resize for responsive behavior
+function handleResize() {
+    // Adjust the carousel for responsive layouts
+    const carousel = document.querySelector('.carousel');
+    if (window.innerWidth <= 768) {
+        // Additional responsive behavior could be added here
+    }
+}
+
+function startAutoplay() {
+    clearInterval(autoplayInterval);
+    autoplayInterval = setInterval(() => {
+        nextSlide();
+    }, timeAutoNext);
+}
+
+function resetTimeProgress() {
+    const progressBar = document.getElementById('progressBar');
+    if (progressBar) {
+        progressBar.style.width = '0%';
+        progressBar.style.transition = 'none';
+        progressBar.setAttribute('aria-valuenow', '0');
+        
+        // Use requestAnimationFrame for smoother transitions
+        requestAnimationFrame(() => {
+            setTimeout(() => {
+                progressBar.style.width = '100%';
+                progressBar.style.transition = `width ${timeAutoNext/1000}s linear`;
+                progressBar.setAttribute('aria-valuenow', '100');
+            }, 50);
+        });
+    }
+}
+
+function nextSlide() {
+    if (isTransitioning) return;
+    changeSlide((currentSlide + 1) % totalSlides);
+}
+
+function prevSlide() {
+    if (isTransitioning) return;
+    changeSlide((currentSlide - 1 + totalSlides) % totalSlides);
+}
+
+function goToSlide(index) {
+    if (currentSlide === index || isTransitioning) return;
+    changeSlide(index);
+}
+
+function changeSlide(newIndex) {
+    isTransitioning = true;
+    
+    // Remove active class from current slide
+    slides[currentSlide].classList.remove('active');
+    slides[currentSlide].setAttribute('aria-hidden', 'true');
+    thumbnails[currentSlide].classList.remove('active');
+    thumbnails[currentSlide].setAttribute('aria-selected', 'false');
+    
+    // Reset the progress bar at the beginning of slide change
+    resetTimeProgress();
+    
+    // Use requestAnimationFrame for smoother transitions
+    requestAnimationFrame(() => {
+        setTimeout(() => {
+            // Update current slide
+            currentSlide = newIndex;
+            
+            // Add active class to new slide
+            slides[currentSlide].classList.add('active');
+            slides[currentSlide].setAttribute('aria-hidden', 'false');
+            thumbnails[currentSlide].classList.add('active');
+            thumbnails[currentSlide].setAttribute('aria-selected', 'true');
+            
+            // Focus on the active thumbnail for accessibility
+            if (document.activeElement === thumbnails[currentSlide] || 
+                (document.activeElement && document.activeElement.closest('.thumbnail'))) {
+                thumbnails[currentSlide].focus({preventScroll: true});
+            }
+            
+            // Complete transition after animation ends
+            setTimeout(() => {
+                isTransitioning = false;
+            }, 500);
+        }, transitionDelay);
+    });
+    
+    // Restart the autoplay timer
+    startAutoplay();
+}
+
+// Error handling for images
+function handleImageError(img) {
+    img.style.display = 'none';
+    img.nextElementSibling.style.display = 'flex';
+}
+
+// Preload images to prevent flickering
+function preloadImages() {
+    const imageUrls = [
+        'assets/images/people/igpco.jpeg',
+        'assets/images/people/news2.jpeg',
+        'assets/images/people/samia.jpeg',
+        'assets/images/people/maafande.jpeg'
+    ];
+    
+    imageUrls.forEach(url => {
+        const img = new Image();
+        img.src = url;
+    });
+}
+
+// Initialize the carousel
+window.addEventListener('load', () => {
+    preloadImages();
+    init();
+});
+
+// Clean up event listeners when page is unloaded
+window.addEventListener('unload', () => {
+    clearInterval(autoplayInterval);
+    window.removeEventListener('resize', handleResize);
+    document.removeEventListener('keydown', handleGlobalKeyDown);
+    document.removeEventListener('visibilitychange', handleVisibilityChange);
+});
+    </script>
+</body>
+</html>    
+
+
+    <!-- Commandant news -->
+
+<style>
+/* Mobile Responsive Styles */
+@media screen and (max-width: 768px) {
+    .commandant {
+        padding: 12px;
+        margin-bottom: 15px;
+        font-size: 14px;
+        height: 50px !important; /* Fixed height for tablets */
+        overflow-y: auto; /* Enable scrolling if content exceeds height */
+    }
+    .commandant img{
+        height: 80vw;
+    }
+}
+</style>
+<div class="py-8 md:py-16 bg-gradient-to-b from-blue-50 to-white">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-8 md:mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Message from the Commandant</h2>
+            <div class="w-16 md:w-24 h-1 bg-blue-600 mx-auto rounded-full"></div>
+        </div>
+        
+        <div class="flex flex-col md:flex-row items-center gap-6 md:gap-8" 
+             x-data="{ isVisible: false }" 
+             x-intersect="isVisible = true">
+            <div class="w-full md:w-1/3 transform" 
+                 x-class:="isVisible ? 'translate-x-0 opacity-100' : '-translate-x-12 opacity-0'"
+                 x-transition:enter="transition ease-out duration-1000 delay-300 commandant">
+                <div class="relative overflow-hidden rounded-lg shadow-xl group">
+                    <!-- Modified image container to prevent stretching -->
+                    <div class="aspect-w-4 aspect-h-5 max-w-full">
+                        <img src="{{ asset('assets/images/people/mungi.png') }}" alt="TPS School Commandant" 
+                             class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105">
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-blue-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                </div>
+            </div>
+            
+            <div class="w-full md:w-2/3 mt-6 md:mt-0" 
+                 x-class:="isVisible ? 'translate-x-0 opacity-100' : 'translate-x-12 opacity-0'"
+                 x-transition:enter="transition ease-out duration-1000 delay-600">
+                <div class="bg-white p-6 md:p-8 rounded-xl shadow-lg border border-gray-100">
+                    <h3 class="text-xl md:text-2xl font-semibold mb-3 md:mb-4 text-gray-800">Welcome to TPS</h3>
+                    <p class="text-gray-600 mb-4 md:mb-6 leading-relaxed text-sm md:text-base">
+                        It is my honor to welcome you to our esteemed institution. At TPS, we are committed to excellence in training and developing the next generation of professionals. Our dedicated faculty and state-of-the-art facilities create an environment where students can thrive academically and personally.
+                    </p>
+                    <a href="{{ route('about.leadership')}}" class="inline-flex items-center group text-blue-600 font-semibold hover:text-blue-800 transition-all duration-300 text-sm md:text-base">
+                        Meet our leadership team
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 md:h-5 md:w-5 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                        </svg>
+                    </a>
                 </div>
             </div>
         </div>
     </div>
+</div>
+</div>
+
 
 <!-- News, Announcements & Events Section -->
 <div class="py-16 bg-gray-50">
@@ -383,25 +981,20 @@
                              x-data="{
                                 slides: [
                                     {
-                                        image: '/assets/images/Logos/IMG_0970-1024x683.jpg',
-                                        heading: 'TPS Graduates Excel in National Service',
-                                        summary: 'Recent graduates from our institution have been recognized for their exceptional performance.'
+                                        image: '/assets/images/newsmain/igp.png',
+                                        heading: 'SHEREHE ZA KUFUNGA MAFUNZO UONGOZI MDOGO TPS – MOSHI KOZI NO 2-2024/2025',
+                                        summary: 'MKUU WA JESHI LA POLISI TANZANIA IGP CAMILLUS M. WAMBURA NI MGENI RASMI KATIKA SHEREHE YA KUFUNGA MAFUNZO YA UONGOZI…'
                                     },
                                     {
-                                        image: '/assets/images/Logos/slide2.jpg',
-                                        heading: 'Award-Winning Community Service',
+                                        image: '/assets/images/newsmain/mungi cup.jpg',
+                                        heading: 'TIMU YA BRAVO COY YAIBUKA MSHINDI MUNGI CAP.',
                                         summary: 'Our students participated in community outreach programs with outstanding results.'
                                     },
                                     {
-                                        image: '/assets/images/Logos/slide3.jpg',
-                                        heading: 'Leadership Training Program',
+                                        image: '/assets/images/newsmain/zahanatiWhatsApp-Image-2024-12-27-at-4.23.26-PM-300x169.jpeg',
+                                        heading: 'WANAFUNZI WA MAFUNZO YA UONGOZI MDOGO NDANI YA JESHI LA POLISI NGAZI YA CPL WALIOPO KAMBI YA KILELEPORI WAFANYA USAFI KATIKA ZAHANATI YA SINAI',
                                         summary: 'Special leadership initiative prepares students for future challenges.'
                                     },
-                                    {
-                                        image: '/assets/images/Logos/slide4.jpg',
-                                        heading: 'International Recognition',
-                                        summary: 'TPS graduates receive acknowledgment for their contributions abroad.'
-                                    }
                                 ],
                                 currentIndex: 0,
                                 interval: null,
@@ -474,27 +1067,22 @@
                         <!-- Second News Item with Slideshow -->
                         <div class="md:w-1/2 bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300"
                              x-data="{
-                                slides: [
+                               slides: [
                                     {
-                                        image: '/assets/images/Logos/JL3A9818-scaled.jpg',
-                                        heading: 'New ICT Laboratory Inaugurated',
-                                        summary: 'Our institution has officially opened a state-of-the-art ICT laboratory.'
+                                        image: '/assets/images/newsmain/miti.jpg',
+                                        heading: 'SHULE YA POLISI TANZANIA-MOSHI YA UKARIBISHA MWAKA MPYA 2025 KWA UPANDAJI MITI',
+                                        summary: 'Mheshimiwa Raymond Mwangwala, Mkuu wa Wilaya ya Rombo, aliyekuwa mgeni rasmi katika hafla ya kuaga mwaka 2024 na kuukaribisha mwaka 2025. Wakati wa hafla hiyo, iliyofanyika katika ukumbi wa mikutano wa Shule ya Polisi Tanzania-Moshi..'
                                     },
                                     {
-                                        image: '/assets/images/Logos/lab2.jpg',
-                                        heading: 'Advanced Technology Integration',
-                                        summary: 'The lab features cutting-edge equipment for practical learning experiences.'
+                                        image: '/assets/images/newsmain/zenji.png',
+                                        heading: 'KHERI YA MIAKA 61 YA MAPINDUZI YA ZANZIBAR',
+                                        summary: 'SACP RAMADHANI A. MUNGI, COMMANDANT wa Shule ya Polisi Tanzania – Moshi, anawatakia kheri ya Miaka 61 ya Mapinduzi ya Zanzibar. Wakufunzi wote na familia zao, Watumishi raia..'
                                     },
                                     {
-                                        image: '/assets/images/Logos/lab3.jpg',
-                                        heading: 'Industry Partnership Program',
-                                        summary: 'Collaborations with tech companies provide real-world training opportunities.'
+                                        image: '/assets/images/newsmain/senga.jpg',
+                                        heading: 'SHEREHE YA KUFUNGA MAFUNZO YA AWALI YA POLISI',
+                                        summary: ''
                                     },
-                                    {
-                                        image: '/assets/images/Logos/lab4.jpg',
-                                        heading: 'Digital Skills Development',
-                                        summary: 'Students gain hands-on experience with professional software and tools.'
-                                    }
                                 ],
                                 currentIndex: 0,
                                 interval: null,
@@ -1123,8 +1711,8 @@
         currentSlide: 0, 
         slideInterval: null,
         slides: [
-            '{{ asset('assets/images/Logos/NEW-9482-scaled.jpg') }}',
-            '{{ asset('assets/images/Logos/IMG-20240628-WA0124-1536x1024.jpg') }}',
+            '{{ asset('assets/images/courses/WhatsApp Image 2025-03-19 at 7.58.15 PM.jpeg') }}',
+            '{{ asset('assets/images/courses/WhatsApp Image 2025-03-19 at 7.58.15 PM.jpeg') }}',
             '{{ asset('assets/images/Logos/JL3A0421-scaled.jpg') }}',
             '{{ asset('assets/images/Logos/Snapinsta.app_464550583_567745649165392_6800108106112023936_n_1080-1024x576.jpg') }}'
         ]
@@ -1180,7 +1768,7 @@
     <div class="course-card bg-white rounded-2xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-300"
         x-data="{ isHovered: false, currentSlide: 0, slides: [
                     '{{ asset('assets/images/Logos/IMG-20240305-WA0014-1024x683.jpg') }}',
-                    '{{ asset('assets/images/proficiency-slide2.jpg') }}',
+                    '{{ asset('assets/images/courses/WhatsApp Image 2025-03-19 at 7.58.15 PM.jpeg') }}',
                     '{{ asset('assets/images/proficiency-slide3.jpg') }}',
                     '{{ asset('assets/images/proficiency-slide4.jpg') }}'
                 ] }" @mouseenter="isHovered = true; startSlideshow()" @mouseleave="isHovered = false; stopSlideshow()"
@@ -1800,10 +2388,12 @@
 
     <!-- Add any additional sections here -->
 <!-- Our Achievements Section -->
-<div class="relative h-screen overflow-hidden bg-gray-100">
+<div class="relative min-h-screen overflow-hidden bg-gray-100">
     <!-- Dynamic Background (Based on Active Card) -->
     <div x-data="{ 
         activeSlide: 0,
+        isTransitioning: false,
+        isMobile: window.innerWidth < 768,
         slides: [
             {
                 image: '{{ asset('assets/images/Logos/JL3A0557.jpg') }}',
@@ -1834,21 +2424,63 @@
                 milestone: 'Academic Excellence'
             }
         ],
+        autoSlideInterval: null,
         init() {
+            this.checkScreenSize();
             this.startAutoSlide();
-            this.updateCardPositions();
+            this.$watch('activeSlide', () => {
+                this.handleSlideChange();
+            });
+        },
+        checkScreenSize() {
+            this.isMobile = window.innerWidth < 768;
         },
         startAutoSlide() {
-            setInterval(() => {
-                this.activeSlide = (this.activeSlide + 1) % this.slides.length;
-                this.updateCardPositions();
+            this.stopAutoSlide();
+            this.autoSlideInterval = setInterval(() => {
+                if (!this.isTransitioning) {
+                    this.goToNextSlide();
+                }
             }, 10000);
         },
-        updateCardPositions() {
-            // Logic handled by Alpine.js x-for and positioning classes
+        stopAutoSlide() {
+            if (this.autoSlideInterval) {
+                clearInterval(this.autoSlideInterval);
+            }
+        },
+        goToNextSlide() {
+            this.isTransitioning = true;
+            this.activeSlide = (this.activeSlide + 1) % this.slides.length;
+        },
+        goToPrevSlide() {
+            this.isTransitioning = true;
+            this.activeSlide = (this.activeSlide - 1 + this.slides.length) % this.slides.length;
+        },
+        handleSlideChange() {
+            // Reset progress animation
+            const progressBar = document.querySelector('.progress-bar-' + this.activeSlide);
+            if (progressBar) {
+                progressBar.style.animation = 'none';
+                setTimeout(() => {
+                    progressBar.style.animation = 'progress 10s linear forwards';
+                }, 10);
+            }
+            
+            // Re-enable transitions after a small delay
+            setTimeout(() => {
+                this.isTransitioning = false;
+            }, 1000);
         },
         getCardClass(index) {
             const position = (index - this.activeSlide + this.slides.length) % this.slides.length;
+            
+            // Mobile screens: show only active card at full size
+            if (this.isMobile) {
+                if (position === 0) return 'z-30 scale-100 translate-y-0 opacity-100'; // Active card
+                return 'hidden'; // Hide other cards on small screens
+            }
+            
+            // Default stacking behavior for larger screens
             if (position === 0) return 'z-30 scale-110 translate-y-0 opacity-100'; // Active card
             if (position === 1) return 'z-20 scale-95 translate-y-24 opacity-90'; // First stacked card
             if (position === 2) return 'z-10 scale-90 translate-y-40 opacity-80'; // Second stacked card
@@ -1856,57 +2488,63 @@
         }
     }" 
     x-init="init()"
+    @resize.window="checkScreenSize()"
     class="w-full h-full">
         
-        <!-- Background Image (Current Active Card) -->
+        <!-- Background Image (Current Active Card) with Preloading -->
         <template x-for="(slide, index) in slides" :key="index">
             <div x-show="activeSlide === index"
-                x-transition:enter="transition-opacity duration-1000"
+                x-transition:enter="transition-opacity duration-1000 ease-in-out"
                 x-transition:enter-start="opacity-0"
                 x-transition:enter-end="opacity-100"
-                x-transition:leave="transition-opacity duration-1000"
+                x-transition:leave="transition-opacity duration-1000 ease-in-out"
                 x-transition:leave-start="opacity-100"
                 x-transition:leave-end="opacity-0"
                 class="absolute inset-0 w-full h-full">
                 <div class="absolute inset-0 bg-black opacity-60"></div>
-                <img :src="slide.image" class="absolute inset-0 w-full h-full object-cover" :alt="slide.title">
+                <img :src="slide.image" class="absolute inset-0 w-full h-full object-cover" 
+                     :alt="slide.title" loading="lazy"
+                     @load="index === activeSlide ? isTransitioning = false : null">
+                
+                <!-- Preload next image -->
+                <img :src="slides[(index + 1) % slides.length].image" class="hidden" alt="Preload next image" loading="lazy">
             </div>
         </template>
 
         <!-- Content Container -->
-        <div class="relative h-full flex items-center">
-            <div class="container mx-auto px-4 flex flex-col md:flex-row items-center h-full">
+        <div class="relative min-h-screen py-8 md:py-0 flex items-center">
+            <div class="container mx-auto px-4 flex flex-col md:flex-row items-center justify-center h-full pt-16 md:pt-0">
                 
                 <!-- Left Side: Timeline with Milestones -->
-                <div class="w-full md:w-1/2 text-white z-10 pb-12 md:pb-0">
-                    <h2 class="text-4xl font-bold mb-8">Our Achievements</h2>
+                <div class="w-full md:w-1/2 text-white z-10 pb-8 md:pb-0">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4 md:mb-8 text-center md:text-left">Our Achievements</h2>
                     
                     <!-- Vertical Timeline -->
-                    <div class="relative pl-8 ml-8">
+                    <div class="relative pl-6 md:pl-8 ml-2 md:ml-8">
                         <!-- Vertical Line -->
                         <div class="absolute left-0 top-0 bottom-0 w-1 bg-blue-600 rounded"></div>
                         
                         <!-- Timeline Items -->
                         <template x-for="(slide, index) in slides" :key="index">
-                            <div class="mb-12 relative">
+                            <div class="mb-6 md:mb-12 relative">
                                 <!-- Milestone Point -->
-                                <div :class="activeSlide === index ? 'bg-blue-600 scale-125' : 'bg-gray-400'"
-                                    class="absolute -left-10 w-4 h-4 rounded-full border-4 border-white transition-all duration-500"></div>
+                                <div :class="activeSlide === index ? 'bg-blue-600 scale-125 transform transition-all duration-500' : 'bg-gray-400 transition-all duration-500'"
+                                    class="absolute -left-8 md:-left-10 w-3 md:w-4 h-3 md:h-4 rounded-full border-2 md:border-4 border-white"></div>
                                 
                                 <!-- Year -->
-                                <div :class="activeSlide === index ? 'text-blue-300 font-bold' : 'text-gray-300'"
-                                    class="text-lg mb-1 transition-all duration-500" x-text="slide.year"></div>
+                                <div :class="activeSlide === index ? 'text-blue-300 font-bold transform transition-all duration-500' : 'text-gray-300 transition-all duration-500'"
+                                    class="text-base md:text-lg mb-1" x-text="slide.year"></div>
                                 
                                 <!-- Milestone -->
-                                <div :class="activeSlide === index ? 'text-white' : 'text-gray-400'"
-                                    class="text-lg font-semibold transition-all duration-500" x-text="slide.milestone"></div>
+                                <div :class="activeSlide === index ? 'text-white transform transition-all duration-500' : 'text-gray-400 transition-all duration-500'"
+                                    class="text-base md:text-lg font-semibold" x-text="slide.milestone"></div>
                                 
                                 <!-- Brief Description -->
                                 <div x-show="activeSlide === index" 
-                                    x-transition:enter="transition-all duration-500"
+                                    x-transition:enter="transition-all duration-500 ease-out"
                                     x-transition:enter-start="opacity-0 transform -translate-x-4"
                                     x-transition:enter-end="opacity-100 transform translate-x-0"
-                                    class="text-sm text-gray-300 mt-2 max-w-xs">
+                                    class="text-xs md:text-sm text-gray-300 mt-2 max-w-xs">
                                     <p x-text="slide.description.split('.')[0] + '.'"></p>
                                 </div>
                             </div>
@@ -1915,27 +2553,27 @@
                 </div>
                 
                 <!-- Right Side: Card Castle -->
-                <div class="w-full md:w-1/2 h-full relative flex items-center justify-center z-10">
-                    <div class="relative h-96 w-64">
+                <div class="w-full md:w-1/2 relative flex items-center justify-center z-10 mt-4 md:mt-0">
+                    <div class="relative h-64 md:h-96 w-64 md:w-80">
                         <template x-for="(slide, index) in slides" :key="index">
-                            <div @click="activeSlide = index"
+                            <div @click="activeSlide = index; stopAutoSlide(); startAutoSlide();"
                                 :class="getCardClass(index)"
-                                class="absolute top-0 left-0 w-full bg-white rounded-2xl shadow-xl overflow-hidden transition-all duration-1000 cursor-pointer">
+                                class="absolute top-0 left-0 w-full bg-white rounded-2xl shadow-xl overflow-hidden transition-all duration-700 ease-in-out cursor-pointer transform-gpu hover:shadow-2xl">
                                 
                                 <!-- Card Image -->
-                                <div class="w-full h-32 overflow-hidden">
-                                    <img :src="slide.image" :alt="slide.title" class="w-full h-full object-cover">
+                                <div class="w-full h-24 md:h-32 overflow-hidden">
+                                    <img :src="slide.image" :alt="slide.title" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
                                 </div>
                                 
                                 <!-- Card Content -->
-                                <div class="p-4">
-                                    <h3 class="text-lg font-bold text-gray-800 mb-2" x-text="slide.title"></h3>
+                                <div class="p-3 md:p-4">
+                                    <h3 class="text-base md:text-lg font-bold text-gray-800 mb-1 md:mb-2" x-text="slide.title"></h3>
                                     <p class="text-xs text-gray-600 line-clamp-3" x-text="slide.description"></p>
                                 </div>
                                 
                                 <!-- Progress Bar -->
                                 <div x-show="activeSlide === index" class="absolute bottom-0 left-0 right-0 h-1 bg-gray-200">
-                                    <div class="h-full bg-blue-600 animate-progress"></div>
+                                    <div :class="'progress-bar-' + index" class="h-full bg-blue-600 animate-progress"></div>
                                 </div>
                             </div>
                         </template>
@@ -1945,162 +2583,38 @@
         </div>
         
         <!-- Navigation Controls -->
-        <div class="absolute bottom-8 right-8 flex space-x-4 z-20">
-            <button @click="activeSlide = (activeSlide - 1 + slides.length) % slides.length"
-                class="bg-blue-600 hover:bg-blue-700 text-white rounded-full p-2 shadow-lg hover:shadow-xl transition-all duration-300 focus:outline-none">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <div class="absolute bottom-4 md:bottom-8 right-4 md:right-8 flex space-x-3 md:space-x-4 z-20">
+            <button @click="goToPrevSlide(); stopAutoSlide(); startAutoSlide();"
+                :disabled="isTransitioning"
+                :class="isTransitioning ? 'opacity-50 cursor-not-allowed' : 'opacity-100 hover:bg-blue-700'"
+                class="bg-blue-600 text-white rounded-full p-1 md:p-2 shadow-lg hover:shadow-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50 transform active:scale-95">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 md:h-6 md:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
                 </svg>
             </button>
-            <button @click="activeSlide = (activeSlide + 1) % slides.length"
-                class="bg-blue-600 hover:bg-blue-700 text-white rounded-full p-2 shadow-lg hover:shadow-xl transition-all duration-300 focus:outline-none">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <button @click="goToNextSlide(); stopAutoSlide(); startAutoSlide();"
+                :disabled="isTransitioning"
+                :class="isTransitioning ? 'opacity-50 cursor-not-allowed' : 'opacity-100 hover:bg-blue-700'"
+                class="bg-blue-600 text-white rounded-full p-1 md:p-2 shadow-lg hover:shadow-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50 transform active:scale-95">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 md:h-6 md:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                 </svg>
             </button>
         </div>
-    </div>
-</div>
 
-
-        <!-- Modal Overlay -->
-        <div x-show="activeModal" 
-             class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center"
-             x-transition:enter="transition ease-out duration-300"
-             x-transition:enter-start="opacity-0"
-             x-transition:enter-end="opacity-100"
-             x-transition:leave="transition ease-in duration-200"
-             x-transition:leave-start="opacity-100"
-             x-transition:leave-end="opacity-0">
-            
-            <!-- Modal Content -->
-            <div class="bg-white rounded-2xl max-w-2xl w-full max-h-[80vh] overflow-y-auto p-8"
-                 x-show="activeModal"
-                 x-transition:enter="transition ease-out duration-300"
-                 x-transition:enter-start="opacity-0 scale-90"
-                 x-transition:enter-end="opacity-100 scale-100"
-                 x-transition:leave="transition ease-in duration-200"
-                 x-transition:leave-start="opacity-100 scale-100"
-                 x-transition:leave-end="opacity-0 scale-90">
-
-                
-    <!-- Recruit Course Modal --> 
-    <div x-show="activeModal === 'recruit'">
-        <h2 class="text-3xl font-bold text-blue-800 mb-6">Basic Recruit Courses</h2>
-        <p class="text-gray-700 mb-4">
-            Our Basic Recruit Courses are the gateway to a prestigious career in law enforcement. Candidates undergo comprehensive training that covers physical fitness, legal knowledge, community policing, and essential law enforcement skills.
-        </p>
-        <div class="mb-6">
-            <h3 class="text-xl font-semibold text-blue-700 mb-2">Course Highlights:</h3>
-            <ul class="list-disc pl-5 text-gray-700 space-y-1">
-                <li>Physical training and fitness development</li>
-                <li>Criminal law and procedure</li>
-                <li>Evidence handling and investigation techniques</li>
-                <li>Firearms training and defensive tactics</li>
-                <li>Community policing principles</li>
-                <li>Emergency response protocols</li>
-            </ul>
-        </div>
-        <div class="flex flex-wrap items-center gap-4">
-            <a href="https://www.ajira.go.tz/recruitment/police" target="_blank" 
-               class="inline-block bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 transition duration-300">
-                Official Recruitment Portal
-            </a>
-            <button @click="activeModal = null" 
-                    class="text-gray-600 hover:text-gray-900 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-100 transition duration-300">
-                Close
-            </button>
-        </div>
-    </div>
-
-    <!-- Academic Course Modal -->
-    <div x-show="activeModal === 'academic'">
-        <h2 class="text-3xl font-bold text-green-800 mb-6">Academic Courses</h2>
-        <p class="text-gray-700 mb-4">
-            Our Academic Courses provide advanced educational opportunities for police personnel. From undergraduate degrees in criminology to specialized certifications in forensic science and law enforcement management, we offer pathways for continuous professional development.
-        </p>
-        <div class="mb-6">
-            <h3 class="text-xl font-semibold text-green-700 mb-2">Available Programs:</h3>
-            <ul class="list-disc pl-5 text-gray-700 space-y-1">
-                <li>Bachelor of Science in Criminal Justice</li>
-                <li>Advanced Diploma in Police Administration</li>
-                <li>Certificate in Forensic Investigation</li>
-                <li>Specialized Law Enforcement Management Courses</li>
-                <li>Criminal Psychology and Behavioral Analysis</li>
-            </ul>
-        </div>
-        <div class="flex flex-wrap items-center gap-4">
-            <a href="https://www.police.go.tz/education" target="_blank" 
-               class="inline-block bg-green-500 text-white px-6 py-3 rounded-lg hover:bg-green-600 transition duration-300">
-                Explore Educational Programs
-            </a>
-            <button @click="activeModal = null" 
-                    class="text-gray-600 hover:text-gray-900 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-100 transition duration-300">
-                Close
-            </button>
-        </div>
-    </div>
-
-    <!-- Promotional Course Modal -->
-    <div x-show="activeModal === 'promotion'">
-        <h2 class="text-3xl font-bold text-purple-800 mb-6">Promotional Courses</h2>
-        <p class="text-gray-700 mb-4">
-            Designed for ambitious officers seeking career advancement, our Promotional Courses focus on leadership skills, strategic thinking, advanced management techniques, and specialized law enforcement strategies. Prepare yourself for higher responsibilities and leadership roles.
-        </p>
-        <div class="mb-6">
-            <h3 class="text-xl font-semibold text-purple-700 mb-2">Leadership Tracks:</h3>
-            <ul class="list-disc pl-5 text-gray-700 space-y-1">
-                <li>Senior Officer Leadership Program</li>
-                <li>Strategic Command and Decision Making</li>
-                <li>Advanced Crisis Management</li>
-                <li>Policy Development and Implementation</li>
-                <li>Organizational Management in Law Enforcement</li>
-            </ul>
-        </div>
-        <div class="flex flex-wrap items-center gap-4">
-            <a href="https://www.police.go.tz/career-development" target="_blank" 
-               class="inline-block bg-purple-500 text-white px-6 py-3 rounded-lg hover:bg-purple-600 transition duration-300">
-                Career Development Portal
-            </a>
-            <button @click="activeModal = null" 
-                    class="text-gray-600 hover:text-gray-900 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-100 transition duration-300">
-                Close
-            </button>
-        </div>
-    </div>
-
-    <!-- Proficiency Course Modal -->
-    <div x-show="activeModal === 'proficiency'">
-        <h2 class="text-3xl font-bold text-orange-800 mb-6">Proficiency Courses</h2>
-        <p class="text-gray-700 mb-4">
-            Our Proficiency Courses are designed to enhance specific skills and technical expertise in key law enforcement areas. These specialized programs cover advanced investigation techniques, cybercrime prevention, intelligence analysis, tactical operations, and other critical police competencies tailored to modern policing challenges.
-        </p>
-        <div class="mb-6">
-            <h3 class="text-xl font-semibold text-orange-700 mb-2">Specialized Tracks:</h3>
-            <ul class="list-disc pl-5 text-gray-700 space-y-1">
-                <li>Advanced Criminal Investigation</li>
-                <li>Cybercrime Detection and Prevention</li>
-                <li>Tactical Response and Special Operations</li>
-                <li>Intelligence Gathering and Analysis</li>
-                <li>Digital Forensics and Electronic Evidence</li>
-                <li>Counter-Terrorism Training</li>
-            </ul>
-        </div>
-        <div class="flex flex-wrap items-center gap-4">
-            <a href="https://www.police.go.tz/professional-development" target="_blank" 
-               class="inline-block bg-orange-500 text-white px-6 py-3 rounded-lg hover:bg-orange-600 transition duration-300">
-                Explore Proficiency Programs
-            </a>
-            <button @click="activeModal = null" 
-                    class="text-gray-600 hover:text-gray-900 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-100 transition duration-300">
-                Close
-            </button>
+        <!-- Page Indicators (Dots) -->
+        <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20">
+            <template x-for="(slide, index) in slides" :key="index">
+                <button @click="activeSlide = index; stopAutoSlide(); startAutoSlide();"
+                    :class="activeSlide === index ? 'bg-blue-600 w-3 md:w-4' : 'bg-gray-400 w-2 md:w-3'"
+                    class="h-2 md:h-3 rounded-full transition-all duration-300 hover:bg-blue-400">
+                </button>
+            </template>
         </div>
     </div>
 </div>
 
-
-
+<!-- Add this CSS to your stylesheet -->
 <style>
 @keyframes progress {
     0% { width: 0; }
@@ -2108,9 +2622,64 @@
 }
 
 .animate-progress {
-    animation: progress 10s linear;
+    animation: progress 10s linear forwards;
+}
+
+/* Fallback for browsers that don't support backdrop-filter */
+@supports not (backdrop-filter: blur(4px)) {
+    .bg-black.opacity-60 {
+        opacity: 0.8;
+    }
+}
+
+/* Better mobile scrolling */
+@media (max-width: 768px) {
+    html, body {
+        overflow-x: hidden;
+    }
+    
+    .min-h-screen {
+        min-height: 100vh;
+        min-height: -webkit-fill-available;
+    }
+    
+    /* Fix Safari height issues */
+    @supports (-webkit-touch-callout: none) {
+        .min-h-screen {
+            min-height: -webkit-fill-available;
+        }
+    }
+    
+    /* Prevent text from being too small */
+    .text-xs {
+        font-size: 0.8125rem;
+    }
+}
+
+/* Smoother transitions */
+.transition-all {
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Improve performance with hardware acceleration */
+.transform-gpu {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+/* Responsive layout adjustment for medium-sized screens */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .md\:translate-y-24 {
+        --tw-translate-y: 1.25rem;
+    }
+    .md\:translate-y-40 {
+        --tw-translate-y: 2rem;
+    }
+    .md\:translate-y-56 {
+        --tw-translate-y: 2.75rem;
+    }
 }
 </style>
-    </div>
 </div>
 @endsection

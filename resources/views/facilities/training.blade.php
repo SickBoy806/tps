@@ -159,6 +159,108 @@
         }
 
         /* ... (rest of the previous CSS remains the same) */
+
+    @media only screen and (max-width: 767px) {
+    /* Header adjustments */
+    .training-header {
+        padding: 2rem 1rem;
+        margin-top: 20px;
+    }
+    
+    .training-header h1 {
+        font-size: 1.75rem;
+    }
+    
+    .training-header p {
+        font-size: 1rem;
+    }
+    
+    /* Stats section */
+    .stat-container {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding: 0 1rem;
+    }
+    
+    .stat-item {
+        padding: 1.5rem;
+    }
+    
+    .stat-number {
+        font-size: 2.5rem;
+    }
+    
+    /* Course sections */
+    .course-section-header h2 {
+        font-size: 1.75rem;
+    }
+    
+    .main-content {
+        padding: 0 1rem;
+        margin: 1rem auto;
+    }
+    
+    .training-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .training-card {
+        height: auto;
+        min-height: 400px;
+    }
+    
+    .media-container {
+        height: 200px;
+    }
+    
+    .course-title {
+        font-size: 1.1rem;
+    }
+    
+    .course-meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+    }
+}
+
+/* Small phone adjustments */
+@media only screen and (max-width: 374px) {
+    .training-header h1 {
+        font-size: 1.5rem;
+    }
+    
+    .stat-number {
+        font-size: 2rem;
+    }
+    
+    .media-container {
+        height: 180px;
+    }
+    
+    .training-card {
+        min-height: 380px;
+    }
+}
+
+/* Medium-sized devices (larger phones) */
+@media only screen and (min-width: 375px) and (max-width: 480px) {
+    .training-card {
+        min-height: 390px;
+    }
+}
+
+/* Tablets in portrait mode */
+@media only screen and (min-width: 481px) and (max-width: 767px) {
+    .stat-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .training-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+}
+
     </style>
 </head>
 <body>

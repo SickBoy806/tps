@@ -13,24 +13,31 @@
 <script defer src="https://unpkg.com/@alpinejs/intersect@3.x.x/dist/cdn.min.js"></script>
 
 </head>
-<body class="bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900">
-    <!-- Emergency Mode Overlay -->
-    <div id="emergency-overlay" class="fixed inset-0 bg-red-900/20 z-50 pointer-events-none hidden">
-        <div class="absolute inset-0 bg-gradient-to-r from-red-600/20 to-blue-600/20 animate-pulse"></div>
-    </div>
-
-
 <!-- Ensure Alpine.js is included in your project -->
 <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 
-<nav class="fixed top-0 w-full bg-slate-900/90 backdrop-blur-md z-40 border-b border-blue-900/50">
-    <div class="container mx-auto px-7">
+<nav x-data="{ mobileMenuOpen: false }" class="fixed top-0 w-full bg-slate-900/90 backdrop-blur-md z-40 border-b border-blue-900/50">
+    <div class="container mx-auto px-4 sm:px-7">
         <div class="flex justify-between items-center">
             <!-- Logo -->
             <a href="{{ url('/') }}" class="flex items-center space-x-3 py-2">
-                <img src="{{ asset('assets/images/Logos/tanzania-police-seeklogo.png') }}" alt="TPS Moshi" class="h-16 w-20">
-                <span class="text-2xl font-bold text-white tracking-tight">TPS Moshi</span>
+                <img src="{{ asset('assets/images/Logos/tanzania-police-seeklogo.png') }}" alt="TPS Moshi" class="h-12 w-16 sm:h-16 sm:w-20">
+                <span class="text-xl sm:text-2xl font-bold text-white tracking-tight">TPS Moshi</span>
             </a>
+
+            <!-- Mobile menu button -->
+            <div class="md:hidden">
+                <button @click="mobileMenuOpen = !mobileMenuOpen" class="text-white p-2 focus:outline-none">
+                    <!-- Hamburger icon when closed -->
+                    <svg x-show="!mobileMenuOpen" class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                    <!-- X icon when open -->
+                    <svg x-show="mobileMenuOpen" class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
 
             <!-- Desktop Navigation -->
             <div class="hidden md:flex md:items-center md:space-x-8">
@@ -272,6 +279,178 @@
                 <!-- Emergency Button -->
                 <button class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-full 
                     transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-red-400">
+                    Emergency
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div 
+            x-show="mobileMenuOpen" 
+            x-transition:enter="transition ease-out duration-200"
+            x-transition:enter-start="opacity-0 scale-95"
+            x-transition:enter-end="opacity-100 scale-100"
+            x-transition:leave="transition ease-in duration-150"
+            x-transition:leave-start="opacity-100 scale-100"
+            x-transition:leave-end="opacity-0 scale-95"
+            class="md:hidden mt-2 pb-4"
+        >
+            <a href="{{ route('home') }}" class="block py-2 text-white hover:text-blue-400">Home</a>
+            
+            <!-- Mobile Accordion Menus -->
+            <!-- Admissions -->
+            <div x-data="{ open: false }">
+                <button 
+                    @click="open = !open"
+                    class="flex items-center justify-between w-full py-2 text-white hover:text-blue-400"
+                >
+                    <span>Admissions</span>
+                    <svg 
+                        class="w-4 h-4 transition-transform" 
+                        :class="{'rotate-180': open}"
+                        fill="none" 
+                        stroke="currentColor" 
+                        viewBox="0 0 24 24"
+                    >
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                    </svg>
+                </button>
+                <div x-show="open" class="pl-4 py-1 space-y-1">
+                    <a href="{{ route('admissions.undergraduate') }}" class="block py-1 text-gray-300 hover:text-blue-400">
+                        Undergraduate
+                    </a>
+                    <a href="{{ route('admissions.graduate') }}" class="block py-1 text-gray-300 hover:text-blue-400">
+                        Graduate
+                    </a>
+                </div>
+            </div>
+            
+            <!-- About Us -->
+            <div x-data="{ open: false }">
+                <button 
+                    @click="open = !open"
+                    class="flex items-center justify-between w-full py-2 text-white hover:text-blue-400"
+                >
+                    <span>About Us</span>
+                    <svg 
+                        class="w-4 h-4 transition-transform" 
+                        :class="{'rotate-180': open}"
+                        fill="none" 
+                        stroke="currentColor" 
+                        viewBox="0 0 24 24"
+                    >
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                    </svg>
+                </button>
+                <div x-show="open" class="pl-4 py-1 space-y-1">
+                    <a href="{{ route('about.history') }}" class="block py-1 text-gray-300 hover:text-blue-400">
+                        Our History
+                    </a>
+                    <a href="{{ route('about.mission') }}" class="block py-1 text-gray-300 hover:text-blue-400">
+                        Mission & Vision
+                    </a>
+                    <a href="{{ route('about.leadership') }}" class="block py-1 text-gray-300 hover:text-blue-400">
+                        Leadership
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Facilities -->
+            <div x-data="{ open: false }">
+                <button 
+                    @click="open = !open"
+                    class="flex items-center justify-between w-full py-2 text-white hover:text-blue-400"
+                >
+                    <span>Facilities</span>
+                    <svg 
+                        class="w-4 h-4 transition-transform" 
+                        :class="{'rotate-180': open}"
+                        fill="none" 
+                        stroke="currentColor" 
+                        viewBox="0 0 24 24"
+                    >
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                    </svg>
+                </button>
+                <div x-show="open" class="pl-4 py-1 space-y-1">
+                    <a href="{{ route('facilities.sports') }}" class="block py-1 text-gray-300 hover:text-blue-400">
+                        Sports
+                    </a>
+                    <a href="{{ route('facilities.library') }}" class="block py-1 text-gray-300 hover:text-blue-400">
+                        Library
+                    </a>
+                    <a href="{{ route('facilities.training') }}" class="block py-1 text-gray-300 hover:text-blue-400">
+                        Training
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Careers -->
+            <div x-data="{ open: false }">
+                <button 
+                    @click="open = !open"
+                    class="flex items-center justify-between w-full py-2 text-white hover:text-blue-400"
+                >
+                    <span>Careers</span>
+                    <svg 
+                        class="w-4 h-4 transition-transform" 
+                        :class="{'rotate-180': open}"
+                        fill="none" 
+                        stroke="currentColor" 
+                        viewBox="0 0 24 24"
+                    >
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                    </svg>
+                </button>
+                <div x-show="open" class="pl-4 py-1 space-y-1">
+                    <a href="{{ route('careers.opportunities') }}" class="block py-1 text-gray-300 hover:text-blue-400">
+                        Job Opportunities
+                    </a>
+                    <a href="{{ route('careers.internships') }}" class="block py-1 text-gray-300 hover:text-blue-400">
+                        Internships
+                    </a>
+                    <a href="{{ route('careers.benefits') }}" class="block py-1 text-gray-300 hover:text-blue-400">
+                        Benefits
+                    </a>
+                </div>
+            </div>
+            
+            <!-- News & Events -->
+            <div x-data="{ open: false }">
+                <button 
+                    @click="open = !open"
+                    class="flex items-center justify-between w-full py-2 text-white hover:text-blue-400"
+                >
+                    <span>News & Events</span>
+                    <svg 
+                        class="w-4 h-4 transition-transform" 
+                        :class="{'rotate-180': open}"
+                        fill="none" 
+                        stroke="currentColor" 
+                        viewBox="0 0 24 24"
+                    >
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                    </svg>
+                </button>
+                <div x-show="open" class="pl-4 py-1 space-y-1">
+                    <a href="{{ route('news.latest') }}" class="block py-1 text-gray-300 hover:text-blue-400">
+                        Latest News
+                    </a>
+                    <a href="{{ route('news.upcoming') }}" class="block py-1 text-gray-300 hover:text-blue-400">
+                        Upcoming Events
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Contact Us -->
+            <a href="{{ route('contact.index') }}" class="block py-2 text-white hover:text-blue-400">
+                Contact Us
+            </a>
+            
+            <!-- Emergency Button -->
+            <div class="mt-4">
+                <button class="w-full bg-red-600 hover:bg-red-700 text-white py-3 rounded-md 
+                    transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-red-400 font-medium">
                     Emergency
                 </button>
             </div>

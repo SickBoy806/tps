@@ -105,7 +105,7 @@
                                 <span class="text-sm text-gray-600">Limited Positions</span>
                             </div>
                             
-                            <a href="{{ route('tpf.apply', 'un-missions') }}" class="px-4 py-2 bg-blue-600 text-white rounded-full text-sm hover:bg-blue-700 transition-colors">
+                            <a href="https://www.un.org/en/our-work" class="px-4 py-2 bg-blue-600 text-white rounded-full text-sm hover:bg-blue-700 transition-colors">
                                 Apply Now
                             </a>
                         </div>
