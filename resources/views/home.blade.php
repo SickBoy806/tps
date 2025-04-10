@@ -309,15 +309,23 @@
         
         /* Responsive design improvements */
         @media screen and (max-width: 1200px) {
+            .carousel .list .item {
+                padding-top: 100px; /* adjust to your navbar height */
+            }
+
             .carousel .list .item .content {
                 padding-right: 20%;
             }
-            
-            .carousel .list .item .title,
-            .carousel .list .item .topic {
-                font-size: 4em;
+
+            .carousel .list .item img {
+                display: block;
+                width: 100%;
+                height: auto;
+                margin-top: 80px !important; /* or adjust if needed */
             }
-        }
+    }
+
+
         
         @media screen and (max-width: 992px) {
             .thumbnail {
@@ -881,7 +889,7 @@ window.addEventListener('unload', () => {
                     link: '/news/campus-expansion'
                 },
                 {
-                    image: '/assets/images/news&events/news2.jpeg',
+                    image: '/assets/images/facilities/kamba news.jpg',
                     title: 'New ICT Laboratory Inaugurated',
                     description: 'Our institution has officially opened a state-of-the-art ICT laboratory to enhance digital skills training.',
                     link: '/news/ict-laboratory'
@@ -1268,7 +1276,7 @@ window.addEventListener('unload', () => {
                         <div class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
                             <div class="relative h-56">
                                 <!-- Background Image -->
-                                <img src="/assets/images/Logos/promotional-course.jpg" alt="Promotional Course" class="absolute inset-0 w-full h-full object-cover">
+                                <img src="/assets/images/news&events/gwaride.jpg" alt="Promotional Course" class="absolute inset-0 w-full h-full object-cover">
                                 <!-- Overlay -->
                                 <div class="absolute inset-0 bg-gradient-to-b from-black/60 to-black/20 flex flex-col justify-center p-6">
                                     <!-- Description on top of background image -->
@@ -1298,7 +1306,7 @@ window.addEventListener('unload', () => {
                         <div class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
                             <div class="relative h-56">
                                 <!-- Background Image -->
-                                <img src="/assets/images/Logos/womens-day.jpg" alt="Women's Day" class="absolute inset-0 w-full h-full object-cover">
+                                <img src="/assets/images/news&events/GeSQWM2bMAAUTMY.jpeg" alt="Women's Day" class="absolute inset-0 w-full h-full object-cover">
                                 <!-- Overlay -->
                                 <div class="absolute inset-0 bg-gradient-to-b from-black/60 to-black/20 flex flex-col justify-center p-6">
                                     <!-- Description on top of background image -->
@@ -1582,8 +1590,8 @@ window.addEventListener('unload', () => {
         x-data="{ isHovered: false, currentSlide: 0, slides: [
                     '{{ asset('assets/images/Logos/KURUT.png') }}',
                     '{{ asset('assets/images/Logos/KURUTA2.jpeg') }}',
-                    '{{ asset('assets/images/Logos/hd-2048x1366-1.jpg') }}',
-                    '{{ asset('assets/images/Logos/IMG-20240207-WA0065-768x512.jpg') }}'
+                    '{{ asset('assets/images/news&events/proficiency.png') }}',
+                    '{{ asset('assets/images/news&events/prof2.png') }}'
                  ] }" @mouseenter="isHovered = true; startSlideshow()" @mouseleave="isHovered = false; stopSlideshow()"
         x-init="slideInterval = null;
                         startSlideshow = function() {
@@ -1712,8 +1720,8 @@ window.addEventListener('unload', () => {
         slideInterval: null,
         slides: [
             '{{ asset('assets/images/courses/WhatsApp Image 2025-03-19 at 7.58.15 PM.jpeg') }}',
-            '{{ asset('assets/images/courses/WhatsApp Image 2025-03-19 at 7.58.15 PM.jpeg') }}',
-            '{{ asset('assets/images/Logos/JL3A0421-scaled.jpg') }}',
+            '{{ asset('assets/images/news&events/uhaini.JPG') }}',
+            '{{ asset('assets/images/news&events/gwaride.JPG') }}',
             '{{ asset('assets/images/Logos/Snapinsta.app_464550583_567745649165392_6800108106112023936_n_1080-1024x576.jpg') }}'
         ]
     }" 
@@ -1723,7 +1731,7 @@ window.addEventListener('unload', () => {
         startSlideshow = function() {
             slideInterval = setInterval(() => {
                 currentSlide = (currentSlide + 1) % slides.length;
-            }, 3000);
+            }, 2000);
         };
         stopSlideshow = function() {
             if (slideInterval) {
@@ -1767,10 +1775,10 @@ window.addEventListener('unload', () => {
     <!-- Proficiency Courses -->
     <div class="course-card bg-white rounded-2xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-300"
         x-data="{ isHovered: false, currentSlide: 0, slides: [
-                    '{{ asset('assets/images/Logos/IMG-20240305-WA0014-1024x683.jpg') }}',
+                    '{{ asset('assets/images/news&events/majaliwa.png') }}',
                     '{{ asset('assets/images/courses/WhatsApp Image 2025-03-19 at 7.58.15 PM.jpeg') }}',
-                    '{{ asset('assets/images/proficiency-slide3.jpg') }}',
-                    '{{ asset('assets/images/proficiency-slide4.jpg') }}'
+                    '{{ asset('assets/images/news&events/medani.JPG') }}',
+                    '{{ asset('assets/images/news&events/2025_03_06_17_27_IMG_4048.JPG') }}'
                 ] }" @mouseenter="isHovered = true; startSlideshow()" @mouseleave="isHovered = false; stopSlideshow()"
         x-init="slideInterval = null;
                         startSlideshow = function() {
@@ -1819,70 +1827,268 @@ window.addEventListener('unload', () => {
     </div>
 </div>
 
-    <!-- Facilities Section -->
-    <div class="py-16 bg-white">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-12">
-                <h2 class="text-4xl font-bold text-gray-800 mb-4">Our Facilities</h2>
-                <div class="w-24 h-1 bg-blue-600 mx-auto rounded-full"></div>
-                <p class="text-gray-600 mt-4 max-w-2xl mx-auto">Explore our modern facilities designed to provide a conducive environment for learning and training.</p>
-            </div>
-            
-            <div x-data="{ activeFacility: null }"
-                 class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                
-                <!-- ICT Labs -->
-                <div class="group relative overflow-hidden rounded-xl shadow-lg"
-                     @mouseenter="activeFacility = 'ict'"
-                     @mouseleave="activeFacility = null">
-                    <img src="{{ asset('assets/images/Logos/DJI_0466-1066x546.jpg') }}" alt="ICT Lab" class="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-6">
-                        <h3 class="text-white text-xl font-semibold transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">ICT Labs</h3>
-                        <p class="text-gray-200 transform translate-y-8 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-100">Modern computing facilities with latest software and hardware for digital training.</p>
-                    </div>
-                </div>
-                
-                <!-- Conference Hall -->
-                <div class="group relative overflow-hidden rounded-xl shadow-lg"
-                     @mouseenter="activeFacility = 'conference'"
-                     @mouseleave="activeFacility = null">
-                    <img src="{{ asset('assets/images/Logos/conf.jpg') }}" alt="Conference Hall" class="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-6">
-                        <h3 class="text-white text-xl font-semibold transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">Conference Hall</h3>
-                        <p class="text-gray-200 transform translate-y-8 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-100">Spacious auditorium equipped with modern audio-visual system for large gatherings.</p>
-                    </div>
-                </div>
-                
-                <!-- Sports Areas -->
-                <div class="group relative overflow-hidden rounded-xl shadow-lg"
-                     @mouseenter="activeFacility = 'sports'"
-                     @mouseleave="activeFacility = null">
-                    <img src="{{ asset('assets/images/Logos/sports.jpg') }}" alt="Sports Areas" class="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-6">
-                        <h3 class="text-white text-xl font-semibold transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">Sports Areas</h3>
-                        <p class="text-gray-200 transform translate-y-8 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-100">Comprehensive sports facilities including football field, basketball and volleyball courts.</p>
-                    </div>
-                </div>
-                
-                <!-- Library -->
-                <div class="group relative overflow-hidden rounded-xl shadow-lg"
-                     @mouseenter="activeFacility = 'library'"
-                     @mouseleave="activeFacility = null">
-                    <img src="{{ asset('assets/images/Logos/slide-1066x546.jpg') }}" alt="Library" class="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-6">
-                        <h3 class="text-white text-xl font-semibold transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">Library</h3>
-                        <p class="text-gray-200 transform translate-y-8 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-100">Well-stocked library with extensive collection of books, journals and digital resources.</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="mt-8 text-center">
-                <a href="{{ route('facilities.library') }}" class="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors duration-300 shadow-md hover:shadow-lg transform hover:scale-105 transition-transform">
-                    Explore All Facilities
-                </a>
+<!-- Facilities Section - Updated with Category Slideshow -->
+<div class="py-16 bg-white" x-data="facilitiesCategorySlider()">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+            <h2 class="text-4xl font-bold text-gray-800 mb-4">Our Facilities</h2>
+            <div class="w-24 h-1 bg-blue-600 mx-auto rounded-full"></div>
+            <p class="text-gray-600 mt-4 max-w-2xl mx-auto">Explore our modern facilities designed to provide a conducive environment for learning and training.</p>
+        </div>
+        
+        <!-- Category Navigation -->
+        <div class="flex justify-center mb-8">
+            <div class="flex flex-wrap justify-center gap-2">
+                <template x-for="(category, index) in categories" :key="index">
+                    <button @click="changeCategory(index)" 
+                            class="px-4 py-2 rounded-lg transition-all duration-300"
+                            :class="currentCategory === index ? 'bg-blue-600 text-white font-medium' : 'bg-gray-200 text-gray-700 hover:bg-gray-300'">
+                        <span x-text="category.name"></span>
+                    </button>
+                </template>
             </div>
         </div>
+
+        <!-- Main Slideshow -->
+        <div class="relative overflow-hidden rounded-xl shadow-xl h-96 mb-6" 
+             @touchstart="touchStart" 
+             @touchend="touchEnd">
+            
+            <!-- All Slides -->
+            <template x-for="(category, categoryIndex) in categories" :key="categoryIndex">
+                <template x-for="(slide, slideIndex) in category.slides" :key="`${categoryIndex}-${slideIndex}`">
+                    <div x-show="currentCategory === categoryIndex && currentSlide === slideIndex"
+                         x-transition:enter="slide-enter"
+                         class="absolute inset-0 w-full h-full">
+                        <img :src="slide.image" :alt="slide.title" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent flex flex-col justify-end p-8">
+                            <span class="text-blue-400 text-sm font-semibold uppercase tracking-wider mb-1" x-text="category.name"></span>
+                            <h3 class="text-white text-2xl font-bold mb-2" x-text="slide.title"></h3>
+                            <p class="text-gray-200 text-lg mb-4" x-text="slide.description"></p>
+                            <div class="flex space-x-4">
+                                <button class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-md">
+                                    Learn More
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+            </template>
+            
+            <!-- Navigation Arrows -->
+            <button @click="prevSlide()" class="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-110">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                </svg>
+            </button>
+            <button @click="nextSlide()" class="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-110">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+            </button>
+            
+            <!-- Slide Indicators for Current Category -->
+            <div class="absolute bottom-4 left-0 right-0 flex justify-center space-x-2">
+                <template x-for="(slide, index) in categories[currentCategory].slides" :key="index">
+                    <button @click="currentSlide = index" 
+                            class="w-3 h-3 rounded-full transition-all duration-300"
+                            :class="currentSlide === index ? 'bg-white scale-125' : 'bg-white/50 hover:bg-white/70'">
+                    </button>
+                </template>
+            </div>
+        </div>
+        
+        <!-- Progress Bar -->
+        <div class="w-full bg-gray-200 rounded-full h-2 mb-8">
+            <div class="bg-blue-600 h-2 rounded-full transition-all duration-500" 
+                 :style="{
+                     width: `${((currentCategory * 3) + currentSlide + 1) / (categories.length * 3) * 100}%`
+                 }">
+            </div>
+        </div>
+        
+        <div class="mt-8 text-center">
+            <a href="{{ route('facilities.library') }}" class="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors duration-300 shadow-md hover:shadow-lg transform hover:scale-105 transition-transform">
+                Explore All Facilities
+            </a>
+        </div>
     </div>
+</div>
+
+<!-- CSS Animation Styles (add to your stylesheet or in a style tag in the head) -->
+<style>
+    @keyframes slideIn {
+        from { transform: translateX(100%); }
+        to { transform: translateX(0); }
+    }
+    
+    .slide-enter {
+        animation: slideIn 0.7s ease-out;
+    }
+</style>
+
+<!-- Alpine.js Component Script (add before closing body tag) -->
+<script>
+    function facilitiesCategorySlider() {
+        return {
+            currentCategory: 0,
+            currentSlide: 0,
+            slideInterval: 2000, // 2 seconds per slide
+            autoplayInterval: null,
+            touchStartX: 0,
+            touchEndX: 0,
+            
+            categories: [
+                {
+                    name: "ICT Labs",
+                    slides: [
+                        {
+                            title: "Computer Training Center",
+                            description: "State-of-the-art computer lab with the latest hardware for hands-on training.",
+                            image: "{{ asset('assets/images/facilities/maintain.jpg') }}"
+                        },
+                        {
+                            title: "Networking Lab",
+                            description: "Specialized lab for network administration and cybersecurity training.",
+                            image: "{{ asset('assets/images/newsmain/networking.jpg') }}"
+                        },
+                        {
+                            title: "Software Development Studio",
+                            description: "Collaborative space for coding and software project development.",
+                            image: "{{ asset('assets/images/Logos/DJI_0466-1066x546.jpg') }}"
+                        }
+                    ]
+                },
+                {
+                    name: "Conference Hall",
+                    slides: [
+                        {
+                            title: "Main Auditorium",
+                            description: "Spacious hall with state-of-the-art audio-visual systems for large events.",
+                            image: "{{ asset('assets/images/Logos/conf.jpg') }}"
+                        },
+                        {
+                            title: "Presentation Rooms",
+                            description: "Medium-sized rooms equipped for professional presentations and meetings.",
+                            image: "{{ asset('assets/images/newsmain/hall (1).jpeg') }}"
+                        },
+                        {
+                            title: "Breakout Areas",
+                            description: "Comfortable spaces for small group discussions and networking.",
+                            image: "{{ asset('assets/images/newsmain/amga.jpg') }}"
+                        }
+                    ]
+                },
+                {
+                    name: "Sports Areas",
+                    slides: [
+                        {
+                            title: "Football Field",
+                            description: "Regulation-size football field with quality turf and spectator seating.",
+                            image: "{{ asset('assets/images/facilities/footbal.jpg') }}"
+                        },
+                        {
+                            title: "Basketball Courts",
+                            description: "Multiple indoor and outdoor basketball courts for training and competitions.",
+                            image: "{{ asset('assets/images/facilities/bak.jpg') }}"
+                        },
+                        {
+                            title: "Volleyball & Tennis",
+                            description: "Multi-purpose courts for volleyball and tennis with proper equipment.",
+                            image: "{{ asset('assets/images/facilities/voly1.jpg') }}"
+                        }
+                    ]
+                },
+                {
+                    name: "Library",
+                    slides: [
+                        {
+                            title: "Main Reading Area",
+                            description: "Quiet space with comfortable seating for focused study and research.",
+                            image: "{{ asset('assets/images/Logos/slide-1066x546.jpg') }}"
+                        },
+                        {
+                            title: "Digital Resource Center",
+                            description: "Access to online journals, e-books, and digital educational materials.",
+                            image: "{{ asset('assets/images/Logos/slide-1066x546.jpg') }}"
+                        },
+                        {
+                            title: "Collaborative Learning Zones",
+                            description: "Designated areas for group study and collaborative projects.",
+                            image: "{{ asset('assets/images/Logos/slide-1066x546.jpg') }}"
+                        }
+                    ]
+                }
+            ],
+            
+            init() {
+                this.startAutoplay();
+            },
+            
+            startAutoplay() {
+                this.autoplayInterval = setInterval(() => {
+                    this.nextSlide();
+                }, this.slideInterval);
+            },
+            
+            stopAutoplay() {
+                if (this.autoplayInterval) {
+                    clearInterval(this.autoplayInterval);
+                }
+            },
+            
+            nextSlide() {
+                this.stopAutoplay();
+                
+                // Move to next slide in the same category
+                if (this.currentSlide < this.categories[this.currentCategory].slides.length - 1) {
+                    this.currentSlide++;
+                } else {
+                    // If we're at the last slide in the category, move to the next category
+                    this.currentSlide = 0;
+                    this.currentCategory = (this.currentCategory + 1) % this.categories.length;
+                }
+                
+                this.startAutoplay();
+            },
+            
+            prevSlide() {
+                this.stopAutoplay();
+                
+                // Move to previous slide in the same category
+                if (this.currentSlide > 0) {
+                    this.currentSlide--;
+                } else {
+                    // If we're at the first slide in the category, move to the previous category
+                    this.currentCategory = (this.currentCategory - 1 + this.categories.length) % this.categories.length;
+                    this.currentSlide = this.categories[this.currentCategory].slides.length - 1;
+                }
+                
+                this.startAutoplay();
+            },
+            
+            changeCategory(index) {
+                this.stopAutoplay();
+                this.currentCategory = index;
+                this.currentSlide = 0;
+                this.startAutoplay();
+            },
+            
+            touchStart(e) {
+                this.touchStartX = e.changedTouches[0].screenX;
+            },
+            
+            touchEnd(e) {
+                this.touchEndX = e.changedTouches[0].screenX;
+                if (this.touchEndX < this.touchStartX - 50) {
+                    this.nextSlide(); // Swipe left
+                } else if (this.touchEndX > this.touchStartX + 50) {
+                    this.prevSlide(); // Swipe right
+                }
+            }
+        };
+    }
+</script>
 
 <!-- Services Section -->
 <div class="py-16 bg-gray-50">
