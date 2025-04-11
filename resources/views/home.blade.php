@@ -2621,6 +2621,20 @@ window.addEventListener('unload', () => {
                 milestone: 'Community Impact'
             },
             {
+                image: '{{ asset('assets/images/newsmain/PRC_buildings.jpg') }}',
+                title: 'PRC-Funded Facility Expansion',
+                description: 'Completed the Phase II construction project with PRC funding, featuring three academic buildings with computer labs, lecture rooms, and administrative facilities. The expansion includes four dormitory blocks accommodating 320 students and two major water systems.',
+                year: '2018',
+                milestone: 'Infrastructure Growth'
+            },
+            {
+                image: '{{ asset('assets/images/newsmain/campus_expansion.jpg') }}',
+                title: 'Multi-Campus Expansion',
+                description: 'Expanded from a single campus to three distinct facilities: TPS Main Campus, Kilele Pori, and Kamba Pori. This strategic expansion has increased our training capacity from 600 recruits in the 1990s to over 10,000 today, making us one of the largest police training institutions in the region.',
+                year: '2020',
+                milestone: 'Capacity Enhancement'
+            },
+            {
                 image: '{{ asset('assets/images/newsmain/mwiru.jpeg') }}',
                 title: 'Advanced Forensic Training Certification',                 
                 description: 'Received international certification for our advanced forensic training program. Our students now benefit from hands-on experience with cutting-edge forensic technology and techniques that meet global standards of excellence.',
@@ -2721,6 +2735,7 @@ window.addEventListener('unload', () => {
                 <img :src="slides[(index + 1) % slides.length].image" class="hidden" alt="Preload next image" loading="lazy">
             </div>
         </template>
+        
 
         <!-- Content Container -->
         <div class="relative min-h-screen py-8 md:py-0 flex items-center">

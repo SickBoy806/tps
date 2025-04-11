@@ -6,7 +6,7 @@
 <style>
   /* Add this to create space for the navbar */
   .content-wrapper {
-    padding-top: 70px; /* Adjust this value based on your navbar height */
+    padding-top: 0px; /* Adjust this value based on your navbar height */
   }
 
   .header {

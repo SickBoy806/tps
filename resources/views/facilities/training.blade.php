@@ -21,7 +21,7 @@
     text-align: center;
     position: relative;
     overflow: hidden;
-    margin-top: 40px; /* Adjust this value based on your navbar height */
+    margin-top: 5px; /* Adjust this value based on your navbar height */
 }
 
         .stat-section {

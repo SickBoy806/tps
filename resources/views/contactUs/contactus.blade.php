@@ -3,14 +3,14 @@
 @section('title', 'Contact Us')
 
 @section('content')
-<div class="min-h-screen bg-gradient-to-b from-blue-50 to-white">
+<div class="min-h-screen ">
     <!-- Hero Section -->
-    <div class="relative h-64 bg-blue-800 overflow-hidden">
-        <div class="absolute inset-0">
+    <div class="relative h-64  overflow-hidden">
+        <div class="absolute ">
      <img 
-    src="{{ asset('assets/images/Logos/oldmission.png') }}" 
+    src="{{ asset('assets/images/news&events/pared.PNG') }}" 
     alt="Tanzania Police School Moshi" 
-    class="w-full h-full object-cover opacity-50"
+    class="w-full h-full object-cover "
       />
         </div>
         <div class="relative container mx-auto px-6 h-full flex items-center">

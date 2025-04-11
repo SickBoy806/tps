@@ -3,7 +3,7 @@
 @section('title', 'Career Benefits - Tanzania Police Force')
 
 @section('content')
-<div class="pt-24">
+<div class="pt-2">
     <!-- Hero Section with Parallax Effect -->
     <section class="benefits-hero relative h-96 flex items-center justify-center overflow-hidden">
         <div class="absolute inset-0 z-0">
