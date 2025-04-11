@@ -1,9 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tanzania Police School - Interactive History</title>
+@extends('layouts.app')
+
+@section('title', 'TPS - Interactive History')
+
+@section('content')
     <style>
         body, html {
             margin: 0;
@@ -38,7 +37,7 @@
         .main-container {
             position: relative;
             width: 100%;
-            height: 100vh;
+            height: 90vh;
             overflow: hidden;
         }
 
@@ -277,9 +276,42 @@
                 height: 50%;
                 bottom: 10%;
             }
+            .header h1.school-title {
+                font-size: 1.6rem; /* Adjust as needed */
+                padding-top: -1.5rem;
+            }
+
+            .header p.school-subtitle {
+                font-size: 1rem;
+                padding-top: 0.5rem;
+            }
+
+            .content-display {
+                padding-top: 1.5rem;
+            }
+
+            .year-title, .content-heading, .content-text {
+                font-size: 1rem;
+            }
+
+            .nav-button {
+                font-size: 1.2rem;
+                padding: 0.5rem 1rem;
+            }
+
+            .social-link {
+                font-size: 0.9rem;
+            }
+
+            .timeline-label {
+                font-size: 0.9rem;
+            }
+            
+            .md:hidden {
+            display: none !important;
+        }
         }
     </style>
-</head>
 <body>
     <!-- Custom Cursor -->
     <div class="cursor" id="custom-cursor"></div>
@@ -321,7 +353,7 @@
         </div>
         
         <!-- Central 3D Model -->
-        <img src="/api/placeholder/400/800" alt="3D Police Officer Model" class="central-model" id="central-model">
+        <!-- <img src="/api/placeholder/400/800" alt="3D Police Officer Model" class="central-model" id="central-model"> -->
         
         <!-- Navigation Controls -->
         <div class="nav-controls">
@@ -749,4 +781,4 @@
         });
     </script>
 </body>
-</html>
+@endsection

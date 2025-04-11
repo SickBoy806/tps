@@ -37,8 +37,8 @@
         
         /* carousel */
         .carousel {
-            height: 100vh;
-            width: 100vw;
+            height: 90vh;
+            width: 100%;
             overflow: hidden;
             position: relative;
         }
@@ -308,9 +308,9 @@
         }
         
         /* Responsive design improvements */
-        @media screen and (max-width: 1200px) {
-            .carousel .list .item {
-                padding-top: 100px; /* adjust to your navbar height */
+        @media screen and (max-width: 1400px) {
+            .carousel {
+                height: 90vh;
             }
 
             .carousel .list .item .content {
@@ -321,13 +321,18 @@
                 display: block;
                 width: 100%;
                 height: auto;
-                margin-top: 80px !important; /* or adjust if needed */
+                /* margin-top: 80px !important; */
             }
     }
 
 
         
         @media screen and (max-width: 992px) {
+              
+            .carousel {
+                height: 50vh;
+            }
+
             .thumbnail {
                 right: 50px;
                 gap: 15px;
@@ -341,7 +346,7 @@
         
         @media screen and (max-width: 768px) {
             .carousel-container {
-                margin-top: 7vw;
+                /* margin-top: 7vw; */
                 font-size: 10px;
             }
                 
@@ -350,14 +355,14 @@
             }
             
             .carousel .list .item .content {
-                margin-top: 7vw;
+                /* margin-top: 7vw; */
                 padding-right: 5%;
                 top: 15%;
                 max-width: 90%;
             }
 
             .carousel .list .item img {
-                margin-top: 7vw;
+                /* margin-top: 7vw; */
                 object-fit: cover;
                 height: 100%;
                 width: 100%;
