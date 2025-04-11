@@ -3,11 +3,11 @@
 @section('title', 'Mission, Vision & Values')
 
 @section('content')
-<div class="min-h-screen flex flex-col bg-gray-100">
+<div class="min-h-screen flex flex-col ">
     <!-- Title Section with Background Image -->
-    <div class="relative bg-cover bg-center text-white py-12 pt-24 shadow-md" style="background-image: url('{{ asset('assets/images/Logos/oldmission.png') }}');">
-        <div class="absolute inset-0 bg-blue-900 opacity-70"></div><!-- Overlay to ensure text is readable -->
-        <div class="container mx-auto px-4 text-center relative z-10">
+    <div class="relative bg-cover bg-center text-white py-12 pt-24 shadow-md" style="background-image: url('{{ asset('assets/images/newsmain/uwanaja.PNG') }}');">
+        <div class="absolute inset-0 "></div><!-- Overlay to ensure text is readable -->
+        <div class="container mx-auto px-30 text-center relative z-10">
             <h1 class="text-4xl font-bold tracking-wide uppercase"></h1>
         </div>
     </div>
