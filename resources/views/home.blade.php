@@ -876,481 +876,360 @@ window.addEventListener('unload', () => {
 
 
 <!-- News, Announcements & Events Section -->
-<div class="py-16 bg-gray-50">
+<div class="py-16 bg-gray-50" x-data="{ tab: 'news' }">
     <div class="container mx-auto px-4">
         <div class="text-center mb-12">
             <h2 class="text-4xl font-bold text-gray-800 mb-4">News & Announcements</h2>
             <div class="w-24 h-1 bg-blue-600 mx-auto rounded-full"></div>
         </div>
         
-        <div x-data="{ 
-            tab: 'news', <!-- Changed default tab from 'announcements' to 'news' -->
-            currentSlide: 0,
-            slides: [
-                {
-                    image: '/assets/images/news&events/news1.jpeg',
-                    title: 'Campus Expansion Project',
-                    description: 'Construction has begun on our new academic building, set to open next semester.',
-                    link: '/news/campus-expansion'
-                },
-                {
-                    image: '/assets/images/facilities/kamba news.jpg',
-                    title: 'New ICT Laboratory Inaugurated',
-                    description: 'Our institution has officially opened a state-of-the-art ICT laboratory to enhance digital skills training.',
-                    link: '/news/ict-laboratory'
-                },
-                {
-                    image: '/assets/images/news&events/news3.jpeg',
-                    title: 'Annual Sports Competition Results',
-                    description: 'Check out the results from our annual interdepartmental sports competition that concluded last week.',
-                    link: '/news/sports-competition'
-                }
-            ],
-            nextSlide() {
-                this.currentSlide = (this.currentSlide + 1) % this.slides.length;
-            },
-            prevSlide() {
-                this.currentSlide = (this.currentSlide - 1 + this.slides.length) % this.slides.length;
-            },
-            init() {
-                setInterval(() => this.nextSlide(), 5000);
-            }
-        }" class="bg-white rounded-xl shadow-lg overflow-hidden">
-            
-            <!-- Tab Navigation - Reordered tabs to put News first -->
-            <div class="flex border-b border-gray-200">
-                <button @click="tab = 'news'" 
-                        :class="{ 'border-blue-600 text-blue-600': tab === 'news', 'border-transparent': tab !== 'news' }"
-                        class="flex-1 py-4 px-6 text-center font-medium border-b-2 transition-all duration-300 hover:bg-gray-50">
-                    Latest News
+        <!-- Section Selector Tabs -->
+        <div class="flex justify-center mb-8">
+            <div class="inline-flex bg-gray-200 rounded-lg p-1">
+                <button 
+                    @click="tab = 'news'" 
+                    :class="{ 'bg-blue-600 text-white': tab === 'news', 'text-gray-700 hover:text-blue-700': tab !== 'news' }" 
+                    class="px-4 py-2 rounded-md font-medium transition duration-200 ease-in-out">
+                    News
                 </button>
-                <button @click="tab = 'announcements'" 
-                        :class="{ 'border-blue-600 text-blue-600': tab === 'announcements', 'border-transparent': tab !== 'announcements' }"
-                        class="flex-1 py-4 px-6 text-center font-medium border-b-2 transition-all duration-300 hover:bg-gray-50">
+                <button 
+                    @click="tab = 'announcements'" 
+                    :class="{ 'bg-blue-600 text-white': tab === 'announcements', 'text-gray-700 hover:text-blue-700': tab !== 'announcements' }" 
+                    class="px-4 py-2 rounded-md font-medium transition duration-200 ease-in-out">
                     Announcements
                 </button>
-                <button @click="tab = 'events'" 
-                        :class="{ 'border-blue-600 text-blue-600': tab === 'events', 'border-transparent': tab !== 'events' }"
-                        class="flex-1 py-4 px-6 text-center font-medium border-b-2 transition-all duration-300 hover:bg-gray-50">
-                    Upcoming Events
+                <button 
+                    @click="tab = 'events'" 
+                    :class="{ 'bg-blue-600 text-white': tab === 'events', 'text-gray-700 hover:text-blue-700': tab !== 'events' }" 
+                    class="px-4 py-2 rounded-md font-medium transition duration-200 ease-in-out">
+                    Events
                 </button>
             </div>
-            
-            <!-- Tab Content - Content remains the same, just rearranging display order -->
+        </div>
+        
+<!-- News Tab with Updated Layout -->
+<div x-show="tab === 'news'" class="transition-all duration-300 ease-in-out">
+    <!-- Main news grid layout -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <!-- Featured News Item (Larger, left column) -->
+        <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
+            <div class="relative h-80 overflow-hidden">
+                <img src="/assets/images/newsmain/igp.png" alt="Leadership Training Closure Ceremony" class="w-full h-full object-cover">
+                <div class="absolute bottom-0 left-0 bg-blue-600 text-white px-3 py-1 text-sm font-medium">
+                    Featured News
+                </div>
+            </div>
             <div class="p-6">
-                <!-- News Tab with Slideshow -->
-                <div x-show="tab === 'news'" class="transition-all duration-300 ease-in-out">
-                    <!-- Slideshow component -->
-                    <div class="relative w-full h-96 bg-gray-100 rounded-lg overflow-hidden">
-                        <!-- Slides -->
-                        <template x-for="(slide, index) in slides" :key="index">
-                            <div x-show="currentSlide === index"
-                                 x-transition:enter="transition ease-out duration-300"
-                                 x-transition:enter-start="opacity-0"
-                                 x-transition:enter-end="opacity-100"
-                                 x-transition:leave="transition ease-in duration-300"
-                                 x-transition:leave-start="opacity-100"
-                                 x-transition:leave-end="opacity-0"
-                                 class="absolute inset-0">
-                                <div class="w-full h-full relative">
-                                    <img :src="slide.image" :alt="slide.title" class="w-full h-full object-cover">
-                                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-6">
-                                        <h3 x-text="slide.title" class="text-white text-2xl font-bold mb-2"></h3>
-                                        <p x-text="slide.description" class="text-white mb-4"></p>
-                                        <a :href="slide.link" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md inline-block transition-colors duration-300 max-w-max">
-                                            Read more
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </template>
-                        
-                        <!-- Navigation arrows -->
-                        <button @click="prevSlide" class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/30 hover:bg-white/50 rounded-full p-2 focus:outline-none backdrop-blur-sm transition-all duration-300">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-                            </svg>
-                        </button>
-                        <button @click="nextSlide" class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/30 hover:bg-white/50 rounded-full p-2 focus:outline-none backdrop-blur-sm transition-all duration-300">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                            </svg>
-                        </button>
-                        
-                        <!-- Slide indicator dots -->
-                        <div class="absolute bottom-4 left-0 right-0 flex justify-center space-x-2">
-                            <template x-for="(slide, index) in slides" :key="index">
-                                <button @click="currentSlide = index" 
-                                         :class="{'bg-white': currentSlide === index, 'bg-white/50': currentSlide !== index}"
-                                         class="w-3 h-3 rounded-full focus:outline-none transition-colors duration-300"></button>
-                            </template>
-                        </div>
-                    </div>
-                    
-                    <!-- Enhanced news items with image slideshow -->
-                    <div class="flex flex-col md:flex-row gap-6 mt-6">
-                        <!-- First News Item with Slideshow -->
-                        <div class="md:w-1/2 bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300"
-                             x-data="{
-                                slides: [
-                                    {
-                                        image: '/assets/images/newsmain/igp.png',
-                                        heading: 'SHEREHE ZA KUFUNGA MAFUNZO UONGOZI MDOGO TPS – MOSHI KOZI NO 2-2024/2025',
-                                        summary: 'MKUU WA JESHI LA POLISI TANZANIA IGP CAMILLUS M. WAMBURA NI MGENI RASMI KATIKA SHEREHE YA KUFUNGA MAFUNZO YA UONGOZI…'
-                                    },
-                                    {
-                                        image: '/assets/images/newsmain/mungi cup.jpg',
-                                        heading: 'TIMU YA BRAVO COY YAIBUKA MSHINDI MUNGI CAP.',
-                                        summary: 'Our students participated in community outreach programs with outstanding results.'
-                                    },
-                                    {
-                                        image: '/assets/images/newsmain/zahanatiWhatsApp-Image-2024-12-27-at-4.23.26-PM-300x169.jpeg',
-                                        heading: 'WANAFUNZI WA MAFUNZO YA UONGOZI MDOGO NDANI YA JESHI LA POLISI NGAZI YA CPL WALIOPO KAMBI YA KILELEPORI WAFANYA USAFI KATIKA ZAHANATI YA SINAI',
-                                        summary: 'Special leadership initiative prepares students for future challenges.'
-                                    },
-                                ],
-                                currentIndex: 0,
-                                interval: null,
-                                startSlideshow() {
-                                    this.interval = setInterval(() => {
-                                        this.currentIndex = (this.currentIndex + 1) % this.slides.length;
-                                    }, 4000);
-                                },
-                                stopSlideshow() {
-                                    clearInterval(this.interval);
-                                },
-                                nextSlide() {
-                                    this.currentIndex = (this.currentIndex + 1) % this.slides.length;
-                                },
-                                prevSlide() {
-                                    this.currentIndex = (this.currentIndex - 1 + this.slides.length) % this.slides.length;
-                                }
-                             }"
-                             x-init="startSlideshow()"
-                             @mouseenter="stopSlideshow()"
-                             @mouseleave="startSlideshow()">
-                            <div class="relative h-48 overflow-hidden">
-                                <!-- Image slides -->
-                                <template x-for="(slide, index) in slides" :key="index">
-                                    <img :src="slide.image" 
-                                         alt="News Image"
-                                         class="absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-500 ease-in-out"
-                                         :class="{ 'opacity-100': currentIndex === index, 'opacity-0': currentIndex !== index }">
-                                </template>
-                                
-                                <!-- Navigation buttons -->
-                                <div class="absolute inset-0 flex items-center justify-between p-2">
-                                    <button @click.prevent="prevSlide()" class="bg-white bg-opacity-50 hover:bg-opacity-75 rounded-full p-1 focus:outline-none transform transition hover:scale-110">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-                                        </svg>
-                                    </button>
-                                    <button @click.prevent="nextSlide()" class="bg-white bg-opacity-50 hover:bg-opacity-75 rounded-full p-1 focus:outline-none transform transition hover:scale-110">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                                        </svg>
-                                    </button>
-                                </div>
-                                
-                                <!-- Dots indicator -->
-                                <div class="absolute bottom-2 left-0 right-0 flex justify-center gap-2">
-                                    <template x-for="(_, index) in slides" :key="index">
-                                        <button @click="currentIndex = index" 
-                                                class="w-2 h-2 rounded-full transition-all duration-300 focus:outline-none"
-                                                :class="currentIndex === index ? 'bg-white scale-125' : 'bg-white bg-opacity-50'">
-                                        </button>
-                                    </template>
-                                </div>
-                            </div>
-                            <div class="p-6">
-                                <template x-for="(slide, index) in slides" :key="index">
-                                    <div x-show="currentIndex === index" 
-                                         class="transition-all duration-500"
-                                         x-transition:enter="transition ease-out duration-300"
-                                         x-transition:enter-start="opacity-0 transform translate-y-4"
-                                         x-transition:enter-end="opacity-100 transform translate-y-0">
-                                        <h4 class="text-xl font-semibold text-gray-800 mb-2" x-text="slide.heading"></h4>
-                                        <p class="text-gray-600 mb-4" x-text="slide.summary"></p>
-                                    </div>
-                                </template>
-                                <a href="/news/show/1" class="text-blue-600 hover:underline">Read more</a>
-                            </div>
-                        </div>
-                        
-                        <!-- Second News Item with Slideshow -->
-                        <div class="md:w-1/2 bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300"
-                             x-data="{
-                               slides: [
-                                    {
-                                        image: '/assets/images/newsmain/miti.jpg',
-                                        heading: 'SHULE YA POLISI TANZANIA-MOSHI YA UKARIBISHA MWAKA MPYA 2025 KWA UPANDAJI MITI',
-                                        summary: 'Mheshimiwa Raymond Mwangwala, Mkuu wa Wilaya ya Rombo, aliyekuwa mgeni rasmi katika hafla ya kuaga mwaka 2024 na kuukaribisha mwaka 2025. Wakati wa hafla hiyo, iliyofanyika katika ukumbi wa mikutano wa Shule ya Polisi Tanzania-Moshi..'
-                                    },
-                                    {
-                                        image: '/assets/images/newsmain/zenji.png',
-                                        heading: 'KHERI YA MIAKA 61 YA MAPINDUZI YA ZANZIBAR',
-                                        summary: 'SACP RAMADHANI A. MUNGI, COMMANDANT wa Shule ya Polisi Tanzania – Moshi, anawatakia kheri ya Miaka 61 ya Mapinduzi ya Zanzibar. Wakufunzi wote na familia zao, Watumishi raia..'
-                                    },
-                                    {
-                                        image: '/assets/images/newsmain/senga.jpg',
-                                        heading: 'SHEREHE YA KUFUNGA MAFUNZO YA AWALI YA POLISI',
-                                        summary: ''
-                                    },
-                                ],
-                                currentIndex: 0,
-                                interval: null,
-                                startSlideshow() {
-                                    this.interval = setInterval(() => {
-                                        this.currentIndex = (this.currentIndex + 1) % this.slides.length;
-                                    }, 4000);
-                                },
-                                stopSlideshow() {
-                                    clearInterval(this.interval);
-                                },
-                                nextSlide() {
-                                    this.currentIndex = (this.currentIndex + 1) % this.slides.length;
-                                },
-                                prevSlide() {
-                                    this.currentIndex = (this.currentIndex - 1 + this.slides.length) % this.slides.length;
-                                }
-                             }"
-                             x-init="startSlideshow()"
-                             @mouseenter="stopSlideshow()"
-                             @mouseleave="startSlideshow()">
-                            <div class="relative h-48 overflow-hidden">
-                                <!-- Image slides -->
-                                <template x-for="(slide, index) in slides" :key="index">
-                                    <img :src="slide.image" 
-                                         alt="News Image"
-                                         class="absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-500 ease-in-out"
-                                         :class="{ 'opacity-100': currentIndex === index, 'opacity-0': currentIndex !== index }">
-                                </template>
-                                
-                                <!-- Navigation buttons -->
-                                <div class="absolute inset-0 flex items-center justify-between p-2">
-                                    <button @click.prevent="prevSlide()" class="bg-white bg-opacity-50 hover:bg-opacity-75 rounded-full p-1 focus:outline-none transform transition hover:scale-110">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-                                        </svg>
-                                    </button>
-                                    <button @click.prevent="nextSlide()" class="bg-white bg-opacity-50 hover:bg-opacity-75 rounded-full p-1 focus:outline-none transform transition hover:scale-110">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                                        </svg>
-                                    </button>
-                                </div>
-                                
-                                <!-- Dots indicator -->
-                                <div class="absolute bottom-2 left-0 right-0 flex justify-center gap-2">
-                                    <template x-for="(_, index) in slides" :key="index">
-                                        <button @click="currentIndex = index" 
-                                                class="w-2 h-2 rounded-full transition-all duration-300 focus:outline-none"
-                                                :class="currentIndex === index ? 'bg-white scale-125' : 'bg-white bg-opacity-50'">
-                                        </button>
-                                    </template>
-                                </div>
-                            </div>
-                            <div class="p-6">
-                                <template x-for="(slide, index) in slides" :key="index">
-                                    <div x-show="currentIndex === index" 
-                                         class="transition-all duration-500"
-                                         x-transition:enter="transition ease-out duration-300"
-                                         x-transition:enter-start="opacity-0 transform translate-y-4"
-                                         x-transition:enter-end="opacity-100 transform translate-y-0">
-                                        <h4 class="text-xl font-semibold text-gray-800 mb-2" x-text="slide.heading"></h4>
-                                        <p class="text-gray-600 mb-4" x-text="slide.summary"></p>
-                                    </div>
-                                </template>
-                                <a href="/news/show/2" class="text-blue-600 hover:underline">Read more</a>
-                            </div>
-                        </div>
-                    </div>
+                <h3 class="text-2xl font-bold text-gray-800 mb-3">SHEREHE ZA KUFUNGA MAFUNZO UONGOZI MDOGO TPS – MOSHI KOZI NO 2-2024/2025</h3>
+                <div class="flex items-center text-gray-500 text-sm mb-4">
+                    <span class="mr-3 flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                        </svg>
+                        Yona Dauden
+                    </span>
+                    <span class="flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                        March 7, 2025
+                    </span>
+                </div>
+                <p class="text-gray-600 mb-4 text-lg">MKUU WA JESHI LA POLISI TANZANIA IGP CAMILLUS M. WAMBURA NI MGENI RASMI KATIKA SHEREHE YA KUFUNGA MAFUNZO YA UONGOZI MDOGO TPS – MOSHI KOZI NO 2-2024/2025...</p>
+                <a href="/news/1" class="text-blue-600 hover:text-blue-800 font-medium inline-flex items-center text-lg">
+                    Read more
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                </a>
+            </div>
+        </div>
 
-                    <div class="mt-6 text-center">
-                        <a href="/news" class="inline-flex items-center group text-blue-600 font-semibold hover:text-blue-800 transition-all duration-300">
-                            View all news
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                            </svg>
-                        </a>
+        <!-- Right column with 2x2 grid of smaller news items -->
+        <div class="grid grid-cols-2 gap-4">
+            <!-- News Item 2 -->
+            <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
+                <div class="relative h-48 overflow-hidden">
+                    <img src="/assets/images/newsmain/mungi cup.jpg" alt="Bravo COY Team" class="w-full h-full object-cover">
+                    <div class="absolute bottom-0 left-0 bg-blue-600 text-white px-2 py-1 text-xs font-medium">
+                        Latest News
                     </div>
                 </div>
-                
-                <!-- Announcements Tab -->
-                <div x-show="tab === 'announcements'" class="transition-all duration-300 ease-in-out">
-                    <ul class="divide-y divide-gray-200">
-                        <!-- New Police Job Announcement with PDF -->
-                        <li class="py-4 flex items-start">
-                            <div class="flex-shrink-0 bg-red-100 text-red-800 p-3 rounded-lg">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                                </svg>
-                            </div>
-                            <div class="ml-4">
-                                <h4 class="text-lg font-semibold text-gray-800">Police Job Openings Announced</h4>
-                                <p class="text-gray-600">The Tanzania Police Force is now accepting applications for multiple positions. Check the instructions document for eligibility requirements and application procedures.</p>
-                                <p class="text-sm text-gray-500 mt-2">Posted on March 21, 2025</p>
-                                
-                               <!-- PDF Download Section -->
-                                <div class="mt-4 bg-gray-50 p-4 rounded-lg border border-gray-200">
-                                    <!-- First Existing PDF -->
-                                    <div class="flex items-center justify-between mb-4">
-                                        <div class="flex items-center">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                                            </svg>
-                                            <div class="ml-3">
-                                                <p class="text-sm font-medium text-gray-900">New Job Announcement 2025</p>
-                                                <p class="text-xs text-gray-500">PDF • 2.4 MB</p>
-                                            </div>
-                                        </div>
-                                        <a href="/assets/documents/new-police-job-announcement.pdf" download class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                                            </svg>
-                                            Download PDF
-                                        </a>
-                                    </div>
-
-                                    <!-- New PDF for Application Processes and Procedures -->
-                                    <div class="flex items-center justify-between">
-                                        <div class="flex items-center">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                                            </svg>
-                                            <div class="ml-3">
-                                                <p class="text-sm font-medium text-gray-900">Job Application Instructions</p>
-                                                <p class="text-xs text-gray-500">PDF • 4.8 MB</p>
-                                            </div>
-                                        </div>
-                                        <a href="/assets/documents/police-job-instructions.pdf" download class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                                            </svg>
-                                            Download PDF
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        
-                        <li class="py-4 flex items-start">
-                            <div class="flex-shrink-0 bg-blue-100 text-blue-800 p-3 rounded-lg">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z" />
-                                </svg>
-                            </div>
-                            <div class="ml-4">
-                                <h4 class="text-lg font-semibold text-gray-800">Enrollment Open for New Term</h4>
-                                <p class="text-gray-600">Applications for the upcoming term are now open. Early applicants will receive priority consideration.</p>
-                                <p class="text-sm text-gray-500 mt-2">Posted on March 1, 2025</p>
-                            </div>
-                        </li>
-                        <li class="py-4 flex items-start">
-                            <div class="flex-shrink-0 bg-green-100 text-green-800 p-3 rounded-lg">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                </svg>
-                            </div>
-                            <div class="ml-4">
-                                <h4 class="text-lg font-semibold text-gray-800">New Driving Course Added</h4>
-                                <p class="text-gray-600">We're excited to announce our new advanced driving course starting next month.</p>
-                                <p class="text-sm text-gray-500 mt-2">Posted on February 25, 2025</p>
-                            </div>
-                        </li>
-                    </ul>
-                    <div class="mt-6 text-center">
-                        <a href="/news/upcoming" class="inline-flex items-center group text-blue-600 font-semibold hover:text-blue-800 transition-all duration-300">
-                            View all announcements
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                <div class="p-3">
+                    <h3 class="text-sm font-bold text-gray-800 mb-1">TIMU YA BRAVO COY YAIBUKA MSHINDI MUNGI CAP.</h3>
+                    <div class="flex items-center text-gray-500 text-xs mb-2">
+                        <span class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                             </svg>
-                        </a>
+                            February 25, 2025
+                        </span>
+                    </div>
+                    <a href="/news/2" class="text-blue-600 hover:text-blue-800 font-medium inline-flex items-center text-xs">
+                        Read more
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- News Item 3 -->
+            <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
+                <div class="relative h-48 overflow-hidden">
+                    <img src="/assets/images/newsmain/zenji.png" alt="Zanzibar Revolution Anniversary" class="w-full h-full object-cover">
+                    <div class="absolute bottom-0 left-0 bg-blue-600 text-white px-2 py-1 text-xs font-medium">
+                        Latest News
                     </div>
                 </div>
-				
-                
-                <!-- Events Tab -->
-                <div x-show="tab === 'events'" 
-                     x-transition:enter="transition ease-out duration-300"
-                     x-transition:enter-start="opacity-0 transform -translate-y-4"
-                     x-transition:enter-end="opacity-100 transform translate-y-0"
-                     class="transition-all duration-300 ease-in-out">
-                    <div class="grid md:grid-cols-2 gap-6">
-                        <!-- Event Card 1 -->
-                        <div class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
-                            <div class="relative h-56">
-                                <!-- Background Image -->
-                                <img src="/assets/images/news&events/gwaride.jpg" alt="Promotional Course" class="absolute inset-0 w-full h-full object-cover">
-                                <!-- Overlay -->
-                                <div class="absolute inset-0 bg-gradient-to-b from-black/60 to-black/20 flex flex-col justify-center p-6">
-                                    <!-- Description on top of background image -->
-                                    <span lang="it">
-                                        <p class="text-white mb-4 font-italic text-lg">
-                                            "Congratulations to all the newly promoted Corporals and Sergeants of the Tanzania Police Force! Your dedication and hard work during your promotional courses have paid off. Wishing you continued success in your service to the nation."
-                                        </p>
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="p-6">
-                                <div class="flex items-center mb-4">
-                                    <div class="bg-blue-100 text-blue-800 text-center rounded-lg p-3 mr-4">
-                                        <div class="text-2xl font-bold">07</div>
-                                        <div class="text-sm">Mar</div>
-                                    </div>
-                                    <div>
-                                        <h4 class="text-xl font-semibold text-gray-800">Promotional Course Passingout</h4>
-                                        <p class="text-gray-500">9:00 AM - 4:00 PM, Kilele Pori</p>
-                                    </div>
-                                </div>
-                                <a href="/events-detail/1" class="text-blue-600 hover:underline">Event details</a>
-                            </div>
-                        </div>
-                        
-                        <!-- Event Card 2 -->
-                        <div class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
-                            <div class="relative h-56">
-                                <!-- Background Image -->
-                                <img src="/assets/images/news&events/GeSQWM2bMAAUTMY.jpeg" alt="Women's Day" class="absolute inset-0 w-full h-full object-cover">
-                                <!-- Overlay -->
-                                <div class="absolute inset-0 bg-gradient-to-b from-black/60 to-black/20 flex flex-col justify-center p-6">
-                                    <!-- Description on top of background image -->
-                                    <span lang="it">
-                                        <p class="text-white mb-4 font-italic text-lg">
-                                            "On this International Women's Day, we celebrate the incredible strength, resilience, and achievements of women everywhere. May we continue to champion equality, empower each other, and build a future where every woman's voice is heard and valued. Here's to the women who inspire us daily!"
-                                        </p>
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="p-6">
-                                <div class="flex items-center mb-4">
-                                    <div class="bg-green-100 text-green-800 text-center rounded-lg p-3 mr-4">
-                                        <div class="text-2xl font-bold">09</div>
-                                        <div class="text-sm">Mar</div>
-                                    </div>
-                                    <div>
-                                        <h4 class="text-xl font-semibold text-gray-800">Womens Day</h4>
-                                        <p class="text-gray-500">1:00 PM - 5:00 PM, Arusha</p>
-                                    </div>
-                                </div>
-                                <a href="/events-detail/2" class="text-blue-600 hover:underline">Event details</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mt-6 text-center">
-                        <a href="/news/upcoming" class="inline-flex items-center group text-blue-600 font-semibold hover:text-blue-800 transition-all duration-300">
-                            View all events
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                <div class="p-3">
+                    <h3 class="text-sm font-bold text-gray-800 mb-1">KHERI YA MIAKA 61 YA MAPINDUZI YA ZANZIBAR</h3>
+                    <div class="flex items-center text-gray-500 text-xs mb-2">
+                        <span class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                             </svg>
-                        </a>
+                            January 12, 2025
+                        </span>
                     </div>
+                    <a href="/news/3" class="text-blue-600 hover:text-blue-800 font-medium inline-flex items-center text-xs">
+                        Read more
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- News Item 4 -->
+            <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
+                <div class="relative h-48 overflow-hidden">
+                    <img src="/assets/images/newsmain/miti.jpg" alt="Tree Planting for New Year" class="w-full h-full object-cover">
+                    <div class="absolute bottom-0 left-0 bg-blue-600 text-white px-2 py-1 text-xs font-medium">
+                        Latest Event
+                    </div>
+                </div>
+                <div class="p-3">
+                    <h3 class="text-sm font-bold text-gray-800 mb-1">MWAKA MPYA 2025 KWA UPANDAJI MITI</h3>
+                    <div class="flex items-center text-gray-500 text-xs mb-2">
+                        <span class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                            </svg>
+                            January 2, 2025
+                        </span>
+                    </div>
+                    <a href="/news/4" class="text-blue-600 hover:text-blue-800 font-medium inline-flex items-center text-xs">
+                        Read more
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- News Item 5 -->
+            <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
+                <div class="relative h-48 overflow-hidden">
+                    <img src="/assets/images/newsmain/zahanatiWhatsApp-Image-2024-12-27-at-4.23.26-PM-300x169.jpeg" alt="Community Service at Sinai Clinic" class="w-full h-full object-cover">
+                    <div class="absolute bottom-0 left-0 bg-blue-600 text-white px-2 py-1 text-xs font-medium">
+                        Latest News
+                    </div>
+                </div>
+                <div class="p-3">
+                    <h3 class="text-sm font-bold text-gray-800 mb-1">USAFI KATIKA ZAHANATI YA SINAI</h3>
+                    <div class="flex items-center text-gray-500 text-xs mb-2">
+                        <span class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                            </svg>
+                            December 27, 2024
+                        </span>
+                    </div>
+                    <a href="/news/5" class="text-blue-600 hover:text-blue-800 font-medium inline-flex items-center text-xs">
+                        Read more
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                        </svg>
+                    </a>
                 </div>
             </div>
         </div>
     </div>
 </div>
+                
+<!-- Announcements Tab -->
+<div x-show="tab === 'announcements'" class="transition-all duration-300 ease-in-out">
+    <ul class="divide-y divide-gray-200">
+        <!-- New Police Job Announcement with PDF -->
+        <li class="py-4 flex items-start">
+            <div class="flex-shrink-0 bg-red-100 text-red-800 p-3 rounded-lg">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                </svg>
+            </div>
+            <div class="ml-4">
+                <h4 class="text-lg font-semibold text-gray-800">Police Job Openings Announced</h4>
+                <p class="text-gray-600">The Tanzania Police Force is now accepting applications for multiple positions. Check the instructions document for eligibility requirements and application procedures.</p>
+                <p class="text-sm text-gray-500 mt-2">Posted on March 21, 2025</p>
+                
+                <!-- PDF Download Section -->
+                <div class="mt-4 bg-gray-50 p-4 rounded-lg border border-gray-200">
+                    <!-- First Existing PDF -->
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                            </svg>
+                            <div class="ml-3">
+                                <p class="text-sm font-medium text-gray-900">New Job Announcement 2025</p>
+                                <p class="text-xs text-gray-500">PDF • 2.4 MB</p>
+                            </div>
+                        </div>
+                        <a href="/assets/documents/new-police-job-announcement.pdf" download class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                            </svg>
+                            Download PDF
+                        </a>
+                    </div>
 
+                    <!-- New PDF for Application Processes and Procedures -->
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                            </svg>
+                            <div class="ml-3">
+                                <p class="text-sm font-medium text-gray-900">Job Application Instructions</p>
+                                <p class="text-xs text-gray-500">PDF • 4.8 MB</p>
+                            </div>
+                        </div>
+                        <a href="/assets/documents/police-job-instructions.pdf" download class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                            </svg>
+                            Download PDF
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </li>
+        
+        <li class="py-4 flex items-start">
+            <div class="flex-shrink-0 bg-blue-100 text-blue-800 p-3 rounded-lg">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z" />
+                </svg>
+            </div>
+            <div class="ml-4">
+                <h4 class="text-lg font-semibold text-gray-800">Enrollment Open for New Term</h4>
+                <p class="text-gray-600">Applications for the upcoming term are now open. Early applicants will receive priority consideration.</p>
+                <p class="text-sm text-gray-500 mt-2">Posted on March 1, 2025</p>
+            </div>
+        </li>
+        <li class="py-4 flex items-start">
+            <div class="flex-shrink-0 bg-green-100 text-green-800 p-3 rounded-lg">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+            </div>
+            <div class="ml-4">
+                <h4 class="text-lg font-semibold text-gray-800">New Driving Course Added</h4>
+                <p class="text-gray-600">We're excited to announce our new advanced driving course starting next month.</p>
+                <p class="text-sm text-gray-500 mt-2">Posted on February 25, 2025</p>
+            </div>
+        </li>
+    </ul>
+    <div class="mt-6 text-center">
+        <a href="/news/upcoming" class="inline-flex items-center group text-blue-600 font-semibold hover:text-blue-800 transition-all duration-300">
+            View all announcements
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+        </a>
+    </div>
+</div>
+				
+<!-- Events Tab -->
+<div x-show="tab === 'events'" 
+     x-transition:enter="transition ease-out duration-300"
+     x-transition:enter-start="opacity-0 transform -translate-y-4"
+     x-transition:enter-end="opacity-100 transform translate-y-0"
+     class="transition-all duration-300 ease-in-out">
+    <div class="grid md:grid-cols-2 gap-6">
+        <!-- Event Card 1 -->
+        <div class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
+            <div class="relative h-56">
+                <!-- Background Image -->
+                <img src="/assets/images/news&events/gwaride.jpg" alt="Promotional Course" class="absolute inset-0 w-full h-full object-cover">
+                <!-- Overlay -->
+                <div class="absolute inset-0 bg-gradient-to-b from-black/60 to-black/20 flex flex-col justify-center p-6">
+                    <!-- Description on top of background image -->
+                    <span lang="it">
+                        <p class="text-white mb-4 font-italic text-lg">
+                            "Congratulations to all the newly promoted Corporals and Sergeants of the Tanzania Police Force! Your dedication and hard work during your promotional courses have paid off. Wishing you continued success in your service to the nation."
+                        </p>
+                    </span>
+                </div>
+            </div>
+            <div class="p-6">
+                <div class="flex items-center mb-4">
+                    <div class="bg-blue-100 text-blue-800 text-center rounded-lg p-3 mr-4">
+                        <div class="text-2xl font-bold">07</div>
+                        <div class="text-sm">Mar</div>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-semibold text-gray-800">Promotional Course Passingout</h4>
+                        <p class="text-gray-500">9:00 AM - 4:00 PM, Kilele Pori</p>
+                    </div>
+                </div>
+                <a href="/events-detail/1" class="text-blue-600 hover:underline">Event details</a>
+            </div>
+        </div>
+        
+        <!-- Event Card 2 -->
+        <div class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
+            <div class="relative h-56">
+                <!-- Background Image -->
+                <img src="/assets/images/news&events/GeSQWM2bMAAUTMY.jpeg" alt="Women's Day" class="absolute inset-0 w-full h-full object-cover">
+                <!-- Overlay -->
+                <div class="absolute inset-0 bg-gradient-to-b from-black/60 to-black/20 flex flex-col justify-center p-6">
+                    <!-- Description on top of background image -->
+                    <span lang="it">
+                        <p class="text-white mb-4 font-italic text-lg">
+                            "On this International Women's Day, we celebrate the incredible strength, resilience, and achievements of women everywhere. May we continue to champion equality, empower each other, and build a future where every woman's voice is heard and valued. Here's to the women who inspire us daily!"
+                        </p>
+                    </span>
+                </div>
+            </div>
+            <div class="p-6">
+                <div class="flex items-center mb-4">
+                    <div class="bg-green-100 text-green-800 text-center rounded-lg p-3 mr-4">
+                        <div class="text-2xl font-bold">09</div>
+                        <div class="text-sm">Mar</div>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-semibold text-gray-800">Womens Day</h4>
+                        <p class="text-gray-500">1:00 PM - 5:00 PM, Arusha</p>
+                    </div>
+                </div>
+                <a href="/events-detail/2" class="text-blue-600 hover:underline">Event details</a>
+            </div>
+        </div>
+    </div>
+    <div class="mt-6 text-center">
+        <a href="/news/upcoming" class="inline-flex items-center group text-blue-600 font-semibold hover:text-blue-800 transition-all duration-300">
+            View all events
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+        </a>
+    </div>
+</div>
+    </div>
+</div>
 
 <html lang="en">
 <head>
@@ -1832,8 +1711,11 @@ window.addEventListener('unload', () => {
     </div>
 </div>
 
-<!-- Facilities Section - Updated with Category Slideshow -->
-<div class="py-16 bg-white" x-data="facilitiesCategorySlider()">
+                <!-- Our Facilities -->
+
+
+<!-- Facilities Section - Updated with Side-by-Side Category Slideshows -->
+<div class="py-16 bg-white" x-data="facilitiesSideBySideSlider()">
     <div class="container mx-auto px-4">
         <div class="text-center mb-12">
             <h2 class="text-4xl font-bold text-gray-800 mb-4">Our Facilities</h2>
@@ -1841,74 +1723,154 @@ window.addEventListener('unload', () => {
             <p class="text-gray-600 mt-4 max-w-2xl mx-auto">Explore our modern facilities designed to provide a conducive environment for learning and training.</p>
         </div>
         
-        <!-- Category Navigation -->
-        <div class="flex justify-center mb-8">
-            <div class="flex flex-wrap justify-center gap-2">
-                <template x-for="(category, index) in categories" :key="index">
-                    <button @click="changeCategory(index)" 
-                            class="px-4 py-2 rounded-lg transition-all duration-300"
-                            :class="currentCategory === index ? 'bg-blue-600 text-white font-medium' : 'bg-gray-200 text-gray-700 hover:bg-gray-300'">
-                        <span x-text="category.name"></span>
-                    </button>
-                </template>
-            </div>
-        </div>
-
-        <!-- Main Slideshow -->
-        <div class="relative overflow-hidden rounded-xl shadow-xl h-96 mb-6" 
-             @touchstart="touchStart" 
-             @touchend="touchEnd">
-            
-            <!-- All Slides -->
-            <template x-for="(category, categoryIndex) in categories" :key="categoryIndex">
-                <template x-for="(slide, slideIndex) in category.slides" :key="`${categoryIndex}-${slideIndex}`">
-                    <div x-show="currentCategory === categoryIndex && currentSlide === slideIndex"
-                         x-transition:enter="slide-enter"
-                         class="absolute inset-0 w-full h-full">
-                        <img :src="slide.image" :alt="slide.title" class="w-full h-full object-cover">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent flex flex-col justify-end p-8">
-                            <span class="text-blue-400 text-sm font-semibold uppercase tracking-wider mb-1" x-text="category.name"></span>
-                            <h3 class="text-white text-2xl font-bold mb-2" x-text="slide.title"></h3>
-                            <p class="text-gray-200 text-lg mb-4" x-text="slide.description"></p>
-                            <div class="flex space-x-4">
-                                <button class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-md">
-                                    Learn More
-                                </button>
-                            </div>
-                        </div>
+        <!-- Side-by-Side Slideshows -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Left Side: ICT Labs & Conference Hall -->
+            <div class="facilities-side">
+                <!-- Category Navigation - Left Side -->
+                <div class="flex justify-center mb-4">
+                    <div class="flex flex-wrap justify-center gap-2">
+                        <template x-for="(category, index) in leftCategories" :key="index">
+                            <button @click="changeLeftCategory(index)" 
+                                    class="px-4 py-2 rounded-lg transition-all duration-300"
+                                    :class="leftCurrentCategory === index ? 'bg-blue-600 text-white font-medium' : 'bg-gray-200 text-gray-700 hover:bg-gray-300'">
+                                <span x-text="category.name"></span>
+                            </button>
+                        </template>
                     </div>
-                </template>
-            </template>
-            
-            <!-- Navigation Arrows -->
-            <button @click="prevSlide()" class="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-110">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-                </svg>
-            </button>
-            <button @click="nextSlide()" class="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-110">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                </svg>
-            </button>
-            
-            <!-- Slide Indicators for Current Category -->
-            <div class="absolute bottom-4 left-0 right-0 flex justify-center space-x-2">
-                <template x-for="(slide, index) in categories[currentCategory].slides" :key="index">
-                    <button @click="currentSlide = index" 
-                            class="w-3 h-3 rounded-full transition-all duration-300"
-                            :class="currentSlide === index ? 'bg-white scale-125' : 'bg-white/50 hover:bg-white/70'">
+                </div>
+
+                <!-- Left Slideshow -->
+                <div class="relative overflow-hidden rounded-xl shadow-xl h-80 mb-4" 
+                     @touchstart="leftTouchStart" 
+                     @touchend="leftTouchEnd">
+                    
+                    <!-- All Left Slides -->
+                    <template x-for="(category, categoryIndex) in leftCategories" :key="categoryIndex">
+                        <template x-for="(slide, slideIndex) in category.slides" :key="`left-${categoryIndex}-${slideIndex}`">
+                            <div x-show="leftCurrentCategory === categoryIndex && leftCurrentSlide === slideIndex"
+                                 x-transition:enter="slide-enter"
+                                 class="absolute inset-0 w-full h-full">
+                                <img :src="slide.image" :alt="slide.title" class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent flex flex-col justify-end p-6">
+                                    <span class="text-blue-400 text-sm font-semibold uppercase tracking-wider mb-1" x-text="category.name"></span>
+                                    <h3 class="text-white text-xl font-bold mb-2" x-text="slide.title"></h3>
+                                    <p class="text-gray-200 text-base mb-3" x-text="slide.description"></p>
+                                    <div class="flex">
+                                        <button class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-1 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-md text-sm">
+                                            Learn More
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+                    </template>
+                    
+                    <!-- Navigation Arrows - Left Side -->
+                    <button @click="prevLeftSlide()" class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-110">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                        </svg>
                     </button>
-                </template>
+                    <button @click="nextLeftSlide()" class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-110">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                        </svg>
+                    </button>
+                    
+                    <!-- Slide Indicators - Left Side -->
+                    <div class="absolute bottom-2 left-0 right-0 flex justify-center space-x-2">
+                        <template x-for="(slide, index) in leftCategories[leftCurrentCategory].slides" :key="index">
+                            <button @click="leftCurrentSlide = index" 
+                                    class="w-2 h-2 rounded-full transition-all duration-300"
+                                    :class="leftCurrentSlide === index ? 'bg-white scale-125' : 'bg-white/50 hover:bg-white/70'">
+                            </button>
+                        </template>
+                    </div>
+                </div>
+                
+                <!-- Progress Bar - Left Side -->
+                <div class="w-full bg-gray-200 rounded-full h-1 mb-4">
+                    <div class="bg-blue-600 h-1 rounded-full transition-all duration-500" 
+                         :style="{
+                             width: `${((leftCurrentCategory * 3) + leftCurrentSlide + 1) / (leftCategories.length * 3) * 100}%`
+                         }">
+                    </div>
+                </div>
             </div>
-        </div>
-        
-        <!-- Progress Bar -->
-        <div class="w-full bg-gray-200 rounded-full h-2 mb-8">
-            <div class="bg-blue-600 h-2 rounded-full transition-all duration-500" 
-                 :style="{
-                     width: `${((currentCategory * 3) + currentSlide + 1) / (categories.length * 3) * 100}%`
-                 }">
+            
+            <!-- Right Side: Sports Areas & Library -->
+            <div class="facilities-side">
+                <!-- Category Navigation - Right Side -->
+                <div class="flex justify-center mb-4">
+                    <div class="flex flex-wrap justify-center gap-2">
+                        <template x-for="(category, index) in rightCategories" :key="index">
+                            <button @click="changeRightCategory(index)" 
+                                    class="px-4 py-2 rounded-lg transition-all duration-300"
+                                    :class="rightCurrentCategory === index ? 'bg-blue-600 text-white font-medium' : 'bg-gray-200 text-gray-700 hover:bg-gray-300'">
+                                <span x-text="category.name"></span>
+                            </button>
+                        </template>
+                    </div>
+                </div>
+
+                <!-- Right Slideshow -->
+                <div class="relative overflow-hidden rounded-xl shadow-xl h-80 mb-4" 
+                     @touchstart="rightTouchStart" 
+                     @touchend="rightTouchEnd">
+                    
+                    <!-- All Right Slides -->
+                    <template x-for="(category, categoryIndex) in rightCategories" :key="categoryIndex">
+                        <template x-for="(slide, slideIndex) in category.slides" :key="`right-${categoryIndex}-${slideIndex}`">
+                            <div x-show="rightCurrentCategory === categoryIndex && rightCurrentSlide === slideIndex"
+                                 x-transition:enter="slide-enter"
+                                 class="absolute inset-0 w-full h-full">
+                                <img :src="slide.image" :alt="slide.title" class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent flex flex-col justify-end p-6">
+                                    <span class="text-blue-400 text-sm font-semibold uppercase tracking-wider mb-1" x-text="category.name"></span>
+                                    <h3 class="text-white text-xl font-bold mb-2" x-text="slide.title"></h3>
+                                    <p class="text-gray-200 text-base mb-3" x-text="slide.description"></p>
+                                    <div class="flex">
+                                        <button class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-1 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-md text-sm">
+                                            Learn More
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+                    </template>
+                    
+                    <!-- Navigation Arrows - Right Side -->
+                    <button @click="prevRightSlide()" class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-110">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                        </svg>
+                    </button>
+                    <button @click="nextRightSlide()" class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-110">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                        </svg>
+                    </button>
+                    
+                    <!-- Slide Indicators - Right Side -->
+                    <div class="absolute bottom-2 left-0 right-0 flex justify-center space-x-2">
+                        <template x-for="(slide, index) in rightCategories[rightCurrentCategory].slides" :key="index">
+                            <button @click="rightCurrentSlide = index" 
+                                    class="w-2 h-2 rounded-full transition-all duration-300"
+                                    :class="rightCurrentSlide === index ? 'bg-white scale-125' : 'bg-white/50 hover:bg-white/70'">
+                            </button>
+                        </template>
+                    </div>
+                </div>
+                
+                <!-- Progress Bar - Right Side -->
+                <div class="w-full bg-gray-200 rounded-full h-1 mb-4">
+                    <div class="bg-blue-600 h-1 rounded-full transition-all duration-500" 
+                         :style="{
+                             width: `${((rightCurrentCategory * 3) + rightCurrentSlide + 1) / (rightCategories.length * 3) * 100}%`
+                         }">
+                    </div>
+                </div>
             </div>
         </div>
         
@@ -1934,16 +1896,26 @@ window.addEventListener('unload', () => {
 
 <!-- Alpine.js Component Script (add before closing body tag) -->
 <script>
-    function facilitiesCategorySlider() {
+    function facilitiesSideBySideSlider() {
         return {
-            currentCategory: 0,
-            currentSlide: 0,
-            slideInterval: 2000, // 2 seconds per slide
-            autoplayInterval: null,
-            touchStartX: 0,
-            touchEndX: 0,
+            // Left Side (ICT Labs & Conference Hall)
+            leftCurrentCategory: 0,
+            leftCurrentSlide: 0,
+            leftSlideInterval: 3000, // 3 seconds per slide
+            leftAutoplayInterval: null,
+            leftTouchStartX: 0,
+            leftTouchEndX: 0,
             
-            categories: [
+            // Right Side (Sports Areas & Library)
+            rightCurrentCategory: 0,
+            rightCurrentSlide: 0,
+            rightSlideInterval: 3000, // 3 seconds per slide
+            rightAutoplayInterval: null,
+            rightTouchStartX: 0,
+            rightTouchEndX: 0,
+            
+            // Left Side Categories
+            leftCategories: [
                 {
                     name: "ICT Labs",
                     slides: [
@@ -1983,7 +1955,11 @@ window.addEventListener('unload', () => {
                             image: "{{ asset('assets/images/newsmain/amga.jpg') }}"
                         }
                     ]
-                },
+                }
+            ],
+            
+            // Right Side Categories
+            rightCategories: [
                 {
                     name: "Sports Areas",
                     slides: [
@@ -2027,68 +2003,133 @@ window.addEventListener('unload', () => {
             ],
             
             init() {
-                this.startAutoplay();
+                this.startLeftAutoplay();
+                this.startRightAutoplay();
             },
             
-            startAutoplay() {
-                this.autoplayInterval = setInterval(() => {
-                    this.nextSlide();
-                }, this.slideInterval);
+            // Left Side Methods
+            startLeftAutoplay() {
+                this.leftAutoplayInterval = setInterval(() => {
+                    this.nextLeftSlide();
+                }, this.leftSlideInterval);
             },
             
-            stopAutoplay() {
-                if (this.autoplayInterval) {
-                    clearInterval(this.autoplayInterval);
+            stopLeftAutoplay() {
+                if (this.leftAutoplayInterval) {
+                    clearInterval(this.leftAutoplayInterval);
                 }
             },
             
-            nextSlide() {
-                this.stopAutoplay();
+            nextLeftSlide() {
+                this.stopLeftAutoplay();
                 
                 // Move to next slide in the same category
-                if (this.currentSlide < this.categories[this.currentCategory].slides.length - 1) {
-                    this.currentSlide++;
+                if (this.leftCurrentSlide < this.leftCategories[this.leftCurrentCategory].slides.length - 1) {
+                    this.leftCurrentSlide++;
                 } else {
                     // If we're at the last slide in the category, move to the next category
-                    this.currentSlide = 0;
-                    this.currentCategory = (this.currentCategory + 1) % this.categories.length;
+                    this.leftCurrentSlide = 0;
+                    this.leftCurrentCategory = (this.leftCurrentCategory + 1) % this.leftCategories.length;
                 }
                 
-                this.startAutoplay();
+                this.startLeftAutoplay();
             },
             
-            prevSlide() {
-                this.stopAutoplay();
+            prevLeftSlide() {
+                this.stopLeftAutoplay();
                 
                 // Move to previous slide in the same category
-                if (this.currentSlide > 0) {
-                    this.currentSlide--;
+                if (this.leftCurrentSlide > 0) {
+                    this.leftCurrentSlide--;
                 } else {
                     // If we're at the first slide in the category, move to the previous category
-                    this.currentCategory = (this.currentCategory - 1 + this.categories.length) % this.categories.length;
-                    this.currentSlide = this.categories[this.currentCategory].slides.length - 1;
+                    this.leftCurrentCategory = (this.leftCurrentCategory - 1 + this.leftCategories.length) % this.leftCategories.length;
+                    this.leftCurrentSlide = this.leftCategories[this.leftCurrentCategory].slides.length - 1;
                 }
                 
-                this.startAutoplay();
+                this.startLeftAutoplay();
             },
             
-            changeCategory(index) {
-                this.stopAutoplay();
-                this.currentCategory = index;
-                this.currentSlide = 0;
-                this.startAutoplay();
+            changeLeftCategory(index) {
+                this.stopLeftAutoplay();
+                this.leftCurrentCategory = index;
+                this.leftCurrentSlide = 0;
+                this.startLeftAutoplay();
             },
             
-            touchStart(e) {
-                this.touchStartX = e.changedTouches[0].screenX;
+            leftTouchStart(e) {
+                this.leftTouchStartX = e.changedTouches[0].screenX;
             },
             
-            touchEnd(e) {
-                this.touchEndX = e.changedTouches[0].screenX;
-                if (this.touchEndX < this.touchStartX - 50) {
-                    this.nextSlide(); // Swipe left
-                } else if (this.touchEndX > this.touchStartX + 50) {
-                    this.prevSlide(); // Swipe right
+            leftTouchEnd(e) {
+                this.leftTouchEndX = e.changedTouches[0].screenX;
+                if (this.leftTouchEndX < this.leftTouchStartX - 50) {
+                    this.nextLeftSlide(); // Swipe left
+                } else if (this.leftTouchEndX > this.leftTouchStartX + 50) {
+                    this.prevLeftSlide(); // Swipe right
+                }
+            },
+            
+            // Right Side Methods
+            startRightAutoplay() {
+                this.rightAutoplayInterval = setInterval(() => {
+                    this.nextRightSlide();
+                }, this.rightSlideInterval);
+            },
+            
+            stopRightAutoplay() {
+                if (this.rightAutoplayInterval) {
+                    clearInterval(this.rightAutoplayInterval);
+                }
+            },
+            
+            nextRightSlide() {
+                this.stopRightAutoplay();
+                
+                // Move to next slide in the same category
+                if (this.rightCurrentSlide < this.rightCategories[this.rightCurrentCategory].slides.length - 1) {
+                    this.rightCurrentSlide++;
+                } else {
+                    // If we're at the last slide in the category, move to the next category
+                    this.rightCurrentSlide = 0;
+                    this.rightCurrentCategory = (this.rightCurrentCategory + 1) % this.rightCategories.length;
+                }
+                
+                this.startRightAutoplay();
+            },
+            
+            prevRightSlide() {
+                this.stopRightAutoplay();
+                
+                // Move to previous slide in the same category
+                if (this.rightCurrentSlide > 0) {
+                    this.rightCurrentSlide--;
+                } else {
+                    // If we're at the first slide in the category, move to the previous category
+                    this.rightCurrentCategory = (this.rightCurrentCategory - 1 + this.rightCategories.length) % this.rightCategories.length;
+                    this.rightCurrentSlide = this.rightCategories[this.rightCurrentCategory].slides.length - 1;
+                }
+                
+                this.startRightAutoplay();
+            },
+            
+            changeRightCategory(index) {
+                this.stopRightAutoplay();
+                this.rightCurrentCategory = index;
+                this.rightCurrentSlide = 0;
+                this.startRightAutoplay();
+            },
+            
+            rightTouchStart(e) {
+                this.rightTouchStartX = e.changedTouches[0].screenX;
+            },
+            
+            rightTouchEnd(e) {
+                this.rightTouchEndX = e.changedTouches[0].screenX;
+                if (this.rightTouchEndX < this.rightTouchStartX - 50) {
+                    this.nextRightSlide(); // Swipe left
+                } else if (this.rightTouchEndX > this.rightTouchStartX + 50) {
+                    this.prevRightSlide(); // Swipe right
                 }
             }
         };
@@ -2598,6 +2639,7 @@ window.addEventListener('unload', () => {
 </div>
 
     <!-- Add any additional sections here -->
+
 <!-- Our Achievements Section -->
 <div class="relative min-h-screen overflow-hidden bg-gray-100">
     <!-- Dynamic Background (Based on Active Card) -->
