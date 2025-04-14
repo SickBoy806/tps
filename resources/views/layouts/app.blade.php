@@ -305,7 +305,7 @@
                 <!-- About Us Dropdown -->
                 <div x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false" class="relative">
                 @php
-                    $aboutRoutes = ['about.history', 'about.mission', 'about.leadership'];
+                    $aboutRoutes = ['about.history', 'about.mission', 'about.leadership', 'about.department'];
                 @endphp
                 <button @click="open = !open"
                     class="flex items-center transition-colors duration-200 focus:outline-none {{ in_array(Route::currentRouteName(), $aboutRoutes) ? 'text-blue-400' : 'text-white hover:text-blue-400' }}">
@@ -334,6 +334,10 @@
                         <a href="{{ route('about.leadership') }}"
                             class="block px-4 py-2 text-white hover:bg-blue-600/20 transition-colors duration-200">
                             Leadership
+                        </a>
+                        <a href="{{ route('about.department') }}"
+                            class="block px-4 py-2 text-white hover:bg-blue-600/20 transition-colors duration-200">
+                            Department
                         </a>
                     </div>
                 </div>

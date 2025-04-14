@@ -5,21 +5,22 @@
 @section('content')
 <div class="min-h-screen ">
     <!-- Hero Section -->
-    <div class="relative h-64  overflow-hidden">
-        <div class="absolute ">
-     <img 
-    src="{{ asset('assets/images/news&events/pared.PNG') }}" 
-    alt="Tanzania Police School Moshi" 
-    class="w-full h-full object-cover "
-      />
-        </div>
-        <div class="relative container mx-auto px-6 h-full flex items-center">
-            <div class="text-white">
-                <h1 class="text-4xl font-bold mb-2 animate-fade-in">Contact Us</h1>
-                <p class="text-lg opacity-90">Tanzania Police School - Moshi Campus</p>
-            </div>
+    <div class="relative h-96 lg:h-[500px] overflow-hidden">
+    <div class="absolute inset-0">
+        <img 
+            src="{{ asset('assets/images/news&events/pared.PNG') }}" 
+            alt="Tanzania Police School Moshi" 
+            class="w-full"
+        />
+    </div>
+    <div class="relative container mx-auto px-6 h-full flex items-center max-w-screen-xl">
+        <div class="text-white text-center lg:text-left">
+            <h1 class="text-4xl lg:text-5xl font-bold mb-2 animate-fade-in">Contact Us</h1>
+            <p class="text-lg lg:text-xl opacity-90">Tanzania Police School - Moshi Campus</p>
         </div>
     </div>
+</div>
+
 
     <div class="container mx-auto px-6 py-12">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-12">

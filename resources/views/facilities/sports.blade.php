@@ -21,7 +21,7 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
-    padding: 20px;
+    padding: 50px;
   }
 
   .sport-card {
@@ -37,15 +37,20 @@
     transform: scale(1.05);
   }
 
+
   .card-image {
     width: 100%;
-    height: 200px;
+    height: auto; /* Adjust height automatically */
     background-size: cover;
-    background-position: center;
-  }
+    background-position: top; /* Align from the top */
+    background-repeat: no-repeat;
+    aspect-ratio: 16 / 9; /* Ensures the image maintains a consistent aspect ratio */
+    border-radius: 8px; /* Optional: Rounded corners for aesthetics */
+}
+
 
   .card-content {
-    padding: 20px;
+    padding: 50px;
   }
 
   .card-title {

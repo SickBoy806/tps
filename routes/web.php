@@ -59,6 +59,7 @@ Route::prefix('about')->name('about.')->group(function () {
     Route::get('/history/{month}', [HistoryController::class, 'showMonth'])->name('history.month');
     Route::get('/mission', [HomeController::class, 'mission'])->name('mission');
     Route::get('/leadership', [LeaderController::class, 'index'])->name('leadership');
+    Route::get('/department', [LeaderController::class, 'index'])->name('department');
     Route::get('/leadership/{slug}', [LeaderController::class, 'show'])->name('leadership.show');
     Route::get('/achievements', function () {
         return view('about.achievements');
