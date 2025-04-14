@@ -24,11 +24,4 @@ class Event extends Model
             'full' => $date->format('F j, Y')
         ];
     }
-
-   // In your Event.php model
-public function registrations()
-{
-    return $this->hasMany(Registration::class);
-}
-
 }
