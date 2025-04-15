@@ -884,65 +884,106 @@ window.addEventListener('unload', () => {
         </div>
         
         <!-- Section Selector Tabs -->
-        <div class="flex justify-center mb-8">
-            <div class="inline-flex bg-gray-200 rounded-lg p-1">
-                <button 
-                    @click="tab = 'news'" 
-                    :class="{ 'bg-blue-600 text-white': tab === 'news', 'text-gray-700 hover:text-blue-700': tab !== 'news' }" 
-                    class="px-4 py-2 rounded-md font-medium transition duration-200 ease-in-out">
-                    News
-                </button>
-                <button 
-                    @click="tab = 'announcements'" 
-                    :class="{ 'bg-blue-600 text-white': tab === 'announcements', 'text-gray-700 hover:text-blue-700': tab !== 'announcements' }" 
-                    class="px-4 py-2 rounded-md font-medium transition duration-200 ease-in-out">
-                    Announcements
-                </button>
-                <button 
-                    @click="tab = 'events'" 
-                    :class="{ 'bg-blue-600 text-white': tab === 'events', 'text-gray-700 hover:text-blue-700': tab !== 'events' }" 
-                    class="px-4 py-2 rounded-md font-medium transition duration-200 ease-in-out">
-                    Events
-                </button>
-            </div>
-        </div>
-        
 <!-- News Tab with Updated Layout -->
 <div x-show="tab === 'news'" class="transition-all duration-300 ease-in-out">
     <!-- Main news grid layout -->
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <!-- Featured News Item (Larger, left column) -->
-        <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
+        <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300"
+             x-data="{ 
+                currentSlide: 0,
+                slides: [
+                    { 
+                        image: '/assets/images/newsmain/igp.png', 
+                        alt: 'Leadership Training Closure Ceremony',
+                        title: 'SHEREHE ZA KUFUNGA MAFUNZO UONGOZI MDOGO TPS – MOSHI KOZI NO 2-2024/2025',
+                        author: 'Yona Dauden',
+                        date: 'March 7, 2025',
+                        content: 'MKUU WA JESHI LA POLISI TANZANIA IGP CAMILLUS M. WAMBURA NI MGENI RASMI KATIKA SHEREHE YA KUFUNGA MAFUNZO YA UONGOZI MDOGO TPS – MOSHI KOZI NO 2-2024/2025...',
+                        link: '/news/1'
+                    },
+                    { 
+                        image: '/assets/images/news&events/news3.jpeg', 
+                        alt: 'Bravo COY Team',
+                        title: 'TPS-MOSHI & IAA Academic Board meeting',
+                        author: 'Baraka charles mussula',
+                        date: 'February 25, 2025',
+                        content: '',
+                        link: '/news/2'
+                    },
+                    { 
+                        image: '/assets/images/news&events/news1.jpeg', 
+                        alt: 'Zanzibar Revolution Anniversary',
+                        title: 'TPS-MOSHI & IAA Academic Board meeting',
+                        author: 'Baraka charles mussula',
+                        date: 'January 12, 2025',
+                        content: '',
+                        link: '/news/3'
+                    }
+                ],
+                startSlideshow() {
+                    setInterval(() => {
+                        this.currentSlide = (this.currentSlide + 1) % this.slides.length;
+                    }, 5000); // Change slide every 5 seconds
+                }
+             }"
+             x-init="startSlideshow()">
             <div class="relative h-80 overflow-hidden">
-                <img src="/assets/images/newsmain/igp.png" alt="Leadership Training Closure Ceremony" class="w-full h-full object-cover">
+                <!-- Slideshow images -->
+                <template x-for="(slide, index) in slides" :key="index">
+                    <img :src="slide.image" 
+                         :alt="slide.alt" 
+                         class="w-full h-full object-cover absolute transition-opacity duration-500 ease-in-out"
+                         :class="{'opacity-100': currentSlide === index, 'opacity-0': currentSlide !== index}">
+                </template>
+                
+                <!-- Slide indicators -->
+                <div class="absolute bottom-12 left-0 right-0 flex justify-center space-x-2">
+                    <template x-for="(slide, index) in slides" :key="index">
+                        <button @click="currentSlide = index" 
+                                class="w-2 h-2 rounded-full transition-all duration-300 focus:outline-none"
+                                :class="{'bg-white w-4': currentSlide === index, 'bg-white/50': currentSlide !== index}">
+                        </button>
+                    </template>
+                </div>
+                
                 <div class="absolute bottom-0 left-0 bg-blue-600 text-white px-3 py-1 text-sm font-medium">
                     Featured News
                 </div>
             </div>
+            
+            <!-- Dynamic content section that changes with slides -->
             <div class="p-6">
-                <h3 class="text-2xl font-bold text-gray-800 mb-3">SHEREHE ZA KUFUNGA MAFUNZO UONGOZI MDOGO TPS – MOSHI KOZI NO 2-2024/2025</h3>
-                <div class="flex items-center text-gray-500 text-sm mb-4">
-                    <span class="mr-3 flex items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0z" />
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                        </svg>
-                        Yona Dauden
-                    </span>
-                    <span class="flex items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                        </svg>
-                        March 7, 2025
-                    </span>
-                </div>
-                <p class="text-gray-600 mb-4 text-lg">MKUU WA JESHI LA POLISI TANZANIA IGP CAMILLUS M. WAMBURA NI MGENI RASMI KATIKA SHEREHE YA KUFUNGA MAFUNZO YA UONGOZI MDOGO TPS – MOSHI KOZI NO 2-2024/2025...</p>
-                <a href="/news/1" class="text-blue-600 hover:text-blue-800 font-medium inline-flex items-center text-lg">
-                    Read more
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                    </svg>
-                </a>
+                <template x-for="(slide, index) in slides" :key="index">
+                    <div x-show="currentSlide === index"
+                         x-transition:enter="transition ease-out duration-300"
+                         x-transition:enter-start="opacity-0 transform translate-y-4"
+                         x-transition:enter-end="opacity-100 transform translate-y-0">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-3" x-text="slide.title"></h3>
+                        <div class="flex items-center text-gray-500 text-sm mb-4">
+                            <span class="mr-3 flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                                </svg>
+                                <span x-text="slide.author"></span>
+                            </span>
+                            <span class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                </svg>
+                                <span x-text="slide.date"></span>
+                            </span>
+                        </div>
+                        <p class="text-gray-600 mb-4 text-lg" x-text="slide.content"></p>
+                        <a :href="slide.link" class="text-blue-600 hover:text-blue-800 font-medium inline-flex items-center text-lg">
+                            Read more
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            </svg>
+                        </a>
+                    </div>
+                </template>
             </div>
         </div>
 
@@ -1056,178 +1097,6 @@ window.addEventListener('unload', () => {
                 </div>
             </div>
         </div>
-    </div>
-</div>
-                
-<!-- Announcements Tab -->
-<div x-show="tab === 'announcements'" class="transition-all duration-300 ease-in-out">
-    <ul class="divide-y divide-gray-200">
-        <!-- New Police Job Announcement with PDF -->
-        <li class="py-4 flex items-start">
-            <div class="flex-shrink-0 bg-red-100 text-red-800 p-3 rounded-lg">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                </svg>
-            </div>
-            <div class="ml-4">
-                <h4 class="text-lg font-semibold text-gray-800">Police Job Openings Announced</h4>
-                <p class="text-gray-600">The Tanzania Police Force is now accepting applications for multiple positions. Check the instructions document for eligibility requirements and application procedures.</p>
-                <p class="text-sm text-gray-500 mt-2">Posted on March 21, 2025</p>
-                
-                <!-- PDF Download Section -->
-                <div class="mt-4 bg-gray-50 p-4 rounded-lg border border-gray-200">
-                    <!-- First Existing PDF -->
-                    <div class="flex items-center justify-between mb-4">
-                        <div class="flex items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                            </svg>
-                            <div class="ml-3">
-                                <p class="text-sm font-medium text-gray-900">New Job Announcement 2025</p>
-                                <p class="text-xs text-gray-500">PDF • 2.4 MB</p>
-                            </div>
-                        </div>
-                        <a href="/assets/documents/new-police-job-announcement.pdf" download class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                            </svg>
-                            Download PDF
-                        </a>
-                    </div>
-
-                    <!-- New PDF for Application Processes and Procedures -->
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                            </svg>
-                            <div class="ml-3">
-                                <p class="text-sm font-medium text-gray-900">Job Application Instructions</p>
-                                <p class="text-xs text-gray-500">PDF • 4.8 MB</p>
-                            </div>
-                        </div>
-                        <a href="/assets/documents/police-job-instructions.pdf" download class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                            </svg>
-                            Download PDF
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </li>
-        
-        <li class="py-4 flex items-start">
-            <div class="flex-shrink-0 bg-blue-100 text-blue-800 p-3 rounded-lg">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z" />
-                </svg>
-            </div>
-            <div class="ml-4">
-                <h4 class="text-lg font-semibold text-gray-800">Enrollment Open for New Term</h4>
-                <p class="text-gray-600">Applications for the upcoming term are now open. Early applicants will receive priority consideration.</p>
-                <p class="text-sm text-gray-500 mt-2">Posted on March 1, 2025</p>
-            </div>
-        </li>
-        <li class="py-4 flex items-start">
-            <div class="flex-shrink-0 bg-green-100 text-green-800 p-3 rounded-lg">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-            </div>
-            <div class="ml-4">
-                <h4 class="text-lg font-semibold text-gray-800">New Driving Course Added</h4>
-                <p class="text-gray-600">We're excited to announce our new advanced driving course starting next month.</p>
-                <p class="text-sm text-gray-500 mt-2">Posted on February 25, 2025</p>
-            </div>
-        </li>
-    </ul>
-    <div class="mt-6 text-center">
-        <a href="/news/upcoming" class="inline-flex items-center group text-blue-600 font-semibold hover:text-blue-800 transition-all duration-300">
-            View all announcements
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-            </svg>
-        </a>
-    </div>
-</div>
-				
-<!-- Events Tab -->
-<div x-show="tab === 'events'" 
-     x-transition:enter="transition ease-out duration-300"
-     x-transition:enter-start="opacity-0 transform -translate-y-4"
-     x-transition:enter-end="opacity-100 transform translate-y-0"
-     class="transition-all duration-300 ease-in-out">
-    <div class="grid md:grid-cols-2 gap-6">
-        <!-- Event Card 1 -->
-        <div class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
-            <div class="relative h-56">
-                <!-- Background Image -->
-                <img src="/assets/images/news&events/gwaride.jpg" alt="Promotional Course" class="absolute inset-0 w-full h-full object-cover">
-                <!-- Overlay -->
-                <div class="absolute inset-0 bg-gradient-to-b from-black/60 to-black/20 flex flex-col justify-center p-6">
-                    <!-- Description on top of background image -->
-                    <span lang="it">
-                        <p class="text-white mb-4 font-italic text-lg">
-                            "Congratulations to all the newly promoted Corporals and Sergeants of the Tanzania Police Force! Your dedication and hard work during your promotional courses have paid off. Wishing you continued success in your service to the nation."
-                        </p>
-                    </span>
-                </div>
-            </div>
-            <div class="p-6">
-                <div class="flex items-center mb-4">
-                    <div class="bg-blue-100 text-blue-800 text-center rounded-lg p-3 mr-4">
-                        <div class="text-2xl font-bold">07</div>
-                        <div class="text-sm">Mar</div>
-                    </div>
-                    <div>
-                        <h4 class="text-xl font-semibold text-gray-800">Promotional Course Passingout</h4>
-                        <p class="text-gray-500">9:00 AM - 4:00 PM, Kilele Pori</p>
-                    </div>
-                </div>
-                <a href="/events-detail/1" class="text-blue-600 hover:underline">Event details</a>
-            </div>
-        </div>
-        
-        <!-- Event Card 2 -->
-        <div class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
-            <div class="relative h-56">
-                <!-- Background Image -->
-                <img src="/assets/images/news&events/GeSQWM2bMAAUTMY.jpeg" alt="Women's Day" class="absolute inset-0 w-full h-full object-cover">
-                <!-- Overlay -->
-                <div class="absolute inset-0 bg-gradient-to-b from-black/60 to-black/20 flex flex-col justify-center p-6">
-                    <!-- Description on top of background image -->
-                    <span lang="it">
-                        <p class="text-white mb-4 font-italic text-lg">
-                            "On this International Women's Day, we celebrate the incredible strength, resilience, and achievements of women everywhere. May we continue to champion equality, empower each other, and build a future where every woman's voice is heard and valued. Here's to the women who inspire us daily!"
-                        </p>
-                    </span>
-                </div>
-            </div>
-            <div class="p-6">
-                <div class="flex items-center mb-4">
-                    <div class="bg-green-100 text-green-800 text-center rounded-lg p-3 mr-4">
-                        <div class="text-2xl font-bold">09</div>
-                        <div class="text-sm">Mar</div>
-                    </div>
-                    <div>
-                        <h4 class="text-xl font-semibold text-gray-800">Womens Day</h4>
-                        <p class="text-gray-500">1:00 PM - 5:00 PM, Arusha</p>
-                    </div>
-                </div>
-                <a href="/events-detail/2" class="text-blue-600 hover:underline">Event details</a>
-            </div>
-        </div>
-    </div>
-    <div class="mt-6 text-center">
-        <a href="/news/upcoming" class="inline-flex items-center group text-blue-600 font-semibold hover:text-blue-800 transition-all duration-300">
-            View all events
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-            </svg>
-        </a>
-    </div>
-</div>
     </div>
 </div>
 
@@ -1971,7 +1840,7 @@ window.addEventListener('unload', () => {
                         {
                             title: "Basketball Courts",
                             description: "Multiple indoor and outdoor basketball courts for training and competitions.",
-                            image: "{{ asset('assets/images/facilities/bak.jpg') }}"
+                            image: "{{ asset('assets/images/facilities/batuli.jpg') }}"
                         },
                         {
                             title: "Volleyball & Tennis",
@@ -2641,313 +2510,794 @@ window.addEventListener('unload', () => {
     <!-- Add any additional sections here -->
 
 <!-- Our Achievements Section -->
-<div class="relative min-h-screen overflow-hidden bg-gray-100">
-    <!-- Dynamic Background (Based on Active Card) -->
-    <div x-data="{ 
-        activeSlide: 0,
-        isTransitioning: false,
-        isMobile: window.innerWidth < 768,
-        slides: [
-            {
-                image: '{{ asset('assets/images/newsmain/uwanaja.PNG') }}',
-                title: 'Best Police Training Academy 2024',
-                description: 'Awarded for excellence in police training methodologies and exceptional graduation rates. Our academy was recognized nationally for implementing innovative training techniques that have resulted in officers who excel in their field assignments.',
-                year: '2024',
-                milestone: 'National Recognition'
-            },
-            {
-                image: '{{ asset('assets/images/newsmain/forensics.jpg') }}',
-                title: 'Community Service Excellence Award',
-                description: 'Recognized for our outstanding community outreach programs and positive impact on surrounding communities. Our cadets and staff have contributed over 5,000 volunteer hours in the past year, focusing on youth mentorship and community safety initiatives.',
-                year: '2023',
-                milestone: 'Community Impact'
-            },
-            {
-                image: '{{ asset('assets/images/newsmain/PRC_buildings.jpg') }}',
-                title: 'PRC-Funded Facility Expansion',
-                description: 'Completed the Phase II construction project with PRC funding, featuring three academic buildings with computer labs, lecture rooms, and administrative facilities. The expansion includes four dormitory blocks accommodating 320 students and two major water systems.',
-                year: '2018',
-                milestone: 'Infrastructure Growth'
-            },
-            {
-                image: '{{ asset('assets/images/newsmain/campus_expansion.jpg') }}',
-                title: 'Multi-Campus Expansion',
-                description: 'Expanded from a single campus to three distinct facilities: TPS Main Campus, Kilele Pori, and Kamba Pori. This strategic expansion has increased our training capacity from 600 recruits in the 1990s to over 10,000 today, making us one of the largest police training institutions in the region.',
-                year: '2020',
-                milestone: 'Capacity Enhancement'
-            },
-            {
-                image: '{{ asset('assets/images/newsmain/mwiru.jpeg') }}',
-                title: 'Advanced Forensic Training Certification',                 
-                description: 'Received international certification for our advanced forensic training program. Our students now benefit from hands-on experience with cutting-edge forensic technology and techniques that meet global standards of excellence.',
-                year: '2022',
-                milestone: 'International Recognition'
-            },
-            {
-                image: '{{ asset('assets/images/Logos/news2.jpeg') }}',
-                title: 'Academic Partnership Excellence',
-                description: 'Established valuable academic partnerships with leading universities, providing advanced educational pathways for our graduates. These collaborations have created opportunities for continuing education and specialized certifications.',
-                year: '2021',
-                milestone: 'Academic Excellence'
-            }
-        ],
-        autoSlideInterval: null,
-        init() {
-            this.checkScreenSize();
-            this.startAutoSlide();
-            this.$watch('activeSlide', () => {
-                this.handleSlideChange();
-            });
-        },
-        checkScreenSize() {
-            this.isMobile = window.innerWidth < 768;
-        },
-        startAutoSlide() {
-            this.stopAutoSlide();
-            this.autoSlideInterval = setInterval(() => {
-                if (!this.isTransitioning) {
-                    this.goToNextSlide();
-                }
-            }, 10000);
-        },
-        stopAutoSlide() {
-            if (this.autoSlideInterval) {
-                clearInterval(this.autoSlideInterval);
-            }
-        },
-        goToNextSlide() {
-            this.isTransitioning = true;
-            this.activeSlide = (this.activeSlide + 1) % this.slides.length;
-        },
-        goToPrevSlide() {
-            this.isTransitioning = true;
-            this.activeSlide = (this.activeSlide - 1 + this.slides.length) % this.slides.length;
-        },
-        handleSlideChange() {
-            // Reset progress animation
-            const progressBar = document.querySelector('.progress-bar-' + this.activeSlide);
-            if (progressBar) {
-                progressBar.style.animation = 'none';
-                setTimeout(() => {
-                    progressBar.style.animation = 'progress 10s linear forwards';
-                }, 10);
-            }
-            
-            // Re-enable transitions after a small delay
-            setTimeout(() => {
-                this.isTransitioning = false;
-            }, 1000);
-        },
-        getCardClass(index) {
-            const position = (index - this.activeSlide + this.slides.length) % this.slides.length;
-            
-            // Mobile screens: show only active card at full size
-            if (this.isMobile) {
-                if (position === 0) return 'z-30 scale-100 translate-y-0 opacity-100'; // Active card
-                return 'hidden'; // Hide other cards on small screens
-            }
-            
-            // Default stacking behavior for larger screens
-            if (position === 0) return 'z-30 scale-110 translate-y-0 opacity-100'; // Active card
-            if (position === 1) return 'z-20 scale-95 translate-y-24 opacity-90'; // First stacked card
-            if (position === 2) return 'z-10 scale-90 translate-y-40 opacity-80'; // Second stacked card
-            return 'z-0 scale-85 translate-y-56 opacity-70'; // Last stacked card
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tanzania Police School Timeline</title>
+    <style>
+        /* Base styling */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            color: white;
         }
-    }" 
-    x-init="init()"
-    @resize.window="checkScreenSize()"
-    class="w-full h-full">
         
-        <!-- Background Image (Current Active Card) with Preloading -->
-        <template x-for="(slide, index) in slides" :key="index">
-            <div x-show="activeSlide === index"
-                x-transition:enter="transition-opacity duration-1000 ease-in-out"
-                x-transition:enter-start="opacity-0"
-                x-transition:enter-end="opacity-100"
-                x-transition:leave="transition-opacity duration-1000 ease-in-out"
-                x-transition:leave-start="opacity-100"
-                x-transition:leave-end="opacity-0"
-                class="absolute inset-0 w-full h-full">
-                <div class="absolute inset-0 bg-black opacity-60"></div>
-                <img :src="slide.image" class="absolute inset-0 w-full h-full object-cover" 
-                     :alt="slide.title" loading="lazy"
-                     @load="index === activeSlide ? isTransitioning = false : null">
-                
-                <!-- Preload next image -->
-                <img :src="slides[(index + 1) % slides.length].image" class="hidden" alt="Preload next image" loading="lazy">
-            </div>
-        </template>
+        /* Custom cursor */
+        .cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            transition: transform 0.1s ease;
+            z-index: 9999;
+            mix-blend-mode: difference;
+        }
         
+        /* Main container - adjusted to fit parent container */
+        .fullscreen-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            min-height: 600px;
+            overflow: hidden;
+            background-color: #2d4739;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
 
-        <!-- Content Container -->
-        <div class="relative min-h-screen py-8 md:py-0 flex items-center">
-            <div class="container mx-auto px-4 flex flex-col md:flex-row items-center justify-center h-full pt-16 md:pt-0">
-                
-                <!-- Left Side: Timeline with Milestones -->
-                <div class="w-full md:w-1/2 text-white z-10 pb-8 md:pb-0">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-4 md:mb-8 text-center md:text-left">Our Achievements</h2>
-                    
-                    <!-- Vertical Timeline -->
-                    <div class="relative pl-6 md:pl-8 ml-2 md:ml-8">
-                        <!-- Vertical Line -->
-                        <div class="absolute left-0 top-0 bottom-0 w-1 bg-blue-600 rounded"></div>
-                        
-                        <!-- Timeline Items -->
-                        <template x-for="(slide, index) in slides" :key="index">
-                            <div class="mb-6 md:mb-12 relative">
-                                <!-- Milestone Point -->
-                                <div :class="activeSlide === index ? 'bg-blue-600 scale-125 transform transition-all duration-500' : 'bg-gray-400 transition-all duration-500'"
-                                    class="absolute -left-8 md:-left-10 w-3 md:w-4 h-3 md:h-4 rounded-full border-2 md:border-4 border-white"></div>
-                                
-                                <!-- Year -->
-                                <div :class="activeSlide === index ? 'text-blue-300 font-bold transform transition-all duration-500' : 'text-gray-300 transition-all duration-500'"
-                                    class="text-base md:text-lg mb-1" x-text="slide.year"></div>
-                                
-                                <!-- Milestone -->
-                                <div :class="activeSlide === index ? 'text-white transform transition-all duration-500' : 'text-gray-400 transition-all duration-500'"
-                                    class="text-base md:text-lg font-semibold" x-text="slide.milestone"></div>
-                                
-                                <!-- Brief Description -->
-                                <div x-show="activeSlide === index" 
-                                    x-transition:enter="transition-all duration-500 ease-out"
-                                    x-transition:enter-start="opacity-0 transform -translate-x-4"
-                                    x-transition:enter-end="opacity-100 transform translate-x-0"
-                                    class="text-xs md:text-sm text-gray-300 mt-2 max-w-xs">
-                                    <p x-text="slide.description.split('.')[0] + '.'"></p>
-                                </div>
-                            </div>
-                        </template>
-                    </div>
+        /* Title area - adjusted positioning for responsiveness */
+        .title-area {
+            position: absolute;
+            top: 5%;
+            left: 5%;
+            z-index: 10;
+            padding: 10px;
+        }
+        
+        .school-title {
+            font-size: clamp(24px, 3vw, 36px);
+            font-weight: bold;
+            margin: 0;
+        }
+        
+        .school-subtitle {
+            font-size: clamp(16px, 2vw, 20px);
+            opacity: 0.8;
+            margin: 5px 0 0 0;
+        }
+        
+        /* Timeline styles - improved responsive behavior */
+        .timeline-container {
+            position: relative;
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            z-index: 10;
+            padding: 0 15px;
+        }
+        
+        .timeline {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            height: 2px;
+            background-color: rgba(255, 255, 255, 0.3);
+            margin: 40px 0;
+        }
+        
+        .year-label {
+            color: white;
+            font-weight: bold;
+            font-size: clamp(14px, 1.5vw, 18px);
+        }
+        
+        .timeline-marker {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+        
+        .timeline-marker:hover {
+            transform: translate(-50%, -50%) scale(1.5);
+        }
+        
+        .timeline-marker.active {
+            background-color: #fff;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+            transform: translate(-50%, -50%) scale(1.2);
+        }
+        
+        /* Content styles - improved flex behavior */
+        .content-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            width: 100%;
+            margin-top: 30px;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .content {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            min-width: 280px;
+            padding-right: 20px;
+        }
+        
+        .year-heading {
+            font-size: clamp(36px, 5vw, 56px);
+            font-weight: bold;
+            margin: 0 0 20px 0;
+        }
+        
+        .milestone-title {
+            font-size: clamp(24px, 3vw, 36px);
+            font-weight: bold;
+            margin: 0 0 20px 0;
+        }
+        
+        .milestone-description {
+            font-size: clamp(14px, 1.5vw, 18px);
+            line-height: 1.6;
+        }
+        
+        .image-container {
+            flex: 1;
+            min-width: 280px;
+            height: clamp(200px, 30vh, 350px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.5s ease;
+        }
+        
+        .milestone-image {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: cover;
+        }
+        
+        /* Navigation Controls - improved positioning */
+        .nav-controls {
+            position: absolute;
+            bottom: 5%;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: clamp(20px, 3vw, 40px);
+            z-index: 10;
+        }
+        
+        .nav-button {
+            width: clamp(32px, 4vw, 48px);
+            height: clamp(32px, 4vw, 48px);
+            border-radius: 50%;
+            background-color: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: clamp(14px, 1.5vw, 18px);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-button:hover {
+            background-color: rgba(0, 0, 0, 0.5);
+            transform: scale(1.1);
+        }
+        
+        /* Social Links - improved positioning */
+        .social-links {
+            position: absolute;
+            bottom: 5%;
+            right: 5%;
+            display: flex;
+            gap: clamp(8px, 1vw, 16px);
+            z-index: 10;
+        }
+        
+        .social-link {
+            width: clamp(32px, 4vw, 48px);
+            height: clamp(32px, 4vw, 48px);
+            border-radius: 50%;
+            background-color: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: clamp(12px, 1.5vw, 16px);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover {
+            background-color: rgba(0, 0, 0, 0.5);
+            transform: scale(1.1);
+        }
+        
+        /* Canvas styling */
+        #scene {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        /* Responsive adjustments - improved breakpoints */
+        @media (max-width: 992px) {
+            .content-wrapper {
+                flex-direction: column;
+            }
+            
+            .content {
+                width: 100%;
+                padding-right: 0;
+                margin-bottom: 20px;
+            }
+            
+            .image-container {
+                width: 100%;
+                margin: 0 auto;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .social-links {
+                bottom: 15%;
+                right: 5%;
+            }
+            
+            .timeline-container {
+                margin-top: 60px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .nav-controls {
+                bottom: 3%;
+            }
+            
+            .social-links {
+                bottom: 3%;
+                right: 3%;
+                gap: 8px;
+            }
+            
+            .social-link {
+                width: 32px;
+                height: 32px;
+                font-size: 12px;
+            }
+            
+            .nav-button {
+                width: 32px;
+                height: 32px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="fullscreen-container" id="timeline-app">
+        <!-- Custom Cursor -->
+        <div class="cursor" id="custom-cursor"></div>
+        
+        <!-- WebGL Scene Background -->
+        <canvas id="scene"></canvas>
+        
+        <!-- Title Area -->
+        <div class="title-area">
+            <h1 class="school-title">Tanzania Police School</h1>
+            <p class="school-subtitle">A Century of Service and Training</p>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="timeline-container">
+            <!-- Timeline Navigation -->
+            <div class="timeline">
+                <div class="year-label">1921</div>
+                <!-- Timeline markers will be generated by JS -->
+                <div class="year-label">2023</div>
+            </div>
+            
+            <!-- Content Area -->
+            <div class="content-wrapper">
+                <div class="content">
+                    <h2 class="year-heading" id="year-display">1984</h2>
+                    <h3 class="milestone-title" id="milestone-title">Advanced Training Programs</h3>
+                    <p class="milestone-description" id="milestone-description">The Tanzania Police School introduced advanced courses in criminal investigation, forensics, and community policing to address evolving security challenges. This era saw a more scientific approach to police education with laboratory facilities and specialized instructors.</p>
                 </div>
                 
-                <!-- Right Side: Card Castle -->
-                <div class="w-full md:w-1/2 relative flex items-center justify-center z-10 mt-4 md:mt-0">
-                    <div class="relative h-64 md:h-96 w-64 md:w-80">
-                        <template x-for="(slide, index) in slides" :key="index">
-                            <div @click="activeSlide = index; stopAutoSlide(); startAutoSlide();"
-                                :class="getCardClass(index)"
-                                class="absolute top-0 left-0 w-full bg-white rounded-2xl shadow-xl overflow-hidden transition-all duration-700 ease-in-out cursor-pointer transform-gpu hover:shadow-2xl">
-                                
-                                <!-- Card Image -->
-                                <div class="w-full h-24 md:h-32 overflow-hidden">
-                                    <img :src="slide.image" :alt="slide.title" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
-                                </div>
-                                
-                                <!-- Card Content -->
-                                <div class="p-3 md:p-4">
-                                    <h3 class="text-base md:text-lg font-bold text-gray-800 mb-1 md:mb-2" x-text="slide.title"></h3>
-                                    <p class="text-xs text-gray-600 line-clamp-3" x-text="slide.description"></p>
-                                </div>
-                                
-                                <!-- Progress Bar -->
-                                <div x-show="activeSlide === index" class="absolute bottom-0 left-0 right-0 h-1 bg-gray-200">
-                                    <div :class="'progress-bar-' + index" class="h-full bg-blue-600 animate-progress"></div>
-                                </div>
-                            </div>
-                        </template>
-                    </div>
+                <!-- Image Container -->
+                <div class="image-container">
+                    <img src="/api/placeholder/500/350" class="milestone-image" alt="Historical photo">
                 </div>
             </div>
         </div>
         
         <!-- Navigation Controls -->
-        <div class="absolute bottom-4 md:bottom-8 right-4 md:right-8 flex space-x-3 md:space-x-4 z-20">
-            <button @click="goToPrevSlide(); stopAutoSlide(); startAutoSlide();"
-                :disabled="isTransitioning"
-                :class="isTransitioning ? 'opacity-50 cursor-not-allowed' : 'opacity-100 hover:bg-blue-700'"
-                class="bg-blue-600 text-white rounded-full p-1 md:p-2 shadow-lg hover:shadow-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50 transform active:scale-95">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 md:h-6 md:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-                </svg>
-            </button>
-            <button @click="goToNextSlide(); stopAutoSlide(); startAutoSlide();"
-                :disabled="isTransitioning"
-                :class="isTransitioning ? 'opacity-50 cursor-not-allowed' : 'opacity-100 hover:bg-blue-700'"
-                class="bg-blue-600 text-white rounded-full p-1 md:p-2 shadow-lg hover:shadow-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50 transform active:scale-95">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 md:h-6 md:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                </svg>
-            </button>
+        <div class="nav-controls">
+            <div class="nav-button" id="prev-btn">&lt;</div>
+            <div class="nav-button" id="pause-btn">||</div>
+            <div class="nav-button" id="next-btn">&gt;</div>
         </div>
-
-        <!-- Page Indicators (Dots) -->
-        <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20">
-            <template x-for="(slide, index) in slides" :key="index">
-                <button @click="activeSlide = index; stopAutoSlide(); startAutoSlide();"
-                    :class="activeSlide === index ? 'bg-blue-600 w-3 md:w-4' : 'bg-gray-400 w-2 md:w-3'"
-                    class="h-2 md:h-3 rounded-full transition-all duration-300 hover:bg-blue-400">
-                </button>
-            </template>
+        
+        <!-- Social Links -->
+        <div class="social-links">
+            <div class="social-link">FB</div>
+            <div class="social-link">TW</div>
+            <div class="social-link">YT</div>
         </div>
     </div>
-</div>
 
-<!-- Add this CSS to your stylesheet -->
-<style>
-@keyframes progress {
-    0% { width: 0; }
-    100% { width: 100%; }
-}
-
-.animate-progress {
-    animation: progress 10s linear forwards;
-}
-
-/* Fallback for browsers that don't support backdrop-filter */
-@supports not (backdrop-filter: blur(4px)) {
-    .bg-black.opacity-60 {
-        opacity: 0.8;
-    }
-}
-
-/* Better mobile scrolling */
-@media (max-width: 768px) {
-    html, body {
-        overflow-x: hidden;
-    }
-    
-    .min-h-screen {
-        min-height: 100vh;
-        min-height: -webkit-fill-available;
-    }
-    
-    /* Fix Safari height issues */
-    @supports (-webkit-touch-callout: none) {
-        .min-h-screen {
-            min-height: -webkit-fill-available;
-        }
-    }
-    
-    /* Prevent text from being too small */
-    .text-xs {
-        font-size: 0.8125rem;
-    }
-}
-
-/* Smoother transitions */
-.transition-all {
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* Improve performance with hardware acceleration */
-.transform-gpu {
-    transform: translateZ(0);
-    backface-visibility: hidden;
-    perspective: 1000px;
-}
-
-/* Responsive layout adjustment for medium-sized screens */
-@media (min-width: 768px) and (max-width: 1024px) {
-    .md\:translate-y-24 {
-        --tw-translate-y: 1.25rem;
-    }
-    .md\:translate-y-40 {
-        --tw-translate-y: 2rem;
-    }
-    .md\:translate-y-56 {
-        --tw-translate-y: 2.75rem;
-    }
-}
-</style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Timeline data
+            const milestones = [
+                {
+                    year: "1921",
+                    title: "Foundation of Police Training",
+                    description: "The foundation of formal police training in Tanzania was established under colonial administration, focusing on basic law enforcement skills and colonial policing methods.",
+                    image: "/api/placeholder/500/350"
+                },
+                {
+                    year: "1946",
+                    title: "Establishment of Central Police Training School",
+                    description: "The Central Police Training School was formally established in Dar es Salaam as the main training institution for police officers in the territory. This marked a significant step in the professionalization of police services with standardized curriculum and training methods.",
+                    image: "/api/placeholder/500/350"
+                },
+                {
+                    year: "1961",
+                    title: "Post-Independence Reforms",
+                    description: "Following Tanzania's independence, the police training system underwent significant reforms to align with the new nation's values and priorities. The curriculum was updated to emphasize service to citizens rather than colonial interests.",
+                    image: "/api/placeholder/500/350"
+                },
+                {
+                    year: "1975",
+                    title: "Establishment of TPS Moshi",
+                    description: "The Tanzania Police School in Moshi was established as a specialized training center, expanding the nation's police training capabilities with modern facilities and expanded curriculum.",
+                    image: "/api/placeholder/500/350"
+                },
+                {
+                    year: "1984",
+                    title: "Advanced Training Programs",
+                    description: "The Tanzania Police School introduced advanced courses in criminal investigation, forensics, and community policing to address evolving security challenges. This era saw a more scientific approach to police education with laboratory facilities and specialized instructors.",
+                    image: "/api/placeholder/500/350"
+                },
+                {
+                    year: "1995",
+                    title: "Curriculum Modernization",
+                    description: "A comprehensive curriculum review was conducted, integrating human rights, community policing principles, and international best practices into the training program.",
+                    image: "/api/placeholder/500/350"
+                },
+                {
+                    year: "2008",
+                    title: "International Training Partnerships",
+                    description: "TPS established partnerships with international police training institutions, facilitating exchange programs and adopting global best practices in law enforcement training.",
+                    image: "/api/placeholder/500/350"
+                },
+                {
+                    year: "2018",
+                    title: "PRC-Funded Facility Expansion",
+                    description: "Completed the Phase II construction project with PRC funding, featuring three academic buildings with computer labs, lecture rooms, and administrative facilities. The expansion includes four dormitory blocks accommodating 320 students and two major water systems.",
+                    image: "/api/placeholder/500/350"
+                },
+                {
+                    year: "2020",
+                    title: "Multi-Campus Expansion",
+                    description: "Expanded from a single campus to three distinct facilities: TPS Main Campus, Kilele Pori, and Kamba Pori. This strategic expansion has increased our training capacity from 600 recruits in the 1990s to over 10,000 today, making us one of the largest police training institutions in the region.",
+                    image: "/api/placeholder/500/350"
+                },
+                {
+                    year: "2022",
+                    title: "Advanced Forensic Training Certification",
+                    description: "Received international certification for our advanced forensic training program. Our students now benefit from hands-on experience with cutting-edge forensic technology and techniques that meet global standards of excellence.",
+                    image: "/api/placeholder/500/350"
+                },
+                {
+                    year: "2023",
+                    title: "Community Service Excellence Award",
+                    description: "Recognized for our outstanding community outreach programs and positive impact on surrounding communities. Our cadets and staff have contributed over 5,000 volunteer hours in the past year, focusing on youth mentorship and community safety initiatives.",
+                    image: "/api/placeholder/500/350"
+                }
+            ];
+            
+            // App state
+            let activeSlide = 4; // Start with 1984 milestone (index 4)
+            let isTransitioning = false;
+            let autoSlideInterval = null;
+            
+            // DOM elements
+            const yearDisplay = document.getElementById('year-display');
+            const milestoneTitle = document.getElementById('milestone-title');
+            const milestoneDescription = document.getElementById('milestone-description');
+            const milestoneImage = document.querySelector('.milestone-image');
+            const timeline = document.querySelector('.timeline');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            const pauseBtn = document.getElementById('pause-btn');
+            const timelineApp = document.getElementById('timeline-app');
+            
+            // Initialize the timeline
+            function init() {
+                createTimelineMarkers();
+                setupMouseTracking();
+                initThreeScene();
+                startAutoSlide();
+                updateUI();
+                
+                // Event listeners
+                prevBtn.addEventListener('click', prevSlide);
+                nextBtn.addEventListener('click', nextSlide);
+                pauseBtn.addEventListener('click', pauseAutoSlide);
+                window.addEventListener('resize', () => {
+                    resizeThreeScene();
+                    updateUI();
+                });
+            }
+            
+            // Update UI based on container size
+            function updateUI() {
+                const containerHeight = timelineApp.offsetHeight;
+                const containerWidth = timelineApp.offsetWidth;
+                
+                // Adjust spacing based on container dimensions
+                if (containerHeight < 500) {
+                    document.querySelector('.timeline-container').style.marginTop = '40px';
+                } else {
+                    document.querySelector('.timeline-container').style.marginTop = '0';
+                }
+            }
+            
+            // Create timeline markers
+            function createTimelineMarkers() {
+                milestones.forEach((milestone, index) => {
+                    // Calculate position as percentage
+                    const percent = index / (milestones.length - 1) * 100;
+                    
+                    // Create marker
+                    const marker = document.createElement('div');
+                    marker.className = 'timeline-marker';
+                    if (index === activeSlide) {
+                        marker.classList.add('active');
+                    }
+                    marker.style.left = `${percent}%`;
+                    
+                    // Add click event
+                    marker.addEventListener('click', () => {
+                        if (isTransitioning) return;
+                        goToSlide(index);
+                    });
+                    
+                    timeline.appendChild(marker);
+                });
+            }
+            
+            // Auto slide functions
+            function startAutoSlide() {
+                stopAutoSlide();
+                autoSlideInterval = setInterval(() => {
+                    if (!isTransitioning) {
+                        nextSlide();
+                    }
+                }, 10000);
+            }
+            
+            function stopAutoSlide() {
+                if (autoSlideInterval) {
+                    clearInterval(autoSlideInterval);
+                }
+            }
+            
+            function pauseAutoSlide() {
+                stopAutoSlide();
+                pauseBtn.textContent = '▶';
+                pauseBtn.addEventListener('click', resumeAutoSlide, { once: true });
+            }
+            
+            function resumeAutoSlide() {
+                startAutoSlide();
+                pauseBtn.textContent = '||';
+            }
+            
+            // Navigation functions
+            function nextSlide() {
+                isTransitioning = true;
+                activeSlide = (activeSlide + 1) % milestones.length;
+                updateActiveMarker();
+                animateContentChange();
+            }
+            
+            function prevSlide() {
+                isTransitioning = true;
+                activeSlide = (activeSlide - 1 + milestones.length) % milestones.length;
+                updateActiveMarker();
+                animateContentChange();
+            }
+            
+            function goToSlide(index) {
+                if (index === activeSlide) return;
+                
+                isTransitioning = true;
+                activeSlide = index;
+                updateActiveMarker();
+                animateContentChange();
+                
+                // Reset auto slide timer
+                stopAutoSlide();
+                startAutoSlide();
+            }
+            
+            function updateActiveMarker() {
+                document.querySelectorAll('.timeline-marker').forEach((marker, i) => {
+                    if (i === activeSlide) {
+                        marker.classList.add('active');
+                    } else {
+                        marker.classList.remove('active');
+                    }
+                });
+            }
+            
+            // Animate content changes
+            function animateContentChange() {
+                // Fade out
+                fadeOut([yearDisplay, milestoneTitle, milestoneDescription], () => {
+                    // Update content
+                    yearDisplay.textContent = milestones[activeSlide].year;
+                    milestoneTitle.textContent = milestones[activeSlide].title;
+                    milestoneDescription.textContent = milestones[activeSlide].description;
+                    milestoneImage.src = milestones[activeSlide].image;
+                    milestoneImage.alt = milestones[activeSlide].title;
+                    
+                    // Fade in
+                    fadeIn([yearDisplay, milestoneTitle, milestoneDescription], () => {
+                        isTransitioning = false;
+                    });
+                });
+            }
+            
+            function fadeOut(elements, onComplete) {
+                let count = 0;
+                elements.forEach((el, i) => {
+                    el.style.opacity = '0';
+                    el.style.transform = 'translateY(20px)';
+                    el.style.transition = `opacity 0.4s ease, transform 0.4s ease`;
+                    
+                    setTimeout(() => {
+                        count++;
+                        if (count === elements.length && onComplete) {
+                            onComplete();
+                        }
+                    }, 400);
+                });
+            }
+            
+            function fadeIn(elements, onComplete) {
+                let count = 0;
+                elements.forEach((el, i) => {
+                    setTimeout(() => {
+                        el.style.opacity = '1';
+                        el.style.transform = 'translateY(0)';
+                        
+                        el.addEventListener('transitionend', function handler() {
+                            count++;
+                            if (count === elements.length && onComplete) {
+                                onComplete();
+                            }
+                            el.removeEventListener('transitionend', handler);
+                        });
+                    }, i * 100);
+                });
+            }
+            
+            // Mouse tracking for custom cursor
+            function setupMouseTracking() {
+                const cursor = document.getElementById('custom-cursor');
+                
+                document.addEventListener('mousemove', (e) => {
+                    // Move cursor
+                    cursor.style.left = e.clientX + 'px';
+                    cursor.style.top = e.clientY + 'px';
+                    
+                    // Check if hovering over interactive elements
+                    const target = e.target;
+                    if (target.classList.contains('nav-button') || 
+                        target.classList.contains('timeline-marker') || 
+                        target.classList.contains('social-link')) {
+                        cursor.style.transform = 'translate(-50%, -50%) scale(1.5)';
+                        cursor.style.backgroundColor = 'rgba(255, 255, 255, 0.9)';
+                    } else {
+                        cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+                        cursor.style.backgroundColor = 'rgba(255, 255, 255, 0.7)';
+                    }
+                });
+                
+                // Hide cursor on mobile/touch devices
+                if ('ontouchstart' in window) {
+                    cursor.style.display = 'none';
+                }
+            }
+            
+            // ThreeJS background scene
+            function initThreeScene() {
+                // Import ThreeJS from CDN if it doesn't exist
+                if (typeof THREE === 'undefined') {
+                    const script = document.createElement('script');
+                    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
+                    script.onload = setupScene;
+                    document.head.appendChild(script);
+                } else {
+                    setupScene();
+                }
+                
+                function setupScene() {
+                    // Scene setup
+                    const scene = new THREE.Scene();
+                    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+                    const renderer = new THREE.WebGLRenderer({ 
+                        canvas: document.getElementById('scene'),
+                        alpha: true,
+                        antialias: true
+                    });
+                    
+                    renderer.setSize(timelineApp.offsetWidth, timelineApp.offsetHeight);
+                    renderer.setPixelRatio(window.devicePixelRatio);
+                    
+                    // Create particles
+                    const particleGeometry = new THREE.BufferGeometry();
+                    const particleCount = 1500;
+                    const posArray = new Float32Array(particleCount * 3);
+                    
+                    for (let i = 0; i < particleCount * 3; i++) {
+                        posArray[i] = (Math.random() - 0.5) * 20;
+                    }
+                    
+                    particleGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+                    
+                    const particleMaterial = new THREE.PointsMaterial({
+                        color: 0x5f9ea0,
+                        size: 0.05,
+                        transparent: true,
+                        blending: THREE.AdditiveBlending
+                    });
+                    
+                    const particleSystem = new THREE.Points(particleGeometry, particleMaterial);
+                    scene.add(particleSystem);
+                    
+                    // 3D shapes in background
+                    const geometries = [
+                        new THREE.IcosahedronGeometry(0.6, 0),
+                        new THREE.BoxGeometry(0.7, 0.7, 0.7),
+                        new THREE.TorusGeometry(0.5, 0.2, 16, 100)
+                    ];
+                    
+                    const material = new THREE.MeshPhongMaterial({
+                        color: 0x5f9ea0,
+                        transparent: true,
+                        opacity: 0.7,
+                        wireframe: true
+                    });
+                    
+                    const shapes = [];
+                    
+                    // Create floating shapes
+                    for (let i = 0; i < 15; i++) {
+                        const geometry = geometries[Math.floor(Math.random() * geometries.length)];
+                        const mesh = new THREE.Mesh(geometry, material);
+                        
+                        mesh.position.set(
+                            (Math.random() - 0.5) * 15,
+                            (Math.random() - 0.5) * 15,
+                            (Math.random() - 0.5) * 15 - 5
+                        );
+                        
+                        scene.add(mesh);
+                        
+                        shapes.push({
+                            mesh,
+                            rotSpeed: {
+                                x: (Math.random() - 0.5) * 0.01,
+                                y: (Math.random() - 0.5) * 0.01,
+                                z: (Math.random() - 0.5) * 0.01
+                            },
+                            floatSpeed: {
+                                x: (Math.random() - 0.5) * 0.005,
+                                y: (Math.random() - 0.5) * 0.005,
+                                z: (Math.random() - 0.5) * 0.005
+                            }
+                        });
+                    }
+                    
+                    // Add lighting
+                    const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
+                    scene.add(ambientLight);
+                    
+                    const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+                    directionalLight.position.set(1, 1, 1);
+                    scene.add(directionalLight);
+                    
+                    camera.position.z = 5;
+                    
+                    // 3D parallax effect with mouse movement
+                    document.addEventListener('mousemove', (e) => {
+                        const x = (e.clientX / window.innerWidth) * 2 - 1;
+                        const y = -(e.clientY / window.innerHeight) * 2 + 1;
+                        
+                        // Animate camera position
+                        const targetX = x * 0.8;
+                        const targetY = y * 0.8;
+                        
+                        camera.position.x += (targetX - camera.position.x) * 0.05;
+                        camera.position.y += (targetY - camera.position.y) * 0.05;
+                        camera.lookAt(scene.position);
+                    });
+                    
+                    // Animation loop
+                    function animate() {
+                        requestAnimationFrame(animate);
+                        
+                        // Rotate particle system
+                        particleSystem.rotation.y += 0.0005;
+                        particleSystem.rotation.x += 0.0002;
+                        
+                        // Animate shapes
+                        shapes.forEach(shape => {
+                            shape.mesh.rotation.x += shape.rotSpeed.x;
+                            shape.mesh.rotation.y += shape.rotSpeed.y;
+                            shape.mesh.rotation.z += shape.rotSpeed.z;
+                            
+                            shape.mesh.position.x += Math.sin(Date.now() * 0.001) * shape.floatSpeed.x;
+                            shape.mesh.position.y += Math.cos(Date.now() * 0.001) * shape.floatSpeed.y;
+                            shape.mesh.position.z += Math.sin(Date.now() * 0.001) * shape.floatSpeed.z;
+                        });
+                        
+                        renderer.render(scene, camera);
+                    }
+                    
+                    animate();
+                    
+                    // Store renderer and camera for resize event
+                    window.threeRenderer = renderer;
+                    window.threeCamera = camera;
+                }
+            }
+            
+            function resizeThreeScene() {
+                if (window.threeRenderer && window.threeCamera) {
+                    window.threeCamera.aspect = timelineApp.offsetWidth / timelineApp.offsetHeight;
+                    window.threeCamera.updateProjectionMatrix();
+                    window.threeRenderer.setSize(timelineApp.offsetWidth, timelineApp.offsetHeight);
+                }
+            }
+            
+            // Initialize the app
+            init();
+        });
+    </script>
+</body>
+</html>
 </div>
 @endsection

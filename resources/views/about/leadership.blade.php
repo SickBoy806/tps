@@ -16,9 +16,14 @@ $backgroundUrl = asset('images/leadership/' . $backgroundImage);
 @section('content')
 
 <!-- We'll only add padding-top on mobile, not on desktop -->
-<div class="min-h-screen bg-cover bg-center relative mobile-padding-fix" style="background-image: url('{{ $backgroundUrl }}')">
-    <!-- Overlay for better text readability -->
-    <div class="absolute inset-0 bg-blue-900 bg-opacity-50"></div>
+<div class="min-h-screen bg-cover bg-center relative mobile-padding-fix">
+    <!-- Tree diagram background layer -->
+    <div class="fixed inset-0 bg-white z-0 tree-diagram-background">
+        <!-- SVG or image will be set via CSS -->
+    </div>
+
+    <!-- Overlay for better text readability - now over the tree diagram -->
+    <div class="absolute inset-0 bg-blue-900 bg-opacity-50 z-1"></div>
 
     <div class="relative z-10">
         <div class="bg-white bg-opacity-90 shadow">
@@ -184,6 +189,21 @@ $backgroundUrl = asset('images/leadership/' . $backgroundImage);
         }
     }
     
+    /* Tree diagram background */
+    .tree-diagram-background {
+        background-image: url('/assets/images/organizational/MUUNDO.png'); /* Update with the path to your tree diagram image */
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        opacity: 0.15; /* Make it subtle to not interfere with foreground */
+        animation: subtlePulse 10s infinite alternate; /* Subtle animation */
+    }
+    
+    @keyframes subtlePulse {
+        0% { opacity: 0.10; }
+        100% { opacity: 0.20; }
+    }
+    
     /* Base styles - Hide mobile-only elements by default */
     .mobile-full-profile {
         display: none;
@@ -257,6 +277,11 @@ $backgroundUrl = asset('images/leadership/' . $backgroundImage);
         body, html {
             overflow-x: hidden;
             width: 100%;
+        }
+        
+        /* Adjust tree diagram background for mobile */
+        .tree-diagram-background {
+            background-size: 200% auto;
         }
     }
 </style>

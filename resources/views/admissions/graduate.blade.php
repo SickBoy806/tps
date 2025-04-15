@@ -57,12 +57,13 @@
                         @endforeach
                     </ul>
                     
-                    <button 
-                        onclick="openModal('{{ $course['id'] }}', '{{ $course['title'] }}')"
-                        class="w-full bg-blue-100 text-blue-900 py-3 rounded-lg hover:bg-blue-200 transition flex items-center justify-center"
-                    >
-                        View Details & Apply
-                    </button>
+                    <a 
+    href="https://iaa.ac.tz/programmes/eyJpdiI6ImZjZG9Zc3VZcGMwMFpNQlhyMHhaWnc9PSIsInZhbHVlIjoiT01TWHVjdmFVdkFLZTlwenV2ZDNHZz09IiwibWFjIjoiZDRmYTk1YTY4NWU5YzNhN2JkYzc2M2UxOTc5Yzc5NmI4YjNlNWJlMDVhZGM4MTM4NDcxZDFmZGFhNzUwYjg3OCIsInRhZyI6IiJ9"
+    target="_blank"
+    class="w-full bg-blue-100 text-blue-900 py-3 rounded-lg hover:bg-blue-200 transition flex items-center justify-center block text-center"
+>
+    View Details & Apply
+</a>
                 </div>
             </div>
             @endforeach

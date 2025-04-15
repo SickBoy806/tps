@@ -21,6 +21,7 @@ use TCG\Voyager\Facades\Voyager;
 use App\Http\Controllers\ProficiencyCoursesController;
 use App\Http\Controllers\PromotionalCoursesController;
 use App\Http\Controllers\SlidesController;
+use App\Http\Controllers\DepartmentController;
 
 
 // Home Route
@@ -59,7 +60,7 @@ Route::prefix('about')->name('about.')->group(function () {
     Route::get('/history/{month}', [HistoryController::class, 'showMonth'])->name('history.month');
     Route::get('/mission', [HomeController::class, 'mission'])->name('mission');
     Route::get('/leadership', [LeaderController::class, 'index'])->name('leadership');
-    Route::get('/department', [LeaderController::class, 'index'])->name('department');
+    Route::get('/about/departments', [DepartmentController::class, 'index'])->name('about.departments');
     Route::get('/leadership/{slug}', [LeaderController::class, 'show'])->name('leadership.show');
     Route::get('/achievements', function () {
         return view('about.achievements');
@@ -176,9 +177,9 @@ Route::get('/admissions/graduate/apply', [GraduateAdmissionsController::class, '
     ->name('admissions.graduate-apply');
 
 // In routes/web.php
-Route::get('/programes', [HomeController::class, 'programes'])->name('programes.index');
-Route::get('/admissions/programes', [HomeController::class, 'programes'])
-     ->name('admissions.programes');
+    Route::get('/programes', [HomeController::class, 'programes'])->name('programes.index');
+    Route::get('/undergraduate-programes', [HomeController::class, 'programes'])->name('admissions.programes');
+
 
      Route::get('/proficiency-courses', [App\Http\Controllers\ProficiencyCoursesController::class, 'index'])
      ->name('admissions.proficiency-courses');     
@@ -210,4 +211,9 @@ Route::post('/newsletter/subscribe', [NewsletterController::class, 'subscribe'])
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
     Route::get('/events/{id}/registrations', [EventController::class, 'eventRegistrations']);
+
+    
+
+Route::get('/about/departments', [DepartmentController::class, 'index'])->name('about.departments');
+
 });
