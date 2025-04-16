@@ -247,7 +247,7 @@
 </head>
 <body>
   <div class="tpf-container">
-    <h1 class="tpf-heading">Tanzania Police Force Departments</h1>
+    <h1 class="tpf-heading">Tanzania Police School Departments</h1>
     
     <div class="tpf-filter-container">
       <button class="tpf-filter-btn tpf-active" data-filter="all">All Departments</button>

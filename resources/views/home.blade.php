@@ -884,6 +884,30 @@ window.addEventListener('unload', () => {
         </div>
         
         <!-- Section Selector Tabs -->
+
+        <!-- Tab Selector -->
+<div class="flex justify-center mb-8">
+    <div class="inline-flex bg-gray-100 rounded-lg p-1 shadow-sm">
+        <button 
+            @click="tab = 'news'" 
+            :class="{'bg-blue-600 text-white': tab === 'news', 'text-gray-700 hover:text-gray-900': tab !== 'news'}" 
+            class="px-4 py-2 font-medium rounded-md transition-all duration-200 ease-in-out">
+            News
+        </button>
+        <button 
+            @click="tab = 'announcements'" 
+            :class="{'bg-blue-600 text-white': tab === 'announcements', 'text-gray-700 hover:text-gray-900': tab !== 'announcements'}" 
+            class="px-4 py-2 font-medium rounded-md transition-all duration-200 ease-in-out">
+            Announcements
+        </button>
+        <button 
+            @click="tab = 'events'" 
+            :class="{'bg-blue-600 text-white': tab === 'events', 'text-gray-700 hover:text-gray-900': tab !== 'events'}" 
+            class="px-4 py-2 font-medium rounded-md transition-all duration-200 ease-in-out">
+            Events
+        </button>
+    </div>
+</div>
 <!-- News Tab with Updated Layout -->
 <div x-show="tab === 'news'" class="transition-all duration-300 ease-in-out">
     <!-- Main news grid layout -->
@@ -1099,6 +1123,184 @@ window.addEventListener('unload', () => {
         </div>
     </div>
 </div>
+
+
+<!-- Announcements Tab -->
+                <div x-show="tab === 'announcements'" class="transition-all duration-300 ease-in-out">
+                    <ul class="divide-y divide-gray-200">
+                        <!-- New Police Job Announcement with PDF -->
+                        <li class="py-4 flex items-start">
+                            <div class="flex-shrink-0 bg-red-100 text-red-800 p-3 rounded-lg">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                                </svg>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-lg font-semibold text-gray-800">Police Job Openings Announced</h4>
+                                <p class="text-gray-600">The Tanzania Police Force is now accepting applications for multiple positions. Check the instructions document for eligibility requirements and application procedures.</p>
+                                <p class="text-sm text-gray-500 mt-2">Posted on March 21, 2025</p>
+                                
+                               <!-- PDF Download Section -->
+                                <div class="mt-4 bg-gray-50 p-4 rounded-lg border border-gray-200">
+                                    <!-- First Existing PDF -->
+                                    <div class="flex items-center justify-between mb-4">
+                                        <div class="flex items-center">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                                            </svg>
+                                            <div class="ml-3">
+                                                <p class="text-sm font-medium text-gray-900">New Job Announcement 2025</p>
+                                                <p class="text-xs text-gray-500">PDF • 2.4 MB</p>
+                                            </div>
+                                        </div>
+                                        <a href="/assets/documents/new-police-job-announcement.pdf" download class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                                            </svg>
+                                            Download PDF
+                                        </a>
+                                    </div>
+
+                                    <!-- New PDF for Application Processes and Procedures -->
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                                            </svg>
+                                            <div class="ml-3">
+                                                <p class="text-sm font-medium text-gray-900">Job Application Instructions</p>
+                                                <p class="text-xs text-gray-500">PDF • 4.8 MB</p>
+                                            </div>
+                                        </div>
+                                        <a href="/assets/documents/police-job-instructions.pdf" download class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                                            </svg>
+                                            Download PDF
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        
+                        <li class="py-4 flex items-start">
+                            <div class="flex-shrink-0 bg-blue-100 text-blue-800 p-3 rounded-lg">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z" />
+                                </svg>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-lg font-semibold text-gray-800">Enrollment Open for New Term</h4>
+                                <p class="text-gray-600">Applications for the upcoming term are now open. Early applicants will receive priority consideration.</p>
+                                <p class="text-sm text-gray-500 mt-2">Posted on March 1, 2025</p>
+                            </div>
+                        </li>
+                        <li class="py-4 flex items-start">
+                            <div class="flex-shrink-0 bg-green-100 text-green-800 p-3 rounded-lg">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-lg font-semibold text-gray-800">New Driving Course Added</h4>
+                                <p class="text-gray-600">We're excited to announce our new advanced driving course starting next month.</p>
+                                <p class="text-sm text-gray-500 mt-2">Posted on February 25, 2025</p>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="mt-6 text-center">
+                        <a href="/news/upcoming" class="inline-flex items-center group text-blue-600 font-semibold hover:text-blue-800 transition-all duration-300">
+                            View all announcements
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+				
+                
+                <!-- Events Tab -->
+                <div x-show="tab === 'events'" 
+                     x-transition:enter="transition ease-out duration-300"
+                     x-transition:enter-start="opacity-0 transform -translate-y-4"
+                     x-transition:enter-end="opacity-100 transform translate-y-0"
+                     class="transition-all duration-300 ease-in-out">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <!-- Event Card 1 -->
+                        <div class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
+                            <div class="relative h-56">
+                                <!-- Background Image -->
+                                <img src="/assets/images/Logos/promotional-course.jpg" alt="Promotional Course" class="absolute inset-0 w-full h-full object-cover">
+                                <!-- Overlay -->
+                                <div class="absolute inset-0 bg-gradient-to-b from-black/60 to-black/20 flex flex-col justify-center p-6">
+                                    <!-- Description on top of background image -->
+                                    <span lang="it">
+                                        <p class="text-white mb-4 font-italic text-lg">
+                                            "Congratulations to all the newly promoted Corporals and Sergeants of the Tanzania Police Force! Your dedication and hard work during your promotional courses have paid off. Wishing you continued success in your service to the nation."
+                                        </p>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <div class="flex items-center mb-4">
+                                    <div class="bg-blue-100 text-blue-800 text-center rounded-lg p-3 mr-4">
+                                        <div class="text-2xl font-bold">07</div>
+                                        <div class="text-sm">Mar</div>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-xl font-semibold text-gray-800">Promotional Course Passingout</h4>
+                                        <p class="text-gray-500">9:00 AM - 4:00 PM, Kilele Pori</p>
+                                    </div>
+                                </div>
+                                <a href="/events-detail/1" class="text-blue-600 hover:underline">Event details</a>
+                            </div>
+                        </div>
+                        
+                        <!-- Event Card 2 -->
+                        <div class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
+                            <div class="relative h-56">
+                                <!-- Background Image -->
+                                <img src="/assets/images/facilities/kaganda.jpeg" alt="Women's Day" class="absolute inset-0 w-full h-full object-cover">
+                                <!-- Overlay -->
+                                <div class="absolute inset-0 bg-gradient-to-b from-black/60 to-black/20 flex flex-col justify-center p-6">
+                                    <!-- Description on top of background image -->
+                                    <span lang="it">
+                                        <p class="text-white mb-4 font-italic text-lg">
+                                            "On this International Women's Day, we celebrate the incredible strength, resilience, and achievements of women everywhere. May we continue to champion equality, empower each other, and build a future where every woman's voice is heard and valued. Here's to the women who inspire us daily!"
+                                        </p>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <div class="flex items-center mb-4">
+                                    <div class="bg-green-100 text-green-800 text-center rounded-lg p-3 mr-4">
+                                        <div class="text-2xl font-bold">09</div>
+                                        <div class="text-sm">Mar</div>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-xl font-semibold text-gray-800">Womens Day</h4>
+                                        <p class="text-gray-500">1:00 PM - 5:00 PM, Arusha</p>
+                                    </div>
+                                </div>
+                                <a href="/events-detail/2" class="text-blue-600 hover:underline">Event details</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-6 text-center">
+                        <a href="/news/upcoming" class="inline-flex items-center group text-blue-600 font-semibold hover:text-blue-800 transition-all duration-300">
+                            View all events
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 
 <html lang="en">
 <head>
