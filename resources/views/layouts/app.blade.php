@@ -335,7 +335,7 @@
                             class="block px-4 py-2 text-white hover:bg-blue-600/20 transition-colors duration-200">
                             Leadership
                         </a>
-                        <a href="{{ route('about.departments') }}">Departments</a>
+                        <a href="{{ route('about.departments') }}"
                             class="block px-4 py-2 text-white hover:bg-blue-600/20 transition-colors duration-200">
                             Department
                         </a>
