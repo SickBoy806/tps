@@ -932,7 +932,7 @@ window.addEventListener('unload', () => {
                         title: 'TPS-MOSHI & IAA Academic Board meeting',
                         author: 'Baraka charles mussula',
                         date: 'February 25, 2025',
-                        content: '',
+                        content: 'In march 2025 A joint Academic Board was held between Officials from the Tanzanian Police Force and the IAA Association of African Police Officers. The Board held at the Tanzanian Police Force Headquarters in Moshi, Tanzania.',
                         link: '/news/2'
                     },
                     { 
@@ -941,7 +941,7 @@ window.addEventListener('unload', () => {
                         title: 'TPS-MOSHI & IAA Academic Board meeting',
                         author: 'Baraka charles mussula',
                         date: 'January 12, 2025',
-                        content: '',
+                        content: 'In march 2025 A joint Academic Board was held between Officials from the Tanzanian Police Force and the IAA Association of African Police Officers. The Board held at the Tanzanian Police Force Headquarters in Moshi, Tanzania.',
                         link: '/news/3'
                     }
                 ],
@@ -1230,7 +1230,7 @@ window.addEventListener('unload', () => {
                         <div class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
                             <div class="relative h-56">
                                 <!-- Background Image -->
-                                <img src="/assets/images/Logos/promotional-course.jpg" alt="Promotional Course" class="absolute inset-0 w-full h-full object-cover">
+                                <img src="/assets/images/news&events/gwaride.jpg" alt="Promotional Course" class="absolute inset-0 w-full h-full object-cover">
                                 <!-- Overlay -->
                                 <div class="absolute inset-0 bg-gradient-to-b from-black/60 to-black/20 flex flex-col justify-center p-6">
                                     <!-- Description on top of background image -->

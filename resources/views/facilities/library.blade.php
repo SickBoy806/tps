@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'library - Ninter')
+@section('title', 'Library - Ninter')
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -171,6 +172,213 @@
       font-size: 0.875rem;
     }
 
+    /* Research upload and browse section styles */
+    .research-section {
+      margin-top: 4rem;
+      background: white;
+      border-radius: 8px;
+      padding: 2rem;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .research-tabs {
+      display: flex;
+      border-bottom: 2px solid #e2e8f0;
+      margin-bottom: 2rem;
+    }
+
+    .research-tab {
+      padding: 1rem 2rem;
+      font-weight: bold;
+      cursor: pointer;
+      border-bottom: 3px solid transparent;
+      transition: all 0.3s ease;
+    }
+
+    .research-tab.active {
+      border-bottom: 3px solid #1e3c72;
+      color: #1e3c72;
+    }
+
+    .research-content {
+      display: none;
+    }
+
+    .research-content.active {
+      display: block;
+      animation: fadeIn 0.5s ease forwards;
+    }
+
+    .upload-form {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+    }
+
+    .form-input,
+    .form-textarea,
+    .form-select {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 2px solid #e2e8f0;
+      border-radius: 6px;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .form-input:focus,
+    .form-textarea:focus,
+    .form-select:focus {
+      outline: none;
+      border-color: #1e3c72;
+    }
+
+    .form-textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    .upload-btn {
+      background: #1e3c72;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: bold;
+    }
+
+    .upload-btn:hover {
+      background: #2a5298;
+    }
+
+    .research-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .research-card {
+      background: white;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 1.5rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .research-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .research-meta {
+      display: flex;
+      justify-content: space-between;
+      color: #666;
+      font-size: 0.875rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .research-actions {
+      margin-top: 1rem;
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .research-btn {
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      font-size: 0.875rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .view-btn {
+      background: #e2e8f0;
+      color: #1e3c72;
+    }
+
+    .view-btn:hover {
+      background: #cbd5e1;
+    }
+
+    .download-btn {
+      background: #1e3c72;
+      color: white;
+    }
+
+    .download-btn:hover {
+      background: #2a5298;
+    }
+
+    .research-filters {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .filter-select {
+      padding: 0.5rem 1rem;
+      border: 2px solid #e2e8f0;
+      border-radius: 6px;
+      font-size: 0.875rem;
+    }
+
+    .pagination {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 2rem;
+    }
+
+    .page-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #e2e8f0;
+      color: #333;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .page-link:hover,
+    .page-link.active {
+      background: #1e3c72;
+      color: white;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .tag {
+      background: #e2e8f0;
+      color: #1e3c72;
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: bold;
+    }
+
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
@@ -214,6 +422,240 @@
         <p>Expert librarians available to assist with research methodology, citations, and accessing specialized resources.</p>
       </div>
     </div>
+
+    <!-- New Research Repository Section -->
+    <section class="research-section">
+      <h2 class="text-2xl font-bold mb-4">Research Repository</h2>
+      <p class="mb-6">Share your research with the community or browse through our collection of papers, case studies, and publications.</p>
+      
+      <div class="research-tabs">
+        <div class="research-tab active" data-target="browse">Browse Research</div>
+        <div class="research-tab" data-target="upload">Upload Research</div>
+      </div>
+      
+      <!-- Browse Research Tab -->
+      <div id="browse" class="research-content active">
+        <div class="research-filters">
+          <select class="filter-select">
+            <option>All Categories</option>
+            <option>Criminal Justice</option>
+            <option>Forensic Science</option>
+            <option>Law Enforcement</option>
+            <option>Public Safety</option>
+            <option>Criminology</option>
+          </select>
+          
+          <select class="filter-select">
+            <option>Sort By: Newest</option>
+            <option>Sort By: Most Viewed</option>
+            <option>Sort By: Title A-Z</option>
+          </select>
+          
+          <select class="filter-select">
+            <option>All Years</option>
+            <option>2025</option>
+            <option>2024</option>
+            <option>2023</option>
+            <option>2022</option>
+            <option>2021</option>
+          </select>
+        </div>
+        
+        <div class="research-grid">
+          <div class="research-card">
+            <div class="research-meta">
+              <span>Criminal Justice</span>
+              <span>Feb 12, 2025</span>
+            </div>
+            <h3 class="text-xl font-bold mb-2">Modern Approaches to Community Policing</h3>
+            <p>A comprehensive analysis of effective community policing strategies in urban environments.</p>
+            <div class="tag-list">
+              <span class="tag">Policing</span>
+              <span class="tag">Community</span>
+              <span class="tag">Urban</span>
+            </div>
+            <div class="research-actions">
+              <button class="research-btn view-btn">View</button>
+              <button class="research-btn download-btn">Download PDF</button>
+            </div>
+          </div>
+          
+          <div class="research-card">
+            <div class="research-meta">
+              <span>Forensic Science</span>
+              <span>Jan 28, 2025</span>
+            </div>
+            <h3 class="text-xl font-bold mb-2">Advances in Digital Forensics</h3>
+            <p>Exploring new methodologies in digital evidence collection and analysis for cybercrime investigations.</p>
+            <div class="tag-list">
+              <span class="tag">Digital</span>
+              <span class="tag">Forensics</span>
+              <span class="tag">Cybercrime</span>
+            </div>
+            <div class="research-actions">
+              <button class="research-btn view-btn">View</button>
+              <button class="research-btn download-btn">Download PDF</button>
+            </div>
+          </div>
+          
+          <div class="research-card">
+            <div class="research-meta">
+              <span>Law Enforcement</span>
+              <span>Jan 15, 2025</span>
+            </div>
+            <h3 class="text-xl font-bold mb-2">Crisis Intervention Training</h3>
+            <p>Effectiveness of specialized mental health response training for police officers in the field.</p>
+            <div class="tag-list">
+              <span class="tag">Mental Health</span>
+              <span class="tag">Training</span>
+              <span class="tag">Intervention</span>
+            </div>
+            <div class="research-actions">
+              <button class="research-btn view-btn">View</button>
+              <button class="research-btn download-btn">Download PDF</button>
+            </div>
+          </div>
+          
+          <div class="research-card">
+            <div class="research-meta">
+              <span>Criminology</span>
+              <span>Dec 20, 2024</span>
+            </div>
+            <h3 class="text-xl font-bold mb-2">Predictive Policing Models</h3>
+            <p>Ethical considerations and effectiveness of data-driven crime prediction systems.</p>
+            <div class="tag-list">
+              <span class="tag">Data</span>
+              <span class="tag">Ethics</span>
+              <span class="tag">Prediction</span>
+            </div>
+            <div class="research-actions">
+              <button class="research-btn view-btn">View</button>
+              <button class="research-btn download-btn">Download PDF</button>
+            </div>
+          </div>
+          
+          <div class="research-card">
+            <div class="research-meta">
+              <span>Public Safety</span>
+              <span>Dec 5, 2024</span>
+            </div>
+            <h3 class="text-xl font-bold mb-2">Emergency Response Protocols</h3>
+            <p>Analysis of multi-agency coordination during large-scale public safety incidents.</p>
+            <div class="tag-list">
+              <span class="tag">Emergency</span>
+              <span class="tag">Coordination</span>
+              <span class="tag">Protocol</span>
+            </div>
+            <div class="research-actions">
+              <button class="research-btn view-btn">View</button>
+              <button class="research-btn download-btn">Download PDF</button>
+            </div>
+          </div>
+          
+          <div class="research-card">
+            <div class="research-meta">
+              <span>Criminal Justice</span>
+              <span>Nov 15, 2024</span>
+            </div>
+            <h3 class="text-xl font-bold mb-2">Juvenile Justice Reform</h3>
+            <p>Evaluating the impact of rehabilitation-focused approaches in juvenile justice systems.</p>
+            <div class="tag-list">
+              <span class="tag">Juvenile</span>
+              <span class="tag">Reform</span>
+              <span class="tag">Rehabilitation</span>
+            </div>
+            <div class="research-actions">
+              <button class="research-btn view-btn">View</button>
+              <button class="research-btn download-btn">Download PDF</button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="pagination">
+          <div class="page-link active">1</div>
+          <div class="page-link">2</div>
+          <div class="page-link">3</div>
+          <div class="page-link">4</div>
+          <div class="page-link">→</div>
+        </div>
+      </div>
+      
+      <!-- Upload Research Tab -->
+      <div id="upload" class="research-content">
+        <form class="upload-form">
+          <div class="form-group">
+            <label class="form-label" for="title">Research Title *</label>
+            <input type="text" id="title" class="form-input" placeholder="Enter the title of your research" required>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label" for="category">Category *</label>
+            <select id="category" class="form-select" required>
+              <option value="" disabled selected>Select a category</option>
+              <option>Criminal Justice</option>
+              <option>Forensic Science</option>
+              <option>Law Enforcement</option>
+              <option>Public Safety</option>
+              <option>Criminology</option>
+              <option>Other</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label" for="abstract">Abstract/Summary *</label>
+            <textarea id="abstract" class="form-textarea" placeholder="Provide a brief summary of your research" required></textarea>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label" for="authors">Authors *</label>
+            <input type="text" id="authors" class="form-input" placeholder="e.g. John Smith, Jane Doe" required>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label" for="keywords">Keywords/Tags</label>
+            <input type="text" id="keywords" class="form-input" placeholder="e.g. forensics, investigation, crime scene (comma separated)">
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label" for="file">Upload Document *</label>
+            <input type="file" id="file" class="form-input" accept=".pdf,.doc,.docx" required>
+            <p class="text-sm text-gray-500 mt-1">Accepted formats: PDF, DOC, DOCX (Max size: 20MB)</p>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">Publication Status *</label>
+            <div>
+              <input type="radio" id="published" name="publication_status" value="published">
+              <label for="published">Published</label>
+            </div>
+            <div>
+              <input type="radio" id="unpublished" name="publication_status" value="unpublished">
+              <label for="unpublished">Unpublished</label>
+            </div>
+            <div>
+              <input type="radio" id="preprint" name="publication_status" value="preprint">
+              <label for="preprint">Preprint</label>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">Visibility *</label>
+            <div>
+              <input type="radio" id="public" name="visibility" value="public">
+              <label for="public">Public (Viewable by anyone)</label>
+            </div>
+            <div>
+              <input type="radio" id="restricted" name="visibility" value="restricted">
+              <label for="restricted">Restricted (Academy members only)</label>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <button type="submit" class="upload-btn">Upload Research</button>
+          </div>
+        </form>
+      </div>
+    </section>
 
     <section class="stats-section">
       <div class="stats-grid">
@@ -303,6 +745,68 @@
       if (searchValue.trim() !== '') {
         alert('Search functionality would be implemented here with: ' + searchValue);
       }
+    });
+    
+    // Research tabs functionality
+    const tabs = document.querySelectorAll('.research-tab');
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        // Remove active class from all tabs
+        tabs.forEach(t => t.classList.remove('active'));
+        // Add active class to clicked tab
+        tab.classList.add('active');
+        
+        // Hide all content
+        document.querySelectorAll('.research-content').forEach(content => {
+          content.classList.remove('active');
+        });
+        
+        // Show content corresponding to clicked tab
+        const target = tab.getAttribute('data-target');
+        document.getElementById(target).classList.add('active');
+      });
+    });
+    
+    // Research upload form handling
+    const uploadForm = document.querySelector('.upload-form');
+    if (uploadForm) {
+      uploadForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        // Here you would normally send the form data to the server
+        alert('Thank you for your submission! Your research will be reviewed and published soon.');
+        uploadForm.reset();
+        
+        // Switch back to browse tab after submission
+        document.querySelector('.research-tab[data-target="browse"]').click();
+      });
+    }
+    
+    // Pagination handling
+    const pageLinks = document.querySelectorAll('.page-link');
+    pageLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        pageLinks.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+        // Here you would normally load the content for that page
+      });
+    });
+    
+    // Research card view button
+    const viewButtons = document.querySelectorAll('.view-btn');
+    viewButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        const title = this.closest('.research-card').querySelector('h3').textContent;
+        alert(`Viewing research: ${title}\nIn a full implementation, this would open a detailed view of the research.`);
+      });
+    });
+    
+    // Research card download button
+    const downloadButtons = document.querySelectorAll('.download-btn');
+    downloadButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        const title = this.closest('.research-card').querySelector('h3').textContent;
+        alert(`Downloading: ${title}\nIn a full implementation, this would initiate a download of the research PDF.`);
+      });
     });
   </script>
 </body>

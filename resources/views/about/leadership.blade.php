@@ -22,11 +22,12 @@ $backgroundUrl = asset('images/leadership/' . $backgroundImage);
         <!-- SVG or image will be set via CSS -->
     </div>
 
-    <!-- Overlay for better text readability - now over the tree diagram -->
-    <div class="absolute inset-0 bg-blue-900 bg-opacity-50 z-1"></div>
+    <!-- Overlay for better text readability - reduced opacity -->
+    <div class="absolute inset-0 bg-blue-900 bg-opacity-20 z-1"></div>
 
     <div class="relative z-10">
-        <div class="bg-white bg-opacity-90 shadow">
+        <!-- Made the entire header section transparent -->
+        <div class="bg-transparent shadow-none">
             <div class="max-w-7xl mx-auto py-4 px-4 flex justify-between items-center mobile-header">
                 <h1 class="text-3xl font-bold text-blue-800 animate-fade-in">
                     Tanzania Police School Moshi Leadership
@@ -189,24 +190,30 @@ $backgroundUrl = asset('images/leadership/' . $backgroundImage);
         }
     }
     
-    /* Tree diagram background */
+    /* Tree diagram background - increased opacity and moved down 1cm */
     .tree-diagram-background {
-        background-image: url('/assets/images/organizational/MUUNDO.png'); /* Update with the path to your tree diagram image */
+        background-image: url('/assets/images/organizational/MUUNDO.png');
         background-size: contain;
         background-repeat: no-repeat;
-        background-position: center;
-        opacity: 0.15; /* Make it subtle to not interfere with foreground */
-        animation: subtlePulse 10s infinite alternate; /* Subtle animation */
+        background-position: center 0.3cm; /* Added 1cm top offset to move image down */
+        opacity: 0.3;
+        animation: subtlePulse 10s infinite alternate;
+        margin-top: 0.3cm; /* Alternative approach to move background down */
     }
     
     @keyframes subtlePulse {
-        0% { opacity: 0.10; }
-        100% { opacity: 0.20; }
+        0% { opacity: 0.25; }
+        100% { opacity: 0.35; }
     }
     
     /* Base styles - Hide mobile-only elements by default */
     .mobile-full-profile {
         display: none;
+    }
+    
+    /* Make heading text more visible against the background */
+    .text-blue-800 {
+        text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 10px rgba(255, 255, 255, 0.7);
     }
     
     /* Mobile-only styles - Only apply these on smaller screens */
@@ -282,6 +289,12 @@ $backgroundUrl = asset('images/leadership/' . $backgroundImage);
         /* Adjust tree diagram background for mobile */
         .tree-diagram-background {
             background-size: 200% auto;
+            background-position: center 0.5cm; /* Reduced offset for mobile */
+        }
+        
+        /* Reduce blue overlay opacity on mobile for better visibility */
+        .bg-blue-900.bg-opacity-20 {
+            background-opacity: 0.1 !important;
         }
     }
 </style>
