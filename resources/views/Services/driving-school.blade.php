@@ -559,6 +559,33 @@
         .slideshow-next {
             right: 10px;
         }
+
+    .gallery-item {
+    position: relative;
+    overflow: hidden;
+}
+
+.gallery-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 10px;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover .gallery-overlay {
+    transform: translateY(0);
+}
+
+.gallery-caption {
+    text-align: center;
+    font-weight: 500;
+}
+
     </style>
 </head>
 <body>
@@ -708,18 +735,30 @@
             </div>
 
     <section id="gallery" class="section">
-        <div class="container">
-            <h2 class="section-title">Training Highlights</h2>
-            <div class="gallery">
-    <div class="gallery-item" style="background-image: url('{{ asset('images/gallery/image1.jpg') }}')"></div>
-    <div class="gallery-item" style="background-image: url('{{ asset('images/gallery/image2.jpg') }}')"></div>
-    <div class="gallery-item" style="background-image: url('{{ asset('images/gallery/image3.jpg') }}')"></div>
-    <div class="gallery-item" style="background-image: url('{{ asset('images/gallery/image4.jpg') }}')"></div>
-    <div class="gallery-item" style="background-image: url('{{ asset('images/gallery/image5.jpg') }}')"></div>
-    <div class="gallery-item" style="background-image: url('{{ asset('images/gallery/image6.jpg') }}')"></div>
-</div>
+    <div class="container">
+        <h2 class="section-title">Training Highlights</h2>
+        <div class="gallery">
+            @php
+                $galleryImages = \App\Models\GalleryImage::where('category', 'training_highlights')
+                    ->where('status', true)
+                    ->orderBy('order')
+                    ->get();
+            @endphp
+            
+            @forelse($galleryImages as $image)
+                <div class="gallery-item" style="background-image: url('{{ Voyager::image($image->image) }}')">
+                    @if($image->title)
+                        <div class="gallery-overlay">
+                            <div class="gallery-caption">{{ $image->title }}</div>
+                        </div>
+                    @endif
+                </div>
+            @empty
+                <div class="alert">No gallery images found.</div>
+            @endforelse
         </div>
-    </section>
+    </div>
+</section>
 
     <section id="testimonials" class="section testimonials">
         <div class="container">

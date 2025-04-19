@@ -75,14 +75,16 @@ Route::prefix('facilities')->name('facilities.')->group(function () {
 });
 
 // Services Routes
-Route::prefix('services')->name('services.')->group(function () {
-    Route::get('/', [ServiceController::class, 'index'])->name('index');
-    Route::get('/driving-school', [ServiceController::class, 'drivingSchool'])->name('driving');
-    Route::get('/health-center', [ServiceController::class, 'healthCenter'])->name('health');
-    Route::get('/poultry', [ServiceController::class, 'poultry'])->name('poultry');
-    Route::get('/dogs-horses', [ServiceController::class, 'dogsHorses'])->name('animals');
-    Route::get('/catering', [ServiceController::class, 'catering'])->name('catering');
-});
+
+Route::get('/services', 'App\Http\Controllers\ServiceController@index')->name('services.index');
+Route::get('/services/driving', 'App\Http\Controllers\ServiceController@drivingSchool')->name('services.driving-school');
+Route::get('/services/health-center', 'App\Http\Controllers\ServiceController@healthCenter')->name('services.health-center');
+Route::get('/services/poultry', 'App\Http\Controllers\ServiceController@poultry')->name('services.poultry');
+Route::get('/services/dogs-horses', 'App\Http\Controllers\ServiceController@dogsHorses')->name('services.dogs-horses');
+Route::get('/services/catering', 'App\Http\Controllers\ServiceController@catering')->name('services.catering');
+
+// Poultry contact form submission
+Route::post('/services/poultry/contact', 'App\Http\Controllers\ServiceController@poultryContact')->name('services.poultry.contact');
 
 // Careers Routes
 Route::prefix('careers')->name('careers.')->group(function () {

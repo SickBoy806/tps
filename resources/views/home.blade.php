@@ -2257,7 +2257,7 @@ window.addEventListener('unload', () => {
                 <h3 class="text-xl font-semibold text-center mb-3 text-gray-800">Driving School</h3>
                 <p class="text-gray-600 text-center">Professional driving lessons with certified instructors using modern vehicles.</p>
                 <div class="mt-4 text-center">
-                    <a href="{{ route('services.driving') }}" 
+                    <a href="{{ route('services.driving-school') }}" 
                        class="inline-flex items-center px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-all duration-300">
                         Learn more
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -2693,7 +2693,7 @@ window.addEventListener('unload', () => {
                 <h3 class="text-xl font-semibold text-center mb-3 text-gray-800">Health Center</h3>
                 <p class="text-gray-600 text-center">Professional healthcare services providing medical support with qualified practitioners for students and staff.</p>
 <div class="mt-4 text-center">
-    <a href="{{ route('services.health') }}" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors duration-300 shadow-md">Learn more</a>
+    <a href="{{ route('services.health-center') }}" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors duration-300 shadow-md">Learn more</a>
 </div>
             </div>
         </div>
