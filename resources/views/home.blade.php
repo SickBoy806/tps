@@ -528,7 +528,7 @@
                 
                 <!-- Slide 3 -->
                 <div class="item" aria-roledescription="slide" aria-label="Slide 3 of 4">
-                    <img src="assets/images/people/samia.jpeg" alt="PRESIDENT" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <img src="assets/images/new/Academic Blockwall.jpg" alt="PRESIDENT" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                     <div class="image-fallback" style="display:none;">PRESIDENT OF TANZANIA</div>
                     <div class="content">
                         <div class="author">GOVERNMENT</div>
@@ -542,7 +542,7 @@
                 
                 <!-- Slide 4 -->
                 <div class="item" aria-roledescription="slide" aria-label="Slide 4 of 4">
-                    <img src="assets/images/people/maafande.jpeg" alt="OFFICERS" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <img src="assets/images/new/ofisikuuwall.jpg" alt="OFFICERS" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                     <div class="image-fallback" style="display:none;">POLICE OFFICERS</div>
                     <div class="content">
                         <div class="author">TRAINING</div>
@@ -577,7 +577,7 @@
                 
                 <!-- Thumbnail 3 -->
                 <div class="item" onclick="goToSlide(2)" role="tab" tabindex="0" aria-selected="false" aria-controls="slide-2" id="thumb-2" onkeydown="handleKeyDown(event, 2)">
-                    <img src="assets/images/people/samia.jpeg" alt="PRESIDENT" onerror="this.style.display='none'; this.parentNode.style.backgroundColor='#333';">
+                    <img src="assets/images/new/Academic Blockwall.jpg" alt="PRESIDENT" onerror="this.style.display='none'; this.parentNode.style.backgroundColor='#333';">
                     <div class="content">
                         <div class="title">PRESIDENT</div>
                         <div class="description">TANZANIA</div>
@@ -586,7 +586,7 @@
                 
                 <!-- Thumbnail 4 -->
                 <div class="item" onclick="goToSlide(3)" role="tab" tabindex="0" aria-selected="false" aria-controls="slide-3" id="thumb-3" onkeydown="handleKeyDown(event, 3)">
-                    <img src="assets/images/people/maafande.jpeg" alt="OFFICERS" onerror="this.style.display='none'; this.parentNode.style.backgroundColor='#333';">
+                    <img src="assets/images/new/ofisikuuwall.jpg" alt="OFFICERS" onerror="this.style.display='none'; this.parentNode.style.backgroundColor='#333';">
                     <div class="content">
                         <div class="title">OFFICERS</div>
                         <div class="description">POLICE FORCE</div>
@@ -2013,17 +2013,17 @@ window.addEventListener('unload', () => {
                         {
                             title: "Main Auditorium",
                             description: "Spacious hall with state-of-the-art audio-visual systems for large events.",
-                            image: "{{ asset('assets/images/Logos/conf.jpg') }}"
+                            image: "{{ asset('assets/images/new/Ukumbi wa Mikutano.jpg') }}"
                         },
                         {
                             title: "Presentation Rooms",
                             description: "Medium-sized rooms equipped for professional presentations and meetings.",
-                            image: "{{ asset('assets/images/newsmain/hall (1).jpeg') }}"
+                            image: "{{ asset('assets/images/new/Ukumbi wa Mikutano2.jpg') }}"
                         },
                         {
                             title: "Breakout Areas",
                             description: "Comfortable spaces for small group discussions and networking.",
-                            image: "{{ asset('assets/images/newsmain/amga.jpg') }}"
+                            image: "{{ asset('assets/images/new/Ukumbi wa Mikutano.jpg') }}"
                         }
                     ]
                 }
@@ -2057,17 +2057,17 @@ window.addEventListener('unload', () => {
                         {
                             title: "Main Reading Area",
                             description: "Quiet space with comfortable seating for focused study and research.",
-                            image: "{{ asset('assets/images/Logos/slide-1066x546.jpg') }}"
+                            image: "{{ asset('assets/images/new/Library.jpg') }}"
                         },
                         {
                             title: "Digital Resource Center",
                             description: "Access to online journals, e-books, and digital educational materials.",
-                            image: "{{ asset('assets/images/Logos/slide-1066x546.jpg') }}"
+                            image: "{{ asset('assets/images/new/Library1.jpg') }}"
                         },
                         {
                             title: "Collaborative Learning Zones",
                             description: "Designated areas for group study and collaborative projects.",
-                            image: "{{ asset('assets/images/Logos/slide-1066x546.jpg') }}"
+                            image: "{{ asset('assets/images/new/libray2.jpg') }}"
                         }
                     ]
                 }
@@ -2719,787 +2719,954 @@ window.addEventListener('unload', () => {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tanzania Police School Timeline</title>
     <style>
-        /* Base styling */
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Arial', sans-serif;
-            color: white;
-        }
-        
-        /* Custom cursor */
-        .cursor {
-            position: fixed;
-            width: 20px;
-            height: 20px;
-            background-color: rgba(255, 255, 255, 0.7);
-            border-radius: 50%;
-            pointer-events: none;
-            transform: translate(-50%, -50%);
-            transition: transform 0.1s ease;
-            z-index: 9999;
-            mix-blend-mode: difference;
-        }
-        
-        /* Main container - adjusted to fit parent container */
-        .fullscreen-container {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            min-height: 600px;
-            overflow: hidden;
-            background-color: #2d4739;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
 
-        /* Title area - adjusted positioning for responsiveness */
-        .title-area {
-            position: absolute;
-            top: 5%;
-            left: 5%;
-            z-index: 10;
-            padding: 10px;
-        }
-        
-        .school-title {
-            font-size: clamp(24px, 3vw, 36px);
-            font-weight: bold;
-            margin: 0;
-        }
-        
-        .school-subtitle {
-            font-size: clamp(16px, 2vw, 20px);
-            opacity: 0.8;
-            margin: 5px 0 0 0;
-        }
-        
-        /* Timeline styles - improved responsive behavior */
-        .timeline-container {
-            position: relative;
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            z-index: 10;
-            padding: 0 15px;
-        }
-        
-        .timeline {
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            width: 100%;
-            height: 2px;
-            background-color: rgba(255, 255, 255, 0.3);
-            margin: 40px 0;
-        }
-        
-        .year-label {
-            color: white;
-            font-weight: bold;
-            font-size: clamp(14px, 1.5vw, 18px);
-        }
-        
-        .timeline-marker {
-            position: absolute;
-            width: 12px;
-            height: 12px;
-            background-color: rgba(255, 255, 255, 0.5);
-            border-radius: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            cursor: pointer;
-            transition: transform 0.3s ease, background-color 0.3s ease;
-        }
-        
-        .timeline-marker:hover {
-            transform: translate(-50%, -50%) scale(1.5);
-        }
-        
-        .timeline-marker.active {
-            background-color: #fff;
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
-            transform: translate(-50%, -50%) scale(1.2);
-        }
-        
-        /* Content styles - improved flex behavior */
-        .content-wrapper {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            width: 100%;
-            margin-top: 30px;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-        
-        .content {
-            display: flex;
-            flex-direction: column;
-            flex: 1;
-            min-width: 280px;
-            padding-right: 20px;
-        }
-        
-        .year-heading {
-            font-size: clamp(36px, 5vw, 56px);
-            font-weight: bold;
-            margin: 0 0 20px 0;
-        }
-        
-        .milestone-title {
-            font-size: clamp(24px, 3vw, 36px);
-            font-weight: bold;
-            margin: 0 0 20px 0;
-        }
-        
-        .milestone-description {
-            font-size: clamp(14px, 1.5vw, 18px);
-            line-height: 1.6;
-        }
-        
-        .image-container {
-            flex: 1;
-            min-width: 280px;
-            height: clamp(200px, 30vh, 350px);
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.5s ease;
-        }
-        
-        .milestone-image {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: cover;
-        }
-        
-        /* Navigation Controls - improved positioning */
-        .nav-controls {
-            position: absolute;
-            bottom: 5%;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: clamp(20px, 3vw, 40px);
-            z-index: 10;
-        }
-        
-        .nav-button {
-            width: clamp(32px, 4vw, 48px);
-            height: clamp(32px, 4vw, 48px);
-            border-radius: 50%;
-            background-color: rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: clamp(14px, 1.5vw, 18px);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .nav-button:hover {
-            background-color: rgba(0, 0, 0, 0.5);
-            transform: scale(1.1);
-        }
-        
-        /* Social Links - improved positioning */
-        .social-links {
-            position: absolute;
-            bottom: 5%;
-            right: 5%;
-            display: flex;
-            gap: clamp(8px, 1vw, 16px);
-            z-index: 10;
-        }
-        
-        .social-link {
-            width: clamp(32px, 4vw, 48px);
-            height: clamp(32px, 4vw, 48px);
-            border-radius: 50%;
-            background-color: rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: clamp(12px, 1.5vw, 16px);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .social-link:hover {
-            background-color: rgba(0, 0, 0, 0.5);
-            transform: scale(1.1);
-        }
-        
-        /* Canvas styling */
-        #scene {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-        
-        /* Responsive adjustments - improved breakpoints */
-        @media (max-width: 992px) {
-            .content-wrapper {
-                flex-direction: column;
-            }
-            
-            .content {
-                width: 100%;
-                padding-right: 0;
-                margin-bottom: 20px;
-            }
-            
-            .image-container {
-                width: 100%;
-                margin: 0 auto;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .social-links {
-                bottom: 15%;
-                right: 5%;
-            }
-            
-            .timeline-container {
-                margin-top: 60px;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .nav-controls {
-                bottom: 3%;
-            }
-            
-            .social-links {
-                bottom: 3%;
-                right: 3%;
-                gap: 8px;
-            }
-            
-            .social-link {
-                width: 32px;
-                height: 32px;
-                font-size: 12px;
-            }
-            
-            .nav-button {
-                width: 32px;
-                height: 32px;
-                font-size: 14px;
-            }
-        }
+
+        /* Base styling */
+.timeline-body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    color: white;
+}
+
+/* Custom cursor */
+.timeline-cursor {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s ease;
+    z-index: 9999;
+    mix-blend-mode: difference;
+}
+
+/* Main container - improved for better responsiveness */
+.timeline-fullscreen-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 650px;
+    overflow: hidden;
+    background-color: #12173b;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Title area - improved positioning */
+.timeline-title-area {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    z-index: 10;
+    padding: 15px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    backdrop-filter: blur(3px);
+}
+
+.timeline-school-title {
+    font-size: clamp(24px, 3vw, 36px);
+    font-weight: bold;
+    margin: 0;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.timeline-school-subtitle {
+    font-size: clamp(16px, 2vw, 20px);
+    opacity: 0.9;
+    margin: 5px 0 0 0;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* Timeline styles - improved spacing and visual hierarchy */
+.timeline-container {
+    position: relative;
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    z-index: 10;
+    padding: 0 20px;
+}
+
+.timeline {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 3px;
+    background-color: rgba(255, 255, 255, 0.3);
+    margin: 50px 0 30px;
+    border-radius: 3px;
+}
+
+.timeline-year-label {
+    color: white;
+    font-weight: bold;
+    font-size: clamp(14px, 1.5vw, 18px);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.timeline-marker {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+}
+
+.timeline-marker:hover {
+    transform: translate(-50%, -50%) scale(1.5);
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.timeline-marker.active {
+    background-color: #fff;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+    transform: translate(-50%, -50%) scale(1.2);
+}
+
+/* Enhanced Content styles - WITH FIXED SCALES AND HIDDEN SCROLLBAR */
+.timeline-content-wrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+    margin: 40px auto 0;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.timeline-content {
+    /* Fixed scale for description area */
+    flex: 1;
+    width: 500px; /* Fixed width */
+    min-width: 280px;
+    max-width: calc(50% - 15px);
+    height: 388px; /* Changed from 350px - increased by 38px */
+    overflow-y: auto; /* Enable scrolling but hide scrollbar with custom styling */
+    background-color: rgba(16, 24, 52, 0.6);
+    border: none; /* Removed border completely */
+    border-radius: 8px;
+    padding: 25px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    scrollbar-width: none; /* For Firefox */
+    -ms-overflow-style: none; /* For Internet Explorer and Edge */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.timeline-content::-webkit-scrollbar {
+    width: 0;
+    display: none;
+}
+
+.timeline-milestone-description {
+    font-size: clamp(14px, 1.5vw, 18px);
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    overflow-y: auto;
+    
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    scrollbar-width: none; /* For Firefox */
+    -ms-overflow-style: none; /* For Internet Explorer and Edge */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.timeline-milestone-description::-webkit-scrollbar {
+    width: 0;
+    display: none;
+}
+
+.timeline-image-container {
+    /* Fixed scale for image area */
+    flex: 1;
+    width: 500px; /* Fixed width */
+    min-width: 280px;
+    max-width: calc(50% - 15px);
+    height: 388px; /* Changed from 350px - increased by 38px */
+    background-color: rgba(16, 24, 52, 0.6);
+    border: none; /* Removed border completely */
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.5s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.timeline-milestone-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover; /* This ensures the image covers the container properly */
+    transition: transform 0.5s ease;
+}
+
+.timeline-image-container:hover .timeline-milestone-image {
+    transform: scale(1.05);
+}
+
+/* Typography adjustments for dark space theme */
+.timeline-year-heading {
+    font-size: clamp(36px, 5vw, 56px);
+    font-weight: bold;
+    margin: 0 0 15px 0;
+    color: white;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.timeline-milestone-title {
+    font-size: clamp(24px, 3vw, 36px);
+    font-weight: bold;
+    margin: 0 0 20px 0;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Improved Navigation Controls - SPREAD LEFT TO RIGHT */
+.timeline-nav-controls {
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center; /* Center the controls */
+    gap: clamp(20px, 3vw, 40px);
+    z-index: 10;
+    width: 80%; /* Add width to ensure controls can spread */
+    max-width: 500px; /* Limit maximum width */
+}
+
+.timeline-nav-button {
+    width: clamp(36px, 4vw, 50px);
+    height: clamp(36px, 4vw, 50px);
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: clamp(14px, 1.5vw, 18px);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.timeline-nav-button:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Enhanced Social Links */
+.timeline-social-links {
+    position: absolute;
+    bottom: 5%;
+    right: 5%;
+    display: flex;
+    gap: clamp(10px, 1vw, 18px);
+    z-index: 10;
+}
+
+.timeline-social-link {
+    width: clamp(34px, 4vw, 48px);
+    height: clamp(34px, 4vw, 48px);
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: clamp(12px, 1.5vw, 16px);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.timeline-social-link:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Canvas styling */
+.timeline-scene {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Responsive adjustments for fixed scale containers */
+@media (max-width: 1200px) {
+    .timeline-content-wrapper {
+        gap: 25px;
+        padding: 0 20px;
+    }
+    
+    .timeline-content, .timeline-image-container {
+        width: 450px; /* Slightly smaller on medium screens */
+        height: 320px;
+    }
+}
+
+@media (max-width: 992px) {
+    .timeline-content-wrapper {
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+    }
+    
+    .timeline-content, .timeline-image-container {
+        width: 100%;
+        max-width: 600px; /* Limit maximum width */
+        height: 338px; /* Changed from 300px - increased by 38px */
+        margin-bottom: 20px;
+    }
+    
+    .timeline-content {
+        padding: 20px;
+    }
+    
+    .timeline-year-heading {
+        font-size: clamp(28px, 4vw, 46px);
+        margin-bottom: 10px;
+    }
+    
+    .timeline-milestone-title {
+        font-size: clamp(20px, 2.5vw, 32px);
+        margin-bottom: 15px;
+    }
+    
+    .timeline-title-area {
+        padding: 12px;
+    }
+    
+    .timeline-nav-controls {
+        width: 90%;
+    }
+}
+
+@media (max-width: 768px) {
+    .timeline-content-wrapper {
+        margin-top: 25px;
+        gap: 15px;
+    }
+    
+    .timeline-container {
+        margin-top: 60px;
+        width: 95%;
+    }
+    
+    .timeline-content, .timeline-image-container {
+        height: 318px; /* Changed from 280px - increased by 38px */
+    }
+    
+    .timeline-content {
+        padding: 20px;
+        margin-bottom: 15px;
+    }
+    
+    .timeline-social-links {
+        bottom: 15%;
+        right: 5%;
+    }
+    
+    .timeline-nav-controls {
+        bottom: 4%;
+        gap: 15px;
+    }
+    
+    .timeline-title-area {
+        top: 3%;
+        left: 3%;
+        padding: 10px;
+    }
+    
+    .timeline-school-title {
+        font-size: clamp(20px, 2.5vw, 30px);
+    }
+    
+    .timeline-school-subtitle {
+        font-size: clamp(14px, 1.8vw, 18px);
+    }
+}
+
+@media (max-width: 480px) {
+    .timeline-content-wrapper {
+        margin-top: 20px;
+        gap: 15px;
+    }
+    
+    .timeline-content, .timeline-image-container {
+        height: 288px; /* Changed from 250px - increased by 38px */
+    }
+    
+    .timeline-content {
+        padding: 15px;
+    }
+    
+    .timeline-milestone-description {
+        font-size: 14px;
+        line-height: 1.5;
+    }
+    
+    .timeline-year-heading {
+        font-size: 28px;
+        margin-bottom: 10px;
+    }
+    
+    .timeline-milestone-title {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+    
+    .timeline-nav-controls {
+        bottom: 3%;
+        gap: 10px;
+        width: 95%;
+    }
+    
+    .timeline-social-links {
+        bottom: 3%;
+        right: 3%;
+        gap: 8px;
+    }
+    
+    .timeline-social-link {
+        width: 32px;
+        height: 32px;
+        font-size: 12px;
+    }
+    
+    .timeline-nav-button {
+        width: 32px;
+        height: 32px;
+        font-size: 14px;
+    }
+    
+    .timeline {
+        margin: 35px 0 25px;
+    }
+    
+    .timeline-container {
+        padding: 0 10px;
+    }
+}
     </style>
 </head>
-<body>
-    <div class="fullscreen-container" id="timeline-app">
-        <!-- Custom Cursor -->
-        <div class="cursor" id="custom-cursor"></div>
-        
-        <!-- WebGL Scene Background -->
-        <canvas id="scene"></canvas>
-        
-        <!-- Title Area -->
-        <div class="title-area">
-            <h1 class="school-title">Tanzania Police School</h1>
-            <p class="school-subtitle">A Century of Service and Training</p>
+<div class="timeline-fullscreen-container" id="timeline-app">
+    <!-- Custom Cursor -->
+    <div class="timeline-cursor" id="custom-cursor"></div>
+    
+    <!-- WebGL Scene Background -->
+    <canvas class="timeline-scene" id="scene"></canvas>
+    
+    <!-- Title Area -->
+    <div class="timeline-title-area">
+        <h1 class="timeline-school-title">Tanzania Police School</h1>
+    </div>
+    
+    <!-- Main Content -->
+    <div class="timeline-container">
+        <!-- Timeline Navigation -->
+        <div class="timeline">
+            <div class="timeline-year-label"></div>
+            <!-- Timeline markers will be generated by JS -->
+            <div class="timeline-year-label"></div>
         </div>
         
-        <!-- Main Content -->
-        <div class="timeline-container">
-            <!-- Timeline Navigation -->
-            <div class="timeline">
-                <div class="year-label">1921</div>
-                <!-- Timeline markers will be generated by JS -->
-                <div class="year-label">2023</div>
+        <!-- Content Area -->
+        <div class="timeline-content-wrapper">
+            <div class="timeline-content">
+                <h2 class="timeline-year-heading" id="year-display">1984</h2>
+                <h3 class="timeline-milestone-title" id="milestone-title">Advanced Training Programs</h3>
+                <p class="timeline-milestone-description" id="milestone-description">The Tanzania Police School introduced advanced courses in criminal investigation, forensics, and community policing to address evolving security challenges. This era saw a more scientific approach to police education with laboratory facilities and specialized instructors.</p>
             </div>
             
-            <!-- Content Area -->
-            <div class="content-wrapper">
-                <div class="content">
-                    <h2 class="year-heading" id="year-display">1984</h2>
-                    <h3 class="milestone-title" id="milestone-title">Advanced Training Programs</h3>
-                    <p class="milestone-description" id="milestone-description">The Tanzania Police School introduced advanced courses in criminal investigation, forensics, and community policing to address evolving security challenges. This era saw a more scientific approach to police education with laboratory facilities and specialized instructors.</p>
-                </div>
-                
-                <!-- Image Container -->
-                <div class="image-container">
-                    <img src="/api/placeholder/500/350" class="milestone-image" alt="Historical photo">
-                </div>
+            <!-- Image Container -->
+            <div class="timeline-image-container">
+                <img src="/api/placeholder/500/350" class="timeline-milestone-image" alt="Historical photo">
             </div>
-        </div>
-        
-        <!-- Navigation Controls -->
-        <div class="nav-controls">
-            <div class="nav-button" id="prev-btn">&lt;</div>
-            <div class="nav-button" id="pause-btn">||</div>
-            <div class="nav-button" id="next-btn">&gt;</div>
-        </div>
-        
-        <!-- Social Links -->
-        <div class="social-links">
-            <div class="social-link">FB</div>
-            <div class="social-link">TW</div>
-            <div class="social-link">YT</div>
         </div>
     </div>
+    
+    <!-- Navigation Controls - Adding these since they're referenced in JS but weren't in HTML -->
+    <div class="timeline-nav-controls">
+        <div class="timeline-nav-button" id="prev-btn"><</div>
+        <div class="timeline-nav-button" id="pause-btn">||</div>
+        <div class="timeline-nav-button" id="next-btn">></div>
+    </div>
+    
+    <!-- Social Links -->
+    <div class="timeline-social-links">
+        <div class="timeline-social-link">FB</div>
+        <div class="timeline-social-link">TW</div>
+        <div class="timeline-social-link">YT</div>
+    </div>
+</div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Timeline data
-            const milestones = [
-                {
-                    year: "1921",
-                    title: "Foundation of Police Training",
-                    description: "The foundation of formal police training in Tanzania was established under colonial administration, focusing on basic law enforcement skills and colonial policing methods.",
-                    image: "/api/placeholder/500/350"
-                },
-                {
-                    year: "1946",
-                    title: "Establishment of Central Police Training School",
-                    description: "The Central Police Training School was formally established in Dar es Salaam as the main training institution for police officers in the territory. This marked a significant step in the professionalization of police services with standardized curriculum and training methods.",
-                    image: "/api/placeholder/500/350"
-                },
-                {
-                    year: "1961",
-                    title: "Post-Independence Reforms",
-                    description: "Following Tanzania's independence, the police training system underwent significant reforms to align with the new nation's values and priorities. The curriculum was updated to emphasize service to citizens rather than colonial interests.",
-                    image: "/api/placeholder/500/350"
-                },
-                {
-                    year: "1975",
-                    title: "Establishment of TPS Moshi",
-                    description: "The Tanzania Police School in Moshi was established as a specialized training center, expanding the nation's police training capabilities with modern facilities and expanded curriculum.",
-                    image: "/api/placeholder/500/350"
-                },
-                {
-                    year: "1984",
-                    title: "Advanced Training Programs",
-                    description: "The Tanzania Police School introduced advanced courses in criminal investigation, forensics, and community policing to address evolving security challenges. This era saw a more scientific approach to police education with laboratory facilities and specialized instructors.",
-                    image: "/api/placeholder/500/350"
-                },
-                {
-                    year: "1995",
-                    title: "Curriculum Modernization",
-                    description: "A comprehensive curriculum review was conducted, integrating human rights, community policing principles, and international best practices into the training program.",
-                    image: "/api/placeholder/500/350"
-                },
-                {
-                    year: "2008",
-                    title: "International Training Partnerships",
-                    description: "TPS established partnerships with international police training institutions, facilitating exchange programs and adopting global best practices in law enforcement training.",
-                    image: "/api/placeholder/500/350"
-                },
-                {
-                    year: "2018",
-                    title: "PRC-Funded Facility Expansion",
-                    description: "Completed the Phase II construction project with PRC funding, featuring three academic buildings with computer labs, lecture rooms, and administrative facilities. The expansion includes four dormitory blocks accommodating 320 students and two major water systems.",
-                    image: "/api/placeholder/500/350"
-                },
-                {
-                    year: "2020",
-                    title: "Multi-Campus Expansion",
-                    description: "Expanded from a single campus to three distinct facilities: TPS Main Campus, Kilele Pori, and Kamba Pori. This strategic expansion has increased our training capacity from 600 recruits in the 1990s to over 10,000 today, making us one of the largest police training institutions in the region.",
-                    image: "/api/placeholder/500/350"
-                },
-                {
-                    year: "2022",
-                    title: "Advanced Forensic Training Certification",
-                    description: "Received international certification for our advanced forensic training program. Our students now benefit from hands-on experience with cutting-edge forensic technology and techniques that meet global standards of excellence.",
-                    image: "/api/placeholder/500/350"
-                },
-                {
-                    year: "2023",
-                    title: "Community Service Excellence Award",
-                    description: "Recognized for our outstanding community outreach programs and positive impact on surrounding communities. Our cadets and staff have contributed over 5,000 volunteer hours in the past year, focusing on youth mentorship and community safety initiatives.",
-                    image: "/api/placeholder/500/350"
-                }
-            ];
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Timeline data
+        const milestones = [
+            {
+                year: "1921",
+                title: "Foundation of Police Training",
+                description: "The foundation of formal police training in Tanzania was established under colonial administration, focusing on basic law enforcement skills and colonial policing methods.",
+                image: "/api/placeholder/500/350"
+            },
+            {
+                year: "1946",
+                title: "Establishment of Central Police Training School",
+                description: "The Central Police Training School was formally established in Dar es Salaam as the main training institution for police officers in the territory. This marked a significant step in the professionalization of police services with standardized curriculum and training methods.",
+                image: "/api/placeholder/500/350"
+            },
+            {
+                year: "1961",
+                title: "Post-Independence Reforms",
+                description: "Following Tanzania's independence, the police training system underwent significant reforms to align with the new nation's values and priorities. The curriculum was updated to emphasize service to citizens rather than colonial interests.",
+                image: "/api/placeholder/500/350"
+            },
+            {
+                year: "1975",
+                title: "Establishment of TPS Moshi",
+                description: "The Tanzania Police School in Moshi was established as a specialized training center, expanding the nation's police training capabilities with modern facilities and expanded curriculum.",
+                image: "/api/placeholder/500/350"
+            },
+            {
+                year: "1984",
+                title: "Advanced Training Programs",
+                description: "The Tanzania Police School introduced advanced courses in criminal investigation, forensics, and community policing to address evolving security challenges. This era saw a more scientific approach to police education with laboratory facilities and specialized instructors.",
+                image: "/api/placeholder/500/350"
+            },
+            {
+                year: "1995",
+                title: "Curriculum Modernization",
+                description: "A comprehensive curriculum review was conducted, integrating human rights, community policing principles, and international best practices into the training program.",
+                image: "/api/placeholder/500/350"
+            },
+            {
+                year: "2008",
+                title: "International Training Partnerships",
+                description: "TPS established partnerships with international police training institutions, facilitating exchange programs and adopting global best practices in law enforcement training.",
+                image: "/api/placeholder/500/350"
+            },
+            {
+                year: "2018",
+                title: "PRC-Funded Facility Expansion",
+                description: "Completed the Phase II construction project with PRC funding, featuring three academic buildings with computer labs, lecture rooms, and administrative facilities. The expansion includes four dormitory blocks accommodating 320 students and two major water systems.",
+                image: "assets/images/new/Academic blockwall.jpg"
+            },
+            {
+                year: "2020",
+                title: "Multi-Campus Expansion",
+                description: "Expanded from a single campus to three distinct facilities: TPS Main Campus, Kilele Pori, and Kamba Pori. This strategic expansion has increased our training capacity from 600 recruits in the 1990s to over 10,000 today, making us one of the largest police training institutions in the region.",
+                image: "/api/placeholder/500/350"
+            },
+            {
+                year: "2022",
+                title: "Advanced Forensic Training Certification",
+                description: "Received international certification for our advanced forensic training program. Our students now benefit from hands-on experience with cutting-edge forensic technology and techniques that meet global standards of excellence.",
+                image: "/api/placeholder/500/350"
+            },
+            {
+                year: "2023",
+                title: "Community Service Excellence Award",
+                description: "Recognized for our outstanding community outreach programs and positive impact on surrounding communities. Our cadets and staff have contributed over 5,000 volunteer hours in the past year, focusing on youth mentorship and community safety initiatives.",
+                image: "/api/placeholder/500/350"
+            }
+        ];
+        
+        // App state
+        let activeSlide = 4; // Start with 1984 milestone (index 4)
+        let isTransitioning = false;
+        let autoSlideInterval = null;
+        
+        // DOM elements
+        const yearDisplay = document.getElementById('year-display');
+        const milestoneTitle = document.getElementById('milestone-title');
+        const milestoneDescription = document.getElementById('milestone-description');
+        const milestoneImage = document.querySelector('.timeline-milestone-image');
+        const timeline = document.querySelector('.timeline');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const pauseBtn = document.getElementById('pause-btn');
+        const timelineApp = document.getElementById('timeline-app');
+        
+        // Initialize the timeline
+        function init() {
+            createTimelineMarkers();
+            setupMouseTracking();
+            initThreeScene();
+            startAutoSlide();
+            updateUI();
             
-            // App state
-            let activeSlide = 4; // Start with 1984 milestone (index 4)
-            let isTransitioning = false;
-            let autoSlideInterval = null;
-            
-            // DOM elements
-            const yearDisplay = document.getElementById('year-display');
-            const milestoneTitle = document.getElementById('milestone-title');
-            const milestoneDescription = document.getElementById('milestone-description');
-            const milestoneImage = document.querySelector('.milestone-image');
-            const timeline = document.querySelector('.timeline');
-            const prevBtn = document.getElementById('prev-btn');
-            const nextBtn = document.getElementById('next-btn');
-            const pauseBtn = document.getElementById('pause-btn');
-            const timelineApp = document.getElementById('timeline-app');
-            
-            // Initialize the timeline
-            function init() {
-                createTimelineMarkers();
-                setupMouseTracking();
-                initThreeScene();
-                startAutoSlide();
+            // Event listeners
+            prevBtn.addEventListener('click', prevSlide);
+            nextBtn.addEventListener('click', nextSlide);
+            pauseBtn.addEventListener('click', pauseAutoSlide);
+            window.addEventListener('resize', () => {
+                resizeThreeScene();
                 updateUI();
-                
-                // Event listeners
-                prevBtn.addEventListener('click', prevSlide);
-                nextBtn.addEventListener('click', nextSlide);
-                pauseBtn.addEventListener('click', pauseAutoSlide);
-                window.addEventListener('resize', () => {
-                    resizeThreeScene();
-                    updateUI();
-                });
-            }
+            });
+        }
+        
+        // Update UI based on container size
+        function updateUI() {
+            const containerHeight = timelineApp.offsetHeight;
+            const containerWidth = timelineApp.offsetWidth;
             
-            // Update UI based on container size
-            function updateUI() {
-                const containerHeight = timelineApp.offsetHeight;
-                const containerWidth = timelineApp.offsetWidth;
+            // Adjust spacing based on container dimensions
+            if (containerHeight < 500) {
+                document.querySelector('.timeline-container').style.marginTop = '40px';
+            } else {
+                document.querySelector('.timeline-container').style.marginTop = '0';
+            }
+        }
+        
+        // Create timeline markers
+        function createTimelineMarkers() {
+            milestones.forEach((milestone, index) => {
+                // Calculate position as percentage
+                const percent = index / (milestones.length - 1) * 100;
                 
-                // Adjust spacing based on container dimensions
-                if (containerHeight < 500) {
-                    document.querySelector('.timeline-container').style.marginTop = '40px';
+                // Create marker
+                const marker = document.createElement('div');
+                marker.className = 'timeline-marker';
+                if (index === activeSlide) {
+                    marker.classList.add('active');
+                }
+                marker.style.left = `${percent}%`;
+                
+                // Add click event
+                marker.addEventListener('click', () => {
+                    if (isTransitioning) return;
+                    goToSlide(index);
+                });
+                
+                timeline.appendChild(marker);
+            });
+        }
+        
+        // Auto slide functions
+        function startAutoSlide() {
+            stopAutoSlide();
+            autoSlideInterval = setInterval(() => {
+                if (!isTransitioning) {
+                    nextSlide();
+                }
+            }, 10000);
+        }
+        
+        function stopAutoSlide() {
+            if (autoSlideInterval) {
+                clearInterval(autoSlideInterval);
+            }
+        }
+        
+        function pauseAutoSlide() {
+            stopAutoSlide();
+            pauseBtn.textContent = '▶';
+            pauseBtn.addEventListener('click', resumeAutoSlide, { once: true });
+        }
+        
+        function resumeAutoSlide() {
+            startAutoSlide();
+            pauseBtn.textContent = '||';
+        }
+        
+        // Navigation functions
+        function nextSlide() {
+            isTransitioning = true;
+            activeSlide = (activeSlide + 1) % milestones.length;
+            updateActiveMarker();
+            animateContentChange();
+        }
+        
+        function prevSlide() {
+            isTransitioning = true;
+            activeSlide = (activeSlide - 1 + milestones.length) % milestones.length;
+            updateActiveMarker();
+            animateContentChange();
+        }
+        
+        function goToSlide(index) {
+            if (index === activeSlide) return;
+            
+            isTransitioning = true;
+            activeSlide = index;
+            updateActiveMarker();
+            animateContentChange();
+            
+            // Reset auto slide timer
+            stopAutoSlide();
+            startAutoSlide();
+        }
+        
+        function updateActiveMarker() {
+            document.querySelectorAll('.timeline-marker').forEach((marker, i) => {
+                if (i === activeSlide) {
+                    marker.classList.add('active');
                 } else {
-                    document.querySelector('.timeline-container').style.marginTop = '0';
+                    marker.classList.remove('active');
                 }
-            }
-            
-            // Create timeline markers
-            function createTimelineMarkers() {
-                milestones.forEach((milestone, index) => {
-                    // Calculate position as percentage
-                    const percent = index / (milestones.length - 1) * 100;
-                    
-                    // Create marker
-                    const marker = document.createElement('div');
-                    marker.className = 'timeline-marker';
-                    if (index === activeSlide) {
-                        marker.classList.add('active');
-                    }
-                    marker.style.left = `${percent}%`;
-                    
-                    // Add click event
-                    marker.addEventListener('click', () => {
-                        if (isTransitioning) return;
-                        goToSlide(index);
-                    });
-                    
-                    timeline.appendChild(marker);
-                });
-            }
-            
-            // Auto slide functions
-            function startAutoSlide() {
-                stopAutoSlide();
-                autoSlideInterval = setInterval(() => {
-                    if (!isTransitioning) {
-                        nextSlide();
-                    }
-                }, 10000);
-            }
-            
-            function stopAutoSlide() {
-                if (autoSlideInterval) {
-                    clearInterval(autoSlideInterval);
-                }
-            }
-            
-            function pauseAutoSlide() {
-                stopAutoSlide();
-                pauseBtn.textContent = '▶';
-                pauseBtn.addEventListener('click', resumeAutoSlide, { once: true });
-            }
-            
-            function resumeAutoSlide() {
-                startAutoSlide();
-                pauseBtn.textContent = '||';
-            }
-            
-            // Navigation functions
-            function nextSlide() {
-                isTransitioning = true;
-                activeSlide = (activeSlide + 1) % milestones.length;
-                updateActiveMarker();
-                animateContentChange();
-            }
-            
-            function prevSlide() {
-                isTransitioning = true;
-                activeSlide = (activeSlide - 1 + milestones.length) % milestones.length;
-                updateActiveMarker();
-                animateContentChange();
-            }
-            
-            function goToSlide(index) {
-                if (index === activeSlide) return;
+            });
+        }
+        
+        // Animate content changes
+        function animateContentChange() {
+            // Fade out
+            fadeOut([yearDisplay, milestoneTitle, milestoneDescription], () => {
+                // Update content
+                yearDisplay.textContent = milestones[activeSlide].year;
+                milestoneTitle.textContent = milestones[activeSlide].title;
+                milestoneDescription.textContent = milestones[activeSlide].description;
+                milestoneImage.src = milestones[activeSlide].image;
+                milestoneImage.alt = milestones[activeSlide].title;
                 
-                isTransitioning = true;
-                activeSlide = index;
-                updateActiveMarker();
-                animateContentChange();
+                // Fade in
+                fadeIn([yearDisplay, milestoneTitle, milestoneDescription], () => {
+                    isTransitioning = false;
+                });
+            });
+        }
+        
+        function fadeOut(elements, onComplete) {
+            let count = 0;
+            elements.forEach((el, i) => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = `opacity 0.4s ease, transform 0.4s ease`;
                 
-                // Reset auto slide timer
-                stopAutoSlide();
-                startAutoSlide();
-            }
-            
-            function updateActiveMarker() {
-                document.querySelectorAll('.timeline-marker').forEach((marker, i) => {
-                    if (i === activeSlide) {
-                        marker.classList.add('active');
-                    } else {
-                        marker.classList.remove('active');
+                setTimeout(() => {
+                    count++;
+                    if (count === elements.length && onComplete) {
+                        onComplete();
                     }
-                });
-            }
-            
-            // Animate content changes
-            function animateContentChange() {
-                // Fade out
-                fadeOut([yearDisplay, milestoneTitle, milestoneDescription], () => {
-                    // Update content
-                    yearDisplay.textContent = milestones[activeSlide].year;
-                    milestoneTitle.textContent = milestones[activeSlide].title;
-                    milestoneDescription.textContent = milestones[activeSlide].description;
-                    milestoneImage.src = milestones[activeSlide].image;
-                    milestoneImage.alt = milestones[activeSlide].title;
+                }, 400);
+            });
+        }
+        
+        function fadeIn(elements, onComplete) {
+            let count = 0;
+            elements.forEach((el, i) => {
+                setTimeout(() => {
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
                     
-                    // Fade in
-                    fadeIn([yearDisplay, milestoneTitle, milestoneDescription], () => {
-                        isTransitioning = false;
-                    });
-                });
-            }
-            
-            function fadeOut(elements, onComplete) {
-                let count = 0;
-                elements.forEach((el, i) => {
-                    el.style.opacity = '0';
-                    el.style.transform = 'translateY(20px)';
-                    el.style.transition = `opacity 0.4s ease, transform 0.4s ease`;
-                    
-                    setTimeout(() => {
+                    el.addEventListener('transitionend', function handler() {
                         count++;
                         if (count === elements.length && onComplete) {
                             onComplete();
                         }
-                    }, 400);
-                });
-            }
+                        el.removeEventListener('transitionend', handler);
+                    });
+                }, i * 100);
+            });
+        }
+        
+        // Mouse tracking for custom cursor
+        function setupMouseTracking() {
+            const cursor = document.getElementById('custom-cursor');
             
-            function fadeIn(elements, onComplete) {
-                let count = 0;
-                elements.forEach((el, i) => {
-                    setTimeout(() => {
-                        el.style.opacity = '1';
-                        el.style.transform = 'translateY(0)';
-                        
-                        el.addEventListener('transitionend', function handler() {
-                            count++;
-                            if (count === elements.length && onComplete) {
-                                onComplete();
-                            }
-                            el.removeEventListener('transitionend', handler);
-                        });
-                    }, i * 100);
-                });
-            }
-            
-            // Mouse tracking for custom cursor
-            function setupMouseTracking() {
-                const cursor = document.getElementById('custom-cursor');
+            document.addEventListener('mousemove', (e) => {
+                // Move cursor
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
                 
-                document.addEventListener('mousemove', (e) => {
-                    // Move cursor
-                    cursor.style.left = e.clientX + 'px';
-                    cursor.style.top = e.clientY + 'px';
-                    
-                    // Check if hovering over interactive elements
-                    const target = e.target;
-                    if (target.classList.contains('nav-button') || 
-                        target.classList.contains('timeline-marker') || 
-                        target.classList.contains('social-link')) {
-                        cursor.style.transform = 'translate(-50%, -50%) scale(1.5)';
-                        cursor.style.backgroundColor = 'rgba(255, 255, 255, 0.9)';
-                    } else {
-                        cursor.style.transform = 'translate(-50%, -50%) scale(1)';
-                        cursor.style.backgroundColor = 'rgba(255, 255, 255, 0.7)';
-                    }
-                });
-                
-                // Hide cursor on mobile/touch devices
-                if ('ontouchstart' in window) {
-                    cursor.style.display = 'none';
-                }
-            }
-            
-            // ThreeJS background scene
-            function initThreeScene() {
-                // Import ThreeJS from CDN if it doesn't exist
-                if (typeof THREE === 'undefined') {
-                    const script = document.createElement('script');
-                    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
-                    script.onload = setupScene;
-                    document.head.appendChild(script);
+                // Check if hovering over interactive elements
+                const target = e.target;
+                if (target.classList.contains('timeline-nav-button') || 
+                    target.classList.contains('timeline-marker') || 
+                    target.classList.contains('timeline-social-link')) {
+                    cursor.style.transform = 'translate(-50%, -50%) scale(1.5)';
+                    cursor.style.backgroundColor = 'rgba(255, 255, 255, 0.9)';
                 } else {
-                    setupScene();
+                    cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+                    cursor.style.backgroundColor = 'rgba(255, 255, 255, 0.7)';
+                }
+            });
+            
+            // Hide cursor on mobile/touch devices
+            if ('ontouchstart' in window) {
+                cursor.style.display = 'none';
+            }
+        }
+        
+        // ThreeJS background scene
+        function initThreeScene() {
+            // Import ThreeJS from CDN if it doesn't exist
+            if (typeof THREE === 'undefined') {
+                const script = document.createElement('script');
+                script.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
+                script.onload = setupScene;
+                document.head.appendChild(script);
+            } else {
+                setupScene();
+            }
+            
+            function setupScene() {
+                // Scene setup
+                const scene = new THREE.Scene();
+                const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+                const renderer = new THREE.WebGLRenderer({ 
+                    canvas: document.getElementById('scene'),
+                    alpha: true,
+                    antialias: true
+                });
+                
+                renderer.setSize(timelineApp.offsetWidth, timelineApp.offsetHeight);
+                renderer.setPixelRatio(window.devicePixelRatio);
+                
+                // Create particles
+                const particleGeometry = new THREE.BufferGeometry();
+                const particleCount = 1500;
+                const posArray = new Float32Array(particleCount * 3);
+                
+                for (let i = 0; i < particleCount * 3; i++) {
+                    posArray[i] = (Math.random() - 0.5) * 20;
                 }
                 
-                function setupScene() {
-                    // Scene setup
-                    const scene = new THREE.Scene();
-                    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-                    const renderer = new THREE.WebGLRenderer({ 
-                        canvas: document.getElementById('scene'),
-                        alpha: true,
-                        antialias: true
+                particleGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+                
+                const particleMaterial = new THREE.PointsMaterial({
+                    color: 0x5f9ea0,
+                    size: 0.05,
+                    transparent: true,
+                    blending: THREE.AdditiveBlending
+                });
+                
+                const particleSystem = new THREE.Points(particleGeometry, particleMaterial);
+                scene.add(particleSystem);
+                
+                // 3D shapes in background
+                const geometries = [
+                    new THREE.IcosahedronGeometry(0.6, 0),
+                    new THREE.BoxGeometry(0.7, 0.7, 0.7),
+                    new THREE.TorusGeometry(0.5, 0.2, 16, 100)
+                ];
+                
+                const material = new THREE.MeshPhongMaterial({
+                    color: 0x5f9ea0,
+                    transparent: true,
+                    opacity: 0.7,
+                    wireframe: true
+                });
+                
+                const shapes = [];
+                
+                // Create floating shapes
+                for (let i = 0; i < 15; i++) {
+                    const geometry = geometries[Math.floor(Math.random() * geometries.length)];
+                    const mesh = new THREE.Mesh(geometry, material);
+                    
+                    mesh.position.set(
+                        (Math.random() - 0.5) * 15,
+                        (Math.random() - 0.5) * 15,
+                        (Math.random() - 0.5) * 15 - 5
+                    );
+                    
+                    scene.add(mesh);
+                    
+                    shapes.push({
+                        mesh,
+                        rotSpeed: {
+                            x: (Math.random() - 0.5) * 0.01,
+                            y: (Math.random() - 0.5) * 0.01,
+                            z: (Math.random() - 0.5) * 0.01
+                        },
+                        floatSpeed: {
+                            x: (Math.random() - 0.5) * 0.005,
+                            y: (Math.random() - 0.5) * 0.005,
+                            z: (Math.random() - 0.5) * 0.005
+                        }
                     });
-                    
-                    renderer.setSize(timelineApp.offsetWidth, timelineApp.offsetHeight);
-                    renderer.setPixelRatio(window.devicePixelRatio);
-                    
-                    // Create particles
-                    const particleGeometry = new THREE.BufferGeometry();
-                    const particleCount = 1500;
-                    const posArray = new Float32Array(particleCount * 3);
-                    
-                    for (let i = 0; i < particleCount * 3; i++) {
-                        posArray[i] = (Math.random() - 0.5) * 20;
-                    }
-                    
-                    particleGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
-                    
-                    const particleMaterial = new THREE.PointsMaterial({
-                        color: 0x5f9ea0,
-                        size: 0.05,
-                        transparent: true,
-                        blending: THREE.AdditiveBlending
-                    });
-                    
-                    const particleSystem = new THREE.Points(particleGeometry, particleMaterial);
-                    scene.add(particleSystem);
-                    
-                    // 3D shapes in background
-                    const geometries = [
-                        new THREE.IcosahedronGeometry(0.6, 0),
-                        new THREE.BoxGeometry(0.7, 0.7, 0.7),
-                        new THREE.TorusGeometry(0.5, 0.2, 16, 100)
-                    ];
-                    
-                    const material = new THREE.MeshPhongMaterial({
-                        color: 0x5f9ea0,
-                        transparent: true,
-                        opacity: 0.7,
-                        wireframe: true
-                    });
-                    
-                    const shapes = [];
-                    
-                    // Create floating shapes
-                    for (let i = 0; i < 15; i++) {
-                        const geometry = geometries[Math.floor(Math.random() * geometries.length)];
-                        const mesh = new THREE.Mesh(geometry, material);
-                        
-                        mesh.position.set(
-                            (Math.random() - 0.5) * 15,
-                            (Math.random() - 0.5) * 15,
-                            (Math.random() - 0.5) * 15 - 5
-                        );
-                        
-                        scene.add(mesh);
-                        
-                        shapes.push({
-                            mesh,
-                            rotSpeed: {
-                                x: (Math.random() - 0.5) * 0.01,
-                                y: (Math.random() - 0.5) * 0.01,
-                                z: (Math.random() - 0.5) * 0.01
-                            },
-                            floatSpeed: {
-                                x: (Math.random() - 0.5) * 0.005,
-                                y: (Math.random() - 0.5) * 0.005,
-                                z: (Math.random() - 0.5) * 0.005
-                            }
-                        });
-                    }
-                    
-                    // Add lighting
-                    const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
-                    scene.add(ambientLight);
-                    
-                    const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
-                    directionalLight.position.set(1, 1, 1);
-                    scene.add(directionalLight);
-                    
-                    camera.position.z = 5;
-                    
-                    // 3D parallax effect with mouse movement
-                    document.addEventListener('mousemove', (e) => {
-                        const x = (e.clientX / window.innerWidth) * 2 - 1;
-                        const y = -(e.clientY / window.innerHeight) * 2 + 1;
-                        
-                        // Animate camera position
-                        const targetX = x * 0.8;
-                        const targetY = y * 0.8;
-                        
-                        camera.position.x += (targetX - camera.position.x) * 0.05;
-                        camera.position.y += (targetY - camera.position.y) * 0.05;
-                        camera.lookAt(scene.position);
-                    });
-                    
-                    // Animation loop
-                    function animate() {
-                        requestAnimationFrame(animate);
-                        
-                        // Rotate particle system
-                        particleSystem.rotation.y += 0.0005;
-                        particleSystem.rotation.x += 0.0002;
-                        
-                        // Animate shapes
-                        shapes.forEach(shape => {
-                            shape.mesh.rotation.x += shape.rotSpeed.x;
-                            shape.mesh.rotation.y += shape.rotSpeed.y;
-                            shape.mesh.rotation.z += shape.rotSpeed.z;
-                            
-                            shape.mesh.position.x += Math.sin(Date.now() * 0.001) * shape.floatSpeed.x;
-                            shape.mesh.position.y += Math.cos(Date.now() * 0.001) * shape.floatSpeed.y;
-                            shape.mesh.position.z += Math.sin(Date.now() * 0.001) * shape.floatSpeed.z;
-                        });
-                        
-                        renderer.render(scene, camera);
-                    }
-                    
-                    animate();
-                    
-                    // Store renderer and camera for resize event
-                    window.threeRenderer = renderer;
-                    window.threeCamera = camera;
                 }
-            }
-            
-            function resizeThreeScene() {
-                if (window.threeRenderer && window.threeCamera) {
-                    window.threeCamera.aspect = timelineApp.offsetWidth / timelineApp.offsetHeight;
-                    window.threeCamera.updateProjectionMatrix();
-                    window.threeRenderer.setSize(timelineApp.offsetWidth, timelineApp.offsetHeight);
+                
+                // Add lighting
+                const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
+                scene.add(ambientLight);
+                
+                const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+                directionalLight.position.set(1, 1, 1);
+                scene.add(directionalLight);
+                
+                camera.position.z = 5;
+                
+                // 3D parallax effect with mouse movement
+                document.addEventListener('mousemove', (e) => {
+                    const x = (e.clientX / window.innerWidth) * 2 - 1;
+                    const y = -(e.clientY / window.innerHeight) * 2 + 1;
+                    
+                    // Animate camera position
+                    const targetX = x * 0.8;
+                    const targetY = y * 0.8;
+                    
+                    camera.position.x += (targetX - camera.position.x) * 0.05;
+                    camera.position.y += (targetY - camera.position.y) * 0.05;
+                    camera.lookAt(scene.position);
+                });
+                
+                // Animation loop
+                function animate() {
+                    requestAnimationFrame(animate);
+                    
+                    // Rotate particle system
+                    particleSystem.rotation.y += 0.0005;
+                    particleSystem.rotation.x += 0.0002;
+                    
+                    // Animate shapes
+                    shapes.forEach(shape => {
+                        shape.mesh.rotation.x += shape.rotSpeed.x;
+                        shape.mesh.rotation.y += shape.rotSpeed.y;
+                        shape.mesh.rotation.z += shape.rotSpeed.z;
+                        
+                        shape.mesh.position.x += Math.sin(Date.now() * 0.001) * shape.floatSpeed.x;
+                        shape.mesh.position.y += Math.cos(Date.now() * 0.001) * shape.floatSpeed.y;
+                        shape.mesh.position.z += Math.sin(Date.now() * 0.001) * shape.floatSpeed.z;
+                    });
+                    
+                    renderer.render(scene, camera);
                 }
+                
+                animate();
+                
+                // Store renderer and camera for resize event
+                window.threeRenderer = renderer;
+                window.threeCamera = camera;
             }
-            
-            // Initialize the app
-            init();
-        });
-    </script>
-</body>
+        }
+        
+        function resizeThreeScene() {
+            if (window.threeRenderer && window.threeCamera) {
+                window.threeCamera.aspect = timelineApp.offsetWidth / timelineApp.offsetHeight;
+                window.threeCamera.updateProjectionMatrix();
+                window.threeRenderer.setSize(timelineApp.offsetWidth, timelineApp.offsetHeight);
+            }
+        }
+        
+        // Initialize the app
+        init();
+    });
+</script>
 </html>
 </div>
 @endsection
