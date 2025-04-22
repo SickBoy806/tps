@@ -190,12 +190,12 @@ $backgroundUrl = asset('images/leadership/' . $backgroundImage);
         }
     }
     
-    /* Tree diagram background - increased opacity and moved down 1cm */
+    /* Tree diagram background - increased opacity and moved 2cm to the right and 0.3cm down */
     .tree-diagram-background {
         background-image: url('/assets/images/organizational/MUUNDO.png');
         background-size: contain;
         background-repeat: no-repeat;
-        background-position: center 0.3cm; /* Added 1cm top offset to move image down */
+        background-position: calc(50% + 3cm) 0.3cm; /* Added 2cm right offset and kept 0.3cm top offset */
         opacity: 0.3;
         animation: subtlePulse 10s infinite alternate;
         margin-top: 0.3cm; /* Alternative approach to move background down */
@@ -289,7 +289,7 @@ $backgroundUrl = asset('images/leadership/' . $backgroundImage);
         /* Adjust tree diagram background for mobile */
         .tree-diagram-background {
             background-size: 200% auto;
-            background-position: center 0.5cm; /* Reduced offset for mobile */
+            background-position: calc(50% + 2cm) 0.5cm; /* Shifted 2cm right for mobile too */
         }
         
         /* Reduce blue overlay opacity on mobile for better visibility */

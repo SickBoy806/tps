@@ -528,7 +528,7 @@
                 
                 <!-- Slide 3 -->
                 <div class="item" aria-roledescription="slide" aria-label="Slide 3 of 4">
-                    <img src="assets/images/new/Academic Blockwall.jpg" alt="PRESIDENT" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <img src="assets/images/new/academy3.jpg" alt="PRESIDENT" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                     <div class="image-fallback" style="display:none;">PRESIDENT OF TANZANIA</div>
                     <div class="content">
                         <div class="author"></div>
@@ -577,7 +577,7 @@
                 
                 <!-- Thumbnail 3 -->
                 <div class="item" onclick="goToSlide(2)" role="tab" tabindex="0" aria-selected="false" aria-controls="slide-2" id="thumb-2" onkeydown="handleKeyDown(event, 2)">
-                    <img src="assets/images/new/Academic Blockwall.jpg" alt="ACADEMIC BLOCK" onerror="this.style.display='none'; this.parentNode.style.backgroundColor='#333';">
+                    <img src="assets/images/new/academy3.jpg" alt="ACADEMIC BLOCK" onerror="this.style.display='none'; this.parentNode.style.backgroundColor='#333';">
                     <div class="content">
                         <div class="title">HIGHER EDUCATION</div>
                         <div class="description">TANZANIA</div>
@@ -3233,18 +3233,7 @@ window.addEventListener('unload', () => {
                 description: "The foundation of formal police training in Tanzania was established under colonial administration, focusing on basic law enforcement skills and colonial policing methods.",
                 image: "/api/placeholder/500/350"
             },
-            {
-                year: "1946",
-                title: "Establishment of Central Police Training School",
-                description: "The Central Police Training School was formally established in Dar es Salaam as the main training institution for police officers in the territory. This marked a significant step in the professionalization of police services with standardized curriculum and training methods.",
-                image: "/api/placeholder/500/350"
-            },
-            {
-                year: "1961",
-                title: "Post-Independence Reforms",
-                description: "Following Tanzania's independence, the police training system underwent significant reforms to align with the new nation's values and priorities. The curriculum was updated to emphasize service to citizens rather than colonial interests.",
-                image: "/api/placeholder/500/350"
-            },
+           
             {
                 year: "1975",
                 title: "Establishment of TPS Moshi",
@@ -3257,12 +3246,7 @@ window.addEventListener('unload', () => {
                 description: "The Tanzania Police School introduced advanced courses in criminal investigation, forensics, and community policing to address evolving security challenges. This era saw a more scientific approach to police education with laboratory facilities and specialized instructors.",
                 image: "/api/placeholder/500/350"
             },
-            {
-                year: "1995",
-                title: "Curriculum Modernization",
-                description: "A comprehensive curriculum review was conducted, integrating human rights, community policing principles, and international best practices into the training program.",
-                image: "/api/placeholder/500/350"
-            },
+            
             {
                 year: "2008",
                 title: "International Training Partnerships",
@@ -3281,12 +3265,7 @@ window.addEventListener('unload', () => {
                 description: "Expanded from a single campus to three distinct facilities: TPS Main Campus, Kilele Pori, and Kamba Pori. This strategic expansion has increased our training capacity from 600 recruits in the 1990s to over 10,000 today, making us one of the largest police training institutions in the region.",
                 image: "/api/placeholder/500/350"
             },
-            {
-                year: "2022",
-                title: "Advanced Forensic Training Certification",
-                description: "Received international certification for our advanced forensic training program. Our students now benefit from hands-on experience with cutting-edge forensic technology and techniques that meet global standards of excellence.",
-                image: "/api/placeholder/500/350"
-            },
+            
             {
                 year: "2023",
                 title: "Community Service Excellence Award",
