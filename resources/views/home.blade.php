@@ -531,10 +531,10 @@
                     <img src="assets/images/new/Academic Blockwall.jpg" alt="PRESIDENT" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                     <div class="image-fallback" style="display:none;">PRESIDENT OF TANZANIA</div>
                     <div class="content">
-                        <div class="author">GOVERNMENT</div>
-                        <div class="title">PRESIDENT</div>
-                        <div class="topic">TANZANIA</div>
-                        <div class="des">The President of Tanzania</div>
+                        <div class="author"></div>
+                        <div class="title">ACADEMIC</div>
+                        <div class="topic">BLOCK</div>
+                        <div class="des">HIGHER LEARNING ASSOCIATION</div>
                         <div class="buttons">
                         </div>
                     </div>
@@ -546,9 +546,9 @@
                     <div class="image-fallback" style="display:none;">POLICE OFFICERS</div>
                     <div class="content">
                         <div class="author">TRAINING</div>
-                        <div class="title">OFFICERS</div>
-                        <div class="topic">POLICE FORCE</div>
-                        <div class="des">Police Officers in Training</div>
+                        <div class="title">ADMINISTRATION </div>
+                        <div class="topic">BLOCK</div>
+                        <div class="des">TANZANIA POLICE SCHOOL</div>
                         <div class="buttons">
                         </div>
                     </div>
@@ -577,19 +577,19 @@
                 
                 <!-- Thumbnail 3 -->
                 <div class="item" onclick="goToSlide(2)" role="tab" tabindex="0" aria-selected="false" aria-controls="slide-2" id="thumb-2" onkeydown="handleKeyDown(event, 2)">
-                    <img src="assets/images/new/Academic Blockwall.jpg" alt="PRESIDENT" onerror="this.style.display='none'; this.parentNode.style.backgroundColor='#333';">
+                    <img src="assets/images/new/Academic Blockwall.jpg" alt="ACADEMIC BLOCK" onerror="this.style.display='none'; this.parentNode.style.backgroundColor='#333';">
                     <div class="content">
-                        <div class="title">PRESIDENT</div>
+                        <div class="title">HIGHER EDUCATION</div>
                         <div class="description">TANZANIA</div>
                     </div>
                 </div>
                 
                 <!-- Thumbnail 4 -->
                 <div class="item" onclick="goToSlide(3)" role="tab" tabindex="0" aria-selected="false" aria-controls="slide-3" id="thumb-3" onkeydown="handleKeyDown(event, 3)">
-                    <img src="assets/images/new/ofisikuuwall.jpg" alt="OFFICERS" onerror="this.style.display='none'; this.parentNode.style.backgroundColor='#333';">
+                    <img src="assets/images/new/ofisikuuwall.jpg" alt="ADMINISTRATION BLOCK" onerror="this.style.display='none'; this.parentNode.style.backgroundColor='#333';">
                     <div class="content">
-                        <div class="title">OFFICERS</div>
-                        <div class="description">POLICE FORCE</div>
+                        <div class="title">ADMINISTRATION</div>
+                        <div class="description">TANZANIA POLICE SCHOOL</div>
                     </div>
                 </div>
             </div>
