@@ -22,6 +22,9 @@ use App\Http\Controllers\ProficiencyCoursesController;
 use App\Http\Controllers\PromotionalCoursesController;
 use App\Http\Controllers\SlidesController;
 use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\HealthCenterController;
+use App\Models\Service; 
+use App\Http\Controllers\HealthCenterServiceController;
 
 
 // Home Route
@@ -78,7 +81,7 @@ Route::prefix('facilities')->name('facilities.')->group(function () {
 
 Route::get('/services', 'App\Http\Controllers\ServiceController@index')->name('services.index');
 Route::get('/services/driving', 'App\Http\Controllers\ServiceController@drivingSchool')->name('services.driving-school');
-Route::get('/services/health-center', 'App\Http\Controllers\ServiceController@healthCenter')->name('services.health-center');
+Route::get('/services/health-center', 'App\Http\Controllers\HealthCenterServiceController@healthCenter')->name('services.health-center');
 Route::get('/services/poultry', 'App\Http\Controllers\ServiceController@poultry')->name('services.poultry');
 Route::get('/services/dogs-horses', 'App\Http\Controllers\ServiceController@dogsHorses')->name('services.dogs-horses');
 Route::get('/services/catering', 'App\Http\Controllers\ServiceController@catering')->name('services.catering');
@@ -217,5 +220,11 @@ Route::group(['prefix' => 'admin'], function () {
     
 
 Route::get('/about/departments', [DepartmentController::class, 'index'])->name('about.departments');
+
+// routes/web.php
+
+
+// Add this to your existing routes
+Route::get('/health-center', [HealthCenterServiceController::class, 'index'])->name('health-center');
 
 });

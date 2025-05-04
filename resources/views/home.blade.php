@@ -3203,6 +3203,10 @@ window.addEventListener('unload', () => {
             
             <!-- Image Container -->
             <div class="timeline-image-container">
+                <div class="timeline-image-corner-tl"></div>
+                <div class="timeline-image-corner-tr"></div>
+                <div class="timeline-image-corner-bl"></div>
+                <div class="timeline-image-corner-br"></div>
                 <img src="/api/placeholder/500/350" class="timeline-milestone-image" alt="Historical photo">
             </div>
         </div>
@@ -3231,47 +3235,41 @@ window.addEventListener('unload', () => {
                 year: "1921",
                 title: "Foundation of Police Training",
                 description: "The foundation of formal police training in Tanzania was established under colonial administration, focusing on basic law enforcement skills and colonial policing methods.",
-                image: "/api/placeholder/500/350"
+                image: "assets/images/new/ofisi kuu1.jpg"
             },
            
             {
                 year: "1975",
                 title: "Establishment of TPS Moshi",
                 description: "The Tanzania Police School in Moshi was established as a specialized training center, expanding the nation's police training capabilities with modern facilities and expanded curriculum.",
-                image: "/api/placeholder/500/350"
+                image: "assets/images/new/Academic Block2.jpg"
             },
             {
                 year: "1984",
                 title: "Advanced Training Programs",
                 description: "The Tanzania Police School introduced advanced courses in criminal investigation, forensics, and community policing to address evolving security challenges. This era saw a more scientific approach to police education with laboratory facilities and specialized instructors.",
-                image: "/api/placeholder/500/350"
+                image: "assets/images/new/train.jpg"
             },
             
             {
                 year: "2008",
                 title: "International Training Partnerships",
                 description: "TPS established partnerships with international police training institutions, facilitating exchange programs and adopting global best practices in law enforcement training.",
-                image: "/api/placeholder/500/350"
+                image: "assets/images/new/inter.jpg"
             },
             {
                 year: "2018",
                 title: "PRC-Funded Facility Expansion",
                 description: "Completed the Phase II construction project with PRC funding, featuring three academic buildings with computer labs, lecture rooms, and administrative facilities. The expansion includes four dormitory blocks accommodating 320 students and two major water systems.",
-                image: "assets/images/new/Academic blockwall.jpg"
+                image: "assets/images/new/wachina.jpg"
             },
             {
                 year: "2020",
                 title: "Multi-Campus Expansion",
                 description: "Expanded from a single campus to three distinct facilities: TPS Main Campus, Kilele Pori, and Kamba Pori. This strategic expansion has increased our training capacity from 600 recruits in the 1990s to over 10,000 today, making us one of the largest police training institutions in the region.",
-                image: "/api/placeholder/500/350"
+                image: "assets/images/new/mazingira ya chuo.jpg"
             },
             
-            {
-                year: "2023",
-                title: "Community Service Excellence Award",
-                description: "Recognized for our outstanding community outreach programs and positive impact on surrounding communities. Our cadets and staff have contributed over 5,000 volunteer hours in the past year, focusing on youth mentorship and community safety initiatives.",
-                image: "/api/placeholder/500/350"
-            }
         ];
         
         // App state

@@ -195,7 +195,7 @@ $backgroundUrl = asset('images/leadership/' . $backgroundImage);
         background-image: url('/assets/images/organizational/MUUNDO.png');
         background-size: contain;
         background-repeat: no-repeat;
-        background-position: calc(50% + 3cm) 0.3cm; /* Added 2cm right offset and kept 0.3cm top offset */
+        background-position: calc(50% + 5cm) 0.3cm; /* Added 2cm right offset and kept 0.3cm top offset */
         opacity: 0.3;
         animation: subtlePulse 10s infinite alternate;
         margin-top: 0.3cm; /* Alternative approach to move background down */

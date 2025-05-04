@@ -1,40 +1,40 @@
 @extends('layouts.app')
 @section('title', 'Services')
 @section('content')
-<div class="container1">
-    <section class="hero">
-        <div class="container1">
-            <div class="hero-content">
+<div class="tps-wrapper">
+    <section class="tps-hero">
+        <div class="tps-container">
+            <div class="tps-hero-content">
                 <h1>Tanzania Police School Catering Services</h1>
                 <p>Professional catering for official functions, training events, ceremonies, and special occasions with exceptional service.</p>
-                <a href="#contact" class="cta-btn">Book Our Services</a>
+                <a href="#contact" class="tps-cta-btn">Book Our Services</a>
             </div>
         </div>
     </section>
 
-    <section class="section" id="services">
-        <div class="container1">
-            <div class="section-title">
+    <section class="tps-section" id="services">
+        <div class="tps-container">
+            <div class="tps-section-title">
                 <h2>Our Catering Services</h2>
             </div>
-            <div class="services-grid">
-                <div class="service-card" style="--i:1">
-                    <img src="/api/placeholder/400/300" alt="Official Functions Catering" class="service-img">
-                    <div class="service-content">
+            <div class="tps-services-grid">
+                <div class="tps-service-card" style="--i:1">
+                    <img src="/api/placeholder/400/300" alt="Official Functions Catering" class="tps-service-img">
+                    <div class="tps-service-content">
                         <h3>Official Functions</h3>
                         <p>Sophisticated catering solutions for government meetings, official ceremonies, and diplomatic events with attention to protocol and presentation.</p>
                     </div>
                 </div>
-                <div class="service-card" style="--i:2">
-                    <img src="/api/placeholder/400/300" alt="Training Events Catering" class="service-img">
-                    <div class="service-content">
+                <div class="tps-service-card" style="--i:2">
+                    <img src="/api/placeholder/400/300" alt="Training Events Catering" class="tps-service-img">
+                    <div class="tps-service-content">
                         <h3>Training Events</h3>
                         <p>Nutritionally balanced meals and refreshments for training courses, workshops, and seminars, designed to maintain focus and energy.</p>
                     </div>
                 </div>
-                <div class="service-card" style="--i:3">
-                    <img src="/api/placeholder/400/300" alt="Special Occasions Catering" class="service-img">
-                    <div class="service-content">
+                <div class="tps-service-card" style="--i:3">
+                    <img src="/api/placeholder/400/300" alt="Special Occasions Catering" class="tps-service-img">
+                    <div class="tps-service-content">
                         <h3>Special Occasions</h3>
                         <p>Elegant catering for graduations, award ceremonies, retirements, and special institutional celebrations with customized menus.</p>
                     </div>
@@ -43,109 +43,107 @@
         </div>
     </section>
 
-    <section class="section menu-section" id="menu">
-        <div class="container1">
-            <div class="section-title">
+    <section class="tps-section tps-menu-section" id="menu">
+        <div class="tps-container">
+            <div class="tps-section-title">
                 <h2>Our Menu Options</h2>
             </div>
             <div x-data="{activeTab: 'breakfast'}">
-                <div class="menu-tabs">
-                    <button class="menu-tab" :class="{'active': activeTab === 'breakfast'}" @click="activeTab = 'breakfast'">Breakfast</button>
-                    <button class="menu-tab" :class="{'active': activeTab === 'lunch'}" @click="activeTab = 'lunch'">Lunch</button>
-                    <button class="menu-tab" :class="{'active': activeTab === 'dinner'}" @click="activeTab = 'dinner'">Dinner</button>
-                    <button class="menu-tab" :class="{'active': activeTab === 'refreshments'}" @click="activeTab = 'refreshments'">Refreshments</button>
+                <div class="tps-menu-tabs">
+                    <button class="tps-menu-tab" :class="{'active': activeTab === 'breakfast'}" @click="activeTab = 'breakfast'">Breakfast</button>
+                    <button class="tps-menu-tab" :class="{'active': activeTab === 'lunch'}" @click="activeTab = 'lunch'">Lunch</button>
+                    <button class="tps-menu-tab" :class="{'active': activeTab === 'dinner'}" @click="activeTab = 'dinner'">Dinner</button>
+                    <button class="tps-menu-tab" :class="{'active': activeTab === 'refreshments'}" @click="activeTab = 'refreshments'">Refreshments</button>
                 </div>
                 
-                <div class="menu-content" x-show="activeTab === 'breakfast'">
-                    <div class="menu-item" style="--i:1">
-                        <img src="/api/placeholder/120/120" alt="Continental Breakfast" class="menu-item-img">
-                        <div class="menu-item-content">
-                            <div class="menu-item-header">
-                                <h3 class="menu-item-title">Continental Breakfast</h3>
-                                <span class="menu-item-price">15,000 TZS</span>
+                <div class="tps-menu-content" x-show="activeTab === 'breakfast'">
+                    <div class="tps-menu-item" style="--i:1">
+                        <img src="/api/placeholder/120/120" alt="Continental Breakfast" class="tps-menu-item-img">
+                        <div class="tps-menu-item-content">
+                            <div class="tps-menu-item-header">
+                                <h3 class="tps-menu-item-title">Continental Breakfast</h3>
+                                <span class="tps-menu-item-price">15,000 TZS</span>
                             </div>
-                            <p class="menu-item-desc">Selection of pastries, breads, fresh fruit, yogurt, tea, coffee, and fruit juices.</p>
+                            <p class="tps-menu-item-desc">Selection of pastries, breads, fresh fruit, yogurt, tea, coffee, and fruit juices.</p>
                         </div>
                     </div>
-                    <div class="menu-item" style="--i:2">
-                        <img src="/api/placeholder/120/120" alt="Full English Breakfast" class="menu-item-img">
-                        <div class="menu-item-content">
-                            <div class="menu-item-header">
-                                <h3 class="menu-item-title">Traditional Breakfast</h3>
-                                <span class="menu-item-price">20,000 TZS</span>
+                    <div class="tps-menu-item" style="--i:2">
+                        <img src="/api/placeholder/120/120" alt="Full English Breakfast" class="tps-menu-item-img">
+                        <div class="tps-menu-item-content">
+                            <div class="tps-menu-item-header">
+                                <h3 class="tps-menu-item-title">Traditional Breakfast</h3>
+                                <span class="tps-menu-item-price">20,000 TZS</span>
                             </div>
-                            <p class="menu-item-desc">Eggs, sausages, beans, toast, grilled tomatoes, and breakfast potatoes with tea or coffee.</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="menu-content" x-show="activeTab === 'lunch'">
-                    <div class="menu-item" style="--i:1">
-                        <img src="/api/placeholder/120/120" alt="Executive Lunch" class="menu-item-img">
-                        <div class="menu-item-content">
-                            <div class="menu-item-header">
-                                <h3 class="menu-item-title">Executive Lunch</h3>
-                                <span class="menu-item-price">25,000 TZS</span>
-                            </div>
-                            <p class="menu-item-desc">Three-course meal with starter, main course options, and dessert with refreshments.</p>
-                        </div>
-                    </div>
-                    <div class="menu-item" style="--i:2">
-                        <img src="/api/placeholder/120/120" alt="Buffet Lunch" class="menu-item-img">
-                        <div class="menu-item-content">
-                            <div class="menu-item-header">
-                                <h3 class="menu-item-title">Buffet Lunch</h3>
-                                <span class="menu-item-price">22,000 TZS</span>
-                            </div>
-                            <p class="menu-item-desc">Selection of salads, main dishes including rice, ugali, meat and vegetable options, and desserts.</p>
+                            <p class="tps-menu-item-desc">Eggs, sausages, beans, toast, grilled tomatoes, and breakfast potatoes with tea or coffee.</p>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Added missing dinner content -->
-                <div class="menu-content" x-show="activeTab === 'dinner'">
-                    <div class="menu-item" style="--i:1">
-                        <img src="/api/placeholder/120/120" alt="Formal Dinner" class="menu-item-img">
-                        <div class="menu-item-content">
-                            <div class="menu-item-header">
-                                <h3 class="menu-item-title">Formal Dinner</h3>
-                                <span class="menu-item-price">30,000 TZS</span>
+                <div class="tps-menu-content" x-show="activeTab === 'lunch'">
+                    <div class="tps-menu-item" style="--i:1">
+                        <img src="/api/placeholder/120/120" alt="Executive Lunch" class="tps-menu-item-img">
+                        <div class="tps-menu-item-content">
+                            <div class="tps-menu-item-header">
+                                <h3 class="tps-menu-item-title">Executive Lunch</h3>
+                                <span class="tps-menu-item-price">25,000 TZS</span>
                             </div>
-                            <p class="menu-item-desc">Elegant four-course meal with appetizer, soup or salad, main course, and dessert with beverage service.</p>
+                            <p class="tps-menu-item-desc">Three-course meal with starter, main course options, and dessert with refreshments.</p>
                         </div>
                     </div>
-                    <div class="menu-item" style="--i:2">
-                        <img src="/api/placeholder/120/120" alt="Gala Dinner" class="menu-item-img">
-                        <div class="menu-item-content">
-                            <div class="menu-item-header">
-                                <h3 class="menu-item-title">Ceremonial Dinner</h3>
-                                <span class="menu-item-price">35,000 TZS</span>
+                    <div class="tps-menu-item" style="--i:2">
+                        <img src="/api/placeholder/120/120" alt="Buffet Lunch" class="tps-menu-item-img">
+                        <div class="tps-menu-item-content">
+                            <div class="tps-menu-item-header">
+                                <h3 class="tps-menu-item-title">Buffet Lunch</h3>
+                                <span class="tps-menu-item-price">22,000 TZS</span>
                             </div>
-                            <p class="menu-item-desc">Premium dining experience with international cuisine options, served with professional waitstaff.</p>
+                            <p class="tps-menu-item-desc">Selection of salads, main dishes including rice, ugali, meat and vegetable options, and desserts.</p>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Added missing refreshments content -->
-                <div class="menu-content" x-show="activeTab === 'refreshments'">
-                    <div class="menu-item" style="--i:1">
-                        <img src="/api/placeholder/120/120" alt="Coffee Break" class="menu-item-img">
-                        <div class="menu-item-content">
-                            <div class="menu-item-header">
-                                <h3 class="menu-item-title">Coffee Break</h3>
-                                <span class="menu-item-price">8,000 TZS</span>
+                <div class="tps-menu-content" x-show="activeTab === 'dinner'">
+                    <div class="tps-menu-item" style="--i:1">
+                        <img src="/api/placeholder/120/120" alt="Formal Dinner" class="tps-menu-item-img">
+                        <div class="tps-menu-item-content">
+                            <div class="tps-menu-item-header">
+                                <h3 class="tps-menu-item-title">Formal Dinner</h3>
+                                <span class="tps-menu-item-price">30,000 TZS</span>
                             </div>
-                            <p class="menu-item-desc">Coffee, tea, and a selection of pastries or light snacks for short breaks.</p>
+                            <p class="tps-menu-item-desc">Elegant four-course meal with appetizer, soup or salad, main course, and dessert with beverage service.</p>
                         </div>
                     </div>
-                    <div class="menu-item" style="--i:2">
-                        <img src="/api/placeholder/120/120" alt="Refreshment Package" class="menu-item-img">
-                        <div class="menu-item-content">
-                            <div class="menu-item-header">
-                                <h3 class="menu-item-title">Full Refreshment Package</h3>
-                                <span class="menu-item-price">12,000 TZS</span>
+                    <div class="tps-menu-item" style="--i:2">
+                        <img src="/api/placeholder/120/120" alt="Gala Dinner" class="tps-menu-item-img">
+                        <div class="tps-menu-item-content">
+                            <div class="tps-menu-item-header">
+                                <h3 class="tps-menu-item-title">Ceremonial Dinner</h3>
+                                <span class="tps-menu-item-price">35,000 TZS</span>
                             </div>
-                            <p class="menu-item-desc">Assorted beverages, fresh fruits, pastries, and light finger foods for extended breaks.</p>
+                            <p class="tps-menu-item-desc">Premium dining experience with international cuisine options, served with professional waitstaff.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tps-menu-content" x-show="activeTab === 'refreshments'">
+                    <div class="tps-menu-item" style="--i:1">
+                        <img src="/api/placeholder/120/120" alt="Coffee Break" class="tps-menu-item-img">
+                        <div class="tps-menu-item-content">
+                            <div class="tps-menu-item-header">
+                                <h3 class="tps-menu-item-title">Coffee Break</h3>
+                                <span class="tps-menu-item-price">8,000 TZS</span>
+                            </div>
+                            <p class="tps-menu-item-desc">Coffee, tea, and a selection of pastries or light snacks for short breaks.</p>
+                        </div>
+                    </div>
+                    <div class="tps-menu-item" style="--i:2">
+                        <img src="/api/placeholder/120/120" alt="Refreshment Package" class="tps-menu-item-img">
+                        <div class="tps-menu-item-content">
+                            <div class="tps-menu-item-header">
+                                <h3 class="tps-menu-item-title">Full Refreshment Package</h3>
+                                <span class="tps-menu-item-price">12,000 TZS</span>
+                            </div>
+                            <p class="tps-menu-item-desc">Assorted beverages, fresh fruits, pastries, and light finger foods for extended breaks.</p>
                         </div>
                     </div>
                 </div>
@@ -153,40 +151,38 @@
         </div>
     </section>
 
-    <section class="section" id="contact">
-        <div class="container1">
-            <div class="section-title">
+    <section class="tps-section" id="contact">
+        <div class="tps-container">
+            <div class="tps-section-title">
                 <h2>Book Our Services</h2>
             </div>
-            <div class="contact-form-container1">
-                <div style="color: white;">
-    <h2 style="color: white;">Contact Information</h2>
-                     
-    <p style="color: white;">For inquiries about our catering services,
-     please contact us using the form or through the information below.
-     We're available to discuss your requirements and provide customized solutions for your events.</p>
-                     
-    <p style="color: white;"><strong style="color: white;">Phone:</strong> +255 123 456 789                      
-    <strong style="color: white;">Email:</strong> catering@tanzaniapolice.edu.tz                      
-    <strong style="color: white;">Address:</strong> Tanzania Police School, Moshi, Tanzania</p>
-</div>
-                <div class="form-wrapper">
-                    <form id="booking-form">
-                        <div class="form-group">
-                            <label for="name" class="form-label">Full Name</label>
-                            <input type="text" id="name" class="form-control" required>
+            <div class="tps-contact-form-container">
+                <div class="tps-contact-info">
+                    <h2>Contact Information</h2>
+                    <p>For inquiries about our catering services, please contact us using the form or through the information below. We're available to discuss your requirements and provide customized solutions for your events.</p>
+                    <p>
+                        <strong>Phone:</strong> +255 123 456 789<br>
+                        <strong>Email:</strong> catering@tanzaniapolice.edu.tz<br>
+                        <strong>Address:</strong> Tanzania Police School, Moshi, Tanzania
+                    </p>
+                </div>
+                <div class="tps-form-wrapper">
+                    <form id="tps-booking-form">
+                        <div class="tps-form-group">
+                            <label for="name" class="tps-form-label">Full Name</label>
+                            <input type="text" id="name" class="tps-form-control" required>
                         </div>
-                        <div class="form-group">
-                            <label for="email" class="form-label">Email Address</label>
-                            <input type="email" id="email" class="form-control" required>
+                        <div class="tps-form-group">
+                            <label for="email" class="tps-form-label">Email Address</label>
+                            <input type="email" id="email" class="tps-form-control" required>
                         </div>
-                        <div class="form-group">
-                            <label for="phone" class="form-label">Phone Number</label>
-                            <input type="tel" id="phone" class="form-control" required>
+                        <div class="tps-form-group">
+                            <label for="phone" class="tps-form-label">Phone Number</label>
+                            <input type="tel" id="phone" class="tps-form-control" required>
                         </div>
-                        <div class="form-group">
-                            <label for="event-type" class="form-label">Event Type</label>
-                            <select id="event-type" class="form-control" required>
+                        <div class="tps-form-group">
+                            <label for="event-type" class="tps-form-label">Event Type</label>
+                            <select id="event-type" class="tps-form-control" required>
                                 <option value="">Select Event Type</option>
                                 <option value="official">Official Function</option>
                                 <option value="training">Training Event</option>
@@ -194,11 +190,11 @@
                                 <option value="other">Other</option>
                             </select>
                         </div>
-                        <div class="form-group">
-                            <label for="message" class="form-label">Special Requirements</label>
-                            <textarea id="message" class="form-control" rows="4"></textarea>
+                        <div class="tps-form-group">
+                            <label for="message" class="tps-form-label">Special Requirements</label>
+                            <textarea id="message" class="tps-form-control" rows="4"></textarea>
                         </div>
-                        <button type="submit" class="submit-btn">Submit Booking Request</button>
+                        <button type="submit" class="tps-submit-btn">Submit Booking Request</button>
                     </form>
                 </div>
             </div>
@@ -211,82 +207,36 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Register ScrollTrigger plugin
-        gsap.registerPlugin(ScrollTrigger);
-        
-        // Initialize animations
-        gsap.from(".service-card", {
-            duration: 0.8, 
-            y: 50, 
-            opacity: 0, 
-            stagger: 0.2,
-            scrollTrigger: {
-                trigger: ".services-grid",
-                start: "top 80%"
-            }
-        });
-        
-        gsap.from(".contact-info", {
-            duration: 0.8,
-            x: -50,
-            opacity: 0,
-            scrollTrigger: {
-                trigger: ".contact-form-container1",
-                start: "top 80%"
-            }
-        });
-        
-        gsap.from(".form-wrapper", {
-            duration: 0.8,
-            x: 50,
-            opacity: 0,
-            scrollTrigger: {
-                trigger: ".contact-form-container1",
-                start: "top 80%"
-            }
-        });
-        
-        // Form submission
-        document.getElementById('booking-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Thank you for your booking request. Our team will contact you shortly to confirm your booking.');
-            this.reset();
-        });
-    });
-</script>
-
 <style>
     :root {
-        --primary: #103783; /* Deep blue (Tanzania Police) */
-        --secondary: #1D5597; /* Medium blue */
-        --accent: #FFB81C; /* Gold accent */
-        --light: #E9F0FA; /* Light blue */
-        --dark: #002147; /* Very dark blue */
-        --white: #ffffff;
+        --tps-primary: #103783; /* Deep blue (Tanzania Police) */
+        --tps-secondary: #1D5597; /* Medium blue */
+        --tps-accent: #FFB81C; /* Gold accent */
+        --tps-light: #E9F0FA; /* Light blue */
+        --tps-dark: #002147; /* Very dark blue */
+        --tps-white: #ffffff;
     }
 
-    * {
+    .tps-wrapper * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
-    body {
-        background-color: var(--light);
-        color: var(--dark);
+    .tps-wrapper {
+        background-color: var(--tps-light);
+        color: var(--tps-dark);
         overflow-x: hidden;
     }
 
-    .container1 {
+    .tps-container {
         width: 90%;
         max-width: 1200px;
         margin: 0 auto;
     }
 
-    .hero {
+    .tps-hero {
         position: relative;
         height: 60vh;
         display: flex;
@@ -296,7 +246,7 @@
         background-attachment: fixed;
     }
 
-    .hero::before {
+    .tps-hero::before {
         content: '';
         position: absolute;
         top: 0;
@@ -306,135 +256,135 @@
         background: rgba(0, 33, 71, 0.7);
     }
 
-    .hero-content {
+    .tps-hero-content {
         position: relative;
         z-index: 1;
         text-align: left;
         padding: 0 2rem;
         max-width: 650px;
-        animation: fadeIn 1s forwards;
+        animation: tps-fadeIn 1s forwards;
     }
 
-    .hero-content h1 {
+    .tps-hero-content h1 {
         font-size: 3rem;
         margin-bottom: 1rem;
-        color: var(--white);
+        color: var(--tps-white);
         position: relative;
         display: inline-block;
     }
 
-    .hero-content h1::after {
+    .tps-hero-content h1::after {
         content: '';
         position: absolute;
         left: 0;
         bottom: -10px;
         width: 100px;
         height: 4px;
-        background-color: var(--accent);
+        background-color: var(--tps-accent);
     }
 
-    .hero-content p {
+    .tps-hero-content p {
         font-size: 1.2rem;
         margin-bottom: 2rem;
-        color: var(--white);
+        color: var(--tps-white);
     }
 
-    .cta-btn {
+    .tps-cta-btn {
         display: inline-block;
-        background-color: var(--accent);
-        color: var(--dark);
+        background-color: var(--tps-accent);
+        color: var(--tps-dark);
         padding: 0.8rem 2rem;
         font-weight: 600;
         text-decoration: none;
         border-radius: 4px;
         transition: all 0.3s ease;
-        border: 2px solid var(--accent);
+        border: 2px solid var(--tps-accent);
     }
 
-    .cta-btn:hover {
+    .tps-cta-btn:hover {
         background-color: transparent;
-        color: var(--accent);
+        color: var(--tps-accent);
         transform: translateY(-3px);
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     }
 
-    .section {
+    .tps-section {
         padding: 4rem 0;
     }
 
-    .section-title {
+    .tps-section-title {
         text-align: center;
         margin-bottom: 3rem;
         position: relative;
     }
 
-    .section-title h2 {
+    .tps-section-title h2 {
         font-size: 2.5rem;
-        color: var(--primary);
+        color: var(--tps-primary);
         display: inline-block;
         margin-bottom: 0.5rem;
     }
 
-    .section-title::after {
+    .tps-section-title::after {
         content: '';
         position: absolute;
         width: 80px;
         height: 4px;
-        background-color: var(--accent);
+        background-color: var(--tps-accent);
         left: 50%;
         transform: translateX(-50%);
         bottom: -10px;
     }
 
-    .services-grid {
+    .tps-services-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         gap: 2rem;
         margin-top: 2rem;
     }
 
-    .service-card {
-        background-color: var(--white);
+    .tps-service-card {
+        background-color: var(--tps-white);
         border-radius: 8px;
         overflow: hidden;
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         transition: transform 0.3s ease, box-shadow 0.3s ease;
-        animation: fadeUp 0.6s forwards;
+        animation: tps-fadeUp 0.6s forwards;
         animation-delay: calc(var(--i) * 0.1s);
         opacity: 0;
     }
 
-    .service-card:hover {
+    .tps-service-card:hover {
         transform: translateY(-10px);
         box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
     }
 
-    .service-img {
+    .tps-service-img {
         height: 200px;
         width: 100%;
         object-fit: cover;
     }
 
-    .service-content {
+    .tps-service-content {
         padding: 1.5rem;
     }
 
-    .service-content h3 {
+    .tps-service-content h3 {
         font-size: 1.5rem;
         margin-bottom: 0.5rem;
-        color: var(--primary);
+        color: var(--tps-primary);
     }
 
-    .service-content p {
+    .tps-service-content p {
         color: #666;
         margin-bottom: 1rem;
     }
 
-    .menu-section {
-        background-color: var(--white);
+    .tps-menu-section {
+        background-color: var(--tps-white);
     }
 
-    .menu-tabs {
+    .tps-menu-tabs {
         display: flex;
         justify-content: center;
         gap: 1rem;
@@ -442,10 +392,10 @@
         flex-wrap: wrap;
     }
 
-    .menu-tab {
+    .tps-menu-tab {
         padding: 0.7rem 1.5rem;
-        background-color: var(--light);
-        color: var(--primary);
+        background-color: var(--tps-light);
+        color: var(--tps-primary);
         border: none;
         border-radius: 30px;
         cursor: pointer;
@@ -453,113 +403,118 @@
         transition: all 0.3s ease;
     }
 
-    .menu-tab.active, .menu-tab:hover {
-        background-color: var(--primary);
-        color: var(--white);
+    .tps-menu-tab.active, .tps-menu-tab:hover {
+        background-color: var(--tps-primary);
+        color: var(--tps-white);
     }
 
-    .menu-content {
+    .tps-menu-content {
         display: flex;
         flex-wrap: wrap;
         gap: 2rem;
         justify-content: center;
     }
 
-    .menu-item {
+    .tps-menu-item {
         display: flex;
-        background-color: var(--light);
+        background-color: var(--tps-light);
         border-radius: 8px;
         overflow: hidden;
         width: 100%;
         max-width: 550px;
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        animation: fadeUp 0.6s forwards;
+        animation: tps-fadeUp 0.6s forwards;
         animation-delay: calc(var(--i) * 0.1s);
         opacity: 0;
     }
 
-    .menu-item-img {
+    .tps-menu-item-img {
         width: 120px;
         height: 120px;
         object-fit: cover;
     }
 
-    .menu-item-content {
+    .tps-menu-item-content {
         padding: 1rem;
         flex: 1;
     }
 
-    .menu-item-header {
+    .tps-menu-item-header {
         display: flex;
         justify-content: space-between;
         align-items: flex-start;
         margin-bottom: 0.5rem;
     }
 
-    .menu-item-title {
+    .tps-menu-item-title {
         font-size: 1.2rem;
-        color: var(--primary);
+        color: var(--tps-primary);
     }
 
-    .menu-item-price {
+    .tps-menu-item-price {
         font-weight: 700;
-        color: var(--accent);
+        color: var(--tps-accent);
         background-color: rgba(255, 184, 28, 0.1);
         padding: 0.2rem 0.5rem;
         border-radius: 4px;
     }
 
-    .menu-item-desc {
+    .tps-menu-item-desc {
         font-size: 0.9rem;
         color: #666;
         margin-bottom: 0.5rem;
     }
 
-    .contact-form-container1 {
+    .tps-contact-form-container {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         gap: 3rem;
         align-items: center;
     }
 
-    .contact-info {
-        animation: fadeLeft 0.6s forwards;
+    .tps-contact-info {
+        animation: tps-fadeLeft 0.6s forwards;
         opacity: 0;
+        color: var(--tps-dark);
     }
 
-    .contact-info h3 {
+    .tps-contact-info h2 {
         font-size: 1.8rem;
         margin-bottom: 1.5rem;
-        color: var(--primary);
+        color: var(--tps-primary);
     }
 
-    .contact-info p {
+    .tps-contact-info p {
         margin-bottom: 1.5rem;
         line-height: 1.6;
-        color: var(--dark); /* Override the orange color */
+        color: var(--tps-dark);
     }
 
-    .form-wrapper {
-        background-color: var(--white);
+    .tps-contact-info strong {
+        color: var(--tps-primary);
+    }
+
+    .tps-form-wrapper {
+        background-color: var(--tps-white);
         padding: 2rem;
         border-radius: 8px;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        animation: fadeRight 0.6s forwards;
+        animation: tps-fadeRight 0.6s forwards;
         opacity: 0;
     }
 
-    .form-group {
+    .tps-form-group {
         margin-bottom: 1.5rem;
     }
 
-    .form-label {
+    .tps-form-label {
         display: block;
         margin-bottom: 0.5rem;
         font-weight: 500;
-        color: var(--primary);
+        color: var(--tps-primary);
     }
 
-    .form-control {
+    .tps-form-control {
         width: 100%;
         padding: 0.8rem;
         border: 1px solid #ddd;
@@ -567,15 +522,15 @@
         transition: all 0.3s ease;
     }
 
-    .form-control:focus {
+    .tps-form-control:focus {
         outline: none;
-        border-color: var(--primary);
+        border-color: var(--tps-primary);
         box-shadow: 0 0 0 2px rgba(16, 55, 131, 0.2);
     }
 
-    .submit-btn {
-        background-color: var(--primary);
-        color: var(--white);
+    .tps-submit-btn {
+        background-color: var(--tps-primary);
+        color: var(--tps-white);
         border: none;
         padding: 0.8rem 1.5rem;
         font-weight: 600;
@@ -585,48 +540,85 @@
         width: 100%;
     }
 
-    .submit-btn:hover {
-        background-color: var(--secondary);
+    .tps-submit-btn:hover {
+        background-color: var(--tps-secondary);
         transform: translateY(-3px);
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     }
 
-    @keyframes fadeIn {
+    @keyframes tps-fadeIn {
         from { opacity: 0; }
         to { opacity: 1; }
     }
 
-    @keyframes fadeUp {
+    @keyframes tps-fadeUp {
         from { opacity: 0; transform: translateY(20px); }
         to { opacity: 1; transform: translateY(0); }
     }
 
-    @keyframes fadeLeft {
+    @keyframes tps-fadeLeft {
         from { opacity: 0; transform: translateX(-20px); }
         to { opacity: 1; transform: translateX(0); }
     }
 
-    @keyframes fadeRight {
+    @keyframes tps-fadeRight {
         from { opacity: 0; transform: translateX(20px); }
         to { opacity: 1; transform: translateX(0); }
     }
 
     @media (max-width: 768px) {
-        .hero-content h1 {
+        .tps-hero-content h1 {
             font-size: 2.5rem;
         }
-        .contact-form-container1 {
+        .tps-contact-form-container {
             gap: 2rem;
         }
     }
-
-    /* Override conflicting styles */
-    .service-content h3 {
-        color: var(--primary); /* Override aquamarine color */
-    }
-    
-    .service-content p {
-        color: #666; /* Override orange color */
-    }
 </style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Register ScrollTrigger plugin
+        gsap.registerPlugin(ScrollTrigger);
+        
+        // Initialize animations
+        gsap.from(".tps-service-card", {
+            duration: 0.8, 
+            y: 50, 
+            opacity: 0, 
+            stagger: 0.2,
+            scrollTrigger: {
+                trigger: ".tps-services-grid",
+                start: "top 80%"
+            }
+        });
+        
+        gsap.from(".tps-contact-info", {
+            duration: 0.8,
+            x: -50,
+            opacity: 0,
+            scrollTrigger: {
+                trigger: ".tps-contact-form-container",
+                start: "top 80%"
+            }
+        });
+        
+        gsap.from(".tps-form-wrapper", {
+            duration: 0.8,
+            x: 50,
+            opacity: 0,
+            scrollTrigger: {
+                trigger: ".tps-contact-form-container",
+                start: "top 80%"
+            }
+        });
+        
+        // Form submission
+        document.getElementById('tps-booking-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your booking request. Our team will contact you shortly to confirm your booking.');
+            this.reset();
+        });
+    });
+</script>
 @endsection
