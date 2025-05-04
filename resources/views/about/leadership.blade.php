@@ -30,7 +30,7 @@ $backgroundUrl = asset('images/leadership/' . $backgroundImage);
         <div class="bg-transparent shadow-none">
             <div class="max-w-7xl mx-auto py-4 px-4 flex justify-between items-center mobile-header">
                 <h1 class="text-3xl font-bold text-blue-800 animate-fade-in">
-                    Tanzania Police School Moshi Leadership
+                    Tanzania Police School Moshi Leadershipi
                 </h1>
                 
                 <!-- Leadership Stats Tooltip -->
