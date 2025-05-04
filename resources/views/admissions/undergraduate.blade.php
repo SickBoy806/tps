@@ -8,7 +8,7 @@
         <div class="max-w-4xl">
             <h1 class="text-white text-4xl md:text-5xl font-bold mb-4">Preparing Undergraduates for Success</h1>
             <p class="text-white text-xl mb-8">Discover comprehensive programes designed to nurture academic excellence and foster career readiness.</p>
-            <a href="/apply" class="inline-block bg-transparent hover:bg-white/10 text-white border border-white font-semibold px-6 py-3 rounded-lg transition duration-300">Apply Now</a>
+            <a target="_blank" href="https://isms.iaa.ac.tz/oas" class="inline-block bg-transparent hover:bg-white/10 text-white border border-white font-semibold px-6 py-3 rounded-lg transition duration-300">Apply Now</a>
         </div>
     </div>
 </div>
@@ -94,8 +94,8 @@
             <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Ready to Begin Your Journey?</h2>
             <p class="text-xl text-white/80 mb-8">Take the first step toward a transformative undergraduate experience.</p>
             <div class="space-x-4">
-                <a href="/apply" class="inline-block bg-yellow-600 hover:bg-yellow-700 text-white font-semibold px-6 py-3 rounded-lg transition duration-300">Apply Now</a>
-                <a href="/visit" class="inline-block bg-transparent hover:bg-white/10 text-white border border-white font-semibold px-6 py-3 rounded-lg transition duration-300">Schedule a Visit</a>
+                <a href="https://isms.iaa.ac.tz/oas" target="_blank" class="inline-block bg-yellow-600 hover:bg-yellow-700 text-white font-semibold px-6 py-3 rounded-lg transition duration-300">Apply Now</a>
+                <!-- <a href="/visit" class="inline-block bg-transparent hover:bg-white/10 text-white border border-white font-semibold px-6 py-3 rounded-lg transition duration-300">Schedule a Visit</a> -->
             </div>
         </div>
     </div>

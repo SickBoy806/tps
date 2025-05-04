@@ -395,7 +395,7 @@
                 duration: '8 Weeks',
                 level: 'Specialized',
                 mediaType: 'image',
-                mediaSource: '/assets/images/driving/traff/gr1.jpeg'
+                mediaSource: '/assets/images/driving/traff/gr1.jpg'
             },
             {
                 title: 'Leadership and Management',

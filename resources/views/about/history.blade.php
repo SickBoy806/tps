@@ -348,7 +348,7 @@
         <!-- Media Display -->
         <div class="media-display">
             <div class="media-frame" id="media-frame">
-                <img src="/api/placeholder/800/600" alt="Historical photo" class="media-image" id="media-image">
+                <img src="/api/placeholder/800/600" alt="Historical photo1" class="media-image" id="media-image">
             </div>
         </div>
         
@@ -380,61 +380,61 @@
                 {
                     year: "1921",
                     title: "Foundation of Police Training",
-                    image: "/api/placeholder/800/600",
+                    image: "{{ asset('assets/images/history/photo1.jpg ') }}",
                     description: "The first formal police training in Tanganyika (now Tanzania) was established under British colonial rule. Initial training focused on basic law enforcement skills for colonial officers. The training facility was basic but laid the groundwork for future developments in police education in the region."
                 },
                 {
                     year: "1946",
                     title: "Establishment of Central Police Training School",
-                    image: "/api/placeholder/800/600",
+                    image: "{{ asset('assets/images/history/school.jpg ') }}",
                     description: "The Central Police Training School was formally established in Dar es Salaam as the main training institution for police officers in the territory. This marked a significant step in the professionalization of police services with standardized curriculum and training methods."
                 },
                 {
                     year: "1961",
                     title: "Independence Era Transformation",
-                    image: "/api/placeholder/800/600",
+                    image: "{{ asset('assets/images/history/photo2.jpg ') }}",
                     description: "Following Tanganyika's independence, the police training curriculum was revised to align with the needs of the newly independent nation, emphasizing service to local communities rather than colonial interests. This period saw significant changes in leadership and training philosophy."
                 },
                 {
                     year: "1964",
                     title: "United Republic and Police Unification",
-                    image: "/api/placeholder/800/600",
+                    image: "{{ asset('assets/images/history/photo3.jpg ') }}",
                     description: "After the union of Tanganyika and Zanzibar forming Tanzania, the police training systems were gradually integrated to create a unified approach. This process involved harmonizing different procedures, ranks, and training methodologies to create a cohesive national police force."
                 },
                 {
                     year: "1975",
                     title: "Police School Modernization",
-                    image: "/api/placeholder/800/600",
+                    image: "{{ asset('assets/images/history/policing.jpg ') }}",
                     description: "Major curriculum reforms were implemented, introducing modern policing techniques and expanding specialized training programs. The physical facilities were upgraded, and new departments were created to address emerging security challenges in a developing Tanzania."
                 },
                 {
                     year: "1984",
                     title: "Advanced Training Programs",
-                    image: "/api/placeholder/800/600",
+                    image: "{{ asset('assets/images/history/cid.jpg ') }}",
                     description: "The Tanzania Police School introduced advanced courses in criminal investigation, forensics, and community policing to address evolving security challenges. This era saw a more scientific approach to police education with laboratory facilities and specialized instructors."
                 },
                 {
                     year: "1996",
                     title: "International Partnership Era",
-                    image: "/api/placeholder/800/600",
+                    image: "{{ asset('assets/images/history/africa.jpg ') }}",
                     description: "The school began forming international partnerships with police academies across Africa and beyond, enhancing training standards and exchange programs. This period marked Tanzania Police School's emergence on the international stage, with training collaborations with agencies from Europe, Asia, and other African nations."
                 },
                 {
                     year: "2008",
                     title: "Technology Integration",
-                    image: "/api/placeholder/800/600",
+                    image: "{{ asset('assets/images/history/technology.jpg ') }}",
                     description: "Digital training programs and computer-based learning were introduced, modernizing the curriculum to include cybercrime investigation and digital evidence handling. Computer labs were established, and officers began receiving training in digital forensics and electronic crime prevention."
                 },
                 {
                     year: "2015",
                     title: "Comprehensive Reform",
-                    image: "/api/placeholder/800/600",
+                    image: "{{ asset('assets/images/history/reformation.jpg ') }}",
                     description: "A comprehensive reform of the Tanzania Police School was implemented, focusing on human rights, professional ethics, and community-oriented policing principles. This reform acknowledged global standards in police education and emphasized accountability and transparency."
                 },
                 {
                     year: "2023",
                     title: "Contemporary Excellence Center",
-                    image: "/api/placeholder/800/600",
+                    image: "{{ asset('assets/images/history/tps.jpg ') }}",
                     description: "Today, the Tanzania Police School stands as a center of excellence in law enforcement education in East Africa, offering diverse specialized programs and continuing to evolve with contemporary policing challenges. The institution now trains officers from neighboring countries and collaborates with international law enforcement agencies on various initiatives."
                 }
             ];

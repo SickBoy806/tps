@@ -244,7 +244,7 @@
                             <div class="bg-white/10 backdrop-blur-sm p-8 rounded-lg">
                                 <div class="flex items-center mb-4">
                                     <div class="w-16 h-16 rounded-full overflow-hidden mr-4">
-                                        <img src="{{ asset('assets/images/officer2.jpg') }}" alt="Officer Testimonial" class="w-full h-full object-cover">
+                                        <img src="{{ asset('assets/images/default.png') }}" alt="Officer Testimonial" class="w-full h-full object-cover">
                                     </div>
                                     <div>
                                         <h4 class="text-xl font-bold">Sergeant James Masanja</h4>
@@ -260,7 +260,7 @@
                             <div class="bg-white/10 backdrop-blur-sm p-8 rounded-lg">
                                 <div class="flex items-center mb-4">
                                     <div class="w-16 h-16 rounded-full overflow-hidden mr-4">
-                                        <img src="{{ asset('assets/images/officer3.jpg') }}" alt="Officer Testimonial" class="w-full h-full object-cover">
+                                        <img src="{{ asset('assets/images/default.png') }}" alt="Officer Testimonial" class="w-full h-full object-cover">
                                     </div>
                                     <div>
                                         <h4 class="text-xl font-bold">Corporal Maria Nyambo</h4>
@@ -440,8 +440,8 @@
             <p class="text-xl max-w-2xl mx-auto mb-8">Join the Tanzania Police Force and be part of a proud tradition of service, leadership, and community protection.</p>
             
             <div class="cta-buttons space-y-4 sm:space-y-0 sm:space-x-4">
-                <a href="{{ route('careers.application') }}" class="inline-block bg-white text-blue-800 hover:bg-blue-100 px-8 py-3 rounded-lg font-bold text-lg transition-all duration-300 hover:shadow-lg hover:scale-105">Apply Today</a>
-                <a href="{{ route('careers.faqs') }}" class="inline-block bg-transparent border-2 border-white text-white hover:bg-white/10 px-8 py-3 rounded-lg font-bold text-lg transition-all duration-300">Learn More</a>
+                <a href="https://ajira.tpf.go.tz/" class="inline-block bg-white text-blue-800 hover:bg-blue-100 px-8 py-3 rounded-lg font-bold text-lg transition-all duration-300 hover:shadow-lg hover:scale-105">Apply Today</a>
+                <!-- <a href="{{ route('careers.faqs') }}" class="inline-block bg-transparent border-2 border-white text-white hover:bg-white/10 px-8 py-3 rounded-lg font-bold text-lg transition-all duration-300">Learn More</a> -->
             </div>
         </div>
     </section>

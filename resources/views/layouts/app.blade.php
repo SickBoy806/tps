@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'TPS Moshi')</title>
     <link rel="stylesheet" href="{{ asset('build/assets/app-DnJZKFsY.css') }}">
+    <link rel="shortcut icon" href="{{ asset('assets/images/Logos/tanzania-police-seeklogo.png') }}" />
     <script src="{{ asset('build/assets/app-SgndWJd4.js') }}" defer></script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -485,10 +486,10 @@
 
 
                 <!-- Emergency Button -->
-                <button class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-full 
+                <!-- <button class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-full 
                     transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-red-400">
                     Emergency
-                </button>
+                </button> -->
             </div>
         </div>
 

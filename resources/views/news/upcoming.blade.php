@@ -135,7 +135,7 @@
                     @else
                     <div></div>
                     @endif
-                    <a 
+                    <!-- <a 
                         href="{{ route('events.show', $event->id) }}" 
                         class="px-3 sm:px-4 py-1.5 sm:py-2 bg-blue-50 text-blue-600 rounded-lg text-sm hover:bg-blue-100 transition-all flex items-center group"
                     >
@@ -143,7 +143,7 @@
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 sm:h-5 sm:w-5 ml-1 sm:ml-2 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                         </svg>
-                    </a>
+                    </a> -->
                 </div>
             </div>
         </div>

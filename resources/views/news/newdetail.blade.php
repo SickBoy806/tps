@@ -6,9 +6,9 @@
         <div class="max-w-4xl mx-auto">
             {{-- Article Header --}}
             <div class="mb-8">
-                <span class="bg-blue-600 text-white px-4 py-1 rounded-full text-sm inline-block mb-4">
+                <!-- <span class="bg-blue-600 text-white px-4 py-1 rounded-full text-sm inline-block mb-4">
                     {{ $article->category }}
-                </span>
+                </span> -->
                 <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">
                     {{ $article->title }}
                 </h1>
@@ -21,13 +21,12 @@
 
             {{-- Featured Image --}}
             <div class="mb-8 rounded-2xl overflow-hidden shadow-lg">
-                <img 
+                <!-- <img 
                     src="{{ Voyager::image($article->featured_image) }}" 
                     alt="{{ $article->title }}" 
                     class="w-full h-auto object-cover"
-                >
+                > -->
             </div>
-            
             {{-- Article Content --}}
             <div class="bg-white rounded-2xl shadow-lg p-8 mb-8 prose prose-lg max-w-none">
                 {!! $article->body !!}
